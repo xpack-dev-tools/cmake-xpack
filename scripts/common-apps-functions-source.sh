@@ -70,6 +70,13 @@ function do_cmake()
     fi
 
     if [ ! -f "CMakeCache.txt" ]
+    then
+      (
+        echo
+        echo "Running cmake cmake..."
+
+        config_options=()
+
         if [ "${TARGET_PLATFORM}" == "win32" ]
         then
           config_options+=("-DCMAKE_SYSTEM_NAME=Windows")
@@ -88,6 +95,7 @@ function do_cmake()
 
         # The mingw build also requires RC pointing to windres.
         cmake \
+          -G Ninja \
           -DCMAKE_INSTALL_PREFIX="${APP_PREFIX}" \
           \
           -DCMAKE_VERBOSE_MAKEFILE=ON \
@@ -107,15 +115,24 @@ function do_cmake()
 
     (
       echo
-      echo "Running cmake make..."
+      echo "Running cmake build..."
 
-      make -j ${JOBS}
+      cmake \
+        --build . \
+        --parallel ${JOBS} \
+        --config "${build_type}" \
 
       (
         # The install procedure runs some tests, which require
         # the libssl and libcrypt libraries from XBB.
         xbb_activate_libs
-        make install
+
+        cmake \
+          --build . \
+          --config "${build_type}" \
+          -- \
+          install
+
       )
 
       for app in cmake ctest cpack
