@@ -1,0 +1,30 @@
+{
+  "name": "@xpack-dev-tools/cmake",
+  "version": "0.0.1",
+  "description": "An xPack with CMake",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xpack-dev-tools/cmake-xpack.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xpack-dev-tools/cmake-xpack/issues"
+  },
+  "homepage": "https://github.com/xpack-dev-tools/cmake-xpack.git",
+  "keywords": [
+    "xpack"
+  ],
+  "author": {
+    "name": "Liviu Ionescu",
+    "email": "ilg@livius.net",
+    "url": "https://github.com/ilg-ul"
+  },
+  "license": "MIT",
+  "config": {},
+  "dependencies": {},
+  "devDependencies": {},
+  "xpack": {}
+}
