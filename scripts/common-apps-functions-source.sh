@@ -61,22 +61,15 @@ function do_cmake()
 
     env | sort
 
-    if [ ! -f "CMakeCache.txt" ]
+    local build_type
+    if [ "${IS_DEBUG}" == "y" ]
     then
-      (
-        echo
-        echo "Running cmake cmake..."
+      build_type=Debug
+    else
+      build_type=Release
+    fi
 
-        config_options=()
-
-        local build_type
-        if [ "${IS_DEBUG}" == "y" ]
-        then
-          build_type=Debug
-        else
-          build_type=Release
-        fi
-
+    if [ ! -f "CMakeCache.txt" ]
         if [ "${TARGET_PLATFORM}" == "win32" ]
         then
           config_options+=("-DCMAKE_SYSTEM_NAME=Windows")
