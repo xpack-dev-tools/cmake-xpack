@@ -103,7 +103,7 @@ function do_cmake()
           \
           -DBUILD_CursesDialog=OFF \
           \
-          -DBUILD_TESTING=OFF \
+          -DBUILD_TESTING=ON \
           ${config_options[@]} \
           \
           "${SOURCES_FOLDER_PATH}/${cmake_src_folder_name}"
