@@ -165,8 +165,12 @@ function do_cmake()
     echo "Removing the installed doc folder..."
     rm -rfv "${APP_PREFIX}/doc"
 
-  )
+    (
+      cd "${BUILD_FOLDER_PATH}/${cmake_folder_name}"
 
+      copy_cmake_logs "${cmake_folder_name}"
+    )
+  )
 }
 
 # -----------------------------------------------------------------------------
