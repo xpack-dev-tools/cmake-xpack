@@ -146,6 +146,19 @@ function do_cmake()
       "${SOURCES_FOLDER_PATH}/${cmake_src_folder_name}" \
       "${cmake_folder_name}"
 
+    (
+      cd "${SOURCES_FOLDER_PATH}/${cmake_src_folder_name}/Utilities"
+      for d in *
+      do
+        if [ -d "${d}" ]
+        then
+          copy_license \
+            "${SOURCES_FOLDER_PATH}/${cmake_src_folder_name}/Utilities/${d}" \
+            "${d}"  
+        fi   
+      done
+    )
+
   )
 
 }
