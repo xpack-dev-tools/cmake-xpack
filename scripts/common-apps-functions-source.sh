@@ -159,6 +159,12 @@ function do_cmake()
       done
     )
 
+    # The original doc folder included licenses, which are now
+    # in a separate location.
+    echo
+    echo "Removing the installed doc folder..."
+    rm -rfv "${APP_PREFIX}/doc"
+
   )
 
 }
