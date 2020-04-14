@@ -33,8 +33,11 @@ function do_build_versions()
 
     # -------------------------------------------------------------------------
 
-    # CMake prefers 
-    # do_ncurses "6.2"
+    if [ "${TARGET_PLATFORM}" != "win32" ]
+    then
+      NCURSES_DISABLE_WIDEC="y"
+      do_ncurses "6.2"
+    fi
 
     do_cmake "3.17.1"
 
