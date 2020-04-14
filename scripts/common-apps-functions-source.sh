@@ -41,6 +41,8 @@ function do_cmake()
     mkdir -pv "${BUILD_FOLDER_PATH}/${cmake_folder_name}"
     cd "${BUILD_FOLDER_PATH}/${cmake_folder_name}"
 
+    mkdir -pv "${LOGS_FOLDER_PATH}/${cmake_folder_name}"
+
     xbb_activate
     xbb_activate_installed_dev
 
@@ -110,7 +112,7 @@ function do_cmake()
 
         set -u
 
-      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/cmake-cmake-output.txt"
+      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${cmake_folder_name}/cmake-output.txt"
     fi
 
     (
@@ -140,7 +142,7 @@ function do_cmake()
         prepare_app_libraries "${APP_PREFIX}/bin/${app}"
       done
 
-    ) 2>&1 | tee "${LOGS_FOLDER_PATH}/build-cmake-output.txt"
+    ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${cmake_folder_name}/build-output.txt"
 
     copy_license \
       "${SOURCES_FOLDER_PATH}/${cmake_src_folder_name}" \
