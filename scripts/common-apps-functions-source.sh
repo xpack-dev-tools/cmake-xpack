@@ -210,7 +210,7 @@ function prepare_app_names()
 
 # -----------------------------------------------------------------------------
 
-function run_cmake()
+function do_test()
 {
   echo
   echo "Running the binaries..."
