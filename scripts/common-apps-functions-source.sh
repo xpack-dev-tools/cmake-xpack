@@ -56,10 +56,15 @@ function do_cmake()
       prepare_cross_env "${CROSS_COMPILE_PREFIX}"
     fi
 
-    # export CPPFLAGS="${XBB_CPPFLAGS}"
-    export CFLAGS="${XBB_CPPFLAGS} ${XBB_CFLAGS}"
-    export CXXFLAGS="${XBB_CPPFLAGS} ${XBB_CXXFLAGS}"
-    export LDFLAGS="${XBB_CPPFLAGS} ${XBB_LDFLAGS_APP_STATIC_GCC} -v"
+    prepare_app_names
+
+    CFLAGS="${XBB_CPPFLAGS} ${XBB_CFLAGS}"
+    CXXFLAGS="${XBB_CPPFLAGS} ${XBB_CXXFLAGS}"
+    LDFLAGS="${XBB_CPPFLAGS} ${XBB_LDFLAGS_APP_STATIC_GCC} -v"
+
+    export CFLAGS
+    export CXXFLAGS
+    export LDFLAGS
 
     env | sort
 
@@ -79,11 +84,6 @@ function do_cmake()
 
         config_options=()
 
-        if [ "${TARGET_PLATFORM}" == "win32" ]
-        then
-          config_options+=("-DCMAKE_SYSTEM_NAME=Windows")
-        fi
-
         # If more verbosity is needed:
         #  -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON 
         # Disable ccmake for now
@@ -93,24 +93,48 @@ function do_cmake()
 
         # -DCMAKE_SYSTEM_NAME tricks it behave as when on Windows
 
-        set +u
+        # -DBUILD_CursesDialog=ON 
+        # -DCMAKE_PREFIX_PATH="${LIBS_INSTALL_FOLDER_PATH}" \
+
+        config_options+=("-G" "Ninja")
+          
+        config_options+=("-DCMAKE_VERBOSE_MAKEFILE=ON")
+        config_options+=("-DCMAKE_BUILD_TYPE=${build_type}")
+          
+        config_options+=("-DBUILD_TESTING=ON")
+
+        if [ "${TARGET_PLATFORM}" == "win32" ]
+        then
+          config_options+=("-DCMAKE_SYSTEM_NAME=Windows")
+
+          # Windows does not need ncurses, since ccmake is not built.
+        elif [ "${TARGET_PLATFORM}" == "darwin" ]
+        then
+          # Hack
+          # https://gitlab.kitware.com/cmake/cmake/-/issues/20570#note_732291
+          config_options+=("-DBUILD_CursesDialog=ON")
+          config_options+=("-DCURSES_CURSES_LIBRARY=${LIBS_INSTALL_FOLDER_PATH}/lib/libncurses.dylib") 
+          config_options+=("-DCURSES_NCURSES_LIBRARY=${LIBS_INSTALL_FOLDER_PATH}/lib/libncurses.dylib") 
+          config_options+=("-DCURSES_FORM_LIBRARY=${LIBS_INSTALL_FOLDER_PATH}/lib/libform.dylib") 
+          config_options+=("-DCURSES_INCLUDE_PATH=${LIBS_INSTALL_FOLDER_PATH}/include") 
+        elif [ "${TARGET_PLATFORM}" == "linux" ]
+        then
+          # Hack
+          # https://gitlab.kitware.com/cmake/cmake/-/issues/20570#note_732291
+          config_options+=("-DBUILD_CursesDialog=ON")
+          config_options+=("-DCURSES_CURSES_LIBRARY=${LIBS_INSTALL_FOLDER_PATH}/lib/libncurses.so") 
+          config_options+=("-DCURSES_NCURSES_LIBRARY=${LIBS_INSTALL_FOLDER_PATH}/lib/libncurses.so") 
+          config_options+=("-DCURSES_FORM_LIBRARY=${LIBS_INSTALL_FOLDER_PATH}/lib/libform.so") 
+          config_options+=("-DCURSES_INCLUDE_PATH=${LIBS_INSTALL_FOLDER_PATH}/include") 
+        fi
 
         # The mingw build also requires RC pointing to windres.
         cmake \
-          -G Ninja \
           -DCMAKE_INSTALL_PREFIX="${APP_PREFIX}" \
           \
-          -DCMAKE_VERBOSE_MAKEFILE=ON \
-          -DCMAKE_BUILD_TYPE="${build_type}" \
-          \
-          -DBUILD_CursesDialog=OFF \
-          \
-          -DBUILD_TESTING=ON \
           ${config_options[@]} \
           \
           "${SOURCES_FOLDER_PATH}/${cmake_src_folder_name}"
-
-        set -u
 
       ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${cmake_folder_name}/cmake-output.txt"
     fi
@@ -125,7 +149,7 @@ function do_cmake()
         --config "${build_type}" \
 
       (
-        # The install procedure runs some tests, which require
+        # The install procedure runs some resulted exxecutables, which require
         # the libssl and libcrypt libraries from XBB.
         xbb_activate_libs
 
@@ -137,7 +161,7 @@ function do_cmake()
 
       )
 
-      for app in cmake ctest cpack
+      for app in ${apps_names[@]}
       do
         prepare_app_libraries "${APP_PREFIX}/bin/${app}"
       done
@@ -162,7 +186,7 @@ function do_cmake()
     )
 
     # The original doc folder included licenses, which are now
-    # in a separate location.
+    # in a separate location. No longer necessary.
     echo
     echo "Removing the installed doc folder..."
     rm -rfv "${APP_PREFIX}/doc"
@@ -175,11 +199,25 @@ function do_cmake()
   )
 }
 
+function prepare_app_names()
+{
+  apps_names=("cmake" "ctest" "cpack")
+  if [ "${TARGET_PLATFORM}" != "win32" ]
+  then
+    apps_names+=("ccmake")
+  fi
+}
+
 # -----------------------------------------------------------------------------
 
 function run_cmake()
 {
-  for app in cmake ctest cpack
+  echo
+  echo "Running the binaries..."
+
+  prepare_app_names
+
+  for app in ${apps_names[@]}
   do
     run_app "${APP_PREFIX}/bin/${app}" --version
   done
