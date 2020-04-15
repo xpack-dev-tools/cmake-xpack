@@ -100,8 +100,8 @@ No need to add a tag here, it'll be added when the release is created.
 ### Prepare release
 
 To prepare a new release, first determine the CMake version
-(like `1.10.0`) and update the `scripts/VERSION` file. The format is
-`1.10.0-1`. The fourth number is the xPack release number
+(like `3.17.1`) and update the `scripts/VERSION` file. The format is
+`3.17.1-1`. The fourth number is the xPack release number
 of this version. A fifth number will be added when publishing
 the package on the `npm` server.
 
@@ -182,15 +182,15 @@ archives and their SHA signatures, created in the `deploy` folder:
 ```console
 $ cd ~/Work/cmake-*
 $ ls -l deploy
-total 13180
--rw-rw-rw- 1 ilg ilg 3685468 Mar 26 14:21 xpack-cmake-3.17.1-1-linux-x32.tar.gz
--rw-rw-rw- 1 ilg ilg     107 Mar 26 14:21 xpack-cmake-3.17.1-1-linux-x32.tar.gz.sha
--rw-rw-rw- 1 ilg ilg 3609865 Mar 26 14:03 xpack-cmake-3.17.1-1-linux-x64.tar.gz
--rw-rw-rw- 1 ilg ilg     107 Mar 26 14:03 xpack-cmake-3.17.1-1-linux-x64.tar.gz.sha
--rw-rw-rw- 1 ilg ilg 3088321 Mar 26 14:30 xpack-cmake-3.17.1-1-win32-x32.zip
--rw-rw-rw- 1 ilg ilg     104 Mar 26 14:30 xpack-cmake-3.17.1-1-win32-x32.zip.sha
--rw-rw-rw- 1 ilg ilg 3092435 Mar 26 14:16 xpack-cmake-3.17.1-1-win32-x64.zip
--rw-rw-rw- 1 ilg ilg     104 Mar 26 14:16 xpack-cmake-3.17.1-1-win32-x64.zip.sha
+total 79932
+-rw-rw-r-- 1 ilg ilg 21564470 Apr 14 20:10 xpack-cmake-3.17.1-1-linux-x32.tar.gz
+-rw-rw-r-- 1 ilg ilg      104 Apr 14 20:10 xpack-cmake-3.17.1-1-linux-x32.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 20402078 Apr 14 19:48 xpack-cmake-3.17.1-1-linux-x64.tar.gz
+-rw-rw-r-- 1 ilg ilg      104 Apr 14 19:48 xpack-cmake-3.17.1-1-linux-x64.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 18548078 Apr 14 20:20 xpack-cmake-3.17.1-1-win32-x32.zip
+-rw-rw-r-- 1 ilg ilg      101 Apr 14 20:20 xpack-cmake-3.17.1-1-win32-x32.zip.sha
+-rw-rw-r-- 1 ilg ilg 21312525 Apr 14 20:01 xpack-cmake-3.17.1-1-win32-x64.zip
+-rw-rw-r-- 1 ilg ilg      101 Apr 14 20:01 xpack-cmake-3.17.1-1-win32-x64.zip.sha
 ```
 
 To copy the files from the build machine to the current development
@@ -231,9 +231,9 @@ archive and its SHA signature, created in the `deploy` folder:
 ```console
 $ cd ~/Work/cmake-*
 $ ls -l deploy
-total 5528
--rw-r--r--  1 ilg  staff  2822538 Jul 17 15:30 xpack-cmake-3.17.1-1-darwin-x64.tgz
--rw-r--r--  1 ilg  staff      105 Jul 17 15:30 xpack-cmake-3.17.1-1-darwin-x64.tgz.sha
+total 30720
+-rw-r--r--  1 ilg  staff  15721827 Apr 14 19:50 xpack-cmake-3.17.1-1-darwin-x64.tar.gz
+-rw-r--r--  1 ilg  staff       105 Apr 14 19:50 xpack-cmake-3.17.1-1-darwin-x64.tar.gz.sha
 ```
 
 To copy the files from the build machine to the current development
@@ -299,11 +299,11 @@ archives and their SHA signatures, created in the `deploy` folder:
 ```console
 $ cd ~/Work/cmake-*
 $ ls -l deploy
-total 7120
--rw-rw-rw- 1 ilg ilg 3632743 Mar 26 15:25 xpack-cmake-3.17.1-1-linux-arm64.tar.gz
--rw-rw-rw- 1 ilg ilg     109 Mar 26 15:25 xpack-cmake-3.17.1-1-linux-arm64.tar.gz.sha
--rw-rw-rw- 1 ilg ilg 3646739 Mar 26 15:50 xpack-cmake-3.17.1-1-linux-arm.tar.gz
--rw-rw-rw- 1 ilg ilg     107 Mar 26 15:50 xpack-cmake-3.17.1-1-linux-arm.tar.gz.sha
+total 37360
+-rw-rw-r-- 1 ilg ilg 19262891 Apr 14 21:51 xpack-cmake-3.17.1-1-linux-arm64.tar.gz
+-rw-rw-r-- 1 ilg ilg      106 Apr 14 21:51 xpack-cmake-3.17.1-1-linux-arm64.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 18984500 Apr 14 22:47 xpack-cmake-3.17.1-1-linux-arm.tar.gz
+-rw-rw-r-- 1 ilg ilg      104 Apr 14 22:47 xpack-cmake-3.17.1-1-linux-arm.tar.gz.sha
 ```
 
 To copy the files from the build machine to the current development
@@ -386,8 +386,8 @@ program from there. For example on macOS the output should
 look like:
 
 ```console
-$ /Users/ilg/Downloads/xPacks/cmake/1.10.0-1/bin/cmake --version
-xPack CMake, 64-bit Open On-Chip Debugger 0.10.0+dev (2019-07-17-15:21)
+$ /Users/ilg/Work/cmake-3.17.1-1/darwin-x64/install/cmake/bin/cmake --version
+cmake version 3.17.1
 ```
 
 ## Installed folders
@@ -396,45 +396,27 @@ After install, the package should create a structure like this (macOS files;
 only the first two depth levels are shown):
 
 ```console
-$ tree -L 2 /Users/ilg/Library/xPacks/\@xpack-dev-tools/cmake/1.10.0-1.1/.content/
-/Users/ilg/Library/xPacks/\@xpack-dev-tools/cmake/1.10.0-1.1/.content/
-├── OpenULINK
-│   └── ulink_firmware.hex
+$ tree -L 2 /Users/ilg/Library/xPacks/\@xpack-dev-tools/cmake/3.17.1-1.1/.content/
+/Users/ilg/Library/xPacks/\@xpack-dev-tools/cmake/3.17.1-1.1/.content/
 ├── README.md
 ├── bin
-│   ├── libftdi1.2.4.0.dylib
-│   ├── libftdi1.2.dylib -> libftdi1.2.4.0.dylib
+│   ├── ccmake
+│   ├── cmake
+│   ├── cpack
+│   ├── ctest
+│   ├── libc++.1.dylib
+│   ├── libc++abi.dylib
 │   ├── libgcc_s.1.dylib
-│   ├── libhidapi.0.dylib
-│   ├── libusb-0.1.4.dylib
-│   ├── libusb-1.0.0.dylib
-│   └── cmake
-├── contrib
-│   ├── 60-cmake.rules
-│   └── libdcc
+│   └── libncurses.6.dylib
 ├── distro-info
-│   ├── CHANGELOG.md
 │   ├── licenses
 │   ├── patches
 │   └── scripts
-├── scripts
-│   ├── bitsbytes.tcl
-│   ├── board
-│   ├── chip
-│   ├── cpld
-│   ├── cpu
-│   ├── fpga
-│   ├── interface
-│   ├── mem_helper.tcl
-│   ├── memory.tcl
-│   ├── mmr_helpers.tcl
-│   ├── target
-│   ├── test
-│   └── tools
 └── share
-    └── doc
+    ├── aclocal
+    └── cmake-3.17
 
-20 directories, 15 files
+8 directories, 9 files
 ```
 
 No other files are installed in any system folders or other locations.
