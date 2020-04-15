@@ -211,23 +211,32 @@ function do_test()
 
   # ---------------------------------------------------------------------------
 
-  (
-    local test_folder_path="$(mktemp /tmp/cmake-test-itself.XXXXX)"
+  # cmake is not happy when started via wine, since it tries to
+  # execute various other tools (like it tries to get the version of ninja).
+  if [ "${TARGET_PLATFORM}" != "win32" ]
+  then
+    (
+      local test_folder_path="$(mktemp /tmp/cmake-test-itself.XXXXX)"
 
-    # Simple test, generate itself.
-    rm -rf "${test_folder_path}"
-    mkdir -pv "${test_folder_path}"
+      # Simple test, generate itself.
+      rm -rf "${test_folder_path}"
+      mkdir -pv "${test_folder_path}"
 
-    cd "${test_folder_path}"
+      cd "${test_folder_path}"
 
-    echo 
-    echo "Testing if it can generate itself..."
+      echo 
+      echo "Testing if it can generate itself..."
 
-    xbb_activate
-    "${APP_PREFIX}/bin/cmake" \
-      -G Ninja \
-      "${SOURCES_FOLDER_PATH}/${CMAKE_SRC_FOLDER_NAME}"
-  )
+      xbb_activate
+      run_app "${APP_PREFIX}/bin/cmake" \
+        -G Ninja \
+        -DCMAKE_PREFIX_PATH=${XBB_FOLDER_PATH} \
+        "${SOURCES_FOLDER_PATH}/${CMAKE_SRC_FOLDER_NAME}"
+    )
+  fi
+
+  echo
+  echo "Local tests completed successfuly."
 }
 
 # -----------------------------------------------------------------------------
