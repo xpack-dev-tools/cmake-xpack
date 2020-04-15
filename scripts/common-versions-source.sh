@@ -42,6 +42,13 @@ function do_build_versions()
       do_ncurses "6.2"
     fi
 
+    (
+      xbb_activate
+      # TODO: remove after updating XBB to include it.
+      # pip3 install --user sphinx
+      pip3 install sphinx
+    )
+
     do_cmake "3.17.1"
 
     # -------------------------------------------------------------------------
