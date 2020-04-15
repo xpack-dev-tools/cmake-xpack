@@ -25,7 +25,8 @@ For the prerequisites and more details on the build procedure, please see the
 
 ## Documentation
 
-The documentation is available [online](https://cmake.org/documentation/).
+The documentation is available locally in `doc/cmake-X.Y/html/index.html`,
+or [online](https://cmake.org/documentation/).
 
 ## More info
 

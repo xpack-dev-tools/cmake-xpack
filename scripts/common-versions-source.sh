@@ -22,7 +22,10 @@ function do_build_versions()
 
   # cmake_BUILD_GIT_BRANCH=${cmake_BUILD_GIT_BRANCH:-"master"}
   # cmake_BUILD_GIT_COMMIT=${cmake_BUILD_GIT_COMMIT:-"HEAD"}
-  README_OUT_FILE_NAME=${README_OUT_FILE_NAME:-"README-${RELEASE_VERSION}.md"}
+
+  # Use this for custom content, otherwise the generic README-OUT.md 
+  # will be copied to the archive.
+  # README_OUT_FILE_NAME=${README_OUT_FILE_NAME:-"README-${RELEASE_VERSION}.md"}
 
   USE_TAR_GZ=${USE_TAR_GZ:-"y"}
   USE_SINGLE_FOLDER_PATH=${USE_SINGLE_FOLDER_PATH:-"y"}
