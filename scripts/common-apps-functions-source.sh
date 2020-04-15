@@ -15,7 +15,8 @@
 
 function do_cmake()
 {
-  local cmake_version="$1"
+  # Do not make it local!
+  CMAKE_VERSION="$1"
 
   # https://cmake.org
   # https://gitlab.kitware.com/cmake/cmake
@@ -23,25 +24,26 @@ function do_cmake()
 
   # https://archlinuxarm.org/packages/aarch64/cmake/files/PKGBUILD
 
+  # Do not make them local!
   # The folder name as resulted after being extracted from the archive.
-  local cmake_src_folder_name="cmake-${cmake_version}"
+  CMAKE_SRC_FOLDER_NAME="cmake-${CMAKE_VERSION}"
   # The folder name  for build, licenses, etc.
-  local cmake_folder_name="${cmake_src_folder_name}"
+  CMAKE_FOLDER_NAME="${CMAKE_SRC_FOLDER_NAME}"
 
   # GitHub release archive.
-  local cmake_archive_file_name="${cmake_src_folder_name}.tar.gz"
-  local cmake_url="https://github.com/Kitware/CMake/releases/download/v${cmake_version}/${cmake_archive_file_name}"
+  local cmake_archive_file_name="${CMAKE_SRC_FOLDER_NAME}.tar.gz"
+  local cmake_url="https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/${cmake_archive_file_name}"
 
   cd "${SOURCES_FOLDER_PATH}"
 
   download_and_extract "${cmake_url}" "${cmake_archive_file_name}" \
-    "${cmake_src_folder_name}"
+    "${CMAKE_SRC_FOLDER_NAME}"
 
   (
-    mkdir -pv "${BUILD_FOLDER_PATH}/${cmake_folder_name}"
-    cd "${BUILD_FOLDER_PATH}/${cmake_folder_name}"
+    mkdir -pv "${BUILD_FOLDER_PATH}/${CMAKE_FOLDER_NAME}"
+    cd "${BUILD_FOLDER_PATH}/${CMAKE_FOLDER_NAME}"
 
-    mkdir -pv "${LOGS_FOLDER_PATH}/${cmake_folder_name}"
+    mkdir -pv "${LOGS_FOLDER_PATH}/${CMAKE_FOLDER_NAME}"
 
     xbb_activate
     xbb_activate_installed_dev
@@ -132,9 +134,9 @@ function do_cmake()
           \
           ${config_options[@]} \
           \
-          "${SOURCES_FOLDER_PATH}/${cmake_src_folder_name}"
+          "${SOURCES_FOLDER_PATH}/${CMAKE_SRC_FOLDER_NAME}"
 
-      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${cmake_folder_name}/cmake-output.txt"
+      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${CMAKE_FOLDER_NAME}/cmake-output.txt"
     fi
 
     (
@@ -169,16 +171,16 @@ function do_cmake()
         prepare_app_libraries "${APP_PREFIX}/bin/${app}"
       done
 
-    ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${cmake_folder_name}/build-output.txt"
+    ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${CMAKE_FOLDER_NAME}/build-output.txt"
 
     copy_license \
-      "${SOURCES_FOLDER_PATH}/${cmake_src_folder_name}" \
-      "${cmake_folder_name}"
+      "${SOURCES_FOLDER_PATH}/${CMAKE_SRC_FOLDER_NAME}" \
+      "${CMAKE_FOLDER_NAME}"
 
     (
-      cd "${BUILD_FOLDER_PATH}/${cmake_folder_name}"
+      cd "${BUILD_FOLDER_PATH}/${CMAKE_FOLDER_NAME}"
 
-      copy_cmake_logs "${cmake_folder_name}"
+      copy_cmake_logs "${CMAKE_FOLDER_NAME}"
     )
   )
 }
@@ -191,6 +193,7 @@ function prepare_app_names()
     apps_names+=("ccmake")
   fi
 }
+
 
 # -----------------------------------------------------------------------------
 
