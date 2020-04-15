@@ -176,25 +176,6 @@ function do_cmake()
       "${cmake_folder_name}"
 
     (
-      cd "${SOURCES_FOLDER_PATH}/${cmake_src_folder_name}/Utilities"
-      for d in *
-      do
-        if [ -d "${d}" ]
-        then
-          copy_license \
-            "${SOURCES_FOLDER_PATH}/${cmake_src_folder_name}/Utilities/${d}" \
-            "${d}"  
-        fi   
-      done
-    )
-
-    # The original doc folder included licenses, which are now
-    # in a separate location. No longer necessary.
-    echo
-    echo "Removing the installed doc folder..."
-    rm -rfv "${APP_PREFIX}/doc"
-
-    (
       cd "${BUILD_FOLDER_PATH}/${cmake_folder_name}"
 
       copy_cmake_logs "${cmake_folder_name}"
