@@ -208,6 +208,26 @@ function do_test()
   do
     run_app "${APP_PREFIX}/bin/${app}" --version
   done
+
+  # ---------------------------------------------------------------------------
+
+  (
+    local test_folder_path="$(mktemp /tmp/cmake-test-itself.XXXXX)"
+
+    # Simple test, generate itself.
+    rm -rf "${test_folder_path}"
+    mkdir -pv "${test_folder_path}"
+
+    cd "${test_folder_path}"
+
+    echo 
+    echo "Testing if it can generate itself..."
+
+    xbb_activate
+    "${APP_PREFIX}/bin/cmake" \
+      -G Ninja \
+      "${SOURCES_FOLDER_PATH}/${CMAKE_SRC_FOLDER_NAME}"
+  )
 }
 
 # -----------------------------------------------------------------------------
