@@ -1,6 +1,6 @@
 # The xPack CMake
 
-This is the **xPack** version of **cmake** build system.
+This is the **xPack** distribution of the **CMake** build system.
 
 For details, see
 [The xPack CMake](https://xpack.github.io/cmake/) pages.
@@ -9,10 +9,6 @@ For details, see
 
 The xPack CMake generally follows the official
 [cmake](http://cmake.org) build releases.
-
-The current version is based on:
-
-- CMake version 1.10.0, from 28 Jan 2020.
 
 ## Changes
 
@@ -29,7 +25,7 @@ For the prerequisites and more details on the build procedure, please see the
 
 ## Documentation
 
-The original documentation is available in the `share/doc` folder.
+The documentation is available [online](https://cmake.org/documentation/).
 
 ## More info
 
