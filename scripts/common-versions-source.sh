@@ -45,8 +45,12 @@ function do_build_versions()
     (
       xbb_activate
       # TODO: remove after updating XBB to include it.
-      # pip3 install --user sphinx
-      pip3 install sphinx
+      if [ "${TARGET_PLATFORM}" == "darwin" ]
+      then
+        pip3 install --user sphinx
+      else
+        pip3 install sphinx
+      fi
     )
 
     do_cmake "3.17.1"
