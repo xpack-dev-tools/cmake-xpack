@@ -123,6 +123,9 @@ function do_cmake()
           config_options+=("-DCurses_ROOT=${LIBS_INSTALL_FOLDER_PATH}")
         fi
 
+        # Warning: Expensive, it adds about 30 MB of files to the archive.
+        config_options+=("-DSPHINX_HTML=ON")
+
         # The mingw build also requires RC pointing to windres.
         cmake \
           -DCMAKE_INSTALL_PREFIX="${APP_PREFIX}" \
