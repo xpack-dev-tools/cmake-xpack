@@ -203,49 +203,6 @@ $ cd deploy
 $ scp * ilg@wks:Downloads/xpack-binaries/cmake
 ```
 
-#### Build the macOS binary
-
-The current platform for macOS production builds is a macOS 10.10.5
-running on a MacBook Pro with 32 GB of RAM and a fast SSD.
-
-```console
-$ ssh xbbm
-```
-
-To build the latest macOS version:
-
-```console
-$ screen -S cmake
-
-$ rm -rf ~/Work/cmake-*
-$ caffeinate bash ~/Downloads/cmake-xpack.git/scripts/build.sh --osx
-```
-
-To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
-`screen -r cmake`; to kill the session use `Ctrl-a` `Ctrl-\` or
-`Ctrl-a` `Ctrl-k` and confirm.
-
-Several minutes later, the output of the build script is a compressed
-archive and its SHA signature, created in the `deploy` folder:
-
-```console
-$ cd ~/Work/cmake-*
-$ ls -l deploy
-total 30720
--rw-r--r--  1 ilg  staff  15721827 Apr 14 19:50 xpack-cmake-3.17.1-1-darwin-x64.tar.gz
--rw-r--r--  1 ilg  staff       105 Apr 14 19:50 xpack-cmake-3.17.1-1-darwin-x64.tar.gz.sha
-```
-
-To copy the files from the build machine to the current development
-machine, either use NFS to mount the entire folder, or open the `deploy`
-folder in a terminal and use `scp`:
-
-```console
-$ cd ~/Work/cmake-*
-$ cd deploy
-$ scp * ilg@wks:Downloads/xpack-binaries/cmake
-```
-
 #### Build the Arm GNU/Linux binaries
 
 The current platform for GNU/Linux and Windows production builds is an
@@ -312,6 +269,49 @@ folder in a terminal and use `scp`:
 
 ```console
 $ cd ~/Work/cmake-*/deploy
+$ scp * ilg@wks:Downloads/xpack-binaries/cmake
+```
+
+#### Build the macOS binary
+
+The current platform for macOS production builds is a macOS 10.10.5
+running on a MacBook Pro with 32 GB of RAM and a fast SSD.
+
+```console
+$ ssh xbbm
+```
+
+To build the latest macOS version:
+
+```console
+$ screen -S cmake
+
+$ rm -rf ~/Work/cmake-*
+$ caffeinate bash ~/Downloads/cmake-xpack.git/scripts/build.sh --osx
+```
+
+To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
+`screen -r cmake`; to kill the session use `Ctrl-a` `Ctrl-\` or
+`Ctrl-a` `Ctrl-k` and confirm.
+
+Several minutes later, the output of the build script is a compressed
+archive and its SHA signature, created in the `deploy` folder:
+
+```console
+$ cd ~/Work/cmake-*
+$ ls -l deploy
+total 30720
+-rw-r--r--  1 ilg  staff  15721827 Apr 14 19:50 xpack-cmake-3.17.1-1-darwin-x64.tar.gz
+-rw-r--r--  1 ilg  staff       105 Apr 14 19:50 xpack-cmake-3.17.1-1-darwin-x64.tar.gz.sha
+```
+
+To copy the files from the build machine to the current development
+machine, either use NFS to mount the entire folder, or open the `deploy`
+folder in a terminal and use `scp`:
+
+```console
+$ cd ~/Work/cmake-*
+$ cd deploy
 $ scp * ilg@wks:Downloads/xpack-binaries/cmake
 ```
 
