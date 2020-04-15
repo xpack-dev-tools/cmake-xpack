@@ -42,17 +42,6 @@ function do_build_versions()
       do_ncurses "6.2"
     fi
 
-    (
-      xbb_activate
-      # TODO: remove after updating XBB to include it.
-      if [ "${TARGET_PLATFORM}" == "darwin" ]
-      then
-        pip3 install --user sphinx
-      else
-        pip3 install sphinx
-      fi
-    )
-
     do_cmake "3.17.1"
 
     # -------------------------------------------------------------------------
