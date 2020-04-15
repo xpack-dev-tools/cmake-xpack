@@ -111,19 +111,16 @@ function do_cmake()
           # Hack
           # https://gitlab.kitware.com/cmake/cmake/-/issues/20570#note_732291
           config_options+=("-DBUILD_CursesDialog=ON")
-          config_options+=("-DCURSES_CURSES_LIBRARY=${LIBS_INSTALL_FOLDER_PATH}/lib/libncurses.dylib") 
-          config_options+=("-DCURSES_NCURSES_LIBRARY=${LIBS_INSTALL_FOLDER_PATH}/lib/libncurses.dylib") 
-          config_options+=("-DCURSES_FORM_LIBRARY=${LIBS_INSTALL_FOLDER_PATH}/lib/libform.dylib") 
-          config_options+=("-DCURSES_INCLUDE_PATH=${LIBS_INSTALL_FOLDER_PATH}/include") 
+
+          # To search all packages in the given path:
+          # config_options+=("-DCMAKE_PREFIX_PATH=${LIBS_INSTALL_FOLDER_PATH}")
+          
+          # To search only curses in the given path:
+          config_options+=("-DCurses_ROOT=${LIBS_INSTALL_FOLDER_PATH}")
         elif [ "${TARGET_PLATFORM}" == "linux" ]
         then
-          # Hack
-          # https://gitlab.kitware.com/cmake/cmake/-/issues/20570#note_732291
           config_options+=("-DBUILD_CursesDialog=ON")
-          config_options+=("-DCURSES_CURSES_LIBRARY=${LIBS_INSTALL_FOLDER_PATH}/lib/libncurses.so") 
-          config_options+=("-DCURSES_NCURSES_LIBRARY=${LIBS_INSTALL_FOLDER_PATH}/lib/libncurses.so") 
-          config_options+=("-DCURSES_FORM_LIBRARY=${LIBS_INSTALL_FOLDER_PATH}/lib/libform.so") 
-          config_options+=("-DCURSES_INCLUDE_PATH=${LIBS_INSTALL_FOLDER_PATH}/include") 
+          config_options+=("-DCurses_ROOT=${LIBS_INSTALL_FOLDER_PATH}")
         fi
 
         # The mingw build also requires RC pointing to windres.
