@@ -151,6 +151,9 @@ function do_cmake()
         # the libssl and libcrypt libraries from XBB.
         xbb_activate_libs
 
+        echo
+        echo "Running cmake install..."
+
         cmake \
           --build . \
           --config "${build_type}" \
