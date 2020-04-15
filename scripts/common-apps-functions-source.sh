@@ -56,8 +56,6 @@ function do_cmake()
       prepare_cross_env "${CROSS_COMPILE_PREFIX}"
     fi
 
-    prepare_app_names
-
     CFLAGS="${XBB_CPPFLAGS} ${XBB_CFLAGS}"
     CXXFLAGS="${XBB_CPPFLAGS} ${XBB_CXXFLAGS}"
     LDFLAGS="${XBB_CPPFLAGS} ${XBB_LDFLAGS_APP_STATIC_GCC} -v"
@@ -160,6 +158,8 @@ function do_cmake()
           install
 
       )
+
+      prepare_app_names
 
       for app in ${apps_names[@]}
       do
