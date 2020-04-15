@@ -182,15 +182,15 @@ archives and their SHA signatures, created in the `deploy` folder:
 ```console
 $ cd ~/Work/cmake-*
 $ ls -l deploy
-total 79932
--rw-rw-r-- 1 ilg ilg 21564470 Apr 14 20:10 xpack-cmake-3.17.1-1-linux-x32.tar.gz
--rw-rw-r-- 1 ilg ilg      104 Apr 14 20:10 xpack-cmake-3.17.1-1-linux-x32.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 20402078 Apr 14 19:48 xpack-cmake-3.17.1-1-linux-x64.tar.gz
--rw-rw-r-- 1 ilg ilg      104 Apr 14 19:48 xpack-cmake-3.17.1-1-linux-x64.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 18548078 Apr 14 20:20 xpack-cmake-3.17.1-1-win32-x32.zip
--rw-rw-r-- 1 ilg ilg      101 Apr 14 20:20 xpack-cmake-3.17.1-1-win32-x32.zip.sha
--rw-rw-r-- 1 ilg ilg 21312525 Apr 14 20:01 xpack-cmake-3.17.1-1-win32-x64.zip
--rw-rw-r-- 1 ilg ilg      101 Apr 14 20:01 xpack-cmake-3.17.1-1-win32-x64.zip.sha
+total 97556
+-rw-rw-r-- 1 ilg ilg 24496098 Apr 15 21:31 xpack-cmake-3.17.1-1-linux-x32.tar.gz
+-rw-rw-r-- 1 ilg ilg      104 Apr 15 21:31 xpack-cmake-3.17.1-1-linux-x32.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 23333236 Apr 15 21:08 xpack-cmake-3.17.1-1-linux-x64.tar.gz
+-rw-rw-r-- 1 ilg ilg      104 Apr 15 21:08 xpack-cmake-3.17.1-1-linux-x64.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 24638346 Apr 15 21:43 xpack-cmake-3.17.1-1-win32-x32.zip
+-rw-rw-r-- 1 ilg ilg      101 Apr 15 21:43 xpack-cmake-3.17.1-1-win32-x32.zip.sha
+-rw-rw-r-- 1 ilg ilg 27402794 Apr 15 21:21 xpack-cmake-3.17.1-1-win32-x64.zip
+-rw-rw-r-- 1 ilg ilg      101 Apr 15 21:21 xpack-cmake-3.17.1-1-win32-x64.zip.sha
 ```
 
 To copy the files from the build machine to the current development
@@ -256,11 +256,11 @@ archives and their SHA signatures, created in the `deploy` folder:
 ```console
 $ cd ~/Work/cmake-*
 $ ls -l deploy
-total 37360
--rw-rw-r-- 1 ilg ilg 19262891 Apr 14 21:51 xpack-cmake-3.17.1-1-linux-arm64.tar.gz
--rw-rw-r-- 1 ilg ilg      106 Apr 14 21:51 xpack-cmake-3.17.1-1-linux-arm64.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 18984500 Apr 14 22:47 xpack-cmake-3.17.1-1-linux-arm.tar.gz
--rw-rw-r-- 1 ilg ilg      104 Apr 14 22:47 xpack-cmake-3.17.1-1-linux-arm.tar.gz.sha
+total 43124
+-rw-rw-r-- 1 ilg ilg 22213055 Apr 15 21:59 xpack-cmake-3.17.1-1-linux-arm64.tar.gz
+-rw-rw-r-- 1 ilg ilg      106 Apr 15 21:59 xpack-cmake-3.17.1-1-linux-arm64.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 21933918 Apr 15 23:02 xpack-cmake-3.17.1-1-linux-arm.tar.gz
+-rw-rw-r-- 1 ilg ilg      104 Apr 15 23:02 xpack-cmake-3.17.1-1-linux-arm.tar.gz.sha
 ```
 
 To copy the files from the build machine to the current development
