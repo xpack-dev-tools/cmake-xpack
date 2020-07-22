@@ -300,9 +300,9 @@ archive and its SHA signature, created in the `deploy` folder:
 ```console
 $ cd ~/Work/cmake-*
 $ ls -l deploy
-total 30720
--rw-r--r--  1 ilg  staff  15721827 Apr 14 19:50 xpack-cmake-3.17.1-1-darwin-x64.tar.gz
--rw-r--r--  1 ilg  staff       105 Apr 14 19:50 xpack-cmake-3.17.1-1-darwin-x64.tar.gz.sha
+total 34952
+-rw-r--r--  1 ilg  staff  17887469 Apr 16 12:56 xpack-cmake-3.17.1-1-darwin-x64.tar.gz
+-rw-r--r--  1 ilg  staff       105 Apr 16 12:56 xpack-cmake-3.17.1-1-darwin-x64.tar.gz.sha
 ```
 
 To copy the files from the build machine to the current development
