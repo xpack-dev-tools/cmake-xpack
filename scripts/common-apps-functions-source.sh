@@ -35,155 +35,166 @@ function build_cmake()
   local cmake_archive_file_name="${CMAKE_SRC_FOLDER_NAME}.tar.gz"
   local cmake_url="https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/${cmake_archive_file_name}"
 
-  cd "${SOURCES_FOLDER_PATH}"
+  local cmake_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-${CMAKE_FOLDER_NAME}-installed"
 
-  download_and_extract "${cmake_url}" "${cmake_archive_file_name}" \
-    "${CMAKE_SRC_FOLDER_NAME}"
+  if [ ! -f "${cmake_stamp_file_path}" ]
+  then
 
-  (
-    mkdir -pv "${BUILD_FOLDER_PATH}/${CMAKE_FOLDER_NAME}"
-    cd "${BUILD_FOLDER_PATH}/${CMAKE_FOLDER_NAME}"
+    cd "${SOURCES_FOLDER_PATH}"
 
-    mkdir -pv "${LOGS_FOLDER_PATH}/${CMAKE_FOLDER_NAME}"
-
-    xbb_activate
-    xbb_activate_installed_dev
-
-    if [ "${TARGET_PLATFORM}" == "darwin" ]
-    then
-      # error: variably modified 'bytes' at file scope
-      export CC=clang
-      export CXX=clang++
-    elif [ "${TARGET_PLATFORM}" == "win32" ]
-    then
-      prepare_gcc_env "${CROSS_COMPILE_PREFIX}-"
-    fi
-
-    CFLAGS="${XBB_CPPFLAGS} ${XBB_CFLAGS}"
-    CXXFLAGS="${XBB_CPPFLAGS} ${XBB_CXXFLAGS}"
-    LDFLAGS="${XBB_CPPFLAGS} ${XBB_LDFLAGS_APP_STATIC_GCC} -v"
-
-    export CFLAGS
-    export CXXFLAGS
-    export LDFLAGS
-
-    env | sort
-
-    local build_type
-    if [ "${IS_DEBUG}" == "y" ]
-    then
-      build_type=Debug
-    else
-      build_type=Release
-    fi
-
-    if [ ! -f "CMakeCache.txt" ]
-    then
-      (
-        echo
-        echo "Running cmake cmake..."
-
-        config_options=()
-
-        # If more verbosity is needed:
-        #  -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON 
-        # Disable ccmake for now
-        # -DBUILD_CursesDialog=OFF
-        # Disable tests
-        # -DBUILD_TESTING=OFF
-
-        # -DCMAKE_SYSTEM_NAME tricks it behave as when on Windows
-
-        # -DBUILD_CursesDialog=ON 
-        # -DCMAKE_PREFIX_PATH="${LIBS_INSTALL_FOLDER_PATH}" \
-
-        config_options+=("-G" "Ninja")
-          
-        config_options+=("-DCMAKE_VERBOSE_MAKEFILE=ON")
-        config_options+=("-DCMAKE_BUILD_TYPE=${build_type}")
-          
-        config_options+=("-DBUILD_TESTING=ON")
-
-        if [ "${TARGET_PLATFORM}" == "win32" ]
-        then
-          config_options+=("-DCMAKE_SYSTEM_NAME=Windows")
-
-          # Windows does not need ncurses, since ccmake is not built.
-        elif [ "${TARGET_PLATFORM}" == "darwin" ]
-        then
-          # Hack
-          # https://gitlab.kitware.com/cmake/cmake/-/issues/20570#note_732291
-          config_options+=("-DBUILD_CursesDialog=ON")
-
-          # To search all packages in the given path:
-          # config_options+=("-DCMAKE_PREFIX_PATH=${LIBS_INSTALL_FOLDER_PATH}")
-          
-          # To search only curses in the given path:
-          config_options+=("-DCurses_ROOT=${LIBS_INSTALL_FOLDER_PATH}")
-        elif [ "${TARGET_PLATFORM}" == "linux" ]
-        then
-          config_options+=("-DBUILD_CursesDialog=ON")
-          config_options+=("-DCurses_ROOT=${LIBS_INSTALL_FOLDER_PATH}")
-        fi
-
-        # Warning: Expensive, it adds about 30 MB of files to the archive.
-        config_options+=("-DSPHINX_HTML=ON")
-
-        # The mingw build also requires RC pointing to windres.
-        cmake \
-          -DCMAKE_INSTALL_PREFIX="${APP_PREFIX}" \
-          \
-          ${config_options[@]} \
-          \
-          "${SOURCES_FOLDER_PATH}/${CMAKE_SRC_FOLDER_NAME}"
-
-      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${CMAKE_FOLDER_NAME}/cmake-output.txt"
-    fi
+    download_and_extract "${cmake_url}" "${cmake_archive_file_name}" \
+      "${CMAKE_SRC_FOLDER_NAME}"
 
     (
-      echo
-      echo "Running cmake build..."
+      mkdir -pv "${BUILD_FOLDER_PATH}/${CMAKE_FOLDER_NAME}"
+      cd "${BUILD_FOLDER_PATH}/${CMAKE_FOLDER_NAME}"
 
-      cmake \
-        --build . \
-        --parallel ${JOBS} \
-        --config "${build_type}" \
+      mkdir -pv "${LOGS_FOLDER_PATH}/${CMAKE_FOLDER_NAME}"
+
+      xbb_activate
+      xbb_activate_installed_dev
+
+      if [ "${TARGET_PLATFORM}" == "darwin" ]
+      then
+        # error: variably modified 'bytes' at file scope
+        export CC=clang
+        export CXX=clang++
+      elif [ "${TARGET_PLATFORM}" == "win32" ]
+      then
+        prepare_gcc_env "${CROSS_COMPILE_PREFIX}-"
+      fi
+
+      CFLAGS="${XBB_CPPFLAGS} ${XBB_CFLAGS}"
+      CXXFLAGS="${XBB_CPPFLAGS} ${XBB_CXXFLAGS}"
+      LDFLAGS="${XBB_CPPFLAGS} ${XBB_LDFLAGS_APP_STATIC_GCC} -v"
+
+      export CFLAGS
+      export CXXFLAGS
+      export LDFLAGS
+
+      env | sort
+
+      local build_type
+      if [ "${IS_DEBUG}" == "y" ]
+      then
+        build_type=Debug
+      else
+        build_type=Release
+      fi
+
+      if [ ! -f "CMakeCache.txt" ]
+      then
+        (
+          echo
+          echo "Running cmake cmake..."
+
+          config_options=()
+
+          # If more verbosity is needed:
+          #  -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON 
+          # Disable ccmake for now
+          # -DBUILD_CursesDialog=OFF
+          # Disable tests
+          # -DBUILD_TESTING=OFF
+
+          # -DCMAKE_SYSTEM_NAME tricks it behave as when on Windows
+
+          # -DBUILD_CursesDialog=ON 
+          # -DCMAKE_PREFIX_PATH="${LIBS_INSTALL_FOLDER_PATH}" \
+
+          config_options+=("-G" "Ninja")
+            
+          config_options+=("-DCMAKE_VERBOSE_MAKEFILE=ON")
+          config_options+=("-DCMAKE_BUILD_TYPE=${build_type}")
+            
+          config_options+=("-DBUILD_TESTING=ON")
+
+          if [ "${TARGET_PLATFORM}" == "win32" ]
+          then
+            config_options+=("-DCMAKE_SYSTEM_NAME=Windows")
+
+            # Windows does not need ncurses, since ccmake is not built.
+          elif [ "${TARGET_PLATFORM}" == "darwin" ]
+          then
+            # Hack
+            # https://gitlab.kitware.com/cmake/cmake/-/issues/20570#note_732291
+            config_options+=("-DBUILD_CursesDialog=ON")
+
+            # To search all packages in the given path:
+            # config_options+=("-DCMAKE_PREFIX_PATH=${LIBS_INSTALL_FOLDER_PATH}")
+            
+            # To search only curses in the given path:
+            config_options+=("-DCurses_ROOT=${LIBS_INSTALL_FOLDER_PATH}")
+          elif [ "${TARGET_PLATFORM}" == "linux" ]
+          then
+            config_options+=("-DBUILD_CursesDialog=ON")
+            config_options+=("-DCurses_ROOT=${LIBS_INSTALL_FOLDER_PATH}")
+          fi
+
+          # Warning: Expensive, it adds about 30 MB of files to the archive.
+          config_options+=("-DSPHINX_HTML=ON")
+
+          # The mingw build also requires RC pointing to windres.
+          cmake \
+            -DCMAKE_INSTALL_PREFIX="${APP_PREFIX}" \
+            \
+            ${config_options[@]} \
+            \
+            "${SOURCES_FOLDER_PATH}/${CMAKE_SRC_FOLDER_NAME}"
+
+        ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${CMAKE_FOLDER_NAME}/cmake-output.txt"
+      fi
 
       (
-        # The install procedure runs some resulted exxecutables, which require
-        # the libssl and libcrypt libraries from XBB.
-        xbb_activate_libs
-
         echo
-        echo "Running cmake install..."
+        echo "Running cmake build..."
 
         cmake \
           --build . \
+          --parallel ${JOBS} \
           --config "${build_type}" \
-          -- \
-          install
 
+        (
+          # The install procedure runs some resulted exxecutables, which require
+          # the libssl and libcrypt libraries from XBB.
+          xbb_activate_libs
+
+          echo
+          echo "Running cmake install..."
+
+          cmake \
+            --build . \
+            --config "${build_type}" \
+            -- \
+            install
+
+        )
+
+        prepare_app_names
+
+        for app in ${apps_names[@]}
+        do
+          prepare_app_libraries "${APP_PREFIX}/bin/${app}"
+        done
+
+      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${CMAKE_FOLDER_NAME}/build-output.txt"
+
+      copy_license \
+        "${SOURCES_FOLDER_PATH}/${CMAKE_SRC_FOLDER_NAME}" \
+        "${CMAKE_FOLDER_NAME}"
+
+      (
+        cd "${BUILD_FOLDER_PATH}"
+
+        copy_cmake_logs "${CMAKE_FOLDER_NAME}"
       )
-
-      prepare_app_names
-
-      for app in ${apps_names[@]}
-      do
-        prepare_app_libraries "${APP_PREFIX}/bin/${app}"
-      done
-
-    ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${CMAKE_FOLDER_NAME}/build-output.txt"
-
-    copy_license \
-      "${SOURCES_FOLDER_PATH}/${CMAKE_SRC_FOLDER_NAME}" \
-      "${CMAKE_FOLDER_NAME}"
-
-    (
-      cd "${BUILD_FOLDER_PATH}"
-
-      copy_cmake_logs "${CMAKE_FOLDER_NAME}"
     )
-  )
+
+    touch "${cmake_stamp_file_path}"
+
+  else
+    echo "Component cmake stage already installed."
+  fi
 }
 
 function prepare_app_names()
