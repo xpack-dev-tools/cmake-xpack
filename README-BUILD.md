@@ -1,8 +1,8 @@
-# How to build the xPack CMake?
+# How to build the xPack CMake
 
 ## Introduction
 
-This project also includes the scripts and additional files required to
+This project includes the scripts and additional files required to
 build and publish the
 [xPack CMake](https://github.com/xpack-dev-tools/cmake-xpack) binaries.
 
@@ -54,7 +54,14 @@ $ git clone --recurse-submodules \
 > Note: the repository uses submodules; for a successful build it is
 > mandatory to recurse the submodules.
 
-To use the `xpack-develop` branch of the build scripts, use:
+For development purposes, there is a shortcut to clone the `xpack-develop`
+branch:
+
+```console
+$ curl -L https://github.com/xpack-dev-tools/cmake-xpack/raw/xpack/scripts/git-clone-develop.sh | bash
+```
+
+which is a shortcut for:
 
 ```console
 $ rm -rf ~/Downloads/cmake-xpack.git
@@ -100,8 +107,8 @@ No need to add a tag here, it'll be added when the release is created.
 ### Prepare release
 
 To prepare a new release, first determine the CMake version
-(like `3.17.1`) and update the `scripts/VERSION` file. The format is
-`3.17.1-1`. The fourth number is the xPack release number
+(like `3.17.3`) and update the `scripts/VERSION` file. The format is
+`3.17.3-1`. The fourth number is the xPack release number
 of this version. A fifth number will be added when publishing
 the package on the `npm` server.
 
@@ -157,9 +164,9 @@ The result should look similar to:
 
 ```console
 $ docker images
-REPOSITORY          TAG                    IMAGE ID            CREATED             SIZE
-ilegeul/ubuntu      i386-12.04-xbb-v3.1    6274c178b54c        5 days ago          3.7GB
-ilegeul/ubuntu      amd64-12.04-xbb-v3.1   3846ecf3ba1a        5 days ago          4.07GB
+REPOSITORY          TAG                              IMAGE ID            CREATED             SIZE
+ilegeul/ubuntu      i386-12.04-xbb-v3.2              fadc6405b606        2 days ago          4.55GB
+ilegeul/ubuntu      amd64-12.04-xbb-v3.2             3aba264620ea        2 days ago          4.98GB
 ```
 
 Since the build takes a while, use `screen` to isolate the build session
@@ -182,15 +189,15 @@ archives and their SHA signatures, created in the `deploy` folder:
 ```console
 $ cd ~/Work/cmake-*
 $ ls -l deploy
-total 97556
--rw-rw-r-- 1 ilg ilg 24496098 Apr 15 21:31 xpack-cmake-3.17.1-1-linux-x32.tar.gz
--rw-rw-r-- 1 ilg ilg      104 Apr 15 21:31 xpack-cmake-3.17.1-1-linux-x32.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 23333236 Apr 15 21:08 xpack-cmake-3.17.1-1-linux-x64.tar.gz
--rw-rw-r-- 1 ilg ilg      104 Apr 15 21:08 xpack-cmake-3.17.1-1-linux-x64.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 24638346 Apr 15 21:43 xpack-cmake-3.17.1-1-win32-x32.zip
--rw-rw-r-- 1 ilg ilg      101 Apr 15 21:43 xpack-cmake-3.17.1-1-win32-x32.zip.sha
--rw-rw-r-- 1 ilg ilg 27402794 Apr 15 21:21 xpack-cmake-3.17.1-1-win32-x64.zip
--rw-rw-r-- 1 ilg ilg      101 Apr 15 21:21 xpack-cmake-3.17.1-1-win32-x64.zip.sha
+total 97076
+-rw-rw-r-- 1 ilg ilg 24221420 Jul 22 17:30 xpack-cmake-3.17.3-1-linux-x32.tar.gz
+-rw-rw-r-- 1 ilg ilg      104 Jul 22 17:30 xpack-cmake-3.17.3-1-linux-x32.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 23054593 Jul 22 17:19 xpack-cmake-3.17.3-1-linux-x64.tar.gz
+-rw-rw-r-- 1 ilg ilg      104 Jul 22 17:19 xpack-cmake-3.17.3-1-linux-x64.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 24671700 Jul 22 17:36 xpack-cmake-3.17.3-1-win32-x32.zip
+-rw-rw-r-- 1 ilg ilg      101 Jul 22 17:36 xpack-cmake-3.17.3-1-win32-x32.zip.sha
+-rw-rw-r-- 1 ilg ilg 27434801 Jul 22 17:25 xpack-cmake-3.17.3-1-win32-x64.zip
+-rw-rw-r-- 1 ilg ilg      101 Jul 22 17:25 xpack-cmake-3.17.3-1-win32-x64.zip.sha
 ```
 
 To copy the files from the build machine to the current development
@@ -211,7 +218,6 @@ and 256 GB of fast M.2 SSD.
 
 ```console
 $ ssh xbba
-$ ssh berry
 ```
 
 Before starting a build, check if Docker is started:
@@ -231,9 +237,10 @@ The result should look similar to:
 
 ```console
 $ docker images
-REPOSITORY          TAG                            IMAGE ID            CREATED             SIZE
-ilegeul/ubuntu      arm32v7-16.04-xbb-v3.1         e08db859d5e9        4 days ago          2.97GB
-ilegeul/ubuntu      arm64v8-16.04-xbb-v3.1         7ea793693fcc        5 days ago          3.15GB
+REPOSITORY          TAG                                IMAGE ID            CREATED             SIZE
+ilegeul/ubuntu      arm32v7-16.04-xbb-v3.2             b501ae18580a        27 hours ago        3.23GB
+ilegeul/ubuntu      arm64v8-16.04-xbb-v3.2             db95609ffb69        37 hours ago        3.45GB
+hello-world         latest                             a29f45ccde2a        5 months ago        9.14kB
 ```
 
 Since the build takes a while, use `screen` to isolate the build session
@@ -256,11 +263,11 @@ archives and their SHA signatures, created in the `deploy` folder:
 ```console
 $ cd ~/Work/cmake-*
 $ ls -l deploy
-total 43124
--rw-rw-r-- 1 ilg ilg 22213055 Apr 15 21:59 xpack-cmake-3.17.1-1-linux-arm64.tar.gz
--rw-rw-r-- 1 ilg ilg      106 Apr 15 21:59 xpack-cmake-3.17.1-1-linux-arm64.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 21933918 Apr 15 23:02 xpack-cmake-3.17.1-1-linux-arm.tar.gz
--rw-rw-r-- 1 ilg ilg      104 Apr 15 23:02 xpack-cmake-3.17.1-1-linux-arm.tar.gz.sha
+total 42056
+-rw-rw-r-- 1 ilg ilg 21780251 Jul 22 14:37 xpack-cmake-3.17.3-1-linux-arm64.tar.gz
+-rw-rw-r-- 1 ilg ilg      106 Jul 22 14:37 xpack-cmake-3.17.3-1-linux-arm64.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 21271183 Jul 22 15:02 xpack-cmake-3.17.3-1-linux-arm.tar.gz
+-rw-rw-r-- 1 ilg ilg      104 Jul 22 15:02 xpack-cmake-3.17.3-1-linux-arm.tar.gz.sha
 ```
 
 To copy the files from the build machine to the current development
@@ -300,9 +307,9 @@ archive and its SHA signature, created in the `deploy` folder:
 ```console
 $ cd ~/Work/cmake-*
 $ ls -l deploy
-total 34952
--rw-r--r--  1 ilg  staff  17887469 Apr 16 12:56 xpack-cmake-3.17.1-1-darwin-x64.tar.gz
--rw-r--r--  1 ilg  staff       105 Apr 16 12:56 xpack-cmake-3.17.1-1-darwin-x64.tar.gz.sha
+total 34976
+-rw-r--r--  1 ilg  staff  17901733 Jul 22 17:24 xpack-cmake-3.17.3-1-darwin-x64.tar.gz
+-rw-r--r--  1 ilg  staff       105 Jul 22 17:24 xpack-cmake-3.17.3-1-darwin-x64.tar.gz.sha
 ```
 
 To copy the files from the build machine to the current development
@@ -386,8 +393,8 @@ program from there. For example on macOS the output should
 look like:
 
 ```console
-$ /Users/ilg/Work/cmake-3.17.1-1/darwin-x64/install/cmake/bin/cmake --version
-cmake version 3.17.1
+$ /Users/ilg/Work/cmake-3.17.3-1/darwin-x64/install/cmake/bin/cmake --version
+cmake version 3.17.3
 ```
 
 ## Installed folders
@@ -396,8 +403,8 @@ After install, the package should create a structure like this (macOS files;
 only the first two depth levels are shown):
 
 ```console
-$ tree -L 2 /Users/ilg/Library/xPacks/\@xpack-dev-tools/cmake/3.17.1-1.1/.content/
-/Users/ilg/Library/xPacks/\@xpack-dev-tools/cmake/3.17.1-1.1/.content/
+$ tree -L 2 /Users/ilg/Library/xPacks/\@xpack-dev-tools/cmake/3.17.3-1.1/.content/
+/Users/ilg/Library/xPacks/\@xpack-dev-tools/cmake/3.17.3-1.1/.content/
 ├── README.md
 ├── bin
 │   ├── ccmake
