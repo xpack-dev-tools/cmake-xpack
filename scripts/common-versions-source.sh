@@ -28,7 +28,7 @@ function build_versions()
   # README_OUT_FILE_NAME=${README_OUT_FILE_NAME:-"README-${RELEASE_VERSION}.md"}
 
   # Keep them in sync with combo archive content.
-  if [[ "${RELEASE_VERSION}" =~ 3\.17\.1-1 ]]
+  if [[ "${RELEASE_VERSION}" =~ 3\.17\.3-1 ]]
   then
 
     # -------------------------------------------------------------------------
@@ -39,7 +39,7 @@ function build_versions()
       build_ncurses "6.2"
     fi
 
-    build_cmake "3.17.1"
+    build_cmake "3.17.3"
 
     # -------------------------------------------------------------------------
   else
