@@ -13,13 +13,14 @@
 
 # -----------------------------------------------------------------------------
 
-function do_cmake()
+function build_cmake()
 {
   # Do not make it local!
   CMAKE_VERSION="$1"
 
   # https://cmake.org
   # https://gitlab.kitware.com/cmake/cmake
+  # https://github.com/Kitware/CMake/releases
   # https://github.com/Kitware/CMake/releases/download/v3.17.1/cmake-3.17.1.tar.gz
 
   # https://archlinuxarm.org/packages/aarch64/cmake/files/PKGBUILD
@@ -55,7 +56,7 @@ function do_cmake()
       export CXX=clang++
     elif [ "${TARGET_PLATFORM}" == "win32" ]
     then
-      prepare_cross_env "${CROSS_COMPILE_PREFIX}"
+      prepare_gcc_env "${CROSS_COMPILE_PREFIX}-"
     fi
 
     CFLAGS="${XBB_CPPFLAGS} ${XBB_CFLAGS}"
@@ -178,7 +179,7 @@ function do_cmake()
       "${CMAKE_FOLDER_NAME}"
 
     (
-      cd "${BUILD_FOLDER_PATH}/${CMAKE_FOLDER_NAME}"
+      cd "${BUILD_FOLDER_PATH}"
 
       copy_cmake_logs "${CMAKE_FOLDER_NAME}"
     )

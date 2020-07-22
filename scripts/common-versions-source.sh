@@ -13,7 +13,7 @@
 
 # -----------------------------------------------------------------------------
 
-function do_build_versions()
+function build_versions()
 {
   # The \x2C is a comma in hex; without this trick the regular expression
   # that processes this string in the Makefile, silently fails and the 
@@ -36,10 +36,10 @@ function do_build_versions()
     if [ "${TARGET_PLATFORM}" != "win32" ]
     then
       NCURSES_DISABLE_WIDEC="y"
-      do_ncurses "6.2"
+      build_ncurses "6.2"
     fi
 
-    do_cmake "3.17.1"
+    build_cmake "3.17.1"
 
     # -------------------------------------------------------------------------
   else
