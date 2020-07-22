@@ -11,7 +11,7 @@
 # Common functions used in various tests.
 #
 # Requires 
-# - app_absolute_folder_path
+# - app_folder_path
 # - test_absolute_folder_path
 # - archive_platform (win32|linux|darwin)
 
@@ -19,13 +19,13 @@
 
 function run_tests()
 {
-  run_app "${app_absolute_folder_path}/bin/cmake" --version
-  run_app "${app_absolute_folder_path}/bin/ctest" --version
-  run_app "${app_absolute_folder_path}/bin/cpack" --version
+  run_app "${app_folder_path}/bin/cmake" --version
+  run_app "${app_folder_path}/bin/ctest" --version
+  run_app "${app_folder_path}/bin/cpack" --version
 
-  if [ -f "${app_absolute_folder_path}/bin/ccmake" ]
+  if [ -f "${app_folder_path}/bin/ccmake" ]
   then
-    run_app "${app_absolute_folder_path}/bin/ccmake" --version
+    run_app "${app_folder_path}/bin/ccmake" --version
   fi
 
   # TODO: add more, if possible.
