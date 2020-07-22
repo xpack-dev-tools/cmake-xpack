@@ -195,6 +195,8 @@ function build_cmake()
   else
     echo "Component cmake stage already installed."
   fi
+
+  tests_add "test_cmake"
 }
 
 function prepare_app_names()
@@ -209,7 +211,7 @@ function prepare_app_names()
 
 # -----------------------------------------------------------------------------
 
-function do_test()
+function test_cmake()
 {
   echo
   echo "Running the binaries..."
