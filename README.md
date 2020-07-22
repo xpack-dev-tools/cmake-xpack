@@ -48,7 +48,7 @@ $ xpm install --global @xpack-dev-tools/cmake@latest
 
 This command will always install the latest available version,
 into the central xPacks repository, which is a platform dependent folder
-(check the output of the `xpm` command or the actual folder used on
+(check the output of the `xpm` command for the actual folder used on
 your platform).
 
 This location is configurable using the environment variable
@@ -85,9 +85,9 @@ For more details please read the
 
 ## Maintainer info
 
-- [How to build?](https://github.com/xpack-dev-tools/cmake-xpack/blob/xpack/README-BUILD.md)
-- [How to publish?](https://github.com/xpack-dev-tools/cmake-xpack/blob/xpack/README-PUBLISH.md)
-- [How to publish?](https://github.com/xpack-dev-tools/cmake-xpack/blob/xpack/README-DEVELOP.md)
+- [How to build](https://github.com/xpack-dev-tools/cmake-xpack/blob/xpack/README-BUILD.md)
+- [How to publish](https://github.com/xpack-dev-tools/cmake-xpack/blob/xpack/README-PUBLISH.md)
+- [How to publish](https://github.com/xpack-dev-tools/cmake-xpack/blob/xpack/README-DEVELOP.md)
 
 ## Support
 
@@ -114,7 +114,6 @@ corresponding licenses are available in the installed
   - latest xPack release
 [![Github All Releases](https://img.shields.io/github/downloads/xpack-dev-tools/cmake-xpack/latest/total.svg)](https://github.com/xpack-dev-tools/cmake-xpack/releases/)
   - all xPack releases [![Github All Releases](https://img.shields.io/github/downloads/xpack-dev-tools/cmake-xpack/total.svg)](https://github.com/xpack-dev-tools/cmake-xpack/releases/)
-  - previous GNU MCU Eclipse all releases [![Github All Releases](https://img.shields.io/github/downloads/gnu-mcu-eclipse/cmake/total.svg)](https://github.com/gnu-mcu-eclipse/cmake/releases/)
   - [individual file counters](https://www.somsubhra.com/github-release-stats/?username=xpack-dev-tools&repository=cmake-xpack) (grouped per release)
 - npmjs.com [`@xpack-dev-tools/cmake`](https://www.npmjs.com/package/@xpack-dev-tools/cmake/) xPack
   - latest release, per month
