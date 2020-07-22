@@ -27,9 +27,6 @@ function do_build_versions()
   # will be copied to the archive.
   # README_OUT_FILE_NAME=${README_OUT_FILE_NAME:-"README-${RELEASE_VERSION}.md"}
 
-  USE_TAR_GZ=${USE_TAR_GZ:-"y"}
-  USE_SINGLE_FOLDER_PATH=${USE_SINGLE_FOLDER_PATH:-"y"}
-
   # Keep them in sync with combo archive content.
   if [[ "${RELEASE_VERSION}" =~ 3\.17\.1-1 ]]
   then
