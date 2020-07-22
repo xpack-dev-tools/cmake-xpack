@@ -1,10 +1,11 @@
 {
   "name": "@xpack-dev-tools/cmake",
   "version": "0.0.1",
-  "description": "An xPack with CMake",
+  "description": "An binary xPack with CMake",
   "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "git-log": "git log --pretty='%cd * %h %s' --date=short"
   },
   "repository": {
     "type": "git",
@@ -15,7 +16,8 @@
   },
   "homepage": "https://github.com/xpack-dev-tools/cmake-xpack.git",
   "keywords": [
-    "xpack"
+    "xpack",
+    "cmake"
   ],
   "author": {
     "name": "Liviu Ionescu",
@@ -26,5 +28,47 @@
   "config": {},
   "dependencies": {},
   "devDependencies": {},
-  "xpack": {}
+  "xpack": {
+    "binaries": {
+      "destination": "./.content",
+      "baseUrl": "https://github.com/xpack-dev-tools/cmake-xpack/releases/download/v3.17.3-1.1/",
+      "skip": 1,
+      "platforms": {
+        "darwin-x64": {
+          "sha256": "6f5e5b94ecf2afece992b46a60465e3ed5aae172202c2a4e34f8e81e5b0da790",
+          "fileName": "xpack-cmake-3.17.3-1-darwin-x64.tar.gz"
+        },
+        "linux-arm64": {
+          "sha256": "8791f653f1fc15b004987a2b84a7c0aabd71bde11e0e68eb32846e9b1ad80986",
+          "fileName": "xpack-cmake-3.17.3-1-linux-arm64.tar.gz"
+        },
+        "linux-arm": {
+          "sha256": "bb4e1f6c72e32a1696edcfdec57d32ece64ac691a0363e4781db559addac7b79",
+          "fileName": "xpack-cmake-3.17.3-1-linux-arm.tar.gz"
+        },
+        "linux-x86": {
+          "sha256": "be98731e1bb05fd78e2ec5727f7d6c9a6f2ae548970bbd0998de7079021d8e11",
+          "fileName": "xpack-cmake-3.17.3-1-linux-x32.tar.gz"
+        },
+        "linux-x64": {
+          "sha256": "10b859d83c7a451add58eaf79afdb9a4a66fc38920884e8a54c809e0a1f4ed3e",
+          "fileName": "xpack-cmake-3.17.3-1-linux-x64.tar.gz"
+        },
+        "win32-x86": {
+          "sha256": "5cc86c9d17c4fda97107b374ae939fedf9d7428d06e6c31418ea0e5ff1e6aa41",
+          "fileName": "xpack-cmake-3.17.3-1-win32-x32.zip"
+        },
+        "win32-x64": {
+          "sha256": "91ab5e1b9b3ffcc606262e2be96bd70ab0be26a42d21e610340412f65de2bb16",
+          "fileName": "xpack-cmake-3.17.3-1-win32-x64.zip"
+        }
+      }
+    },
+    "bin": {
+      "ccmake": "./.content/bin/ccmake",
+      "cmake": "./.content/bin/cmake",
+      "cpack": "./.content/bin/cpack",
+      "ctest": "./.content/bin/ctest"
+    }
+  }
 }
