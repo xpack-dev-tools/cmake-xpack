@@ -22,8 +22,11 @@ function build_cmake()
   # https://gitlab.kitware.com/cmake/cmake
   # https://github.com/Kitware/CMake/releases
   # https://github.com/Kitware/CMake/releases/download/v3.17.1/cmake-3.17.1.tar.gz
+  # https://github.com/Kitware/CMake/releases/download/v3.18.3/cmake-3.18.3.tar.gz
 
   # https://archlinuxarm.org/packages/aarch64/cmake/files/PKGBUILD
+
+  # 22 Sep 2020, "3.18.3"
 
   # Do not make them local!
   # The folder name as resulted after being extracted from the archive.

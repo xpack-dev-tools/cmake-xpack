@@ -27,8 +27,10 @@ function build_versions()
   # will be copied to the archive.
   # README_OUT_FILE_NAME=${README_OUT_FILE_NAME:-"README-${RELEASE_VERSION}.md"}
 
+  CMAKE_VERSION="$(echo "${RELEASE_VERSION}" | sed -e 's|-[0-9]*||')"
+
   # Keep them in sync with combo archive content.
-  if [[ "${RELEASE_VERSION}" =~ 3\.17\.3-1 ]]
+  if [[ "${RELEASE_VERSION}" =~ 3\.18\.3-1 ]]
   then
 
     # -------------------------------------------------------------------------
@@ -39,7 +41,7 @@ function build_versions()
       build_ncurses "6.2"
     fi
 
-    build_cmake "3.17.3"
+    build_cmake "${CMAKE_VERSION}"
 
     # -------------------------------------------------------------------------
   else

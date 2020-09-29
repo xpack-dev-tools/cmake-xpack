@@ -83,11 +83,23 @@ page.
 For more details please read the
 [Install](https://xpack.github.io/cmake/install/) page.
 
+### Version information
+
+The version strings used by the Ninja project are three number string
+like `3.18.3`; to this string the xPack distribution adds a four number,
+but since semver allows only three numbers, all additional ones can
+be added only as pre-release strings, separated by a dash,
+like `3.18.3-1`. When published as a npm package, the version gets
+a fifth number, like `3.18.3-1.1`.
+
+Since adherance to third party packages to semver is not guaranteed,
+it is recommended to use semver expressions like `^3.18.3` and `~3.18.3`
+with caution, and prefer exact matches, like `3.18.3-1.1`.
+
 ## Maintainer info
 
 - [How to build](https://github.com/xpack-dev-tools/cmake-xpack/blob/xpack/README-BUILD.md)
 - [How to publish](https://github.com/xpack-dev-tools/cmake-xpack/blob/xpack/README-PUBLISH.md)
-- [How to publish](https://github.com/xpack-dev-tools/cmake-xpack/blob/xpack/README-DEVELOP.md)
 
 ## Support
 

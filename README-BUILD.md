@@ -14,14 +14,17 @@ for GNU/Linux and Windows or a custom folder for MacOS).
 
 ## Repositories
 
-- `https://github.com/xpack-dev-tools/cmake.git` - the URL of the
-  [xPack CMake fork](https://github.com/xpack-dev-tools/cmake)
+- `https://github.com/xpack-dev-tools/cmake-xpack.git` - the URL of the
+  [xPack CMake fork](https://github.com/xpack-dev-tools/cmake-xpack)
+- `https://github.com/xpack-dev-tools/build-helper` - the URL of the
+  xPack build helper, used as the `scripts/helper` submodule
+- `https://github.com/Kitware/CMake` - the URL of the original CMake repo
 
 ### Branches
 
 - `xpack` - the updated content, used during builds
 - `xpack-develop` - the updated content, used during development
-- `master` - the original content; it follows the upstream master.
+- `master` - empty
 
 ## Prerequisites
 
@@ -107,8 +110,8 @@ No need to add a tag here, it'll be added when the release is created.
 ### Prepare release
 
 To prepare a new release, first determine the CMake version
-(like `3.17.3`) and update the `scripts/VERSION` file. The format is
-`3.17.3-1`. The fourth number is the xPack release number
+(like `3.18.3`) and update the `scripts/VERSION` file. The format is
+`3.18.3-1`. The fourth number is the xPack release number
 of this version. A fifth number will be added when publishing
 the package on the `npm` server.
 
@@ -180,6 +183,12 @@ $ sudo rm -rf ~/Work/cmake-*
 $ bash ~/Downloads/cmake-xpack.git/scripts/build.sh --all
 ```
 
+or, for development builds:
+
+```console
+$ bash ~/Downloads/cmake-xpack.git/scripts/build.sh --linux64 --linux32 --win64 --win32 --develop
+```
+
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
 `screen -r cmake`; to kill the session use `Ctrl-a` `Ctrl-k` and confirm.
 
@@ -187,17 +196,16 @@ About 30 minutes later, the output of the build script is a set of 4
 archives and their SHA signatures, created in the `deploy` folder:
 
 ```console
-$ cd ~/Work/cmake-*
-$ ls -l deploy
+$ ls -l ~/Work/cmake-*/deploy
 total 97076
--rw-rw-r-- 1 ilg ilg 24221420 Jul 22 17:30 xpack-cmake-3.17.3-1-linux-x32.tar.gz
--rw-rw-r-- 1 ilg ilg      104 Jul 22 17:30 xpack-cmake-3.17.3-1-linux-x32.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 23054593 Jul 22 17:19 xpack-cmake-3.17.3-1-linux-x64.tar.gz
--rw-rw-r-- 1 ilg ilg      104 Jul 22 17:19 xpack-cmake-3.17.3-1-linux-x64.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 24671700 Jul 22 17:36 xpack-cmake-3.17.3-1-win32-x32.zip
--rw-rw-r-- 1 ilg ilg      101 Jul 22 17:36 xpack-cmake-3.17.3-1-win32-x32.zip.sha
--rw-rw-r-- 1 ilg ilg 27434801 Jul 22 17:25 xpack-cmake-3.17.3-1-win32-x64.zip
--rw-rw-r-- 1 ilg ilg      101 Jul 22 17:25 xpack-cmake-3.17.3-1-win32-x64.zip.sha
+-rw-rw-r-- 1 ilg ilg 24221420 Jul 22 17:30 xpack-cmake-3.18.3-1-linux-x32.tar.gz
+-rw-rw-r-- 1 ilg ilg      104 Jul 22 17:30 xpack-cmake-3.18.3-1-linux-x32.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 23054593 Jul 22 17:19 xpack-cmake-3.18.3-1-linux-x64.tar.gz
+-rw-rw-r-- 1 ilg ilg      104 Jul 22 17:19 xpack-cmake-3.18.3-1-linux-x64.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 24671700 Jul 22 17:36 xpack-cmake-3.18.3-1-win32-x32.zip
+-rw-rw-r-- 1 ilg ilg      101 Jul 22 17:36 xpack-cmake-3.18.3-1-win32-x32.zip.sha
+-rw-rw-r-- 1 ilg ilg 27434801 Jul 22 17:25 xpack-cmake-3.18.3-1-win32-x64.zip
+-rw-rw-r-- 1 ilg ilg      101 Jul 22 17:25 xpack-cmake-3.18.3-1-win32-x64.zip.sha
 ```
 
 To copy the files from the build machine to the current development
@@ -205,9 +213,7 @@ machine, either use NFS to mount the entire folder, or open the `deploy`
 folder in a terminal and use `scp`:
 
 ```console
-$ cd ~/Work/cmake-*
-$ cd deploy
-$ scp * ilg@wks:Downloads/xpack-binaries/cmake
+$ (cd ~/Work/cmake-*/deploy; scp * ilg@wks:Downloads/xpack-binaries/cmake)
 ```
 
 #### Build the Arm GNU/Linux binaries
@@ -261,13 +267,12 @@ About 55 minutes later, the output of the build script is a set of 2
 archives and their SHA signatures, created in the `deploy` folder:
 
 ```console
-$ cd ~/Work/cmake-*
-$ ls -l deploy
+$ ls -l ~/Work/cmake-*/deploy
 total 42056
--rw-rw-r-- 1 ilg ilg 21780251 Jul 22 14:37 xpack-cmake-3.17.3-1-linux-arm64.tar.gz
--rw-rw-r-- 1 ilg ilg      106 Jul 22 14:37 xpack-cmake-3.17.3-1-linux-arm64.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 21271183 Jul 22 15:02 xpack-cmake-3.17.3-1-linux-arm.tar.gz
--rw-rw-r-- 1 ilg ilg      104 Jul 22 15:02 xpack-cmake-3.17.3-1-linux-arm.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 21780251 Jul 22 14:37 xpack-cmake-3.18.3-1-linux-arm64.tar.gz
+-rw-rw-r-- 1 ilg ilg      106 Jul 22 14:37 xpack-cmake-3.18.3-1-linux-arm64.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 21271183 Jul 22 15:02 xpack-cmake-3.18.3-1-linux-arm.tar.gz
+-rw-rw-r-- 1 ilg ilg      104 Jul 22 15:02 xpack-cmake-3.18.3-1-linux-arm.tar.gz.sha
 ```
 
 To copy the files from the build machine to the current development
@@ -275,8 +280,7 @@ machine, either use NFS to mount the entire folder, or open the `deploy`
 folder in a terminal and use `scp`:
 
 ```console
-$ cd ~/Work/cmake-*/deploy
-$ scp * ilg@wks:Downloads/xpack-binaries/cmake
+$ (cd ~/Work/cmake-*/deploy; scp * ilg@wks:Downloads/xpack-binaries/cmake)
 ```
 
 #### Build the macOS binary
@@ -305,11 +309,10 @@ Several minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
-$ cd ~/Work/cmake-*
-$ ls -l deploy
+$ ls -l ~/Work/cmake-*/deploy
 total 34976
--rw-r--r--  1 ilg  staff  17901733 Jul 22 17:24 xpack-cmake-3.17.3-1-darwin-x64.tar.gz
--rw-r--r--  1 ilg  staff       105 Jul 22 17:24 xpack-cmake-3.17.3-1-darwin-x64.tar.gz.sha
+-rw-r--r--  1 ilg  staff  17901733 Jul 22 17:24 xpack-cmake-3.18.3-1-darwin-x64.tar.gz
+-rw-r--r--  1 ilg  staff       105 Jul 22 17:24 xpack-cmake-3.18.3-1-darwin-x64.tar.gz.sha
 ```
 
 To copy the files from the build machine to the current development
@@ -317,9 +320,7 @@ machine, either use NFS to mount the entire folder, or open the `deploy`
 folder in a terminal and use `scp`:
 
 ```console
-$ cd ~/Work/cmake-*
-$ cd deploy
-$ scp * ilg@wks:Downloads/xpack-binaries/cmake
+$ (cd ~/Work/cmake-*/deploy; scp * ilg@wks:Downloads/xpack-binaries/cmake)
 ```
 
 ### Subsequent runs
@@ -393,8 +394,8 @@ program from there. For example on macOS the output should
 look like:
 
 ```console
-$ /Users/ilg/Work/cmake-3.17.3-1/darwin-x64/install/cmake/bin/cmake --version
-cmake version 3.17.3
+$ /Users/ilg/Work/cmake-3.18.3-1/darwin-x64/install/cmake/bin/cmake --version
+cmake version 3.18.3
 ```
 
 ## Installed folders
@@ -403,8 +404,8 @@ After install, the package should create a structure like this (macOS files;
 only the first two depth levels are shown):
 
 ```console
-$ tree -L 2 /Users/ilg/Library/xPacks/\@xpack-dev-tools/cmake/3.17.3-1.1/.content/
-/Users/ilg/Library/xPacks/\@xpack-dev-tools/cmake/3.17.3-1.1/.content/
+$ tree -L 2 /Users/ilg/Library/xPacks/\@xpack-dev-tools/cmake/3.18.3-1.1/.content/
+/Users/ilg/Library/xPacks/\@xpack-dev-tools/cmake/3.18.3-1.1/.content/
 ├── README.md
 ├── bin
 │   ├── ccmake
@@ -421,7 +422,7 @@ $ tree -L 2 /Users/ilg/Library/xPacks/\@xpack-dev-tools/cmake/3.17.3-1.1/.conten
 │   └── scripts
 └── share
     ├── aclocal
-    └── cmake-3.17
+    └── cmake-3.18
 
 8 directories, 9 files
 ```
