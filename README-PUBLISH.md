@@ -68,11 +68,8 @@ Note: at this moment the system should send a notification to all clients watchi
 
 ## Run the Travis tests
 
-As URL, use something like
-
-```
-base_url="https://github.com/xpack-dev-tools/cmake-xpack/releases/download/v3.18.3-1/"
-```
+Run the tests on **stable** and **latest** platforms. This may take about 30
+minutes.
 
 The test results are available at
 [Travis](https://travis-ci.org/github/xpack-dev-tools/cmake-xpack/builds/).
