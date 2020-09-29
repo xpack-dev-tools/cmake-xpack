@@ -100,6 +100,7 @@ WITH_PDF="y"
 WITH_HTML="n"
 IS_DEVELOP=""
 IS_DEBUG=""
+WITH_TESTS="y"
 
 if [ "$(uname)" == "Linux" ]
 then
@@ -118,6 +119,11 @@ do
 
     --disable-strip)
       WITH_STRIP="n"
+      shift
+      ;;
+
+    --disable-tests)
+      WITH_TESTS="n"
       shift
       ;;
 
