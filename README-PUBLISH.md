@@ -59,7 +59,8 @@ TBD
 - as description
   - add a downloads badge like `![Github Releases (by Release)](https://img.shields.io/github/downloads/xpack-dev-tools/cmake-xpack/v3.18.3-1/total.svg)`
   - draft a short paragraph explaining what are the main changes
-- **attach binaries** and SHA (drag and drop from the archives folder will do it)
+- **attach binaries** and SHA (drag and drop from the
+`~/Downloads/xpack-binaries/cmake/` folder)
 - **enable** the **pre-release** button
 - click the **Publish Release** button
 
@@ -144,7 +145,7 @@ $ cat *.sha
 - open [GitHub Releases](https://github.com/xpack-dev-tools/cmake-xpack/releases)
   and select the latest release
 - check the download counter, it should match the number of tests
-- update the `baseUrl:` with the file URLs (including the tag/version); 
+- update the `baseUrl:` with the file URLs (including the tag/version);
 no terminating `/` is required
 - from the web release, copy the SHA & file names
 - commit all changes, use a message like
