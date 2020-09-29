@@ -17,7 +17,8 @@
   "homepage": "https://github.com/xpack-dev-tools/cmake-xpack.git",
   "keywords": [
     "xpack",
-    "cmake"
+    "cmake",
+    "build"
   ],
   "author": {
     "name": "Liviu Ionescu",

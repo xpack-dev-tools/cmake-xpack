@@ -157,12 +157,6 @@ only the `package.json`, the `README.md`, `LICENSE` and `CHANGELOG.md`
 - push all changes to GitHub
 - `npm publish --tag next` (use `--access public` when publishing for the first time)
 
-When the release is considered stable, promote it as `latest`:
-
-- `npm dist-tag ls @xpack-dev-tools/cmake`
-- `npm dist-tag add @xpack-dev-tools/cmake@v3.18.3-1 latest`
-- `npm dist-tag ls @xpack-dev-tools/cmake`
-
 ## Test npm binaries
 
 Install the binaries on all platforms.
@@ -173,6 +167,14 @@ $ xpm install --global @xpack-dev-tools/cmake@next
 
 As a shortcut, there is Travis test that checks the package on 
 Intel Ubuntu, macOS and Windows.
+
+## Tag the npm package as `latest`
+
+When the release is considered stable, promote it as `latest`:
+
+- `npm dist-tag ls @xpack-dev-tools/cmake`
+- `npm dist-tag add @xpack-dev-tools/cmake@v3.18.3-1.1 latest`
+- `npm dist-tag ls @xpack-dev-tools/cmake`
 
 ## Create the final GitHub release
 
