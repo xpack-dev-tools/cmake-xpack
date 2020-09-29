@@ -192,20 +192,20 @@ $ bash ~/Downloads/cmake-xpack.git/scripts/build.sh --linux64 --linux32 --win64 
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
 `screen -r cmake`; to kill the session use `Ctrl-a` `Ctrl-k` and confirm.
 
-About 30 minutes later, the output of the build script is a set of 4
+About 20 minutes later, the output of the build script is a set of 4
 archives and their SHA signatures, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/cmake-*/deploy
-total 97076
--rw-rw-r-- 1 ilg ilg 24221420 Jul 22 17:30 xpack-cmake-3.18.3-1-linux-x32.tar.gz
--rw-rw-r-- 1 ilg ilg      104 Jul 22 17:30 xpack-cmake-3.18.3-1-linux-x32.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 23054593 Jul 22 17:19 xpack-cmake-3.18.3-1-linux-x64.tar.gz
--rw-rw-r-- 1 ilg ilg      104 Jul 22 17:19 xpack-cmake-3.18.3-1-linux-x64.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 24671700 Jul 22 17:36 xpack-cmake-3.18.3-1-win32-x32.zip
--rw-rw-r-- 1 ilg ilg      101 Jul 22 17:36 xpack-cmake-3.18.3-1-win32-x32.zip.sha
--rw-rw-r-- 1 ilg ilg 27434801 Jul 22 17:25 xpack-cmake-3.18.3-1-win32-x64.zip
--rw-rw-r-- 1 ilg ilg      101 Jul 22 17:25 xpack-cmake-3.18.3-1-win32-x64.zip.sha
+total 102876
+-rw-rw-r-- 1 ilg ilg 26299790 Sep 29 12:03 xpack-cmake-3.18.3-1-linux-x32.tar.gz
+-rw-rw-r-- 1 ilg ilg      104 Sep 29 12:03 xpack-cmake-3.18.3-1-linux-x32.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 24994587 Sep 29 11:53 xpack-cmake-3.18.3-1-linux-x64.tar.gz
+-rw-rw-r-- 1 ilg ilg      104 Sep 29 11:53 xpack-cmake-3.18.3-1-linux-x64.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 25556341 Sep 29 12:08 xpack-cmake-3.18.3-1-win32-x32.zip
+-rw-rw-r-- 1 ilg ilg      101 Sep 29 12:08 xpack-cmake-3.18.3-1-win32-x32.zip.sha
+-rw-rw-r-- 1 ilg ilg 28469621 Sep 29 11:58 xpack-cmake-3.18.3-1-win32-x64.zip
+-rw-rw-r-- 1 ilg ilg      101 Sep 29 11:58 xpack-cmake-3.18.3-1-win32-x64.zip.sha
 ```
 
 To copy the files from the build machine to the current development
@@ -263,16 +263,16 @@ $ bash ~/Downloads/cmake-xpack.git/scripts/build.sh --all
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
 `screen -r cmake`; to kill the session use `Ctrl-a` `Ctrl-k` and confirm.
 
-About 55 minutes later, the output of the build script is a set of 2
+About 50 minutes later, the output of the build script is a set of 2
 archives and their SHA signatures, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/cmake-*/deploy
-total 42056
--rw-rw-r-- 1 ilg ilg 21780251 Jul 22 14:37 xpack-cmake-3.18.3-1-linux-arm64.tar.gz
--rw-rw-r-- 1 ilg ilg      106 Jul 22 14:37 xpack-cmake-3.18.3-1-linux-arm64.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 21271183 Jul 22 15:02 xpack-cmake-3.18.3-1-linux-arm.tar.gz
--rw-rw-r-- 1 ilg ilg      104 Jul 22 15:02 xpack-cmake-3.18.3-1-linux-arm.tar.gz.sha
+total 45744
+-rw-rw-r-- 1 ilg ilg 23714604 Sep 29 09:14 xpack-cmake-3.18.3-1-linux-arm64.tar.gz
+-rw-rw-r-- 1 ilg ilg      106 Sep 29 09:14 xpack-cmake-3.18.3-1-linux-arm64.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 23114964 Sep 29 09:38 xpack-cmake-3.18.3-1-linux-arm.tar.gz
+-rw-rw-r-- 1 ilg ilg      104 Sep 29 09:38 xpack-cmake-3.18.3-1-linux-arm.tar.gz.sha
 ```
 
 To copy the files from the build machine to the current development
@@ -310,9 +310,9 @@ archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/cmake-*/deploy
-total 34976
--rw-r--r--  1 ilg  staff  17901733 Jul 22 17:24 xpack-cmake-3.18.3-1-darwin-x64.tar.gz
--rw-r--r--  1 ilg  staff       105 Jul 22 17:24 xpack-cmake-3.18.3-1-darwin-x64.tar.gz.sha
+total 38472
+-rw-r--r--  1 ilg  staff  19689560 Sep 29 11:56 xpack-cmake-3.18.3-1-darwin-x64.tar.gz
+-rw-r--r--  1 ilg  staff       105 Sep 29 11:56 xpack-cmake-3.18.3-1-darwin-x64.tar.gz.sha
 ```
 
 To copy the files from the build machine to the current development
