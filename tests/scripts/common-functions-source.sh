@@ -19,7 +19,22 @@
 
 function run_tests()
 {
-  time run_app "${app_folder_path}/bin/ninja" --version
+  run_app "${app_folder_path}/bin/cmake" --version
+  run_app "${app_folder_path}/bin/cmake" --help
+
+  run_app "${app_folder_path}/bin/ctest" --version
+  run_app "${app_folder_path}/bin/ctest" --help
+
+  run_app "${app_folder_path}/bin/cpack" --version
+  run_app "${app_folder_path}/bin/cpack" --help
+
+  if [ -f "${app_folder_path}/bin/ccmake" ]
+  then
+    run_app "${app_folder_path}/bin/ccmake" --version
+    run_app "${app_folder_path}/bin/ccmake" --help
+  fi
+
+  # TODO: add more, if possible.
 }
 
 # -----------------------------------------------------------------------------

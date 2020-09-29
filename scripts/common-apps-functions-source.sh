@@ -224,6 +224,7 @@ function test_cmake()
   for app in ${apps_names[@]}
   do
     run_app "${APP_PREFIX}/bin/${app}" --version
+    run_app "${APP_PREFIX}/bin/${app}" --help
   done
 
   # ---------------------------------------------------------------------------
