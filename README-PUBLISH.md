@@ -171,6 +171,9 @@ Install the binaries on all platforms.
 $ xpm install --global @xpack-dev-tools/cmake@next
 ```
 
+As a shortcut, there is Travis test that checks the package on 
+Intel Ubuntu, macOS and Windows.
+
 ## Create the final GitHub release
 
 - go to the [GitHub Releases](https://github.com/xpack-dev-tools/cmake-xpack/releases) page
