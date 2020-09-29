@@ -44,32 +44,16 @@ script_folder_name="$(basename "${script_folder_path}")"
 
 source "${script_folder_path}/app-defs.sh"
 
-helper_folder_path="$(dirname $(dirname "${script_folder_path}"))/scripts/helper"
-
-source "${helper_folder_path}/test-functions-source.sh"
-source "${script_folder_path}/common-functions-source.sh"
-
 # -----------------------------------------------------------------------------
 
-detect_architecture
+# This script requires an authentication token in the environment.
 
-prepare_env "$(dirname $(dirname "${script_folder_path}"))"
-
-# If present, --32 must be the first.
-is_32_bit=""
-if [ $# -gt 0 -a "$1" == "--32" ]
-then
-  is_32_bit="y"
-  shift
-fi
-
-# -----------------------------------------------------------------------------
-
-if [ "${is_32_bit}" == "y" ]
-then
-  docker_run_test_32 "$@"
-else
-  docker_run_test "$@"
-fi
+curl \
+  --include \
+  --header "Authorization: token ${GITHUB_API_DISPATCH_TOKEN}" \
+  --header "Content-Type: application/json" \
+  --header "Accept: application/vnd.github.everest-preview+json" \
+  --data '{"event_type": "on-demand-test", "client_payload": {}}' \
+  https://api.github.com/repos/${github_org}/${github_repo}/dispatches
 
 # -----------------------------------------------------------------------------
