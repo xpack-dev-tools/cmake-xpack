@@ -55,7 +55,7 @@ This location is configurable using the environment variable
 `XPACKS_REPO_FOLDER`; for more details please check the
 [xpm folders](https://xpack.github.io/xpm/folders/) page.
 
-xPacks aware tools, like the **Eclipse Embedded CDT** automatically
+xPacks aware tools automatically
 identify binaries installed with
 `xpm` and provide a convenient method to manage paths.
 
@@ -92,7 +92,7 @@ be added only as pre-release strings, separated by a dash,
 like `3.18.3-1`. When published as a npm package, the version gets
 a fifth number, like `3.18.3-1.1`.
 
-Since adherance to third party packages to semver is not guaranteed,
+Since adherance of third party packages to semver is not guaranteed,
 it is recommended to use semver expressions like `^3.18.3` and `~3.18.3`
 with caution, and prefer exact matches, like `3.18.3-1.1`.
 
