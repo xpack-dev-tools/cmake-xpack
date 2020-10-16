@@ -33,13 +33,15 @@ In this Git repo:
 - push it to GitHub.
 - possibly push the helper project too.
 
-### Run the build scripts
+### Clean the destination folder
 
 Clear the folder where the binaries from all build machines will be collected.
 
-```
+```console
 $ rm -f ~/Downloads/xpack-binaries/cmake/*
 ```
+
+### Run the build scripts
 
 When everything is ready, follow the instructions in the
 [build](https://github.com/xpack-dev-tools/cmake-xpack/blob/xpack/README-BUILD.md)
