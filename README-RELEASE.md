@@ -47,13 +47,13 @@ When everything is ready, follow the instructions in the
 [build](https://github.com/xpack-dev-tools/cmake-xpack/blob/xpack/README-BUILD.md)
 page.
 
-## Test
+## Testing
 
 TBD
 
 ## Create a new GitHub pre-release
 
-- go to the [GitHub Releases](https://github.com/xpack-dev-tools/cmake-xpack/releases) page
+- go to the GitHub [releases](https://github.com/xpack-dev-tools/cmake-xpack/releases) page
 - click the **Draft a new release** button
 - name the tag like **v3.18.3-1** (mind the dash in the middle!)
 - select the `xpack` branch
@@ -141,12 +141,16 @@ $ cat *.sha
 
 ## Publish on the npmjs server
 
-- open [GitHub Releases](https://github.com/xpack-dev-tools/cmake-xpack/releases)
-  and select the latest release
+- select the `xpack-develop` branch
+- open the `package.json` file
+- open the GitHub [releases](https://github.com/xpack-dev-tools/cmake-xpack/releases)
+  page and select the latest release
 - check the download counter, it should match the number of tests
 - update the `baseUrl:` with the file URLs (including the tag/version);
-no terminating `/` is required
-- from the web release, copy the SHA & file names
+  no terminating `/` is required
+- from the release, copy the SHA & file names
+- compare the SHA sums with those shown by `cat *.sha`
+- check the executable names
 - commit all changes, use a message like
   `package.json: update urls for v3.18.3-1 release` (without `v`)
 - check the latest commits `npm run git-log`
@@ -155,9 +159,10 @@ no terminating `/` is required
 - `npm version v3.18.3-1.1`; the first 4 numbers are the same as the
   GitHub release; the fifth number is the npm specific version
 - `npm pack` and check the content of the archive, which should list
-only the `package.json`, the `README.md`, `LICENSE` and `CHANGELOG.md`
-- push all changes to GitHub
-- `npm publish --tag next` (use `--access public` when publishing for the first time)
+  only the `package.json`, the `README.md`, `LICENSE` and `CHANGELOG.md`
+- push the `xpack-develop` branch to GitHub
+- `npm publish --tag next` (use `--access public` when publishing for
+  the first time)
 
 ## Test npm binaries
 
@@ -180,7 +185,7 @@ When the release is considered stable, promote it as `latest`:
 
 ## Create the final GitHub release
 
-- go to the [GitHub Releases](https://github.com/xpack-dev-tools/cmake-xpack/releases) page
+- go to the GitHub [releases](https://github.com/xpack-dev-tools/cmake-xpack/releases) page
 - check the download counter, it should match the number of tests
 - add a link to the Web page `[Continue reading »]()`; use an same blog URL
 - **disable** the **pre-release** button

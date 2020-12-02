@@ -77,7 +77,7 @@ For all platforms, the **xPack CMake** binaries are released as portable
 archives that can be installed in any location.
 
 The archives can be downloaded from the
-[GitHub Releases](https://github.com/xpack-dev-tools/cmake-xpack/releases/)
+GitHub [releases](https://github.com/xpack-dev-tools/cmake-xpack/releases/)
 page.
 
 For more details please read the
@@ -99,7 +99,7 @@ with caution, and prefer exact matches, like `3.18.3-1.1`.
 ## Maintainer info
 
 - [How to build](https://github.com/xpack-dev-tools/cmake-xpack/blob/xpack/README-BUILD.md)
-- [How to publish](https://github.com/xpack-dev-tools/cmake-xpack/blob/xpack/README-PUBLISH.md)
+- [How to make new releases](https://github.com/xpack-dev-tools/cmake-xpack/blob/xpack/README-RELEASE.md)
 
 ## Support
 

@@ -18,7 +18,12 @@ for GNU/Linux and Windows or a custom folder for MacOS).
   [xPack CMake fork](https://github.com/xpack-dev-tools/cmake-xpack)
 - `https://github.com/xpack-dev-tools/build-helper` - the URL of the
   xPack build helper, used as the `scripts/helper` submodule
-- `https://github.com/Kitware/CMake` - the URL of the original CMake repo
+- `https://gitlab.kitware.com/cmake/cmake` - the URL of the original CMake repo
+- `https://github.com/Kitware/CMake` - the URL of the GitHub fork
+
+The original releases are distributed via
+
+- `https://github.com/Kitware/CMake/releases`
 
 ### Branches
 
@@ -283,7 +288,7 @@ folder in a terminal and use `scp`:
 $ (cd ~/Work/cmake-*/deploy; scp * ilg@wks:Downloads/xpack-binaries/cmake)
 ```
 
-#### Build the macOS binary
+#### Build the macOS binaries
 
 The current platform for macOS production builds is a macOS 10.10.5
 running on a MacBook Pro with 32 GB of RAM and a fast SSD.
@@ -383,7 +388,7 @@ However, for an interrupted build, this step is skipped, and files in
 the install folder will remain owned by root. Thus, before removing
 the build folder, it might be necessary to run a recursive `chown`.
 
-## Test
+## Testing
 
 A simple test is performed by the script at the end, by launching the
 executable to check if all shared/dynamic libraries are correctly used.
