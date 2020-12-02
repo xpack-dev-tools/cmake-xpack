@@ -1,4 +1,4 @@
-# How to build the xPack CMake
+# How to build the xPack CMake binaries
 
 ## Introduction
 
@@ -12,6 +12,17 @@ a set of elaborate build environments based on recent GCC versions
 (Docker containers
 for GNU/Linux and Windows or a custom folder for MacOS).
 
+There are two types of builds:
+
+- **local/native builds**, which use the tools available on the
+  host machine; generally the binaries do not run on a different system
+  distribution/version; intended mostly for development purposes;
+- **distribution builds**, which create the archives distributed as
+  binaries; expected to run on most modern systems.
+
+This page documents the distribution builds.
+
+For native builds, see the `build-native.sh` script. (to be added)
 ## Repositories
 
 - `https://github.com/xpack-dev-tools/cmake-xpack.git` - the URL of the
@@ -37,6 +48,8 @@ The prerequisites are common to all binary builds. Please follow the
 instructions in the separate
 [Prerequisites for building binaries](https://xpack.github.io/xbb/prerequisites/)
 page and return when ready.
+
+Note: Building the Arm binaries requires an Arm machine.
 
 ## Download the build scripts
 
@@ -85,6 +98,32 @@ the user home. Although not recommended, if for any reasons you need to
 change the location of the `Work` folder,
 you can redefine `WORK_FOLDER_PATH` variable before invoking the script.
 
+## Spaces in folder names
+
+Due to the limitations of `make`, builds started in folders with
+spaces in names are known to fail.
+
+If on your system the work folder is in such a location, redefine it in a
+folder without spaces and set the `WORK_FOLDER_PATH` variable before invoking
+the script.
+
+## Customizations
+
+There are many other settings that can be redefined via
+environment variables. If necessary,
+place them in a file and pass it via `--env-file`. This file is
+either passed to Docker or sourced to shell. The Docker syntax
+**is not** identical to shell, so some files may
+not be accepted by bash.
+
+## Versioning
+
+The version string is an extension to semver, the format looks like `3.18.5-1`.
+It includes the three digits with the original CMake version and a fourth
+digit with the xPack release number.
+
+When publishing on the **npmjs.com** server, a fifth digit is appended.
+
 ## Changes
 
 Compared to the original CMake distribution, there should be no
@@ -102,57 +141,21 @@ The details on how to prepare the development environment for CMake are in the
 
 ## How to build distributions
 
-### Update git repos
-
-To keep the development repository in sync with the original CMake
-repository, in the `xpack-dev-tools/cmake` Git repo:
-
-- checkout `xpack`
-- merge `xpack-develop`
-
-No need to add a tag here, it'll be added when the release is created.
-
-### Prepare release
-
-To prepare a new release, first determine the CMake version
-(like `3.18.3`) and update the `scripts/VERSION` file. The format is
-`3.18.3-1`. The fourth number is the xPack release number
-of this version. A fifth number will be added when publishing
-the package on the `npm` server.
-
-Add a new set of definitions in the `scripts/container-build.sh`, with
-the versions of various components.
-
-### Check `README.md`
-
-Normally `README.md` should not need changes, but better check.
-Information related to the new version should not be included here,
-but in the version specific file (below).
-
-### Create `README-<version>.md`
-
-In the `scripts` folder create a copy of the previous one and update the
-Git commit and possible other details.
-
-### Update `CHANGELOG.md`
-
-Check `CHANGELOG.md` and add the new release.
-
-### Build
+## Build
 
 Although it is perfectly possible to build all binaries in a single step
 on a macOS system, due to Docker specifics, it is faster to build the
 GNU/Linux and Windows binaries on a GNU/Linux system and the macOS binary
-separately on a macOS system.
+separately.
 
-#### Build the Intel GNU/Linux and Windows binaries
+### Build the Intel GNU/Linux and Windows binaries
 
 The current platform for GNU/Linux and Windows production builds is an
 Manjaro 19, running on an Intel NUC8i7BEH mini PC with 32 GB of RAM
 and 512 GB of fast M.2 SSD.
 
 ```console
-$ ssh xbbi
+$ caffeinate ssh xbbi
 ```
 
 Before starting a build, check if Docker is started:
@@ -203,14 +206,14 @@ archives and their SHA signatures, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/cmake-*/deploy
 total 102876
--rw-rw-r-- 1 ilg ilg 26299790 Sep 29 12:03 xpack-cmake-3.18.3-1-linux-x32.tar.gz
--rw-rw-r-- 1 ilg ilg      104 Sep 29 12:03 xpack-cmake-3.18.3-1-linux-x32.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 24994587 Sep 29 11:53 xpack-cmake-3.18.3-1-linux-x64.tar.gz
--rw-rw-r-- 1 ilg ilg      104 Sep 29 11:53 xpack-cmake-3.18.3-1-linux-x64.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 25556341 Sep 29 12:08 xpack-cmake-3.18.3-1-win32-x32.zip
--rw-rw-r-- 1 ilg ilg      101 Sep 29 12:08 xpack-cmake-3.18.3-1-win32-x32.zip.sha
--rw-rw-r-- 1 ilg ilg 28469621 Sep 29 11:58 xpack-cmake-3.18.3-1-win32-x64.zip
--rw-rw-r-- 1 ilg ilg      101 Sep 29 11:58 xpack-cmake-3.18.3-1-win32-x64.zip.sha
+-rw-rw-r-- 1 ilg ilg 26299790 Sep 29 12:03 xpack-cmake-3.18.5-1-linux-x32.tar.gz
+-rw-rw-r-- 1 ilg ilg      104 Sep 29 12:03 xpack-cmake-3.18.5-1-linux-x32.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 24994587 Sep 29 11:53 xpack-cmake-3.18.5-1-linux-x64.tar.gz
+-rw-rw-r-- 1 ilg ilg      104 Sep 29 11:53 xpack-cmake-3.18.5-1-linux-x64.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 25556341 Sep 29 12:08 xpack-cmake-3.18.5-1-win32-x32.zip
+-rw-rw-r-- 1 ilg ilg      101 Sep 29 12:08 xpack-cmake-3.18.5-1-win32-x32.zip.sha
+-rw-rw-r-- 1 ilg ilg 28469621 Sep 29 11:58 xpack-cmake-3.18.5-1-win32-x64.zip
+-rw-rw-r-- 1 ilg ilg      101 Sep 29 11:58 xpack-cmake-3.18.5-1-win32-x64.zip.sha
 ```
 
 To copy the files from the build machine to the current development
@@ -228,7 +231,7 @@ Manjaro 19, running on an Raspberry Pi 4B with 4 GB of RAM
 and 256 GB of fast M.2 SSD.
 
 ```console
-$ ssh xbba
+$ caffeinate ssh xbba
 ```
 
 Before starting a build, check if Docker is started:
@@ -274,10 +277,10 @@ archives and their SHA signatures, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/cmake-*/deploy
 total 45744
--rw-rw-r-- 1 ilg ilg 23714604 Sep 29 09:14 xpack-cmake-3.18.3-1-linux-arm64.tar.gz
--rw-rw-r-- 1 ilg ilg      106 Sep 29 09:14 xpack-cmake-3.18.3-1-linux-arm64.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 23114964 Sep 29 09:38 xpack-cmake-3.18.3-1-linux-arm.tar.gz
--rw-rw-r-- 1 ilg ilg      104 Sep 29 09:38 xpack-cmake-3.18.3-1-linux-arm.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 23714604 Sep 29 09:14 xpack-cmake-3.18.5-1-linux-arm64.tar.gz
+-rw-rw-r-- 1 ilg ilg      106 Sep 29 09:14 xpack-cmake-3.18.5-1-linux-arm64.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 23114964 Sep 29 09:38 xpack-cmake-3.18.5-1-linux-arm.tar.gz
+-rw-rw-r-- 1 ilg ilg      104 Sep 29 09:38 xpack-cmake-3.18.5-1-linux-arm.tar.gz.sha
 ```
 
 To copy the files from the build machine to the current development
@@ -294,7 +297,7 @@ The current platform for macOS production builds is a macOS 10.10.5
 running on a MacBook Pro with 32 GB of RAM and a fast SSD.
 
 ```console
-$ ssh xbbm
+$ caffeinate ssh xbbm
 ```
 
 To build the latest macOS version:
@@ -316,8 +319,8 @@ archive and its SHA signature, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/cmake-*/deploy
 total 38472
--rw-r--r--  1 ilg  staff  19689560 Sep 29 11:56 xpack-cmake-3.18.3-1-darwin-x64.tar.gz
--rw-r--r--  1 ilg  staff       105 Sep 29 11:56 xpack-cmake-3.18.3-1-darwin-x64.tar.gz.sha
+-rw-r--r--  1 ilg  staff  19689560 Sep 29 11:56 xpack-cmake-3.18.5-1-darwin-x64.tar.gz
+-rw-r--r--  1 ilg  staff       105 Sep 29 11:56 xpack-cmake-3.18.5-1-darwin-x64.tar.gz.sha
 ```
 
 To copy the files from the build machine to the current development
@@ -399,8 +402,8 @@ program from there. For example on macOS the output should
 look like:
 
 ```console
-$ /Users/ilg/Work/cmake-3.18.3-1/darwin-x64/install/cmake/bin/cmake --version
-cmake version 3.18.3
+$ /Users/ilg/Work/cmake-3.18.5-1/darwin-x64/install/cmake/bin/cmake --version
+cmake version 3.18.5
 ```
 
 ## Installed folders
@@ -409,8 +412,8 @@ After install, the package should create a structure like this (macOS files;
 only the first two depth levels are shown):
 
 ```console
-$ tree -L 2 /Users/ilg/Library/xPacks/\@xpack-dev-tools/cmake/3.18.3-1.1/.content/
-/Users/ilg/Library/xPacks/\@xpack-dev-tools/cmake/3.18.3-1.1/.content/
+$ tree -L 2 /Users/ilg/Library/xPacks/\@xpack-dev-tools/cmake/3.18.5-1.1/.content/
+/Users/ilg/Library/xPacks/\@xpack-dev-tools/cmake/3.18.5-1.1/.content/
 ├── README.md
 ├── bin
 │   ├── ccmake
