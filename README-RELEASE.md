@@ -1,5 +1,12 @@
 # How to make a new release (maintainer info)
 
+## Release schedule
+
+The xPack CMake release schedule generally follows the original GitHub
+[releases](https://github.com/Kitware/CMake/releases), but with a
+three weeks filter, which means that releases that are overriden in
+three weeks are skipped. Also initial x.y.0 releases are skipped.
+
 ## Prepare the build
 
 Before starting the build, perform some checks and tweaks.
@@ -56,7 +63,7 @@ With Sourcetree, go to the helper repo and update to the latest master commit.
 
 Before the real build, run a test build on the development machine (`wks`):
 
-```bash
+```sh
 sudo rm -rf ~/Work/cmake-*
 
 caffeinate bash ~/Downloads/cmake-xpack.git/scripts/build.sh --develop --without-pdf --disable-tests --linux64 --win64 --linux32 --win32
@@ -78,7 +85,7 @@ From here it'll be cloned on the production machines.
 On the macOS machine (`xbbm`) open ssh sessions to both Linux machines
 (`xbbi` and `xbba`):
 
-```bash
+```sh
 caffeinate ssh xbbi
 
 caffeinate ssh xbba
@@ -86,7 +93,7 @@ caffeinate ssh xbba
 
 On all machines, clone the `xpack-develop` branch:
 
-```bash
+```sh
 rm -rf ~/Downloads/cmake-xpack.git; \
   git clone \
   --recurse-submodules \
@@ -97,7 +104,7 @@ rm -rf ~/Downloads/cmake-xpack.git; \
 
 On all machines, remove any previous build:
 
-```bash
+```sh
 sudo rm -rf ~/Work/cmake-*
 ```
 
@@ -105,7 +112,7 @@ Empty trash.
 
 On the macOS machine (`xbbm`):
 
-```bash
+```sh
 caffeinate bash ~/Downloads/cmake-xpack.git/scripts/build.sh --osx
 ```
 
@@ -113,7 +120,7 @@ A typical run takes about 225 minutes.
 
 On both Linux machines (`xbbi` and `xbba`):
 
-```bash
+```sh
 bash ~/Downloads/cmake-xpack.git/scripts/build.sh --all
 ```
 
@@ -125,15 +132,15 @@ on the Arm machine it takes about 875 minutes.
 On the development machine (`wks`) clear the folder where binaries from all
 build machines will be collected.
 
-```bash
-rm -f ~/Downloads/xpack-binaries/arm/*
+```sh
+rm -f ~/Downloads/xpack-binaries/cmake/*
 ```
 
 ### Copy the binaries to the development machine
 
 On all three machines:
 
-```console
+```sh
 (cd ~/Work/cmake-*/deploy; scp * ilg@wks:Downloads/xpack-binaries/cmake)
 ```
 
@@ -205,33 +212,33 @@ Copy/paste the build report at the end of the post as:
 The SHA-256 hashes for the files are:
 
 6f5e5b94ecf2afece992b46a60465e3ed5aae172202c2a4e34f8e81e5b0da790  
-xpack-cmake-3.18.5-1.4-darwin-x64.tar.gz
+xpack-cmake-3.18.5-1.1-darwin-x64.tar.gz
 
 8791f653f1fc15b004987a2b84a7c0aabd71bde11e0e68eb32846e9b1ad80986  
-xpack-cmake-3.18.5-1.4-linux-arm64.tar.gz
+xpack-cmake-3.18.5-1.1-linux-arm64.tar.gz
 
 bb4e1f6c72e32a1696edcfdec57d32ece64ac691a0363e4781db559addac7b79  
-xpack-cmake-3.18.5-1.4-linux-arm.tar.gz
+xpack-cmake-3.18.5-1.1-linux-arm.tar.gz
 
 be98731e1bb05fd78e2ec5727f7d6c9a6f2ae548970bbd0998de7079021d8e11  
-xpack-cmake-3.18.5-1.4-linux-ia32.tar.gz
+xpack-cmake-3.18.5-1.1-linux-ia32.tar.gz
 
 10b859d83c7a451add58eaf79afdb9a4a66fc38920884e8a54c809e0a1f4ed3e  
-xpack-cmake-3.18.5-1.4-linux-x64.tar.gz
+xpack-cmake-3.18.5-1.1-linux-x64.tar.gz
 
 5cc86c9d17c4fda97107b374ae939fedf9d7428d06e6c31418ea0e5ff1e6aa41  
-xpack-cmake-3.18.5-1.4-win32-ia32.zip
+xpack-cmake-3.18.5-1.1-win32-ia32.zip
 
 91ab5e1b9b3ffcc606262e2be96bd70ab0be26a42d21e610340412f65de2bb16  
-xpack-cmake-3.18.5-1.4-win32-x64.zip
+xpack-cmake-3.18.5-1.1-win32-x64.zip
 ```
 
 ## Check the SHA sums
 
 On the development machine (`wks`):
 
-```bash
-cd ~Downloads/xpack-binaries/arm
+```sh
+cd ~Downloads/xpack-binaries/cmake
 cat *.sha
 ```
 
@@ -255,7 +262,7 @@ cat *.sha
 - compare the SHA sums with those shown by `cat *.sha`
 - check the executable names
 - commit all changes, use a message like
-  `package.json: update urls for 3.18.5-1.4 release` (without `v`)
+  `package.json: update urls for 3.18.5-1.1 release` (without `v`)
 - check the latest commits `npm run git-log`
 - update `CHANGELOG.md`; commit with a message like
   _CHANGELOG: prepare npm v3.18.5-1.1_
@@ -282,7 +289,7 @@ The test results are available from:
 
 For 32-bit Windows, 32-bit Intel GNU/Linux and 32-bit Arm, install manually.
 
-```bash
+```sh
 xpm install --global @xpack-dev-tools/cmake@next
 ```
 
@@ -290,13 +297,13 @@ xpm install --global @xpack-dev-tools/cmake@next
 
 Install the binaries on all platforms.
 
-```bash
+```sh
 xpm install --global @xpack-dev-tools/cmake@next
 ```
 
 On GNU/Linux systems, including Raspberry Pi, use the following commands:
 
-```bash
+```sh
 ~/opt/xPacks/@xpack-dev-tools/cmake/3.18.5-1.1/.content/bin/cmake --version
 
 TODO
@@ -304,7 +311,7 @@ TODO
 
 On macOS, use:
 
-```bash
+```sh
 ~/Library/xPacks/@xpack-dev-tools/cmake/3.18.5-1.1/.content/bin/cmake --version
 
 TODO
