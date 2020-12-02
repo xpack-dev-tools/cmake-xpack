@@ -30,7 +30,7 @@ function build_versions()
   CMAKE_VERSION="$(echo "${RELEASE_VERSION}" | sed -e 's|-[0-9]*||')"
 
   # Keep them in sync with combo archive content.
-  if [[ "${RELEASE_VERSION}" =~ 3\.18\.3-1 ]]
+  if [[ "${RELEASE_VERSION}" =~ 3\.18\.* ]]
   then
 
     # -------------------------------------------------------------------------
