@@ -2,7 +2,7 @@
 
 Releases in reverse chronological order.
 
-### 2020-12-02
+### 2020-12-09
 
 - v3.18.5-1 released
 

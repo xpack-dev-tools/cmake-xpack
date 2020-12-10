@@ -95,7 +95,7 @@ On all machines, clone the `xpack-develop` branch:
 
 ```sh
 rm -rf ~/Downloads/cmake-xpack.git; \
-  git clone \
+git clone \
   --recurse-submodules \
   --branch xpack-develop \
   https://github.com/xpack-dev-tools/cmake-xpack.git \
@@ -116,7 +116,7 @@ On the macOS machine (`xbbm`):
 caffeinate bash ~/Downloads/cmake-xpack.git/scripts/build.sh --osx
 ```
 
-A typical run takes about 225 minutes.
+A typical run takes about 10 minutes.
 
 On both Linux machines (`xbbi` and `xbba`):
 
@@ -124,8 +124,8 @@ On both Linux machines (`xbbi` and `xbba`):
 bash ~/Downloads/cmake-xpack.git/scripts/build.sh --all
 ```
 
-A typical run on the Intel machine takes about 290 minutes;
-on the Arm machine it takes about 875 minutes.
+A typical run on the Intel machine takes about 20 minutes;
+on the Arm machine it takes about 55 minutes.
 
 ### Clean the destination folder
 
@@ -160,7 +160,8 @@ functional.
 (mind the dash)
 - as description
   - add a downloads badge like `![Github Releases (by Release)](https://img.shields.io/github/downloads/xpack-dev-tools/cmake-xpack/v3.18.5-1/total.svg)`
-  - draft a short paragraph explaining what are the main changes
+  - draft a short paragraph explaining what are the main changes, like
+  _Version v3.18.5-1 is a new release of the **xPack CMake** package, following the CMake release._
   - add _At this moment these binaries are provided for tests only!_
 - **attach binaries** and SHA (drag and drop from the archives folder will do it)
 - **enable** the **pre-release** button
@@ -244,8 +245,8 @@ cat *.sha
 
 ## Update the preview Web
 
-- commit the `develop` branch of `xpack/web-jekyll` GitHub repo; use a message
-  like **xPack CMake v3.18.5-1 released**
+- commit the `develop` branch of `xpack/web-jekyll` GitHub repo;
+  use a message like **xPack CMake v3.18.5-1 released**
 - wait for the GitHub Pages build to complete
 - the preview web is https://xpack.github.io/web-preview/
 
