@@ -4,7 +4,7 @@ Releases in reverse chronological order.
 
 ## 2020-12-15
 
-- v3.19.1-1 prepared
+- v3.19.1-1 released
 
 ## 2020-12-09
 
