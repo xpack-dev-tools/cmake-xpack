@@ -254,7 +254,7 @@ xpack-cmake-3.19.1-1-win32-x64.zip
 
 - select the `xpack-develop` branch
 - open the `package.json` file
-- run `xpm binaries-update`
+- run `xpm-dev binaries-update`
 
 ```
 xpm-js.git/bin/xpm-dev.js binaries-update '3.19.1-1' "${HOME}/Downloads/xpack-binaries/cmake"
@@ -316,7 +316,9 @@ On GNU/Linux systems, including Raspberry Pi, use the following commands:
 ```sh
 ~/opt/xPacks/@xpack-dev-tools/cmake/3.19.1-1.1/.content/bin/cmake --version
 
-TODO
+cmake version 3.19.1
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
 ```
 
 On macOS, use:
@@ -324,7 +326,9 @@ On macOS, use:
 ```sh
 ~/Library/xPacks/@xpack-dev-tools/cmake/3.19.1-1.1/.content/bin/cmake --version
 
-TODO
+cmake version 3.19.1
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
 ```
 
 On Windows use:
@@ -332,7 +336,9 @@ On Windows use:
 ```
 %HOMEPATH%\AppData\Roaming\xPacks\@xpack-dev-tools\cmake\3.19.1-1.1\.content\bin\cmake --version
 
-TODO
+cmake version 3.19.1
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
 ```
 
 ## Update the repo
