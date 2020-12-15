@@ -30,7 +30,21 @@ function build_versions()
   CMAKE_VERSION="$(echo "${RELEASE_VERSION}" | sed -e 's|-[0-9]*||')"
 
   # Keep them in sync with combo archive content.
-  if [[ "${RELEASE_VERSION}" =~ 3\.18\.* ]]
+  if [[ "${RELEASE_VERSION}" =~ 3\.19\.* ]] 
+  then
+
+    # -------------------------------------------------------------------------
+
+    if [ "${TARGET_PLATFORM}" != "win32" ]
+    then
+      NCURSES_DISABLE_WIDEC="y"
+      build_ncurses "6.2"
+    fi
+
+    build_xz "5.2.5"
+    
+    build_cmake "${CMAKE_VERSION}"
+  elif [[ "${RELEASE_VERSION}" =~ 3\.18\.* ]]
   then
 
     # -------------------------------------------------------------------------

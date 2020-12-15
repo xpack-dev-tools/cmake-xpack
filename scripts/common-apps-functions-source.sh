@@ -67,8 +67,8 @@ function build_cmake()
         prepare_gcc_env "${CROSS_COMPILE_PREFIX}-"
       fi
 
-      CFLAGS="${XBB_CPPFLAGS} ${XBB_CFLAGS}"
-      CXXFLAGS="${XBB_CPPFLAGS} ${XBB_CXXFLAGS}"
+      CFLAGS="${XBB_CPPFLAGS} $(echo ${XBB_CFLAGS} | sed -e 's|-O[0123s]||')"
+      CXXFLAGS="${XBB_CPPFLAGS} $(echo ${XBB_CFLAGS} | sed -e 's|-O[0123s]||')"
       LDFLAGS="${XBB_CPPFLAGS} ${XBB_LDFLAGS_APP_STATIC_GCC} -v"
 
       export CFLAGS
@@ -85,7 +85,7 @@ function build_cmake()
         build_type=Release
       fi
 
-      if [ ! -f "CMakeCache.txt" ]
+      if true # [ ! -f "CMakeCache.txt" ]
       then
         (
           echo
@@ -110,11 +110,15 @@ function build_cmake()
           config_options+=("-DCMAKE_VERBOSE_MAKEFILE=ON")
           config_options+=("-DCMAKE_BUILD_TYPE=${build_type}")
             
-          config_options+=("-DBUILD_TESTING=ON")
+          # config_options+=("-DBUILD_TESTING=ON")
+          config_options+=("-DBUILD_TESTING=OFF")
 
           if [ "${TARGET_PLATFORM}" == "win32" ]
           then
             config_options+=("-DCMAKE_SYSTEM_NAME=Windows")
+
+            config_options+=("-DCMake_RUN_CXX_FILESYSTEM=0")
+            config_options+=("-DCMake_RUN_CXX_FILESYSTEM__TRYRUN_OUTPUT=")
 
             # Windows does not need ncurses, since ccmake is not built.
           elif [ "${TARGET_PLATFORM}" == "darwin" ]
@@ -137,8 +141,11 @@ function build_cmake()
           # Warning: Expensive, it adds about 30 MB of files to the archive.
           config_options+=("-DSPHINX_HTML=ON")
 
+          config_options+=("-DCPACK_BINARY_7Z=ON")
+          config_options+=("-DCPACK_BINARY_ZIP=ON")
+
           # The mingw build also requires RC pointing to windres.
-          cmake \
+          run_verbose_timed cmake \
             -DCMAKE_INSTALL_PREFIX="${APP_PREFIX}" \
             \
             ${config_options[@]} \
@@ -152,9 +159,10 @@ function build_cmake()
         echo
         echo "Running cmake build..."
 
-        cmake \
+        run_verbose_timed cmake \
           --build . \
           --parallel ${JOBS} \
+          --verbose \
           --config "${build_type}" \
 
         (
@@ -165,7 +173,7 @@ function build_cmake()
           echo
           echo "Running cmake install..."
 
-          cmake \
+          run_verbose_timed cmake \
             --build . \
             --config "${build_type}" \
             -- \
