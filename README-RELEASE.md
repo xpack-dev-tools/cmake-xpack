@@ -127,8 +127,8 @@ On both Linux machines (`xbbi` and `xbba`):
 bash ~/Downloads/cmake-xpack.git/scripts/build.sh --all
 ```
 
-A typical run on the Intel machine takes about 20 minutes;
-on the Arm machine it takes about 55 minutes.
+A typical run on the Intel machine takes about 25 minutes;
+on the Arm machine it takes about 60 minutes.
 
 ### Clean the destination folder
 
