@@ -209,41 +209,38 @@ as:
 
 ### Update the SHA sums
 
+On the development machine (`wks`):
+
+```sh
+cat ~/Downloads/xpack-binaries/cmake/*.sha
+```
+
 Copy/paste the build report at the end of the post as:
 
 ```console
 ## Checksums
 The SHA-256 hashes for the files are:
 
-6f5e5b94ecf2afece992b46a60465e3ed5aae172202c2a4e34f8e81e5b0da790  
-xpack-cmake-3.19.1-1.1-darwin-x64.tar.gz
+0a2a2550ec99b908c92811f8dbfde200956a22ab3d9af1c92ce9926bf8feddf9
+xpack-cmake-3.19.1-1-darwin-x64.tar.gz
 
-8791f653f1fc15b004987a2b84a7c0aabd71bde11e0e68eb32846e9b1ad80986  
-xpack-cmake-3.19.1-1.1-linux-arm64.tar.gz
+254588cbcd685748598dd7bbfaf89280ab719bfcd4dabeb0269fdb97a52b9d7a
+xpack-cmake-3.19.1-1-linux-arm.tar.gz
 
-bb4e1f6c72e32a1696edcfdec57d32ece64ac691a0363e4781db559addac7b79  
-xpack-cmake-3.19.1-1.1-linux-arm.tar.gz
+10e30128d626f9640c0d585e6b65ac943de59fbdce5550386add015bcce408fa
+xpack-cmake-3.19.1-1-linux-arm64.tar.gz
 
-be98731e1bb05fd78e2ec5727f7d6c9a6f2ae548970bbd0998de7079021d8e11  
-xpack-cmake-3.19.1-1.1-linux-ia32.tar.gz
+50f2e399382c29f8cdc9c77948e1382dfd5db20c2cb25c5980cb29774962483f
+xpack-cmake-3.19.1-1-linux-ia32.tar.gz
 
-10b859d83c7a451add58eaf79afdb9a4a66fc38920884e8a54c809e0a1f4ed3e  
-xpack-cmake-3.19.1-1.1-linux-x64.tar.gz
+9b147443780b7f825eec333857ac7ff9e9e9151fd17c8b7ce2a1ecb6e3767fd6
+xpack-cmake-3.19.1-1-linux-x64.tar.gz
 
-5cc86c9d17c4fda97107b374ae939fedf9d7428d06e6c31418ea0e5ff1e6aa41  
-xpack-cmake-3.19.1-1.1-win32-ia32.zip
+501366492cd73b06fca98b8283f65b53833622995c6e44760eda8f4483648525
+xpack-cmake-3.19.1-1-win32-ia32.zip
 
-91ab5e1b9b3ffcc606262e2be96bd70ab0be26a42d21e610340412f65de2bb16  
-xpack-cmake-3.19.1-1.1-win32-x64.zip
-```
-
-## Check the SHA sums
-
-On the development machine (`wks`):
-
-```sh
-cd ~Downloads/xpack-binaries/cmake
-cat *.sha
+dffc858d64be5539410aa6d3f3515c6de751cd295c99217091f5ccec79cabf39
+xpack-cmake-3.19.1-1-win32-x64.zip
 ```
 
 ## Update the preview Web
@@ -253,20 +250,29 @@ cat *.sha
 - wait for the GitHub Pages build to complete
 - the preview web is https://xpack.github.io/web-preview/
 
-## Publish on the npmjs.com server
+## Update package.json binaries
 
 - select the `xpack-develop` branch
 - open the `package.json` file
+- run `xpm binaries-update`
+
+```
+xpm-js.git/bin/xpm-dev.js binaries-update '3.19.1-1' "${HOME}/Downloads/xpack-binaries/cmake"
+```
+
 - open the GitHub [releases](https://github.com/xpack-dev-tools/cmake-xpack/releases)
   page and select the latest release
 - check the download counter, it should match the number of tests
-- update the `baseUrl:` with the file URLs (including the tag/version);
+- check the `baseUrl:` it should match the file URLs (including the tag/version);
   no terminating `/` is required
-- from the release, copy the SHA & file names
+- from the release, check the SHA & file names
 - compare the SHA sums with those shown by `cat *.sha`
 - check the executable names
 - commit all changes, use a message like
   `package.json: update urls for 3.19.1-1.1 release` (without `v`)
+
+## Publish on the npmjs.com server
+
 - check the latest commits `npm run git-log`
 - update `CHANGELOG.md`; commit with a message like
   _CHANGELOG: prepare npm v3.19.1-1.1_

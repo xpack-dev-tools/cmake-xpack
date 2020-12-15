@@ -32,36 +32,36 @@
   "xpack": {
     "binaries": {
       "destination": "./.content",
-      "baseUrl": "https://github.com/xpack-dev-tools/cmake-xpack/releases/download/v3.18.5-1/",
+      "baseUrl": "https://github.com/xpack-dev-tools/cmake-xpack/releases/download/v3.19.1-1",
       "skip": 1,
       "platforms": {
         "darwin-x64": {
-          "fileName": "xpack-cmake-3.18.5-1-darwin-x64.tar.gz",
-          "sha256": "ad0158cf6b953a87b4de518986c57bcc84026d2c5e20abb9f3a7b24c298ad4a6"
+          "fileName": "xpack-cmake-3.19.1-1-darwin-x64.tar.gz",
+          "sha256": "0a2a2550ec99b908c92811f8dbfde200956a22ab3d9af1c92ce9926bf8feddf9"
         },
         "linux-arm": {
-          "fileName": "xpack-cmake-3.18.5-1-linux-arm.tar.gz",
-          "sha256": "766433083ed06cdd58d6f609b8c935b3cc37631bf1e1678a140b3e6947f00537"
+          "fileName": "xpack-cmake-3.19.1-1-linux-arm.tar.gz",
+          "sha256": "254588cbcd685748598dd7bbfaf89280ab719bfcd4dabeb0269fdb97a52b9d7a"
         },
         "linux-arm64": {
-          "fileName": "xpack-cmake-3.18.5-1-linux-arm64.tar.gz",
-          "sha256": "8da9c7639922388f44dd4d945c2bb310625dd43de12eddcc59ada18298e87595"
+          "fileName": "xpack-cmake-3.19.1-1-linux-arm64.tar.gz",
+          "sha256": "10e30128d626f9640c0d585e6b65ac943de59fbdce5550386add015bcce408fa"
         },
         "linux-ia32": {
-          "fileName": "xpack-cmake-3.18.5-1-linux-ia32.tar.gz",
-          "sha256": "0a1dc58070082817b96c902498b8ea8aa0bf7000819e24f96164c9f69be997f6"
+          "fileName": "xpack-cmake-3.19.1-1-linux-ia32.tar.gz",
+          "sha256": "50f2e399382c29f8cdc9c77948e1382dfd5db20c2cb25c5980cb29774962483f"
         },
         "linux-x64": {
-          "fileName": "xpack-cmake-3.18.5-1-linux-x64.tar.gz",
-          "sha256": "209751cc6894b0450c6a8b516a940456632c1111610a94ff217b1f4e76206e4f"
+          "fileName": "xpack-cmake-3.19.1-1-linux-x64.tar.gz",
+          "sha256": "9b147443780b7f825eec333857ac7ff9e9e9151fd17c8b7ce2a1ecb6e3767fd6"
         },
         "win32-ia32": {
-          "fileName": "xpack-cmake-3.18.5-1-win32-ia32.zip",
-          "sha256": "431ec2513730f1035df8da2e53ae5154494555c8c55c7464ae5be74ae5268a0f"
+          "fileName": "xpack-cmake-3.19.1-1-win32-ia32.zip",
+          "sha256": "501366492cd73b06fca98b8283f65b53833622995c6e44760eda8f4483648525"
         },
         "win32-x64": {
-          "fileName": "xpack-cmake-3.18.5-1-win32-x64.zip",
-          "sha256": "b61236fc4e841899ff2f27608340fe31eb833574691de7674f2c2ac0a0abd2ba"
+          "fileName": "xpack-cmake-3.19.1-1-win32-x64.zip",
+          "sha256": "dffc858d64be5539410aa6d3f3515c6de751cd295c99217091f5ccec79cabf39"
         }
       }
     },
