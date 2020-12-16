@@ -374,5 +374,6 @@ When the release is considered stable, promote it as `latest`:
 - in a separate browser windows, open [TweetDeck](https://tweetdeck.twitter.com/)
 - using the `@xpack_project` account
 - paste the release name like **xPack CMake v3.19.1-1 released**
-- paste the link to the Web page release
+- paste the link to the Web page
+  [release](https://xpack.github.io/cmake/releases/)
 - click the **Tweet** button
