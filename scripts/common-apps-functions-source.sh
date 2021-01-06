@@ -67,9 +67,17 @@ function build_cmake()
         prepare_gcc_env "${CROSS_COMPILE_PREFIX}-"
       fi
 
-      CFLAGS="${XBB_CPPFLAGS} $(echo ${XBB_CFLAGS} | sed -e 's|-O[0123s]||')"
-      CXXFLAGS="${XBB_CPPFLAGS} $(echo ${XBB_CFLAGS} | sed -e 's|-O[0123s]||')"
-      LDFLAGS="${XBB_CPPFLAGS} ${XBB_LDFLAGS_APP_STATIC_GCC} -v"
+      CFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_CFLAGS} | sed -e 's|-O[0123s]||')"
+      CXXFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_CFLAGS} | sed -e 's|-O[0123s]||')"
+      LDFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_LDFLAGS_APP_STATIC_GCC} | sed -e 's|-O[0123s]||')"
+      if [ "${TARGET_PLATFORM}" == "linux" ]
+      then
+        LDFLAGS+=" -Wl,-rpath,${LD_LIBRARY_PATH}"
+      fi      
+      if [ "${IS_DEVELOP}" == "y" ]
+      then
+        LDFLAGS+=" -v"
+      fi
 
       export CFLAGS
       export CXXFLAGS
@@ -144,10 +152,10 @@ function build_cmake()
           config_options+=("-DCPACK_BINARY_7Z=ON")
           config_options+=("-DCPACK_BINARY_ZIP=ON")
 
+          config_options+=("-DCMAKE_INSTALL_PREFIX=${APP_PREFIX}")
+
           # The mingw build also requires RC pointing to windres.
           run_verbose_timed cmake \
-            -DCMAKE_INSTALL_PREFIX="${APP_PREFIX}" \
-            \
             ${config_options[@]} \
             \
             "${SOURCES_FOLDER_PATH}/${CMAKE_SRC_FOLDER_NAME}"
