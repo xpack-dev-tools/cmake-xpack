@@ -215,7 +215,7 @@ In the `xpack/web-jekyll` GitHub repo:
 
 - select the `develop` branch
 - add a new file to `_posts/cmake/releases`
-- name the file like `2020-07-03-cmake-v3-18-5-1-released.md`
+- name the file like `2020-07-03-cmake-v3-19-2-1-released.md`
 - name the post like: **xPack CMake v3.19.2-1 released**
 - as `download_url` use the tagged URL like `https://github.com/xpack-dev-tools/cmake-xpack/releases/tag/v3.19.2-1/`
 - update the `date:` field with the current date
