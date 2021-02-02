@@ -1,7 +1,7 @@
 {
   "name": "@xpack-dev-tools/cmake",
   "version": "3.19.2-1.1",
-  "description": "A binary xPack with CMake",
+  "description": "A binary xPack with the CMake executables",
   "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
