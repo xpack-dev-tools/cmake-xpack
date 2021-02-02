@@ -69,6 +69,8 @@ Before the real build, run a test build on the development machine (`wks`):
 ```sh
 sudo rm -rf ~/Work/cmake-*
 
+caffeinate bash ~/Downloads/cmake-xpack.git/scripts/build.sh --develop --without-pdf --disable-tests --all
+
 caffeinate bash ~/Downloads/cmake-xpack.git/scripts/build.sh --develop --without-pdf --disable-tests --osx
 
 caffeinate bash ~/Downloads/cmake-xpack.git/scripts/build.sh --develop --without-pdf --disable-tests --linux64 --win64
@@ -299,10 +301,11 @@ xpm-dev binaries-update -C ~/Downloads/cmake-xpack.git '3.19.2-1' "${HOME}/Downl
 - check the latest commits `npm run git-log`
 - update `CHANGELOG.md`; commit with a message like
   _CHANGELOG: prepare npm v3.19.2-1.1_
+- `npm pack` and check the content of the archive, which should list
+  only the `package.json`, the `README.md`, `LICENSE` and `CHANGELOG.md`;
+  possibly adjust `.npmignore`
 - `npm version 3.19.2-1.1`; the first 5 numbers are the same as the
   GitHub release; the sixth number is the npm specific version
-- `npm pack` and check the content of the archive, which should list
-  only the `package.json`, the `README.md`, `LICENSE` and `CHANGELOG.md`
 - push the `xpack-develop` branch to GitHub
 - `npm publish --tag next` (use `--access public` when publishing for
   the first time)
@@ -337,7 +340,7 @@ xpm install --global @xpack-dev-tools/cmake@next
 On GNU/Linux systems, including Raspberry Pi, use the following commands:
 
 ```sh
-~/opt/xPacks/@xpack-dev-tools/cmake/3.19.2-1.1/.content/bin/cmake --version
+~/.local/xPacks/@xpack-dev-tools/cmake/3.19.2-1.1/.content/bin/cmake --version
 
 cmake version 3.19.2
 
