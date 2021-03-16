@@ -35,6 +35,13 @@ function build_versions()
 
     # -------------------------------------------------------------------------
 
+    if [ "${RELEASE_VERSION}" == "3.19.2-2" ]
+    then
+      CMAKE_GIT_URL=${CMAKE_GIT_URL:-"https://github.com/xpack-dev-tools/cmake.git"}
+      CMAKE_GIT_BRANCH=${CMAKE_GIT_BRANCH:-"v3.19.2-xpack"}
+      CMAKE_GIT_COMMIT=${CMAKE_GIT_COMMIT:-"60a09eefd8c47a2da2c3940c73761a588979ecfe"}
+    fi
+
     if [ "${TARGET_PLATFORM}" != "win32" ]
     then
       NCURSES_DISABLE_WIDEC="y"

@@ -2,6 +2,10 @@
 
 Releases in reverse chronological order.
 
+## 2021-03-17
+
+- v3.19.2-2 prepared
+
 ## 2021-03-16
 
 - v3.18.6-1.1 published on npmjs.com
