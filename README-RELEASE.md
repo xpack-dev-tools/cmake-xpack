@@ -309,7 +309,7 @@ xpm-dev binaries-update -C "${HOME}/Downloads/cmake-xpack.git" '3.18.6-1' "${HOM
 - push the `xpack-develop` branch to GitHub
 - push tags with `git push origin --tags`
 - `npm publish --tag next` (use `--access public` when publishing for
-  the first time)
+  the first time); for updates use `npm publish --tag update`
 
 The version is visible at:
 
