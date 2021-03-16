@@ -23,6 +23,7 @@ There are two types of builds:
 This page documents the distribution builds.
 
 For native builds, see the `build-native.sh` script. (to be added)
+
 ## Repositories
 
 - `https://github.com/xpack-dev-tools/cmake-xpack.git` - the URL of the
@@ -130,7 +131,7 @@ Compared to the original CMake distribution, there should be no
 functional changes.
 
 The actual changes for each version are documented in the
-`scripts/README-<version>.md` files.
+release web pages.
 
 ## How to build local/native binaries
 
@@ -194,7 +195,7 @@ $ bash ~/Downloads/cmake-xpack.git/scripts/build.sh --all
 or, for development builds:
 
 ```console
-$ bash ~/Downloads/cmake-xpack.git/scripts/build.sh --linux64 --linux32 --win64 --win32 --develop
+$ bash ~/Downloads/cmake-xpack.git/scripts/build.sh --develop --without-html --linux64 --linux32 --win64 --win32
 ```
 
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
@@ -206,8 +207,8 @@ archives and their SHA signatures, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/cmake-*/deploy
 total 102876
--rw-rw-r-- 1 ilg ilg 26299790 Sep 29 12:03 xpack-cmake-3.19.1-1-linux-x32.tar.gz
--rw-rw-r-- 1 ilg ilg      104 Sep 29 12:03 xpack-cmake-3.19.1-1-linux-x32.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 26299790 Sep 29 12:03 xpack-cmake-3.19.1-1-linux-ia32.tar.gz
+-rw-rw-r-- 1 ilg ilg      104 Sep 29 12:03 xpack-cmake-3.19.1-1-linux-ia32.tar.gz.sha
 -rw-rw-r-- 1 ilg ilg 24994587 Sep 29 11:53 xpack-cmake-3.19.1-1-linux-x64.tar.gz
 -rw-rw-r-- 1 ilg ilg      104 Sep 29 11:53 xpack-cmake-3.19.1-1-linux-x64.tar.gz.sha
 -rw-rw-r-- 1 ilg ilg 25556341 Sep 29 12:08 xpack-cmake-3.19.1-1-win32-x32.zip
