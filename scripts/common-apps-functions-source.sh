@@ -218,7 +218,7 @@ function build_cmake()
       )
     )
 
-#    touch "${cmake_stamp_file_path}"
+    touch "${cmake_stamp_file_path}"
 
   else
     echo "Component cmake stage already installed."
