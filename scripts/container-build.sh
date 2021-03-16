@@ -97,7 +97,7 @@ fi
 
 WITH_STRIP="y"
 WITH_PDF="y"
-WITH_HTML="n"
+WITH_HTML="y"
 IS_DEVELOP=""
 IS_DEBUG=""
 WITH_TESTS="y"
