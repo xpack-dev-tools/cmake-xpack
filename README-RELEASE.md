@@ -18,7 +18,7 @@ Before starting the build, perform some checks and tweaks.
 
 ### Increase the version
 
-Determine the version (like `3.19.2`) and update the `scripts/VERSION`
+Determine the version (like `3.18.6`) and update the `scripts/VERSION`
 file; the format is `3.18.6-1`. The fourth number is the xPack release number
 of this version. A fifth number will be added when publishing
 the package on the `npm` server.
@@ -343,7 +343,7 @@ On GNU/Linux systems, including Raspberry Pi, use the following commands:
 ```sh
 ~/.local/xPacks/@xpack-dev-tools/cmake/3.18.6-1.1/.content/bin/cmake --version
 
-cmake version 3.19.2
+cmake version 3.18.6
 
 CMake suite maintained and supported by Kitware (kitware.com/cmake).
 ```
@@ -353,7 +353,7 @@ On macOS, use:
 ```sh
 ~/Library/xPacks/@xpack-dev-tools/cmake/3.18.6-1.1/.content/bin/cmake --version
 
-cmake version 3.19.2
+cmake version 3.18.6
 
 CMake suite maintained and supported by Kitware (kitware.com/cmake).
 ```
@@ -363,7 +363,7 @@ On Windows use:
 ```
 %USERPROFILE%\AppData\Roaming\xPacks\@xpack-dev-tools\cmake\3.18.6-1.1\.content\bin\cmake --version
 
-cmake version 3.19.2
+cmake version 3.18.6
 
 CMake suite maintained and supported by Kitware (kitware.com/cmake).
 ```
