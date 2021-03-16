@@ -4,7 +4,8 @@ Releases in reverse chronological order.
 
 ## 2021-03-16
 
-- v3.18.6-1 prepared
+- v3.18.6-1.1 published on npmjs.com
+- v3.18.6-1 released
 - add cmd.exe support
 
 ## 2021-01-06
