@@ -34,10 +34,6 @@ function build_cmake()
   # The folder name  for build, licenses, etc.
   CMAKE_FOLDER_NAME="${CMAKE_SRC_FOLDER_NAME}"
 
-  # GitHub release archive.
-  local cmake_archive_file_name="${CMAKE_SRC_FOLDER_NAME}.tar.gz"
-  local cmake_url="https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/${cmake_archive_file_name}"
-
   local cmake_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-${CMAKE_FOLDER_NAME}-installed"
 
   if [ ! -f "${cmake_stamp_file_path}" ]
@@ -45,8 +41,16 @@ function build_cmake()
 
     cd "${SOURCES_FOLDER_PATH}"
 
-    download_and_extract "${cmake_url}" "${cmake_archive_file_name}" \
-      "${CMAKE_SRC_FOLDER_NAME}"
+    if [ ! -d "${SOURCES_FOLDER_PATH}/${CMAKE_SRC_FOLDER_NAME}" ]
+    then
+      (
+        xbb_activate
+
+        cd "${SOURCES_FOLDER_PATH}"
+        git_clone "${CMAKE_GIT_URL}" "${CMAKE_GIT_BRANCH}" \
+            "${CMAKE_GIT_COMMIT}" "${CMAKE_SRC_FOLDER_NAME}"
+      )
+    fi
 
     (
       mkdir -pv "${BUILD_FOLDER_PATH}/${CMAKE_FOLDER_NAME}"
@@ -147,7 +151,12 @@ function build_cmake()
           fi
 
           # Warning: Expensive, it adds about 30 MB of files to the archive.
-          config_options+=("-DSPHINX_HTML=ON")
+          if [ "${WITH_HTML}" == "y" ]
+          then
+            config_options+=("-DSPHINX_HTML=ON")
+          else
+            config_options+=("-DSPHINX_HTML=OFF")
+          fi
 
           config_options+=("-DCPACK_BINARY_7Z=ON")
           config_options+=("-DCPACK_BINARY_ZIP=ON")
@@ -209,7 +218,7 @@ function build_cmake()
       )
     )
 
-    touch "${cmake_stamp_file_path}"
+#    touch "${cmake_stamp_file_path}"
 
   else
     echo "Component cmake stage already installed."
