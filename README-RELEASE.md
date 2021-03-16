@@ -279,7 +279,7 @@ xpack-cmake-3.18.6-1-win32-x64.zip
 - select the `xpack-develop` branch
 - run `xpm-dev binaries-update`
 
-```
+```console
 xpm-dev binaries-update -C "${HOME}/Downloads/cmake-xpack.git" '3.18.6-1' "${HOME}/Downloads/xpack-binaries/cmake"
 ```
 
