@@ -360,7 +360,7 @@ CMake suite maintained and supported by Kitware (kitware.com/cmake).
 
 On Windows use:
 
-```
+```ps
 %USERPROFILE%\AppData\Roaming\xPacks\@xpack-dev-tools\cmake\3.19.2-2.1\.content\bin\cmake --version
 
 cmake version 3.19.2
