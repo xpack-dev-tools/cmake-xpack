@@ -114,7 +114,7 @@ caffeinate ssh xbbi
 caffeinate ssh xbba
 ```
 
-On all machines, clone the `xpack-develop` branch:
+On all machines, clone the `xpack-develop` branch and remove previous builds
 
 ```sh
 rm -rf ~/Downloads/cmake-xpack.git
@@ -124,11 +124,7 @@ git clone \
   --branch xpack-develop \
   https://github.com/xpack-dev-tools/cmake-xpack.git \
   ~/Downloads/cmake-xpack.git
-```
 
-On all machines, remove any previous build:
-
-```sh
 sudo rm -rf ~/Work/cmake-*
 ```
 
@@ -150,6 +146,8 @@ bash ~/Downloads/cmake-xpack.git/scripts/build.sh --all
 bash ~/Downloads/cmake-xpack.git/scripts/build.sh --linux64 --win64
 bash ~/Downloads/cmake-xpack.git/scripts/build.sh --linux32 --win32
 ```
+
+Check if the build actually uses the desired version.
 
 A typical run on the Intel machine takes about 25 minutes.
 
@@ -211,6 +209,23 @@ _For the moment these binaries are provided only for testing purposes!_
 
 Note: at this moment the system should send a notification to all clients
 watching this project.
+
+## Run the native tests
+
+Run the native tests on all platforms:
+
+```sh
+rm ~/Work/cache/xpack-gcc-*
+
+rm -rf ~/Downloads/cmake-xpack.git
+
+git clone --recurse-submodules -b xpack-develop \
+  https://github.com/xpack-dev-tools/cmake-xpack.git  \
+  ~/Downloads/cmake-xpack.git
+
+bash ~/Downloads/cmake-xpack.git/tests/scripts/native-test.sh \
+  "https://github.com/xpack-dev-tools/cmake-xpack/releases/download/v3.19.8-1/"
+```
 
 ## Run the release Travis tests
 
@@ -294,8 +309,11 @@ xpack-cmake-3.19.8-1-win32-x64.zip
 - select the `xpack-develop` branch
 - run `xpm-dev binaries-update`
 
-```console
-xpm-dev binaries-update -C "${HOME}/Downloads/cmake-xpack.git" '3.19.8-1' "${HOME}/Downloads/xpack-binaries/cmake"
+```sh
+xpm-dev binaries-update \
+  -C "${HOME}/Downloads/cmake-xpack.git" \
+  '3.19.8-1' \
+  "${HOME}/Downloads/xpack-binaries/cmake"
 ```
 
 - open the GitHub [releases](https://github.com/xpack-dev-tools/cmake-xpack/releases)
