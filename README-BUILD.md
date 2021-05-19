@@ -58,17 +58,13 @@ The build scripts are available in the `scripts` folder of the
 [`xpack-dev-tools/cmake-xpack`](https://github.com/xpack-dev-tools/cmake-xpack)
 Git repo.
 
-To download them, the following shortcut is available:
+To download them, use the following two commands:
 
-```console
-$ curl -L https://github.com/xpack-dev-tools/cmake-xpack/raw/xpack/scripts/git-clone.sh | bash
-```
+```sh
+rm -rf ~/Downloads/cmake-xpack.git
 
-This small script issues the following two commands:
-
-```console
-$ rm -rf ~/Downloads/cmake-xpack.git
-$ git clone --recurse-submodules \
+git clone \
+  --recurse-submodules \
   https://github.com/xpack-dev-tools/cmake-xpack.git \
   ~/Downloads/cmake-xpack.git
 ```
@@ -76,18 +72,14 @@ $ git clone --recurse-submodules \
 > Note: the repository uses submodules; for a successful build it is
 > mandatory to recurse the submodules.
 
-For development purposes, there is a shortcut to clone the `xpack-develop`
-branch:
+To use the `xpack-develop` branch of the build scripts, issue:
 
-```console
-$ curl -L https://github.com/xpack-dev-tools/cmake-xpack/raw/xpack/scripts/git-clone-develop.sh | bash
-```
+```sh
+rm -rf ~/Downloads/cmake-xpack.git
 
-which is a shortcut for:
-
-```console
-$ rm -rf ~/Downloads/cmake-xpack.git
-$ git clone --recurse-submodules --branch xpack-develop \
+git clone \
+  --recurse-submodules \
+  --branch xpack-develop \
   https://github.com/xpack-dev-tools/cmake-xpack.git \
   ~/Downloads/cmake-xpack.git
 ```
@@ -119,7 +111,7 @@ not be accepted by bash.
 
 ## Versioning
 
-The version string is an extension to semver, the format looks like `3.19.1-1`.
+The version string is an extension to semver, the format looks like `3.19.8-1`.
 It includes the three digits with the original CMake version and a fourth
 digit with the xPack release number.
 
@@ -155,21 +147,21 @@ The current platform for GNU/Linux and Windows production builds is an
 Manjaro 19, running on an Intel NUC8i7BEH mini PC with 32 GB of RAM
 and 512 GB of fast M.2 SSD.
 
-```console
-$ caffeinate ssh xbbi
+```sh
+caffeinate ssh xbbi
 ```
 
 Before starting a build, check if Docker is started:
 
-```console
-$ docker info
+```sh
+docker info
 ```
 
 Before running a build for the first time, it is recommended to preload the
 docker images.
 
-```console
-$ bash ~/Downloads/cmake-xpack.git/scripts/build.sh preload-images
+```sh
+bash ~/Downloads/cmake-xpack.git/scripts/build.sh preload-images
 ```
 
 The result should look similar to:
@@ -185,17 +177,17 @@ Since the build takes a while, use `screen` to isolate the build session
 from unexpected events, like a broken
 network connection or a computer entering sleep.
 
-```console
-$ screen -S cmake
+```sh
+screen -S cmake
 
-$ sudo rm -rf ~/Work/cmake-*
-$ bash ~/Downloads/cmake-xpack.git/scripts/build.sh --all
+sudo rm -rf ~/Work/cmake-*
+bash ~/Downloads/cmake-xpack.git/scripts/build.sh --all
 ```
 
 or, for development builds:
 
-```console
-$ bash ~/Downloads/cmake-xpack.git/scripts/build.sh --develop --without-html --linux64 --linux32 --win64 --win32
+```sh
+bash ~/Downloads/cmake-xpack.git/scripts/build.sh --develop --without-html --linux64 --linux32 --win64 --win32
 ```
 
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
@@ -207,45 +199,50 @@ archives and their SHA signatures, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/cmake-*/deploy
 total 102876
--rw-rw-r-- 1 ilg ilg 26299790 Sep 29 12:03 xpack-cmake-3.19.1-1-linux-ia32.tar.gz
--rw-rw-r-- 1 ilg ilg      104 Sep 29 12:03 xpack-cmake-3.19.1-1-linux-ia32.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 24994587 Sep 29 11:53 xpack-cmake-3.19.1-1-linux-x64.tar.gz
--rw-rw-r-- 1 ilg ilg      104 Sep 29 11:53 xpack-cmake-3.19.1-1-linux-x64.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 25556341 Sep 29 12:08 xpack-cmake-3.19.1-1-win32-x32.zip
--rw-rw-r-- 1 ilg ilg      101 Sep 29 12:08 xpack-cmake-3.19.1-1-win32-x32.zip.sha
--rw-rw-r-- 1 ilg ilg 28469621 Sep 29 11:58 xpack-cmake-3.19.1-1-win32-x64.zip
--rw-rw-r-- 1 ilg ilg      101 Sep 29 11:58 xpack-cmake-3.19.1-1-win32-x64.zip.sha
+-rw-rw-r-- 1 ilg ilg 26299790 Sep 29 12:03 xpack-cmake-3.19.8-1-linux-ia32.tar.gz
+-rw-rw-r-- 1 ilg ilg      104 Sep 29 12:03 xpack-cmake-3.19.8-1-linux-ia32.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 24994587 Sep 29 11:53 xpack-cmake-3.19.8-1-linux-x64.tar.gz
+-rw-rw-r-- 1 ilg ilg      104 Sep 29 11:53 xpack-cmake-3.19.8-1-linux-x64.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 25556341 Sep 29 12:08 xpack-cmake-3.19.8-1-win32-x32.zip
+-rw-rw-r-- 1 ilg ilg      101 Sep 29 12:08 xpack-cmake-3.19.8-1-win32-x32.zip.sha
+-rw-rw-r-- 1 ilg ilg 28469621 Sep 29 11:58 xpack-cmake-3.19.8-1-win32-x64.zip
+-rw-rw-r-- 1 ilg ilg      101 Sep 29 11:58 xpack-cmake-3.19.8-1-win32-x64.zip.sha
 ```
 
 To copy the files from the build machine to the current development
 machine, either use NFS to mount the entire folder, or open the `deploy`
 folder in a terminal and use `scp`:
 
-```console
-$ (cd ~/Work/cmake-*/deploy; scp * ilg@wks:Downloads/xpack-binaries/cmake)
+```sh
+(cd ~/Work/cmake-*/deploy; scp * ilg@wks:Downloads/xpack-binaries/cmake)
 ```
 
 #### Build the Arm GNU/Linux binaries
 
-The current platform for GNU/Linux and Windows production builds is an
-Manjaro 19, running on an Raspberry Pi 4B with 4 GB of RAM
-and 256 GB of fast M.2 SSD.
+The supported Arm architectures are:
 
-```console
-$ caffeinate ssh xbba
+- `armhf` for 32-bit devices
+- `arm64` for 64-bit devices
+
+The current platform for Arm GNU/Linux production builds is a
+Debian 9, running on an ROCK Pi 4 SBC with 4 GB of RAM
+and 256 GB of fast M.2 SSD. The machine name is `xbba`.
+
+```sh
+caffeinate ssh xbba
 ```
 
 Before starting a build, check if Docker is started:
 
-```console
-$ docker info
+```sh
+docker info
 ```
 
 Before running a build for the first time, it is recommended to preload the
 docker images.
 
-```console
-$ bash ~/Downloads/cmake-xpack.git/scripts/build.sh preload-images
+```sh
+bash ~/Downloads/cmake-xpack.git/scripts/build.sh preload-images
 ```
 
 The result should look similar to:
@@ -262,11 +259,11 @@ Since the build takes a while, use `screen` to isolate the build session
 from unexpected events, like a broken
 network connection or a computer entering sleep.
 
-```console
-$ screen -S cmake
+```sh
+screen -S cmake
 
-$ sudo rm -rf ~/Work/cmake-*
-$ bash ~/Downloads/cmake-xpack.git/scripts/build.sh --all
+sudo rm -rf ~/Work/cmake-*
+bash ~/Downloads/cmake-xpack.git/scripts/build.sh --all
 ```
 
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
@@ -278,18 +275,18 @@ archives and their SHA signatures, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/cmake-*/deploy
 total 45744
--rw-rw-r-- 1 ilg ilg 23714604 Sep 29 09:14 xpack-cmake-3.19.1-1-linux-arm64.tar.gz
--rw-rw-r-- 1 ilg ilg      106 Sep 29 09:14 xpack-cmake-3.19.1-1-linux-arm64.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 23114964 Sep 29 09:38 xpack-cmake-3.19.1-1-linux-arm.tar.gz
--rw-rw-r-- 1 ilg ilg      104 Sep 29 09:38 xpack-cmake-3.19.1-1-linux-arm.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 23714604 Sep 29 09:14 xpack-cmake-3.19.8-1-linux-arm64.tar.gz
+-rw-rw-r-- 1 ilg ilg      106 Sep 29 09:14 xpack-cmake-3.19.8-1-linux-arm64.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 23114964 Sep 29 09:38 xpack-cmake-3.19.8-1-linux-arm.tar.gz
+-rw-rw-r-- 1 ilg ilg      104 Sep 29 09:38 xpack-cmake-3.19.8-1-linux-arm.tar.gz.sha
 ```
 
 To copy the files from the build machine to the current development
 machine, either use NFS to mount the entire folder, or open the `deploy`
 folder in a terminal and use `scp`:
 
-```console
-$ (cd ~/Work/cmake-*/deploy; scp * ilg@wks:Downloads/xpack-binaries/cmake)
+```sh
+(cd ~/Work/cmake-*/deploy; scp * ilg@wks:Downloads/xpack-binaries/cmake)
 ```
 
 #### Build the macOS binaries
@@ -297,17 +294,18 @@ $ (cd ~/Work/cmake-*/deploy; scp * ilg@wks:Downloads/xpack-binaries/cmake)
 The current platform for macOS production builds is a macOS 10.10.5
 running on a MacBook Pro with 32 GB of RAM and a fast SSD.
 
-```console
-$ caffeinate ssh xbbm
+```sh
+caffeinate ssh xbbm
 ```
 
 To build the latest macOS version:
 
-```console
-$ screen -S cmake
+```sh
+screen -S cmake
 
-$ rm -rf ~/Work/cmake-*
-$ caffeinate bash ~/Downloads/cmake-xpack.git/scripts/build.sh --osx
+rm -rf ~/Work/cmake-*
+
+caffeinate bash ~/Downloads/cmake-xpack.git/scripts/build.sh --osx
 ```
 
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
@@ -320,16 +318,16 @@ archive and its SHA signature, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/cmake-*/deploy
 total 38472
--rw-r--r--  1 ilg  staff  19689560 Sep 29 11:56 xpack-cmake-3.19.1-1-darwin-x64.tar.gz
--rw-r--r--  1 ilg  staff       105 Sep 29 11:56 xpack-cmake-3.19.1-1-darwin-x64.tar.gz.sha
+-rw-r--r--  1 ilg  staff  19689560 Sep 29 11:56 xpack-cmake-3.19.8-1-darwin-x64.tar.gz
+-rw-r--r--  1 ilg  staff       105 Sep 29 11:56 xpack-cmake-3.19.8-1-darwin-x64.tar.gz.sha
 ```
 
 To copy the files from the build machine to the current development
 machine, either use NFS to mount the entire folder, or open the `deploy`
 folder in a terminal and use `scp`:
 
-```console
-$ (cd ~/Work/cmake-*/deploy; scp * ilg@wks:Downloads/xpack-binaries/cmake)
+```sh
+(cd ~/Work/cmake-*/deploy; scp * ilg@wks:Downloads/xpack-binaries/cmake)
 ```
 
 ### Subsequent runs
@@ -338,7 +336,7 @@ $ (cd ~/Work/cmake-*/deploy; scp * ilg@wks:Downloads/xpack-binaries/cmake)
 
 Instead of `--all`, you can use any combination of:
 
-```
+```console
 --win32 --win64 --linux32 --linux64
 --arm --arm64
 ```
@@ -347,20 +345,20 @@ Instead of `--all`, you can use any combination of:
 
 To remove most build temporary files, use:
 
-```console
-$ bash ~/Downloads/cmake-xpack.git/scripts/build.sh --all clean
+```sh
+bash ~/Downloads/cmake-xpack.git/scripts/build.sh --all clean
 ```
 
 To also remove the library build temporary files, use:
 
-```console
-$ bash ~/Downloads/cmake-xpack.git/scripts/build.sh --all cleanlibs
+```sh
+bash ~/Downloads/cmake-xpack.git/scripts/build.sh --all cleanlibs
 ```
 
 To remove all temporary files, use:
 
-```console
-$ bash ~/Downloads/cmake-xpack.git/scripts/build.sh --all cleanall
+```sh
+bash ~/Downloads/cmake-xpack.git/scripts/build.sh --all cleanall
 ```
 
 Instead of `--all`, any combination of `--win32 --win64 --linux32 --linux64`
@@ -403,8 +401,8 @@ program from there. For example on macOS the output should
 look like:
 
 ```console
-$ /Users/ilg/Work/cmake-3.19.1-1/darwin-x64/install/cmake/bin/cmake --version
-cmake version 3.19.1
+$ /Users/ilg/Work/cmake-3.19.8-1/darwin-x64/install/cmake/bin/cmake --version
+cmake version 3.19.8
 ```
 
 ## Installed folders
@@ -413,8 +411,8 @@ After install, the package should create a structure like this (macOS files;
 only the first two depth levels are shown):
 
 ```console
-$ tree -L 2 /Users/ilg/Library/xPacks/\@xpack-dev-tools/cmake/3.19.1-1.1/.content/
-/Users/ilg/Library/xPacks/\@xpack-dev-tools/cmake/3.19.1-1.1/.content/
+$ tree -L 2 /Users/ilg/Library/xPacks/\@xpack-dev-tools/cmake/3.19.8-1.1/.content/
+/Users/ilg/Library/xPacks/\@xpack-dev-tools/cmake/3.19.8-1.1/.content/
 ├── README.md
 ├── bin
 │   ├── ccmake
@@ -454,7 +452,7 @@ may fail.
 
 The workaround is to manually download the files from an alternate
 location (like
-https://github.com/xpack-dev-tools/files-cache/tree/master/libs),
+<https://github.com/xpack-dev-tools/files-cache/tree/master/libs>),
 place them in the XBB cache (`Work/cache`) and restart the build.
 
 ## More build details

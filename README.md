@@ -42,12 +42,12 @@ follow the instructions from the
 With the `xpm` tool available, installing
 the latest version of the package is quite easy:
 
-```console
-$ xpm install --global @xpack-dev-tools/cmake@latest
+```sh
+xpm install --global @xpack-dev-tools/cmake@latest
 ```
 
 This command will always install the latest available version,
-into the central xPacks repository, which is a platform dependent folder
+into the central xPacks store, which is a platform dependent folder
 (check the output of the `xpm` command for the actual folder used on
 your platform).
 
@@ -63,8 +63,8 @@ identify binaries installed with
 
 To remove the installed xPack, the command is similar:
 
-```console
-$ xpm uninstall --global @xpack-dev-tools/cmake
+```sh
+xpm uninstall --global @xpack-dev-tools/cmake
 ```
 
 (Note: not yet implemented. As a temporary workaround, simply remove the
@@ -86,15 +86,15 @@ For more details please read the
 ### Version information
 
 The version strings used by the Ninja project are three number string
-like `3.19.2`; to this string the xPack distribution adds a four number,
+like `3.19.8`; to this string the xPack distribution adds a four number,
 but since semver allows only three numbers, all additional ones can
 be added only as pre-release strings, separated by a dash,
-like `3.19.2-2`. When published as a npm package, the version gets
-a fifth number, like `3.19.2-2.1`.
+like `3.19.8-1`. When published as a npm package, the version gets
+a fifth number, like `3.19.8-1.1`.
 
 Since adherance of third party packages to semver is not guaranteed,
-it is recommended to use semver expressions like `^3.19.2` and `~3.19.2`
-with caution, and prefer exact matches, like `3.19.2-2.1`.
+it is recommended to use semver expressions like `^3.19.8` and `~3.19.8`
+with caution, and prefer exact matches, like `3.19.8-1.1`.
 
 ## Maintainer info
 
