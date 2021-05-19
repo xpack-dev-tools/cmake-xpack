@@ -17,6 +17,19 @@ In the `cmake-xpack.git` repo:
 - switch to the `xpack-develop` branch
 - if needed, merge the `xpack` branch
 
+### Update fork of upstream repo
+
+Wit Sourcetree, in `forks/CMake.git`
+
+- using tags, identify the final release of the previous minor
+- checkout
+- branch, name with a postfix `v3.19.8-xpack`
+- cherry pick the _add cmd.exe support_ from previous release, enable commit
+- tag the new commit `v3.19.8-xpack`
+- checkout the `xpack` branch
+- merge the new branch into it
+- push the new branch and `xpack` to GitHub
+
 ### Increase the version
 
 Determine the version (like `3.19.8`) and update the `scripts/VERSION`
