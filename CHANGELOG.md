@@ -4,7 +4,8 @@ Releases in reverse chronological order.
 
 ## 2021-05-19
 
-- v3.19.8-1 prepared
+- v3.19.8-1.1 published on npmjs.com
+- v3.19.8-1 released
 
 ## 2021-03-17
 
