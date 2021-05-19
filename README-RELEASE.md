@@ -215,7 +215,7 @@ watching this project.
 Run the native tests on all platforms:
 
 ```sh
-rm ~/Work/cache/xpack-gcc-*
+rm ~/Work/cache/xpack-cmake-*
 
 rm -rf ~/Downloads/cmake-xpack.git
 
@@ -256,7 +256,7 @@ In the `xpack/web-jekyll` GitHub repo:
 (it is very important to use the originals!)
 
 If any, refer to closed
-[issues](https://github.com/xpack-dev-tools/cmake-xpack/issues)
+[issues](https://github.com/xpack-dev-tools/cmake-xpack/issues/)
 as:
 
 - **[Issue:\[#1\]\(...\)]**.
@@ -302,7 +302,7 @@ xpack-cmake-3.19.8-1-win32-x64.zip
 - commit the `develop` branch of `xpack/web-jekyll` GitHub repo;
   use a message like **xPack CMake v3.19.8-1 released**
 - wait for the GitHub Pages build to complete
-- the preview web is <https://xpack.github.io/web-preview/>
+- the preview web is <https://xpack.github.io/web-preview/news/>
 
 ## Update package.json binaries
 
