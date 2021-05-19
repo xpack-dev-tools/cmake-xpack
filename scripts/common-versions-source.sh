@@ -46,7 +46,7 @@ function build_versions()
       CMAKE_GIT_BRANCH=${CMAKE_GIT_BRANCH:-"v3.19.8-xpack"}
       CMAKE_GIT_COMMIT=${CMAKE_GIT_COMMIT:-"v3.19.8-xpack"}
     else
-      echo "Undupported ${RELEASE_VERSION}"
+      echo "Unsupported ${RELEASE_VERSION}"
     fi
 
     if [ "${TARGET_PLATFORM}" != "win32" ]
