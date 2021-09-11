@@ -29,15 +29,6 @@ function build_versions()
 
   CMAKE_VERSION="$(echo "${RELEASE_VERSION}" | sed -e 's|-[0-9]*||')"
 
-  if [ "${TARGET_PLATFORM}" == "linux" ]
-  then
-    (
-      xbb_activate
-
-      build_patchelf "0.12"
-    )
-  fi
-
   if [ "${TARGET_PLATFORM}" == "win32" ]
   then
     prepare_gcc_env "${CROSS_COMPILE_PREFIX}-"
