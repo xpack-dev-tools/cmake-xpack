@@ -253,13 +253,17 @@ function test_cmake()
 
       cd "${test_folder_path}"
 
+      if [ "${IS_DEVELOP}" == "y" ]
+      then
+        env | sort
+      fi
+
       echo 
       echo "Testing if it can generate itself..."
 
-      xbb_activate
+      # xbb_activate
       run_app "${APP_PREFIX}/bin/cmake" \
-        -G Ninja \
-        -DCMAKE_PREFIX_PATH="${XBB_FOLDER_PATH}" \
+        "-DCMAKE_USE_OPENSSL=OFF" \
         "${SOURCES_FOLDER_PATH}/cmake-${CMAKE_VERSION}"
     )
   fi
