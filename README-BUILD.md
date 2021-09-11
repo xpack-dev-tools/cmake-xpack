@@ -207,7 +207,7 @@ bash ~/Downloads/cmake-xpack.git/scripts/helper/build.sh --develop --without-pdf
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
 `screen -r cmake`; to kill the session use `Ctrl-a` `Ctrl-k` and confirm.
 
-About 20 minutes later, the output of the build script is a set of 4
+About 25 minutes later, the output of the build script is a set of 4
 archives and their SHA signatures, created in the `deploy` folder:
 
 ```console
