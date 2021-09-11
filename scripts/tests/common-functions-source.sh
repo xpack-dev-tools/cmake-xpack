@@ -54,12 +54,12 @@ function update_image()
   then
     run_verbose yum install -y -q git curl tar gzip redhat-lsb-core binutils
     run_verbose yum install -y -q glibc-devel libstdc++-devel # TODO: get rid of them
-    run_verbose yum install -y -q gcc make
+    run_verbose yum install -y -q gcc gcc-c++ make
   elif [[ ${image_name} == *suse* ]]
   then
     run_verbose zypper -q in -y git-core curl tar gzip lsb-release binutils findutils util-linux
     run_verbose zypper -q in -y glibc-devel libstdc++6 # TODO: get rid of them
-    run_verbose zypper -q in -y gcc make
+    run_verbose zypper -q in -y gcc gcc-c++ make
   elif [[ ${image_name} == *manjaro* ]]
   then
     # run_verbose pacman-mirrors -g
