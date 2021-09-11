@@ -44,6 +44,7 @@ function update_image()
   local image_name="$1"
 
   # Make sure that the minimum prerequisites are met.
+  # For cmake to generate itself, the c++ compiler and make are needed.
   if [[ ${image_name} == *ubuntu* ]] || [[ ${image_name} == *debian* ]] || [[ ${image_name} == *raspbian* ]]
   then
     run_verbose apt-get -qq update 
