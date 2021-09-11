@@ -57,9 +57,10 @@ function build_cmake()
 
       xbb_activate_installed_dev
 
-      if false # [ "${TARGET_PLATFORM}" == "darwin" ]
+      if [ "${TARGET_PLATFORM}" == "darwin" ]
       then
-        # error: variable modified 'bytes' at file scope
+        # With gcc-xbb it fails with:
+        # Authorization.h:193:14: error: variably modified ‘bytes’ at file scope
         export CC=clang
         export CXX=clang++
       fi
