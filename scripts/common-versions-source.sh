@@ -15,10 +15,10 @@
 
 function build_versions()
 {
-  # The \x2C is a comma in hex; without this trick the regular expression
+  # Don't use a comma since the regular expression
   # that processes this string in the Makefile, silently fails and the 
   # bfdver.h file remains empty.
-  BRANDING="${BRANDING}\x2C ${TARGET_MACHINE}"
+  BRANDING="${BRANDING} ${TARGET_MACHINE}"
 
   # cmake_BUILD_GIT_BRANCH=${cmake_BUILD_GIT_BRANCH:-"master"}
   # cmake_BUILD_GIT_COMMIT=${cmake_BUILD_GIT_COMMIT:-"HEAD"}
@@ -29,10 +29,23 @@ function build_versions()
 
   CMAKE_VERSION="$(echo "${RELEASE_VERSION}" | sed -e 's|-[0-9]*||')"
 
+  if [ "${TARGET_PLATFORM}" == "linux" ]
+  then
+    (
+      xbb_activate
+
+      build_patchelf "0.12"
+    )
+  fi
+
+  if [ "${TARGET_PLATFORM}" == "win32" ]
+  then
+    prepare_gcc_env "${CROSS_COMPILE_PREFIX}-"
+  fi
+
   # Keep them in sync with combo archive content.
   if [[ "${RELEASE_VERSION}" =~ 3\.19\.* ]] 
   then
-
     # -------------------------------------------------------------------------
 
     if [ "${RELEASE_VERSION}" == "3.19.2-2" ]
@@ -49,18 +62,21 @@ function build_versions()
       echo "Unsupported ${RELEASE_VERSION}"
     fi
 
-    if [ "${TARGET_PLATFORM}" != "win32" ]
-    then
-      NCURSES_DISABLE_WIDEC="y"
-      build_ncurses "6.2"
-    fi
+    (
+      xbb_activate
+      
+      if [ "${TARGET_PLATFORM}" != "win32" ]
+      then
+        NCURSES_DISABLE_WIDEC="y"
+        build_ncurses "6.2"
+      fi
 
-    build_xz "5.2.5"
-    
-    build_cmake "${CMAKE_VERSION}"
+      build_xz "5.2.5"
+      
+      build_cmake "${CMAKE_VERSION}"
+    )
   elif [[ "${RELEASE_VERSION}" =~ 3\.18\.* ]]
   then
-
     # -------------------------------------------------------------------------
 
     if [ "${RELEASE_VERSION}" == "3.18.6-1" ]
@@ -70,13 +86,17 @@ function build_versions()
       CMAKE_GIT_COMMIT=${CMAKE_GIT_COMMIT:-"d465c152a0d9262cadbd4f942e77f322c63328b6"}
     fi
 
-    if [ "${TARGET_PLATFORM}" != "win32" ]
-    then
-      NCURSES_DISABLE_WIDEC="y"
-      build_ncurses "6.2"
-    fi
+    (
+      xbb_activate
 
-    build_cmake "${CMAKE_VERSION}"
+      if [ "${TARGET_PLATFORM}" != "win32" ]
+      then
+        NCURSES_DISABLE_WIDEC="y"
+        build_ncurses "6.2"
+      fi
+
+      build_cmake "${CMAKE_VERSION}"
+    )
 
     # -------------------------------------------------------------------------
   else

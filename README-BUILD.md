@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This project includes the scripts and additional files required to
+This project also includes the scripts and additional files required to
 build and publish the
 [xPack CMake](https://github.com/xpack-dev-tools/cmake-xpack) binaries.
 
@@ -22,20 +22,20 @@ There are two types of builds:
 
 This page documents the distribution builds.
 
-For native builds, see the `build-native.sh` script. (to be added)
+For native builds, see the `build-native.sh` script.
 
 ## Repositories
 
-- `https://github.com/xpack-dev-tools/cmake-xpack.git` - the URL of the
+- <https://github.com/xpack-dev-tools/cmake-xpack.git> - the URL of the
   [xPack CMake fork](https://github.com/xpack-dev-tools/cmake-xpack)
-- `https://github.com/xpack-dev-tools/build-helper` - the URL of the
+- <https://github.com/xpack-dev-tools/build-helper> - the URL of the
   xPack build helper, used as the `scripts/helper` submodule
-- `https://gitlab.kitware.com/cmake/cmake` - the URL of the original CMake repo
-- `https://github.com/Kitware/CMake` - the URL of the GitHub fork
+- <https://gitlab.kitware.com/cmake/cmake> - the URL of the original CMake repo
+- <https://github.com/Kitware/CMake> - the URL of the GitHub fork
 
 The original releases are distributed via
 
-- `https://github.com/Kitware/CMake/releases`
+- <https://github.com/Kitware/CMake/releases>
 
 ### Branches
 
@@ -58,11 +58,10 @@ The build scripts are available in the `scripts` folder of the
 [`xpack-dev-tools/cmake-xpack`](https://github.com/xpack-dev-tools/cmake-xpack)
 Git repo.
 
-To download them, use the following two commands:
+To download them, issue the following two commands:
 
 ```sh
-rm -rf ~/Downloads/cmake-xpack.git
-
+rm -rf ~/Downloads/cmake-xpack.git; \
 git clone \
   --recurse-submodules \
   https://github.com/xpack-dev-tools/cmake-xpack.git \
@@ -72,11 +71,11 @@ git clone \
 > Note: the repository uses submodules; for a successful build it is
 > mandatory to recurse the submodules.
 
-To use the `xpack-develop` branch of the build scripts, issue:
+For development purposes, clone the `xpack-develop`
+branch:
 
 ```sh
-rm -rf ~/Downloads/cmake-xpack.git
-
+rm -rf ~/Downloads/cmake-xpack.git; \
 git clone \
   --recurse-submodules \
   --branch xpack-develop \
@@ -130,22 +129,21 @@ release web pages.
 ### README-DEVELOP.md
 
 The details on how to prepare the development environment for CMake are in the
-[`README-DEVELOP.md`](https://github.com/xpack-dev-tools/cmake-xpack/blob/xpack/README-DEVELOP.md) file.
+[`README-DEVELOP.md`](https://github.com/xpack-dev-tools/cmake-xpack/blob/xpack/README-DEVELOP.md)
+file.
 
 ## How to build distributions
 
 ## Build
 
-Although it is perfectly possible to build all binaries in a single step
-on a macOS system, due to Docker specifics, it is faster to build the
-GNU/Linux and Windows binaries on a GNU/Linux system and the macOS binary
-separately.
+The builds currently run on 3 dedicated machines (Intel GNU/Linux,
+Arm GNU/Linux and Intel macOS). A fourth machine for Arm macOS is planned.
 
 ### Build the Intel GNU/Linux and Windows binaries
 
-The current platform for GNU/Linux and Windows production builds is an
-Manjaro 19, running on an Intel NUC8i7BEH mini PC with 32 GB of RAM
-and 512 GB of fast M.2 SSD.
+The current platform for GNU/Linux and Windows production builds is a
+Debian 10, running on an Intel NUC8i7BEH mini PC with 32 GB of RAM
+and 512 GB of fast M.2 SSD. The machine name is `xbbi`.
 
 ```sh
 caffeinate ssh xbbi
@@ -161,7 +159,7 @@ Before running a build for the first time, it is recommended to preload the
 docker images.
 
 ```sh
-bash ~/Downloads/cmake-xpack.git/scripts/build.sh preload-images
+bash ~/Downloads/cmake-xpack.git/scripts/helper/build.sh preload-images
 ```
 
 The result should look similar to:
@@ -173,6 +171,22 @@ ilegeul/ubuntu      i386-12.04-xbb-v3.2              fadc6405b606        2 days 
 ilegeul/ubuntu      amd64-12.04-xbb-v3.2             3aba264620ea        2 days ago          4.98GB
 ```
 
+It is also recommended to Remove unused Docker space. This is mostly useful
+after failed builds, during development, when dangling images may be left
+by Docker.
+
+To check the content of a Docker image:
+
+```sh
+docker run --interactive --tty ilegeul/ubuntu:amd64-12.04-xbb-v3.2
+```
+
+To remove unused files:
+
+```sh
+docker system prune --force
+```
+
 Since the build takes a while, use `screen` to isolate the build session
 from unexpected events, like a broken
 network connection or a computer entering sleep.
@@ -181,13 +195,13 @@ network connection or a computer entering sleep.
 screen -S cmake
 
 sudo rm -rf ~/Work/cmake-*
-bash ~/Downloads/cmake-xpack.git/scripts/build.sh --all
+bash ~/Downloads/cmake-xpack.git/scripts/helper/build.sh --develop --all
 ```
 
 or, for development builds:
 
 ```sh
-bash ~/Downloads/cmake-xpack.git/scripts/build.sh --develop --without-html --linux64 --linux32 --win64 --win32
+bash ~/Downloads/cmake-xpack.git/scripts/helper/build.sh --develop --without-pdf --disable-tests --linux64 --linux32 --win64 --win32
 ```
 
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
@@ -209,24 +223,16 @@ total 102876
 -rw-rw-r-- 1 ilg ilg      101 Sep 29 11:58 xpack-cmake-3.19.8-1-win32-x64.zip.sha
 ```
 
-To copy the files from the build machine to the current development
-machine, either use NFS to mount the entire folder, or open the `deploy`
-folder in a terminal and use `scp`:
-
-```sh
-(cd ~/Work/cmake-*/deploy; scp * ilg@wks:Downloads/xpack-binaries/cmake)
-```
-
-#### Build the Arm GNU/Linux binaries
+### Build the Arm GNU/Linux binaries
 
 The supported Arm architectures are:
 
 - `armhf` for 32-bit devices
-- `arm64` for 64-bit devices
+- `aarch64` for 64-bit devices
 
 The current platform for Arm GNU/Linux production builds is a
-Debian 9, running on an ROCK Pi 4 SBC with 4 GB of RAM
-and 256 GB of fast M.2 SSD. The machine name is `xbba`.
+Raspberry Pi OS 10, running on a Raspberry Pi Compute Module 4, with
+8 GB of RAM and 256 GB of fast M.2 SSD. The machine name is `xbba`.
 
 ```sh
 caffeinate ssh xbba
@@ -242,7 +248,7 @@ Before running a build for the first time, it is recommended to preload the
 docker images.
 
 ```sh
-bash ~/Downloads/cmake-xpack.git/scripts/build.sh preload-images
+bash ~/Downloads/cmake-xpack.git/scripts/helper/build.sh preload-images
 ```
 
 The result should look similar to:
@@ -263,7 +269,13 @@ network connection or a computer entering sleep.
 screen -S cmake
 
 sudo rm -rf ~/Work/cmake-*
-bash ~/Downloads/cmake-xpack.git/scripts/build.sh --all
+bash ~/Downloads/cmake-xpack.git/scripts/helper/build.sh --develop --all
+```
+
+or, for development builds:
+
+```sh
+bash ~/Downloads/cmake-xpack.git/scripts/helper/build.sh --develop --without-pdf --disable-tests --arm64 --arm32 
 ```
 
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
@@ -281,21 +293,13 @@ total 45744
 -rw-rw-r-- 1 ilg ilg      104 Sep 29 09:38 xpack-cmake-3.19.8-1-linux-arm.tar.gz.sha
 ```
 
-To copy the files from the build machine to the current development
-machine, either use NFS to mount the entire folder, or open the `deploy`
-folder in a terminal and use `scp`:
+### Build the macOS binaries
+
+The current platform for macOS production builds is a macOS 10.13.6
+running in a virtual machine.
 
 ```sh
-(cd ~/Work/cmake-*/deploy; scp * ilg@wks:Downloads/xpack-binaries/cmake)
-```
-
-#### Build the macOS binaries
-
-The current platform for macOS production builds is a macOS 10.10.5
-running on a MacBook Pro with 32 GB of RAM and a fast SSD.
-
-```sh
-caffeinate ssh xbbm
+caffeinate ssh xbbm13.local
 ```
 
 To build the latest macOS version:
@@ -304,8 +308,14 @@ To build the latest macOS version:
 screen -S cmake
 
 rm -rf ~/Work/cmake-*
+caffeinate bash ~/Downloads/cmake-xpack.git/scripts/helper/build.sh --develop --osx
+```
 
-caffeinate bash ~/Downloads/cmake-xpack.git/scripts/build.sh --osx
+or, for development builds:
+
+```sh
+sudo rm -rf ~/Work/cmake-arm-*
+caffeinate bash ~/Downloads/cmake-xpack.git/scripts/helper/build.sh --develop --without-pdf --disable-tests --osx 
 ```
 
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
@@ -322,51 +332,53 @@ total 38472
 -rw-r--r--  1 ilg  staff       105 Sep 29 11:56 xpack-cmake-3.19.8-1-darwin-x64.tar.gz.sha
 ```
 
-To copy the files from the build machine to the current development
-machine, either use NFS to mount the entire folder, or open the `deploy`
-folder in a terminal and use `scp`:
+## Subsequent runs
 
-```sh
-(cd ~/Work/cmake-*/deploy; scp * ilg@wks:Downloads/xpack-binaries/cmake)
-```
-
-### Subsequent runs
-
-#### Separate platform specific builds
+### Separate platform specific builds
 
 Instead of `--all`, you can use any combination of:
 
 ```console
---win32 --win64 --linux32 --linux64
---arm --arm64
+--win32 --win64
+--linux32 --linux64
 ```
 
-#### `clean`
+On Arm, instead of `--all`, you can use:
+
+```console
+--arm32 --arm64
+```
+
+### `clean`
 
 To remove most build temporary files, use:
 
 ```sh
-bash ~/Downloads/cmake-xpack.git/scripts/build.sh --all clean
+bash ~/Downloads/cmake-xpack.git/scripts/helper/build.sh --all clean
 ```
 
 To also remove the library build temporary files, use:
 
 ```sh
-bash ~/Downloads/cmake-xpack.git/scripts/build.sh --all cleanlibs
+bash ~/Downloads/cmake-xpack.git/scripts/helper/build.sh --all cleanlibs
 ```
 
 To remove all temporary files, use:
 
 ```sh
-bash ~/Downloads/cmake-xpack.git/scripts/build.sh --all cleanall
+bash ~/Downloads/cmake-xpack.git/scripts/helper/build.sh --all cleanall
 ```
 
 Instead of `--all`, any combination of `--win32 --win64 --linux32 --linux64`
 will remove the more specific folders.
 
-For production builds it is recommended to completely remove the build folder.
+For production builds it is recommended to **completely remove the build folder**:
 
-#### `--develop`
+```sh
+rm -rf ~/Work/cmake-*
+```
+
+### `--develop`
 
 For performance reasons, the actual build folders are internal to each
 Docker run, and are not persistent. This gives the best speed, but has
@@ -375,14 +387,21 @@ the disadvantage that interrupted builds cannot be resumed.
 For development builds, it is possible to define the build folders in
 the host file system, and resume an interrupted build.
 
-#### `--debug`
+In addition, the builds are more verbose.
+
+### `--debug`
 
 For development builds, it is also possible to create everything with
 `-g -O0` and be able to run debug sessions.
 
-#### Interrupted builds
+### --jobs
 
-The Docker scripts run with root privileges. This is generally not a
+By default, the build steps use all available cores. If, for any reason,
+parallel builds fail, it is possible to reduce the load.
+
+### Interrupted builds
+
+The Docker scripts may run with root privileges. This is generally not a
 problem, since at the end of the script the output files are reassigned
 to the actual user.
 
@@ -418,20 +437,24 @@ $ tree -L 2 /Users/ilg/Library/xPacks/\@xpack-dev-tools/cmake/3.19.8-1.1/.conten
 │   ├── ccmake
 │   ├── cmake
 │   ├── cpack
-│   ├── ctest
-│   ├── libc++.1.dylib
-│   ├── libc++abi.dylib
-│   ├── libgcc_s.1.dylib
-│   └── libncurses.6.dylib
+│   └── ctest
 ├── distro-info
+│   ├── CHANGELOG.md
 │   ├── licenses
 │   ├── patches
 │   └── scripts
+├── doc
+│   └── cmake-3.19
+├── libexec
+│   └── libncurses.6.dylib
 └── share
     ├── aclocal
-    └── cmake-3.18
+    ├── bash-completion
+    ├── cmake-3.19
+    ├── emacs
+    └── vim
 
-8 directories, 9 files
+14 directories, 7 files
 ```
 
 No other files are installed in any system folders or other locations.

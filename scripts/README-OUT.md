@@ -1,38 +1,12 @@
 # The xPack CMake
 
-This is the **xPack** distribution of the **CMake** build system.
+**The xPack CMake** is the **xPack** version of
+the **CMake** build system, an open source project.
 
-For details, see
-[The xPack CMake](https://xpack.github.io/cmake/) pages.
+For more details, please read the corresponding release pages:
 
-## Compliance
-
-The xPack CMake generally follows the official
-[cmake](http://cmake.org) build releases.
-
-## Changes
-
-- none
-
-## Build
-
-The scripts used to build this distribution are in:
-
-- `distro-info/scripts`
-
-For the prerequisites and more details on the build procedure, please see the
-[How to build](https://github.com/xpack-dev-tools/cmake-xpack/blob/xpack/README-BUILD.md) page.
-
-## Documentation
-
-The documentation is available locally in `doc/cmake-X.Y/html/index.html`,
-or [online](https://cmake.org/documentation/).
-
-## More info
-
-For more info and support, please see the xPack project pages from:
-
-  http://xpack.github.io/dev-tools/cmake
+- <https://xpack.github.io/cmake/releases/>
+- <http://cmake.org>
 
 Thank you for using open source software,
 

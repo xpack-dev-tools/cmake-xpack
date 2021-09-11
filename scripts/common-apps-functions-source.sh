@@ -15,8 +15,7 @@
 
 function build_cmake()
 {
-  # Do not make it local!
-  CMAKE_VERSION="$1"
+  local cmake_version="$1"
 
   # https://cmake.org
   # https://gitlab.kitware.com/cmake/cmake
@@ -30,64 +29,53 @@ function build_cmake()
 
   # Do not make them local!
   # The folder name as resulted after being extracted from the archive.
-  CMAKE_SRC_FOLDER_NAME="cmake-${CMAKE_VERSION}"
+  local cmake_src_folder_name="cmake-${cmake_version}"
+  
   # The folder name  for build, licenses, etc.
-  CMAKE_FOLDER_NAME="${CMAKE_SRC_FOLDER_NAME}"
+  local cmake_folder_name="${cmake_src_folder_name}"
 
-  local cmake_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-${CMAKE_FOLDER_NAME}-installed"
+  mkdir -pv "${LOGS_FOLDER_PATH}/${cmake_folder_name}"
 
+  local cmake_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-${cmake_folder_name}-installed"
   if [ ! -f "${cmake_stamp_file_path}" ]
   then
 
     cd "${SOURCES_FOLDER_PATH}"
 
-    if [ ! -d "${SOURCES_FOLDER_PATH}/${CMAKE_SRC_FOLDER_NAME}" ]
+    if [ ! -d "${SOURCES_FOLDER_PATH}/${cmake_src_folder_name}" ]
     then
       (
-        xbb_activate
-
         cd "${SOURCES_FOLDER_PATH}"
         git_clone "${CMAKE_GIT_URL}" "${CMAKE_GIT_BRANCH}" \
-            "${CMAKE_GIT_COMMIT}" "${CMAKE_SRC_FOLDER_NAME}"
+            "${CMAKE_GIT_COMMIT}" "${cmake_src_folder_name}"
       )
     fi
 
     (
-      mkdir -pv "${BUILD_FOLDER_PATH}/${CMAKE_FOLDER_NAME}"
-      cd "${BUILD_FOLDER_PATH}/${CMAKE_FOLDER_NAME}"
+      mkdir -pv "${BUILD_FOLDER_PATH}/${cmake_folder_name}"
+      cd "${BUILD_FOLDER_PATH}/${cmake_folder_name}"
 
-      mkdir -pv "${LOGS_FOLDER_PATH}/${CMAKE_FOLDER_NAME}"
-
-      xbb_activate
       xbb_activate_installed_dev
 
-      if [ "${TARGET_PLATFORM}" == "darwin" ]
+      if false # [ "${TARGET_PLATFORM}" == "darwin" ]
       then
-        # error: variably modified 'bytes' at file scope
+        # error: variable modified 'bytes' at file scope
         export CC=clang
         export CXX=clang++
-      elif [ "${TARGET_PLATFORM}" == "win32" ]
-      then
-        prepare_gcc_env "${CROSS_COMPILE_PREFIX}-"
       fi
 
       CFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_CFLAGS} | sed -e 's|-O[0123s]||')"
       CXXFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_CFLAGS} | sed -e 's|-O[0123s]||')"
+
       LDFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_LDFLAGS_APP_STATIC_GCC} | sed -e 's|-O[0123s]||')"
       if [ "${TARGET_PLATFORM}" == "linux" ]
       then
         LDFLAGS+=" -Wl,-rpath,${LD_LIBRARY_PATH}"
       fi      
-      if [ "${IS_DEVELOP}" == "y" ]
-      then
-        LDFLAGS+=" -v"
-      fi
 
       export CFLAGS
       export CXXFLAGS
       export LDFLAGS
-
-      env | sort
 
       local build_type
       if [ "${IS_DEBUG}" == "y" ]
@@ -100,6 +88,11 @@ function build_cmake()
       if true # [ ! -f "CMakeCache.txt" ]
       then
         (
+          if [ "${IS_DEVELOP}" == "y" ]
+          then
+            env | sort
+          fi
+
           echo
           echo "Running cmake cmake..."
 
@@ -144,6 +137,11 @@ function build_cmake()
             
             # To search only curses in the given path:
             config_options+=("-DCurses_ROOT=${LIBS_INSTALL_FOLDER_PATH}")
+
+            # Hack: Otherwise the configure step fails with:
+            # CMake Error at CMakeLists.txt:107 (message):
+            # The C++ compiler does not support C++11 (e.g.  std::unique_ptr).
+            config_options+=("-DCMake_HAVE_CXX_UNIQUE_PTR=ON")
           elif [ "${TARGET_PLATFORM}" == "linux" ]
           then
             config_options+=("-DBUILD_CursesDialog=ON")
@@ -167,9 +165,9 @@ function build_cmake()
           run_verbose_timed cmake \
             ${config_options[@]} \
             \
-            "${SOURCES_FOLDER_PATH}/${CMAKE_SRC_FOLDER_NAME}"
+            "${SOURCES_FOLDER_PATH}/${cmake_src_folder_name}"
 
-        ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${CMAKE_FOLDER_NAME}/cmake-output.txt"
+        ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${cmake_folder_name}/cmake-output.txt"
       fi
 
       (
@@ -183,7 +181,7 @@ function build_cmake()
           --config "${build_type}" \
 
         (
-          # The install procedure runs some resulted exxecutables, which require
+          # The install procedure runs some resulted executables, which require
           # the libssl and libcrypt libraries from XBB.
           xbb_activate_libs
 
@@ -198,23 +196,16 @@ function build_cmake()
 
         )
 
-        prepare_app_names
-
-        for app in ${apps_names[@]}
-        do
-          prepare_app_libraries "${APP_PREFIX}/bin/${app}"
-        done
-
-      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${CMAKE_FOLDER_NAME}/build-output.txt"
+      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${cmake_folder_name}/build-output.txt"
 
       copy_license \
-        "${SOURCES_FOLDER_PATH}/${CMAKE_SRC_FOLDER_NAME}" \
-        "${CMAKE_FOLDER_NAME}"
+        "${SOURCES_FOLDER_PATH}/${cmake_src_folder_name}" \
+        "${cmake_folder_name}"
 
       (
         cd "${BUILD_FOLDER_PATH}"
 
-        copy_cmake_logs "${CMAKE_FOLDER_NAME}"
+        copy_cmake_logs "${cmake_folder_name}"
       )
     )
 
@@ -227,16 +218,6 @@ function build_cmake()
   tests_add "test_cmake"
 }
 
-function prepare_app_names()
-{
-  apps_names=("cmake" "ctest" "cpack")
-  if [ "${TARGET_PLATFORM}" != "win32" ]
-  then
-    apps_names+=("ccmake")
-  fi
-}
-
-
 # -----------------------------------------------------------------------------
 
 function test_cmake()
@@ -244,7 +225,11 @@ function test_cmake()
   echo
   echo "Running the binaries..."
 
-  prepare_app_names
+  apps_names=("cmake" "ctest" "cpack")
+  if [ "${TARGET_PLATFORM}" != "win32" ]
+  then
+    apps_names+=("ccmake")
+  fi
 
   for app in ${apps_names[@]}
   do
@@ -273,8 +258,8 @@ function test_cmake()
       xbb_activate
       run_app "${APP_PREFIX}/bin/cmake" \
         -G Ninja \
-        -DCMAKE_PREFIX_PATH=${XBB_FOLDER_PATH} \
-        "${SOURCES_FOLDER_PATH}/${CMAKE_SRC_FOLDER_NAME}"
+        -DCMAKE_PREFIX_PATH="${XBB_FOLDER_PATH}" \
+        "${SOURCES_FOLDER_PATH}/cmake-${CMAKE_VERSION}"
     )
   fi
 

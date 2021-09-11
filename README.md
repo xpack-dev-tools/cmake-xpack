@@ -1,21 +1,33 @@
 
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/xpack-dev-tools/cmake-xpack)](https://github.com/xpack-dev-tools/cmake-xpack/releases)
 [![npm (scoped)](https://img.shields.io/npm/v/@xpack-dev-tools/cmake.svg)](https://www.npmjs.com/package/@xpack-dev-tools/cmake/)
-[![npm](https://img.shields.io/npm/dt/@xpack-dev-tools/cmake.svg)](https://www.npmjs.com/package/@xpack-dev-tools/cmake/)
 
 # The xPack CMake
+
+A standalone cross-platform (Windows/macOS/Linux) CMake
+binary distribution.
+
+In addition to the the binary archives and the package meta data,
+this project also includes the build scripts.
+
+## Overview
 
 This open source project is hosted on GitHub as
 [`xpack-dev-tools/cmake-xpack`](https://github.com/xpack-dev-tools/cmake-xpack)
 and provides the platform specific binaries for the
 [xPack CMake](https://xpack.github.io/cmake/).
 
-This distribution follows the official [CMake](http://cmake.org) build system.
+This distribution follows the official [CMake](http://cmake.org)
+build system project.
 
 The binaries can be installed automatically as **binary xPacks** or manually as
 **portable archives**.
 
-In addition to the package meta data, this project also includes
-the build scripts.
+## Release schedule
+
+This distribution is generally one minor release behind the upstream releases.
+In practical terms, when the minor release number changes, it awaits a few
+more weeks to get the latest patch release.
 
 ## User info
 
@@ -40,28 +52,50 @@ follow the instructions from the
 #### Install
 
 With the `xpm` tool available, installing
-the latest version of the package is quite easy:
+the latest version of the package and adding it as
+a dependency for a project is quite easy:
+
+```sh
+cd my-project
+xpm init # Only at first use.
+
+xpm install @xpack-dev-tools/cmake@latest
+
+ls -l xpacks/.bin
+```
+
+This command will:
+
+- install the latest available version,
+into the central xPacks store, if not already there
+- add symbolic links to the central store
+(or `.cmd` forwarders on Windows) into
+the local `xpacks/.bin` folder.
+
+The central xPacks store is a platform dependent
+folder; check the output of the `xpm` command for the actual
+folder used on your platform).
+This location is configurable via the environment variable
+`XPACKS_REPO_FOLDER`; for more details please check the
+[xpm folders](https://xpack.github.io/xpm/folders/) page.
+
+It is also possible to install CMake globally, in the user home folder:
 
 ```sh
 xpm install --global @xpack-dev-tools/cmake@latest
 ```
 
-This command will always install the latest available version,
-into the central xPacks store, which is a platform dependent folder
-(check the output of the `xpm` command for the actual folder used on
-your platform).
-
-This location is configurable using the environment variable
-`XPACKS_REPO_FOLDER`; for more details please check the
-[xpm folders](https://xpack.github.io/xpm/folders/) page.
-
-xPacks aware tools automatically
-identify binaries installed with
-`xpm` and provide a convenient method to manage paths.
-
 #### Uninstall
 
-To remove the installed xPack, the command is similar:
+To remove the links from the current project:
+
+```sh
+cd my-project
+
+xpm uninstall @xpack-dev-tools/cmake
+```
+
+To completely remove the package from the global store:
 
 ```sh
 xpm uninstall --global @xpack-dev-tools/cmake
@@ -69,7 +103,8 @@ xpm uninstall --global @xpack-dev-tools/cmake
 
 ### Manual install
 
-For all platforms, the **xPack CMake** binaries are released as portable
+For all platforms, the **xPack CMake**
+binaries are released as portable
 archives that can be installed in any location.
 
 The archives can be downloaded from the
@@ -79,9 +114,9 @@ page.
 For more details please read the
 [Install](https://xpack.github.io/cmake/install/) page.
 
-### Version information
+### Versioning
 
-The version strings used by the Ninja project are three number string
+The version strings used by the GCC project are three number string
 like `3.19.8`; to this string the xPack distribution adds a four number,
 but since semver allows only three numbers, all additional ones can
 be added only as pre-release strings, separated by a dash,
@@ -96,6 +131,7 @@ with caution, and prefer exact matches, like `3.19.8-1.1`.
 
 - [How to build](https://github.com/xpack-dev-tools/cmake-xpack/blob/xpack/README-BUILD.md)
 - [How to make new releases](https://github.com/xpack-dev-tools/cmake-xpack/blob/xpack/README-RELEASE.md)
+- [Developer info](https://github.com/xpack-dev-tools/cmake-xpack/blob/xpack/README-DEVELOP.md)
 
 ## Support
 
@@ -122,7 +158,7 @@ corresponding licenses are available in the installed
   - latest xPack release
 [![Github All Releases](https://img.shields.io/github/downloads/xpack-dev-tools/cmake-xpack/latest/total.svg)](https://github.com/xpack-dev-tools/cmake-xpack/releases/)
   - all xPack releases [![Github All Releases](https://img.shields.io/github/downloads/xpack-dev-tools/cmake-xpack/total.svg)](https://github.com/xpack-dev-tools/cmake-xpack/releases/)
-  - [individual file counters](https://www.somsubhra.com/github-release-stats/?username=xpack-dev-tools&repository=cmake-xpack) (grouped per release)
+  - [individual file counters](https://somsubhra.github.io/github-release-stats/?username=xpack-dev-tools&repository=cmake-xpack) (grouped per release)
 - npmjs.com [`@xpack-dev-tools/cmake`](https://www.npmjs.com/package/@xpack-dev-tools/cmake/) xPack
   - latest release, per month
 [![npm (scoped)](https://img.shields.io/npm/v/@xpack-dev-tools/cmake.svg)](https://www.npmjs.com/package/@xpack-dev-tools/cmake/)
