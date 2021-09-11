@@ -19,6 +19,23 @@
 
 function run_tests()
 {
+
+  CMAKE_VERSION="$(echo "${RELEASE_VERSION}" | sed -e 's|-[0-9]*||')"
+
+  if [ ! -d "${SOURCES_FOLDER_PATH}/cmake-${CMAKE_VERSION}" ]
+  then
+      CMAKE_GIT_URL=${CMAKE_GIT_URL:-"https://github.com/xpack-dev-tools/cmake.git"}
+      CMAKE_GIT_BRANCH=${CMAKE_GIT_BRANCH:-"v${CMAKE_VERSION}-xpack"}
+      CMAKE_GIT_COMMIT=${CMAKE_GIT_COMMIT:-"v${CMAKE_VERSION}-xpack"}
+      (
+        mkdir -pv "${SOURCES_FOLDER_PATH}"
+        cd "${SOURCES_FOLDER_PATH}"
+
+        git_clone "${CMAKE_GIT_URL}" "${CMAKE_GIT_BRANCH}" \
+            "${CMAKE_GIT_COMMIT}" "cmake-${CMAKE_VERSION}"
+      )
+  fi
+
   test_cmake
 }
 
