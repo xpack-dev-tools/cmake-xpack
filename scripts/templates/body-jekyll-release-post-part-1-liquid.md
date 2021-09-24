@@ -3,7 +3,7 @@ title:  xPack CMake {{ RELEASE_VERSION }} released
 
 TODO: select one summary
 
-summary: "Version {{ RELEASE_VERSION }} is a new release of the **xPack CMake** package; it follows the upstream release."
+summary: "Version {{ RELEASE_VERSION }} is a new release; it follows the upstream release."
 
 version: {{ RELEASE_VERSION }}
 npm_subversion: 1
@@ -69,16 +69,14 @@ To install this specific version, use:
 xpm install @xpack-dev-tools/cmake@{% raw %}{{ page.version }}.{{ page.npm_subversion }}{% endraw %}
 ```
 
-For xPacks aware tools, like the **Eclipse Embedded C/C++ plug-ins**,
-it is also possible to install CMake globally, in the user home folder.
+It is also possible to install Meson Build globally, in the user home folder,
+but this requires xPack aware tools to automatically identify them and
+manage paths.
 
 ```sh
 xpm install --global @xpack-dev-tools/cmake@latest
 ```
 
-Eclipse will automatically
-identify binaries installed with
-`xpm` and provide a convenient method to manage paths.
 
 ### Uninstall
 
@@ -132,8 +130,8 @@ to redirect invocations to the central packages repository.
 On all platforms the packages are standalone, and expect only the standard
 runtime to be present on the host.
 
-All dependencies that are build as shared libraries are copied locally in the
-same folder as the executable.
+All dependencies that are build as shared libraries are copied locally
+in the `libexec` folder (or in the same folder as the executable for Windows).
 
 ### `DT_RPATH` and `LD_LIBRARY_PATH`
 
@@ -176,13 +174,13 @@ The binaries were built using the
 of build environments based on slightly older distributions, that should be
 compatible with most recent systems.
 
-- Intel GNU/Linux: all binaries were built with GCC 9.3, running in an
+- Intel GNU/Linux: all binaries were built with GCC 11.1, running in an
   Ubuntu 12 Docker container
-- Arm GNU/Linux: all binaries were built with GCC 9.3, running in an
+- Arm GNU/Linux: all binaries were built with GCC 11.1, running in an
   Ubuntu 16 Docker container (added in mid-2020)
-- Windows: all binaries were built with mingw-w64 GCC 9.3, running in an
+- Windows: all binaries were built with mingw-w64 GCC 11.1, running in an
   Ubuntu 12 Docker container
-- macOS: all binaries were built with GCC 9.3, running in a separate
+- macOS: all binaries were built with GCC 11.1, running in a separate
   folder on macOS 10.13.6, but were tested and also run on 10.10.
 
 ## Build
