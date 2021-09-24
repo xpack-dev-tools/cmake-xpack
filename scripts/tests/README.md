@@ -11,10 +11,10 @@ The test script is part of the CMake xPack:
 ```sh
 rm -rf ~/Downloads/cmake-xpack.git; \
 git clone \
-  --recurse-submodules \
   --branch xpack-develop \
   https://github.com/xpack-dev-tools/cmake-xpack.git  \
-  ~/Downloads/cmake-xpack.git
+  ~/Downloads/cmake-xpack.git; \
+git -C ~/Downloads/cmake-xpack.git submodule update --init --recursive
 ```
 
 ## Start a local test
