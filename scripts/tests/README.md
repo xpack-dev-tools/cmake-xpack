@@ -19,7 +19,7 @@ git -C ~/Downloads/cmake-xpack.git submodule update --init --recursive
 
 ## Start a local test
 
-To check if OpenCOD starts on the current platform, run a native test:
+To check if CMake starts on the current platform, run a native test:
 
 ```sh
 bash ~/Downloads/cmake-xpack.git/scripts/helper/tests/native-test.sh \
