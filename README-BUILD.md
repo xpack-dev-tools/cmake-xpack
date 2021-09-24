@@ -26,8 +26,8 @@ For native builds, see the `build-native.sh` script.
 
 ## Repositories
 
-- <https://github.com/xpack-dev-tools/cmake-xpack.git> - the URL of the
-  [xPack CMake fork](https://github.com/xpack-dev-tools/cmake-xpack)
+- <https://github.com/xpack-dev-tools/cmake-xpack.git> -
+  the URL of the xPack build scripts repository
 - <https://github.com/xpack-dev-tools/build-helper> - the URL of the
   xPack build helper, used as the `scripts/helper` submodule
 - <https://gitlab.kitware.com/cmake/cmake> - the URL of the original CMake repo
