@@ -175,11 +175,19 @@ function build_cmake()
         echo
         echo "Running cmake build..."
 
-        run_verbose_timed cmake \
-          --build . \
-          --parallel ${JOBS} \
-          --verbose \
-          --config "${build_type}" \
+        if [ "${IS_DEVELOP}" == "y" ]
+        then
+          run_verbose_timed cmake \
+            --build . \
+            --parallel ${JOBS} \
+            --verbose \
+            --config "${build_type}"
+        else
+          run_verbose_timed cmake \
+            --build . \
+            --parallel ${JOBS} \
+            --config "${build_type}" \
+        fi
 
         (
           # The install procedure runs some resulted executables, which require
