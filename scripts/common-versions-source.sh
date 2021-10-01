@@ -18,7 +18,7 @@ function build_versions()
   # Don't use a comma since the regular expression
   # that processes this string in the Makefile, silently fails and the 
   # bfdver.h file remains empty.
-  BRANDING="${BRANDING} ${TARGET_MACHINE}"
+  BRANDING="${DISTRO_NAME} ${APP_NAME}" ${TARGET_MACHINE}"
 
   # cmake_BUILD_GIT_BRANCH=${cmake_BUILD_GIT_BRANCH:-"master"}
   # cmake_BUILD_GIT_COMMIT=${cmake_BUILD_GIT_COMMIT:-"HEAD"}
