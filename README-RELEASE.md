@@ -334,7 +334,7 @@ will install the package via `xpm install` on all supported platforms.
 
 The test results are available from:
 
-- <https://travis-ci.com/github/xpack-dev-tools/cmake-xpack>
+- <https://travis-ci.com/github/xpack-dev-tools/cmake-xpack/>
 
 ## Update the repo
 
