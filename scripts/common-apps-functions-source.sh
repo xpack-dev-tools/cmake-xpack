@@ -186,7 +186,7 @@ function build_cmake()
           run_verbose_timed cmake \
             --build . \
             --parallel ${JOBS} \
-            --config "${build_type}" \
+            --config "${build_type}"
         fi
 
         (
