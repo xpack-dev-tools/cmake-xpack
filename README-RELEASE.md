@@ -218,14 +218,10 @@ The test results are available from
 
 Install the binaries on all platforms.
 
-```sh
-xpm install --global @xpack-dev-tools/cmake@next
-```
-
 On GNU/Linux systems, including Raspberry Pi, use the following commands:
 
 ```sh
-~/.local/xPacks/@xpack-dev-tools/cmake/3.19.8-1.1/.content/bin/cmake --version
+.../xpack-cmake-3.19.8-1/bin/cmake --version
 
 cmake version 3.19.8
 
@@ -235,7 +231,7 @@ CMake suite maintained and supported by Kitware (kitware.com/cmake).
 On macOS, use:
 
 ```sh
-~/Library/xPacks/@xpack-dev-tools/cmake/3.19.8-1.1/.content/bin/cmake --version
+.../xpack-cmake-3.19.8-1/bin/cmake --version
 
 cmake version 3.19.8
 
@@ -245,7 +241,7 @@ CMake suite maintained and supported by Kitware (kitware.com/cmake).
 On Windows use:
 
 ```doscon
-%USERPROFILE%\AppData\Roaming\xPacks\@xpack-dev-tools\cmake\3.19.8-1.1\.content\bin\cmake --version
+...\xpack-cmake-3.19.8-1\bin\cmake --version
 
 cmake version 3.19.8
 
