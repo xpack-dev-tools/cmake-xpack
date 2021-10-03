@@ -202,7 +202,7 @@ or, for development builds:
 
 ```sh
 sudo rm -rf ~/Work/cmake-*
-bash ~/Downloads/cmake-xpack.git/scripts/helper/build.sh --develop --without-pdf --disable-tests --linux64 --linux32 --win64 --win32
+bash ~/Downloads/cmake-xpack.git/scripts/helper/build.sh --develop --without-pdf --without-html --disable-tests --linux64 --linux32 --win64 --win32
 ```
 
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
@@ -277,7 +277,7 @@ or, for development builds:
 
 ```sh
 sudo rm -rf ~/Work/cmake-*
-bash ~/Downloads/cmake-xpack.git/scripts/helper/build.sh --develop --without-pdf --disable-tests --arm64 --arm32 
+bash ~/Downloads/cmake-xpack.git/scripts/helper/build.sh --develop --without-pdf --without-html --disable-tests --arm64 --arm32 
 ```
 
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
@@ -318,7 +318,7 @@ or, for development builds:
 
 ```sh
 rm -rf ~/Work/cmake-arm-*
-caffeinate bash ~/Downloads/cmake-xpack.git/scripts/helper/build.sh --develop --without-pdf --disable-tests --osx 
+caffeinate bash ~/Downloads/cmake-xpack.git/scripts/helper/build.sh --develop --without-pdf --without-html --disable-tests --osx 
 ```
 
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
