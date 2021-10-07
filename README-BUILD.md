@@ -58,7 +58,7 @@ The build scripts are available in the `scripts` folder of the
 [`xpack-dev-tools/cmake-xpack`](https://github.com/xpack-dev-tools/cmake-xpack)
 Git repo.
 
-To download them, issue the following two commands:
+To download them, issue the following commands:
 
 ```sh
 rm -rf ~/Downloads/cmake-xpack.git; \
@@ -423,8 +423,10 @@ program from there. For example on macOS the output should
 look like:
 
 ```console
-$ /Users/ilg/Work/cmake-3.19.8-1/darwin-x64/install/cmake/bin/cmake --version
-cmake version 3.19.8
+$ .../xpack-cmake-3.19.8-1/bin/cmake --version
+cmake version 3.19.8-g290a19d
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
 ```
 
 ## Installed folders
