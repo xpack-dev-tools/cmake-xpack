@@ -35,7 +35,33 @@ function build_versions()
   fi
 
   # Keep them in sync with combo archive content.
-  if [[ "${RELEASE_VERSION}" =~ 3\.19\.* ]] 
+  if [[ "${RELEASE_VERSION}" =~ 3\.20\.* ]] 
+  then
+    # -------------------------------------------------------------------------
+
+    if [ "${RELEASE_VERSION}" == "3.20.6-1" ]
+    then
+      CMAKE_GIT_URL=${CMAKE_GIT_URL:-"https://github.com/xpack-dev-tools/cmake.git"}
+      CMAKE_GIT_BRANCH=${CMAKE_GIT_BRANCH:-"v3.20.6-xpack"}
+      CMAKE_GIT_COMMIT=${CMAKE_GIT_COMMIT:-"c90b991490abe9cbd0399e28016fa532a2b2846f"}
+    else
+      echo "Unsupported ${RELEASE_VERSION}"
+    fi
+
+    (
+      xbb_activate
+      
+      if [ "${TARGET_PLATFORM}" != "win32" ]
+      then
+        NCURSES_DISABLE_WIDEC="y"
+        build_ncurses "6.2"
+      fi
+
+      build_xz "5.2.5"
+      
+      build_cmake "${CMAKE_VERSION}"
+    )
+  elif [[ "${RELEASE_VERSION}" =~ 3\.19\.* ]] 
   then
     # -------------------------------------------------------------------------
 
