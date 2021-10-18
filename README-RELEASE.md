@@ -167,7 +167,7 @@ in the environment.
 
 This command uses the `xpack-develop` branch of this repo.
 
-The builds take about 14 minutes to complete.
+The builds take about 60 minutes to complete.
 
 The workflow result and logs are available from the
 [Actions](https://github.com/xpack-dev-tools/cmake-xpack/actions/) page.
@@ -231,7 +231,6 @@ On GNU/Linux systems, including Raspberry Pi, use the following commands:
 
 ```sh
 .../xpack-cmake-3.20.6-1/bin/cmake --version
-
 cmake version 3.20.6
 
 CMake suite maintained and supported by Kitware (kitware.com/cmake).
@@ -241,7 +240,6 @@ On macOS, use:
 
 ```sh
 .../xpack-cmake-3.20.6-1/bin/cmake --version
-
 cmake version 3.20.6
 
 CMake suite maintained and supported by Kitware (kitware.com/cmake).
@@ -251,7 +249,6 @@ On Windows use:
 
 ```doscon
 ...\xpack-cmake-3.20.6-1\bin\cmake --version
-
 cmake version 3.20.6
 
 CMake suite maintained and supported by Kitware (kitware.com/cmake).
@@ -268,6 +265,8 @@ The result is a
 tagged like **v3.20.6-1** (mind the dash in the middle!) and
 named like **xPack CMake v3.20.6-1** (mind the dash),
 with all binaries attached.
+
+- edit the draft and attach it to the `xpack-develop` branch (important!)
 
 ## Prepare a new blog post
 
