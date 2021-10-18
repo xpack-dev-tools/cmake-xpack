@@ -236,7 +236,7 @@ function test_cmake()
 
   if [ -d "xpacks/.bin" ]
   then
-    TEST_PREFIX="xpacks/.bin"
+    TEST_PREFIX="$(pwd)/xpacks/.bin"
   elif [ -d "${APP_PREFIX}/bin" ]
   then
     TEST_PREFIX="${APP_PREFIX}/bin"
