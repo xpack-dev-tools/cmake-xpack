@@ -79,6 +79,9 @@ repository, in the `xpack-dev-tools/cmake` Git repo:
 - add a `v3.20.6-1-xpack` tag; enable push to origin
 - remember the current commit ID
 
+Note: the branch name and the tag name are used during tests, to pull
+the repo.
+
 ### Update the version specific code
 
 - open the `common-versions-source.sh` file
@@ -337,8 +340,8 @@ After a few moments the version will be visible at:
 Run the xPack action `trigger-workflow-test-xpm`, this
 will install the package via `xpm install` on all supported platforms.
 
-TThe test results are available from
-[travis-ci.com](https://app.travis-ci.com/github/xpack-dev-tools/cmake-xpack/builds/).
+The tests results are available from the
+[Actions](https://github.com/xpack-dev-tools/cmake-xpack/actions/) page.
 
 ## Update the repo
 
