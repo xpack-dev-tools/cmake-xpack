@@ -71,25 +71,24 @@ recreate the archives with the correct file.
 To keep the development repository fork in sync with the upstream CMake
 repository, in the `xpack-dev-tools/cmake` Git repo:
 
-- checkout `master`
-- merge from `upstream/master`
-- checkout `xpack-develop`
-- merge `master`
-- fix conflicts (in `60-cmake.rules` and possibly other)
-- checkout `xpack`
-- merge `xpack-develop`
-
-Possibly add a tag here.
+- checkout the `v3.20.6` tag
+- create a branch like `v3.20.6-xpack`
+- chery pick the commit to _add cmd.exe support_ from a previous release;
+  enable commit immediately
+- push to `origin`
+- add a `v3.20.6-1-xpack` tag; enable push to origin
+- remember the current commit ID
 
 ### Update the version specific code
 
 - open the `common-versions-source.sh` file
 - add a new `if` with the new version before the existing code
+- update the `CMAKE_GIT_BRANCH` to `v3.20.6-xpack`
+- update the `CMAKE_GIT_COMMIT` to the current commit ID
 
 ### Update helper
 
 With Sourcetree, go to the helper repo and update to the latest master commit.
-
 
 ## Build
 
