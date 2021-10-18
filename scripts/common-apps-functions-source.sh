@@ -234,6 +234,17 @@ function test_cmake()
   echo
   echo "Running the binaries..."
 
+  if [ -d "xpacks/.bin" ]
+  then
+    TEST_PREFIX="xpacks/.bin"
+  elif [ -d "${APP_PREFIX}/bin" ]
+  then
+    TEST_PREFIX="${APP_PREFIX}/bin"
+  else
+    echo "Wrong folder."
+    exit 1
+  fi
+
   apps_names=("cmake" "ctest" "cpack")
   if [ "${TARGET_PLATFORM}" != "win32" ]
   then
@@ -242,8 +253,8 @@ function test_cmake()
 
   for app in ${apps_names[@]}
   do
-    run_app "${APP_PREFIX}/bin/${app}" --version
-    run_app "${APP_PREFIX}/bin/${app}" --help
+    run_app "${TEST_PREFIX}/${app}" --version
+    run_app "${TEST_PREFIX}/${app}" --help
   done
 
   # ---------------------------------------------------------------------------
@@ -270,7 +281,7 @@ function test_cmake()
       echo "Testing if it can generate itself..."
 
       # xbb_activate
-      run_app "${APP_PREFIX}/bin/cmake" \
+      run_app "${TEST_PREFIX}/cmake" \
         "-DCMAKE_USE_OPENSSL=OFF" \
         "${SOURCES_FOLDER_PATH}/cmake-${CMAKE_VERSION}"
     )
