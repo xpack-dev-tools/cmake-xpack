@@ -27,7 +27,7 @@ function build_versions()
   # will be copied to the archive.
   # README_OUT_FILE_NAME=${README_OUT_FILE_NAME:-"README-${RELEASE_VERSION}.md"}
 
-  CMAKE_VERSION="$(echo "${RELEASE_VERSION}" | sed -e 's|-[0-9]*||')"
+  CMAKE_VERSION="$(echo "${RELEASE_VERSION}" | sed -e 's|-.*||')"
 
   if [ "${TARGET_PLATFORM}" == "win32" ]
   then

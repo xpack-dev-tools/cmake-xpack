@@ -20,7 +20,7 @@
 function run_tests()
 {
 
-  CMAKE_VERSION="$(echo "${RELEASE_VERSION}" | sed -e 's|-[0-9]*||')"
+  CMAKE_VERSION="$(echo "${RELEASE_VERSION}" | sed -e 's|-.*||')"
 
   if [ ! -d "${SOURCES_FOLDER_PATH}/cmake-${CMAKE_VERSION}" ]
   then
