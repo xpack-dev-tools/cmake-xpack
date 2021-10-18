@@ -1,6 +1,10 @@
 # Change & release log
 
-Releases in reverse chronological order.
+Entries in this file are in reverse chronological order.
+
+## 2021-10-18
+
+- v3.20.6-1 prepared
 
 ## 2021-09-11
 

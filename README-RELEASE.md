@@ -19,10 +19,19 @@ In the `xpack-dev-tools/cmake-xpack` Git repo:
 
 No need to add a tag here, it'll be added when the release is created.
 
+### Check the latest upstream release
+
+Check the CMake GitHub [releases](https://github.com/Kitware/CMake/releases)
+and compare the the xPack [releases](https://github.com/xpack-dev-tools/cmake-xpack/releases).
+Find the latest release and go 1-2 minor releases back; the purpose is
+to find the one which looks old enought to be the one which will not be
+further updated (this is tricky, and failing will
+require an extra release).
+
 ### Increase the version
 
-Determine the version (like `3.19.8`) and update the `scripts/VERSION`
-file; the format is `3.19.8-1`. The fourth number is the xPack release number
+Determine the version (like `3.20.6`) and update the `scripts/VERSION`
+file; the format is `3.20.6-1`. The fourth number is the xPack release number
 of this version. A fifth number will be added when publishing
 the package on the `npm` server.
 
@@ -32,7 +41,7 @@ Check GitHub issues and pull requests:
 
 - <https://github.com/xpack-dev-tools/cmake-xpack/issues/>
 
-and fix them; assign them to a milestone (like `3.19.8-1`).
+and fix them; assign them to a milestone (like `3.20.6-1`).
 
 ### Check `README.md`
 
@@ -46,25 +55,16 @@ but in the version specific release page.
 - update version in `README-BUILD.md`
 - update version in `README.md`
 
-## Update `CHANGELOG.md`
+### Update `CHANGELOG.md`
 
 - open the `CHANGELOG.md` file
 - check if all previous fixed issues are in
-- add a new entry like _v3.19.8-1 prepared_
-- commit with a message like _prepare v3.19.8-1_
+- add a new entry like _v3.20.6-1 prepared_
+- commit with a message like _prepare v3.20.6-1_
 
 Note: if you missed to update the `CHANGELOG.md` before starting the build,
 edit the file and rerun the build, it should take only a few minutes to
 recreate the archives with the correct file.
-
-### Update the version specific code
-
-- open the `common-versions-source.sh` file
-- add a new `if` with the new version before the existing code
-
-### Update helper
-
-With Sourcetree, go to the helper repo and update to the latest master commit.
 
 ### Merge upstream repo
 
@@ -81,6 +81,16 @@ repository, in the `xpack-dev-tools/cmake` Git repo:
 
 Possibly add a tag here.
 
+### Update the version specific code
+
+- open the `common-versions-source.sh` file
+- add a new `if` with the new version before the existing code
+
+### Update helper
+
+With Sourcetree, go to the helper repo and update to the latest master commit.
+
+
 ## Build
 
 ### Development run the build scripts
@@ -91,24 +101,24 @@ or the production machine (`xbbm`):
 ```sh
 sudo rm -rf ~/Work/cmake-*
 
-caffeinate bash ~/Downloads/cmake-xpack.git/scripts/helper/build.sh --develop --without-pdf --without-html --disable-tests --osx
+caffeinate bash ~/Downloads/cmake-xpack.git/scripts/helper/build.sh --develop --osx
 ```
 
 Similarly on the Intel Linux (`xbbi`):
 
 ```sh
-bash ~/Downloads/cmake-xpack.git/scripts/helper/build.sh --develop --without-pdf --without-html --disable-tests --linux64
-bash ~/Downloads/cmake-xpack.git/scripts/helper/build.sh --develop --without-pdf --without-html --disable-tests --linux32
+bash ~/Downloads/cmake-xpack.git/scripts/helper/build.sh --develop --linux64
+bash ~/Downloads/cmake-xpack.git/scripts/helper/build.sh --develop --linux32
 
-bash ~/Downloads/cmake-xpack.git/scripts/helper/build.sh --develop --without-pdf --without-html --disable-tests --win64
-bash ~/Downloads/cmake-xpack.git/scripts/helper/build.sh --develop --without-pdf --without-html --disable-tests --win32
+bash ~/Downloads/cmake-xpack.git/scripts/helper/build.sh --develop --win64
+bash ~/Downloads/cmake-xpack.git/scripts/helper/build.sh --develop --win32
 ```
 
 And on the Arm Linux (`xbba`):
 
 ```sh
-bash ~/Downloads/cmake-xpack.git/scripts/helper/build.sh --develop --without-pdf --without-html --disable-tests --arm64
-bash ~/Downloads/cmake-xpack.git/scripts/helper/build.sh --develop --without-pdf --without-html --disable-tests --arm32
+bash ~/Downloads/cmake-xpack.git/scripts/helper/build.sh --develop --arm64
+bash ~/Downloads/cmake-xpack.git/scripts/helper/build.sh --develop --arm32
 ```
 
 Work on the scripts until all platforms pass the build.
@@ -221,9 +231,9 @@ Install the binaries on all platforms.
 On GNU/Linux systems, including Raspberry Pi, use the following commands:
 
 ```sh
-.../xpack-cmake-3.19.8-1/bin/cmake --version
+.../xpack-cmake-3.20.6-1/bin/cmake --version
 
-cmake version 3.19.8
+cmake version 3.20.6
 
 CMake suite maintained and supported by Kitware (kitware.com/cmake).
 ```
@@ -231,9 +241,9 @@ CMake suite maintained and supported by Kitware (kitware.com/cmake).
 On macOS, use:
 
 ```sh
-.../xpack-cmake-3.19.8-1/bin/cmake --version
+.../xpack-cmake-3.20.6-1/bin/cmake --version
 
-cmake version 3.19.8
+cmake version 3.20.6
 
 CMake suite maintained and supported by Kitware (kitware.com/cmake).
 ```
@@ -241,23 +251,23 @@ CMake suite maintained and supported by Kitware (kitware.com/cmake).
 On Windows use:
 
 ```doscon
-...\xpack-cmake-3.19.8-1\bin\cmake --version
+...\xpack-cmake-3.20.6-1\bin\cmake --version
 
-cmake version 3.19.8
+cmake version 3.20.6
 
 CMake suite maintained and supported by Kitware (kitware.com/cmake).
 ```
 
 ## Create a new GitHub pre-release draft
 
-- in `CHANGELOG.md`, add release date
+- in `CHANGELOG.md`, add the release date and a message like _v3.20.6-1 released_
 - commit and push the `xpack-develop` branch
 - run the xPack action `trigger-workflow-publish-release`
 
 The result is a
 [draft pre-release](https://github.com/xpack-dev-tools/cmake-xpack/releases/)
-tagged like **v3.19.8-1** (mind the dash in the middle!) and
-named like **xPack CMake v3.19.8-1** (mind the dash),
+tagged like **v3.20.6-1** (mind the dash in the middle!) and
+named like **xPack CMake v3.20.6-1** (mind the dash),
 with all binaries attached.
 
 ## Prepare a new blog post
@@ -276,7 +286,7 @@ If any, refer to closed
 ## Update the preview Web
 
 - commit the `develop` branch of `xpack/web-jekyll` GitHub repo;
-  use a message like **xPack CMake v3.19.8-1 released**
+  use a message like **xPack CMake v3.20.6-1 released**
 - push to GitHub
 - wait for the GitHub Pages build to complete
 - the preview web is <https://xpack.github.io/web-preview/news/>
@@ -285,7 +295,8 @@ If any, refer to closed
 
 - go to the GitHub [releases](https://github.com/xpack-dev-tools/cmake-xpack/releases/) page
 - perform the final edits and check if everything is fine
-- save the release
+- keep the pre-release button enabled
+- publish the release
 
 Note: at this moment the system should send a notification to all clients
 watching this project.
@@ -301,18 +312,18 @@ watching this project.
 - compare the SHA sums with those shown by `cat *.sha`
 - check the executable names
 - commit all changes, use a message like
-  `package.json: update urls for 3.19.8-1.1 release` (without `v`)
+  `package.json: update urls for 3.20.6-1.1 release` (without `v`)
 
 ## Publish on the npmjs.com server
 
 - select the `xpack-develop` branch
 - check the latest commits `npm run git-log`
-- update `CHANGELOG.md`; commit with a message like
-  _CHANGELOG: publish npm v3.19.8-1.1_
+- update `CHANGELOG.md`, add a line like _v3.20.6-1.1 published on npmjs.com_
+- commit with a message like _CHANGELOG: publish npm v3.20.6-1.1_
 - `npm pack` and check the content of the archive, which should list
   only the `package.json`, the `README.md`, `LICENSE` and `CHANGELOG.md`;
   possibly adjust `.npmignore`
-- `npm version 3.19.8-1.1`; the first 5 numbers are the same as the
+- `npm version 3.20.6-1.1`; the first 5 numbers are the same as the
   GitHub release; the sixth number is the npm specific version
 - push the `xpack-develop` branch to GitHub
 - push tags with `git push origin --tags`
@@ -325,12 +336,11 @@ After a few moments the version will be visible at:
 
 ## Test if the npm binaries can be installed with xpm
 
-Run the `scripts/tests/trigger-travis-xpm-install.sh` script, this
+Run the xPack action `trigger-workflow-test-xpm`, this
 will install the package via `xpm install` on all supported platforms.
 
-The test results are available from:
-
-- <https://travis-ci.com/github/xpack-dev-tools/cmake-xpack/>
+TThe test results are available from
+[travis-ci.com](https://app.travis-ci.com/github/xpack-dev-tools/cmake-xpack/builds/).
 
 ## Update the repo
 
@@ -342,7 +352,7 @@ The test results are available from:
 When the release is considered stable, promote it as `latest`:
 
 - `npm dist-tag ls @xpack-dev-tools/cmake`
-- `npm dist-tag add @xpack-dev-tools/cmake@3.19.8-1.1 latest`
+- `npm dist-tag add @xpack-dev-tools/cmake@3.20.6-1.1 latest`
 - `npm dist-tag ls @xpack-dev-tools/cmake`
 
 ## Update the Web
@@ -357,6 +367,7 @@ When the release is considered stable, promote it as `latest`:
 - go to the GitHub [releases](https://github.com/xpack-dev-tools/cmake-xpack/releases/) page
 - check the download counter, it should match the number of tests
 - add a link to the Web page `[Continue reading »]()`; use an same blog URL
+- remove the _tests only_ notice
 - **disable** the **pre-release** button
 - click the **Update Release** button
 
@@ -364,7 +375,7 @@ When the release is considered stable, promote it as `latest`:
 
 - in a separate browser windows, open [TweetDeck](https://tweetdeck.twitter.com/)
 - using the `@xpack_project` account
-- paste the release name like **xPack CMake v3.19.8-1 released**
+- paste the release name like **xPack CMake v3.20.6-1 released**
 - paste the link to the Web page
   [release](https://xpack.github.io/cmake/releases/)
 - click the **Tweet** button
