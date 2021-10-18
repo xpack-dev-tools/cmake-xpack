@@ -1,8 +1,6 @@
 ---
 title:  xPack CMake {{ RELEASE_VERSION }} released
 
-TODO: select one summary
-
 summary: "Version {{ RELEASE_VERSION }} is a new release; it follows the upstream release."
 
 version: {{ RELEASE_VERSION }}
@@ -89,7 +87,6 @@ manage paths.
 ```sh
 xpm install --global @xpack-dev-tools/cmake@latest
 ```
-
 
 ### Uninstall
 
