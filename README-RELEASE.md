@@ -21,8 +21,8 @@ No need to add a tag here, it'll be added when the release is created.
 
 ### Check the latest upstream release
 
-Check the CMake GitHub [releases](https://github.com/Kitware/CMake/releases)
-and compare the the xPack [releases](https://github.com/xpack-dev-tools/cmake-xpack/releases).
+Check the CMake GitHub [releases](https://github.com/Kitware/CMake/releases/)
+and compare the the xPack [releases](https://github.com/xpack-dev-tools/cmake-xpack/releases/).
 Find the latest release and go 1-2 minor releases back; the purpose is
 to find the one which looks old enought to be the one which will not be
 further updated (this is tricky, and failing will
@@ -59,7 +59,7 @@ but in the version specific release page.
 
 - open the `CHANGELOG.md` file
 - check if all previous fixed issues are in
-- add a new entry like _v3.20.6-1 prepared_
+- add a new entry like _- v3.20.6-1 prepared_
 - commit with a message like _prepare v3.20.6-1_
 
 Note: if you missed to update the `CHANGELOG.md` before starting the build,
@@ -137,6 +137,9 @@ From here it'll be cloned on the production machines.
 ## Run the CI build
 
 The automation is provided by GitHub Actions and three self-hosted runners.
+
+Run the `generate-workflows` to re-generate the
+GitHub workflow files; commit and push if necessary.
 
 - on the macOS machine (`xbbm`) open ssh sessions to both Linux
 machines (`xbbi` and `xbba`):
@@ -259,7 +262,7 @@ CMake suite maintained and supported by Kitware (kitware.com/cmake).
 
 ## Create a new GitHub pre-release draft
 
-- in `CHANGELOG.md`, add the release date and a message like _v3.20.6-1 released_
+- in `CHANGELOG.md`, add the release date and a message like _- v3.20.6-1 released_
 - commit and push the `xpack-develop` branch
 - run the xPack action `trigger-workflow-publish-release`
 
@@ -296,6 +299,8 @@ If any, refer to closed
 
 - go to the GitHub [releases](https://github.com/xpack-dev-tools/cmake-xpack/releases/) page
 - perform the final edits and check if everything is fine
+- temporarily fill in the _Continue Reading »_ with the URL of the
+  web-preview release
 - keep the pre-release button enabled
 - publish the release
 
@@ -319,7 +324,7 @@ watching this project.
 
 - select the `xpack-develop` branch
 - check the latest commits `npm run git-log`
-- update `CHANGELOG.md`, add a line like _v3.20.6-1.1 published on npmjs.com_
+- update `CHANGELOG.md`, add a line like _- v3.20.6-1.1 published on npmjs.com_
 - commit with a message like _CHANGELOG: publish npm v3.20.6-1.1_
 - `npm pack` and check the content of the archive, which should list
   only the `package.json`, the `README.md`, `LICENSE` and `CHANGELOG.md`;
