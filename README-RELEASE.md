@@ -21,8 +21,8 @@ No need to add a tag here, it'll be added when the release is created.
 
 ### Check the latest upstream release
 
-Check the CMake GitHub [releases](https://github.com/Kitware/CMake/releases/)
-and compare the the xPack [releases](https://github.com/xpack-dev-tools/cmake-xpack/releases/).
+Check the CMake GitHub [Releases](https://github.com/Kitware/CMake/releases/)
+and compare the the xPack [Releases](https://github.com/xpack-dev-tools/cmake-xpack/releases/).
 Find the latest release and go 1-2 minor releases back; the purpose is
 to find the one which looks old enought to be the one which will not be
 further updated (this is tricky, and failing will
@@ -160,7 +160,7 @@ Check that both the project Git and the submodule are pushed to GitHub.
 
 To trigger the GitHub Actions build, use the xPack action:
 
-- `trigger-workflow-build`
+- `trigger-workflow-build-all`
 
 This is equivalent to:
 
@@ -201,7 +201,7 @@ bash ~/Downloads/cmake-xpack.git/scripts/helper/tests/trigger-workflow-test-dock
 bash ~/Downloads/cmake-xpack.git/scripts/helper/tests/trigger-workflow-test-docker-linux-arm.sh
 ```
 
-These scripts require the `GITHUB_API_DISPATCH_TOKEN` to be present
+These scripts require the `GITHUB_API_DISPATCH_TOKEN` variable to be present
 in the environment.
 
 These actions use the `xpack-develop` branch of this repo and the
@@ -224,7 +224,8 @@ This is equivalent to:
 bash ~/Downloads/cmake-xpack.git/scripts/helper/tests/trigger-travis-macos.sh
 ```
 
-This script requires the `TRAVIS_COM_TOKEN` to be present in the environment.
+This script requires the `TRAVIS_COM_TOKEN` variable to be present
+in the environment.
 
 The test results are available from
 [travis-ci.com](https://app.travis-ci.com/github/xpack-dev-tools/cmake-xpack/builds/).
@@ -233,16 +234,7 @@ The test results are available from
 
 Install the binaries on all platforms.
 
-On GNU/Linux systems, including Raspberry Pi, use the following commands:
-
-```sh
-.../xpack-cmake-3.20.6-1/bin/cmake --version
-cmake version 3.20.6
-
-CMake suite maintained and supported by Kitware (kitware.com/cmake).
-```
-
-On macOS, use:
+On GNU/Linux and macOS systems, use:
 
 ```sh
 .../xpack-cmake-3.20.6-1/bin/cmake --version
@@ -273,6 +265,7 @@ named like **xPack CMake v3.20.6-1** (mind the dash),
 with all binaries attached.
 
 - edit the draft and attach it to the `xpack-develop` branch (important!)
+- save the draft (do **not** publish yet!)
 
 ## Prepare a new blog post
 
@@ -297,7 +290,7 @@ If any, refer to closed
 
 ## Create the pre-release
 
-- go to the GitHub [releases](https://github.com/xpack-dev-tools/cmake-xpack/releases/) page
+- go to the GitHub [Releases](https://github.com/xpack-dev-tools/cmake-xpack/releases/) page
 - perform the final edits and check if everything is fine
 - temporarily fill in the _Continue Reading »_ with the URL of the
   web-preview release
@@ -361,6 +354,10 @@ When the release is considered stable, promote it as `latest`:
 - `npm dist-tag add @xpack-dev-tools/cmake@3.20.6-1.1 latest`
 - `npm dist-tag ls @xpack-dev-tools/cmake`
 
+In case the previous version is not functional and needs to be unpublished:
+
+- `npm unpublish @xpack-dev-tools/cmake@3.20.6-1.X`
+
 ## Update the Web
 
 - in the `master` branch, merge the `develop` branch
@@ -370,7 +367,7 @@ When the release is considered stable, promote it as `latest`:
 
 ## Create the final GitHub release
 
-- go to the GitHub [releases](https://github.com/xpack-dev-tools/cmake-xpack/releases/) page
+- go to the GitHub [Releases](https://github.com/xpack-dev-tools/cmake-xpack/releases/) page
 - check the download counter, it should match the number of tests
 - add a link to the Web page `[Continue reading »]()`; use an same blog URL
 - remove the _tests only_ notice
