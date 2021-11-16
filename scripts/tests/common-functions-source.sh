@@ -19,7 +19,6 @@
 
 function run_tests()
 {
-
   CMAKE_VERSION="$(echo "${RELEASE_VERSION}" | sed -e 's|-.*||')"
 
   if [ ! -d "${SOURCES_FOLDER_PATH}/cmake-${CMAKE_VERSION}" ]
@@ -36,6 +35,9 @@ function run_tests()
       )
   fi
 
+  echo
+  env | sort
+
   test_cmake
 }
 
@@ -45,7 +47,10 @@ function update_image()
 
   # Make sure that the minimum prerequisites are met.
   # For cmake to generate itself, the c++ compiler and make are needed.
-  if [[ ${image_name} == *ubuntu* ]] || [[ ${image_name} == *debian* ]] || [[ ${image_name} == *raspbian* ]]
+  if [[ ${image_name} == github-actions-ubuntu* ]]
+  then
+    : # sudo apt-get -qq install -y XXX
+  elif [[ ${image_name} == *ubuntu* ]] || [[ ${image_name} == *debian* ]] || [[ ${image_name} == *raspbian* ]]
   then
     run_verbose apt-get -qq update 
     run_verbose apt-get -qq install -y git-core curl tar gzip lsb-release binutils
