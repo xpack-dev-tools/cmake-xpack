@@ -236,10 +236,10 @@ function test_cmake()
 
   if [ -d "xpacks/.bin" ]
   then
-    TEST_PREFIX="$(pwd)/xpacks/.bin"
+    TEST_BIN_PATH="$(pwd)/xpacks/.bin"
   elif [ -d "${APP_PREFIX}/bin" ]
   then
-    TEST_PREFIX="${APP_PREFIX}/bin"
+    TEST_BIN_PATH="${APP_PREFIX}/bin"
   else
     echo "Wrong folder."
     exit 1
@@ -253,8 +253,8 @@ function test_cmake()
 
   for app in ${apps_names[@]}
   do
-    run_app "${TEST_PREFIX}/${app}" --version
-    run_app "${TEST_PREFIX}/${app}" --help
+    run_app "${TEST_BIN_PATH}/${app}" --version
+    run_app "${TEST_BIN_PATH}/${app}" --help
   done
 
   # ---------------------------------------------------------------------------
@@ -281,7 +281,7 @@ function test_cmake()
       echo "Testing if it can generate itself..."
 
       # xbb_activate
-      run_app "${TEST_PREFIX}/cmake" \
+      run_app "${TEST_BIN_PATH}/cmake" \
         "-DCMAKE_USE_OPENSSL=OFF" \
         "${SOURCES_FOLDER_PATH}/cmake-${CMAKE_VERSION}"
     )
