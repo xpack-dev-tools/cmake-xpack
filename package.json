@@ -36,6 +36,10 @@
       "baseUrl": "https://github.com/xpack-dev-tools/cmake-xpack/releases/download/v3.20.6-1",
       "skip": 1,
       "platforms": {
+        "darwin-arm64": {
+          "fileName": "xpack-cmake-3.20.6-1-darwin-x64.tar.gz",
+          "sha256": "21b1f7e0728bede25794e84b4ebc9a83af789fc883e67e192cb2e86e8a31eb7c"
+        },
         "darwin-x64": {
           "fileName": "xpack-cmake-3.20.6-1-darwin-x64.tar.gz",
           "sha256": "21b1f7e0728bede25794e84b4ebc9a83af789fc883e67e192cb2e86e8a31eb7c"
