@@ -110,7 +110,7 @@ not be accepted by bash.
 
 ## Versioning
 
-The version string is an extension to semver, the format looks like `3.20.6-1`.
+The version string is an extension to semver, the format looks like `3.20.6-2`.
 It includes the three digits with the original CMake version and a fourth
 digit with the xPack release number.
 
@@ -214,14 +214,14 @@ archives and their SHA signatures, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/cmake-*/deploy
 total 102876
--rw-rw-r-- 1 ilg ilg 26299790 Sep 29 12:03 xpack-cmake-3.20.6-1-linux-ia32.tar.gz
--rw-rw-r-- 1 ilg ilg      104 Sep 29 12:03 xpack-cmake-3.20.6-1-linux-ia32.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 24994587 Sep 29 11:53 xpack-cmake-3.20.6-1-linux-x64.tar.gz
--rw-rw-r-- 1 ilg ilg      104 Sep 29 11:53 xpack-cmake-3.20.6-1-linux-x64.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 25556341 Sep 29 12:08 xpack-cmake-3.20.6-1-win32-x32.zip
--rw-rw-r-- 1 ilg ilg      101 Sep 29 12:08 xpack-cmake-3.20.6-1-win32-x32.zip.sha
--rw-rw-r-- 1 ilg ilg 28469621 Sep 29 11:58 xpack-cmake-3.20.6-1-win32-x64.zip
--rw-rw-r-- 1 ilg ilg      101 Sep 29 11:58 xpack-cmake-3.20.6-1-win32-x64.zip.sha
+-rw-rw-r-- 1 ilg ilg 26299790 Sep 29 12:03 xpack-cmake-3.20.6-2-linux-ia32.tar.gz
+-rw-rw-r-- 1 ilg ilg      104 Sep 29 12:03 xpack-cmake-3.20.6-2-linux-ia32.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 24994587 Sep 29 11:53 xpack-cmake-3.20.6-2-linux-x64.tar.gz
+-rw-rw-r-- 1 ilg ilg      104 Sep 29 11:53 xpack-cmake-3.20.6-2-linux-x64.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 25556341 Sep 29 12:08 xpack-cmake-3.20.6-2-win32-x32.zip
+-rw-rw-r-- 1 ilg ilg      101 Sep 29 12:08 xpack-cmake-3.20.6-2-win32-x32.zip.sha
+-rw-rw-r-- 1 ilg ilg 28469621 Sep 29 11:58 xpack-cmake-3.20.6-2-win32-x64.zip
+-rw-rw-r-- 1 ilg ilg      101 Sep 29 11:58 xpack-cmake-3.20.6-2-win32-x64.zip.sha
 ```
 
 ### Build the Arm GNU/Linux binaries
@@ -288,20 +288,20 @@ archives and their SHA signatures, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/cmake-*/deploy
 total 45744
--rw-rw-r-- 1 ilg ilg 23714604 Sep 29 09:14 xpack-cmake-3.20.6-1-linux-arm64.tar.gz
--rw-rw-r-- 1 ilg ilg      106 Sep 29 09:14 xpack-cmake-3.20.6-1-linux-arm64.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 23114964 Sep 29 09:38 xpack-cmake-3.20.6-1-linux-arm.tar.gz
--rw-rw-r-- 1 ilg ilg      104 Sep 29 09:38 xpack-cmake-3.20.6-1-linux-arm.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 23714604 Sep 29 09:14 xpack-cmake-3.20.6-2-linux-arm64.tar.gz
+-rw-rw-r-- 1 ilg ilg      106 Sep 29 09:14 xpack-cmake-3.20.6-2-linux-arm64.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 23114964 Sep 29 09:38 xpack-cmake-3.20.6-2-linux-arm.tar.gz
+-rw-rw-r-- 1 ilg ilg      104 Sep 29 09:38 xpack-cmake-3.20.6-2-linux-arm.tar.gz.sha
 ```
 
 ### Build the macOS binaries
 
 The current platform for macOS production builds is a macOS 10.13.6
 running on a MacBook Pro 2011 with 32 GB of RAM and a fast SSD.
-The machine name is `xbbm`.
+The machine name is `xbbmi`.
 
 ```sh
-caffeinate ssh xbbm
+caffeinate ssh xbbmi
 ```
 
 To build the latest macOS version:
@@ -330,8 +330,8 @@ archive and its SHA signature, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/cmake-*/deploy
 total 38472
--rw-r--r--  1 ilg  staff  19689560 Sep 29 11:56 xpack-cmake-3.20.6-1-darwin-x64.tar.gz
--rw-r--r--  1 ilg  staff       105 Sep 29 11:56 xpack-cmake-3.20.6-1-darwin-x64.tar.gz.sha
+-rw-r--r--  1 ilg  staff  19689560 Sep 29 11:56 xpack-cmake-3.20.6-2-darwin-x64.tar.gz
+-rw-r--r--  1 ilg  staff       105 Sep 29 11:56 xpack-cmake-3.20.6-2-darwin-x64.tar.gz.sha
 ```
 
 ## Subsequent runs
@@ -422,7 +422,7 @@ program from there. For example on macOS the output should
 look like:
 
 ```console
-$ .../xpack-cmake-3.20.6-1/bin/cmake --version
+$ .../xpack-cmake-3.20.6-2/bin/cmake --version
 cmake version 3.20.6-g290a19d
 
 CMake suite maintained and supported by Kitware (kitware.com/cmake).
@@ -434,8 +434,8 @@ After install, the package should create a structure like this (macOS files;
 only the first two depth levels are shown):
 
 ```console
-$ tree -L 2 /Users/ilg/Library/xPacks/\@xpack-dev-tools/cmake/3.20.6-1.1/.content/
-/Users/ilg/Library/xPacks/\@xpack-dev-tools/cmake/3.20.6-1.1/.content/
+$ tree -L 2 /Users/ilg/Library/xPacks/\@xpack-dev-tools/cmake/3.20.6-2.1/.content/
+/Users/ilg/Library/xPacks/\@xpack-dev-tools/cmake/3.20.6-2.1/.content/
 ├── README.md
 ├── bin
 │   ├── ccmake

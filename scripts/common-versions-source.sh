@@ -39,7 +39,7 @@ function build_versions()
   then
     # -------------------------------------------------------------------------
 
-    if [ "${RELEASE_VERSION}" == "3.20.6-1" ]
+    if [[ "${RELEASE_VERSION}" =~ 3\.20\.6-[12] ]]
     then
       CMAKE_GIT_URL=${CMAKE_GIT_URL:-"https://github.com/xpack-dev-tools/cmake.git"}
       CMAKE_GIT_BRANCH=${CMAKE_GIT_BRANCH:-"v3.20.6-xpack"}
