@@ -143,10 +143,10 @@ Arm GNU/Linux and Intel macOS). A fourth machine for Arm macOS is planned.
 
 The current platform for GNU/Linux and Windows production builds is a
 Debian 10, running on an Intel NUC8i7BEH mini PC with 32 GB of RAM
-and 512 GB of fast M.2 SSD. The machine name is `xbbi`.
+and 512 GB of fast M.2 SSD. The machine name is `xbbli`.
 
 ```sh
-caffeinate ssh xbbi
+caffeinate ssh xbbli
 ```
 
 Before starting a build, check if Docker is started:
@@ -233,10 +233,10 @@ The supported Arm architectures are:
 
 The current platform for Arm GNU/Linux production builds is a
 Raspberry Pi OS 10, running on a Raspberry Pi Compute Module 4, with
-8 GB of RAM and 256 GB of fast M.2 SSD. The machine name is `xbba`.
+8 GB of RAM and 256 GB of fast M.2 SSD. The machine name is `xbbla`.
 
 ```sh
-caffeinate ssh xbba
+caffeinate ssh xbbla
 ```
 
 Before starting a build, check if Docker is started:

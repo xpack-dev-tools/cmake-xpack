@@ -106,7 +106,7 @@ sudo rm -rf ~/Work/cmake-*
 caffeinate bash ~/Downloads/cmake-xpack.git/scripts/helper/build.sh --develop --osx
 ```
 
-Similarly on the Intel Linux (`xbbi`):
+Similarly on the Intel Linux (`xbbli`):
 
 ```sh
 bash ~/Downloads/cmake-xpack.git/scripts/helper/build.sh --develop --linux64
@@ -116,7 +116,7 @@ bash ~/Downloads/cmake-xpack.git/scripts/helper/build.sh --develop --win64
 bash ~/Downloads/cmake-xpack.git/scripts/helper/build.sh --develop --win32
 ```
 
-And on the Arm Linux (`xbba`):
+And on the Arm Linux (`xbbla`):
 
 ```sh
 bash ~/Downloads/cmake-xpack.git/scripts/helper/build.sh --develop --arm64
@@ -142,12 +142,12 @@ Run the `generate-workflows` to re-generate the
 GitHub workflow files; commit and push if necessary.
 
 - on the macOS machine (`xbbmi`) open ssh sessions to both Linux
-machines (`xbbi` and `xbba`):
+machines (`xbbli` and `xbbla`):
 
 ```sh
-caffeinate ssh xbbi
+caffeinate ssh xbbli
 
-caffeinate ssh xbba
+caffeinate ssh xbbla
 ```
 
 Start the runner on all three machines:
