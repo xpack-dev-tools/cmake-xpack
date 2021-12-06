@@ -26,7 +26,8 @@ and compare the the xPack [Releases](https://github.com/xpack-dev-tools/cmake-xp
 Find the latest release and go 1-2 minor releases back; the purpose is
 to find the one which looks old enought to be the one which will not be
 further updated (this is tricky, and failing will
-require an extra release).
+require an extra release; a possible rule of thumb would be to wait for
+x.y+1.3, before releasing x.y.z).
 
 ### Increase the version
 
@@ -173,7 +174,7 @@ in the environment.
 
 This command uses the `xpack-develop` branch of this repo.
 
-The builds take about 60 minutes to complete.
+The builds take about 2h10 to complete.
 
 The workflow result and logs are available from the
 [Actions](https://github.com/xpack-dev-tools/cmake-xpack/actions/) page.
@@ -295,6 +296,7 @@ If any, refer to closed
 - temporarily fill in the _Continue Reading »_ with the URL of the
   web-preview release
 - keep the pre-release button enabled
+- do not enable Discussions yet
 - publish the release
 
 Note: at this moment the system should send a notification to all clients
