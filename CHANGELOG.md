@@ -2,9 +2,14 @@
 
 Entries in this file are in reverse chronological order.
 
+## 2021-12-06
+
+- v3.20.6-2 released
+
 ## 2021-11-20
 
 - v3.20.6-2 prepared
+- add support for Apple Silicon
 
 ## 2021-10-18
 
