@@ -3,12 +3,12 @@
 #   (https://xpack.github.io)
 # Copyright (c) 2020 Liviu Ionescu.
 #
-# Permission to use, copy, modify, and/or distribute this software 
+# Permission to use, copy, modify, and/or distribute this software
 # for any purpose is hereby granted, under the terms of the MIT license.
 # -----------------------------------------------------------------------------
 
-# Helper script used in the second edition of the xPack build 
-# scripts. As the name implies, it should contain only functions and 
+# Helper script used in the second edition of the xPack build
+# scripts. As the name implies, it should contain only functions and
 # should be included with 'source' by the container build scripts.
 
 # -----------------------------------------------------------------------------
@@ -30,7 +30,7 @@ function build_cmake()
   # Do not make them local!
   # The folder name as resulted after being extracted from the archive.
   local cmake_src_folder_name="cmake-${cmake_version}"
-  
+
   # The folder name  for build, licenses, etc.
   local cmake_folder_name="${cmake_src_folder_name}"
 
@@ -72,7 +72,7 @@ function build_cmake()
       if [ "${TARGET_PLATFORM}" == "linux" ]
       then
         LDFLAGS+=" -Wl,-rpath,${LD_LIBRARY_PATH}"
-      fi      
+      fi
 
       export CFLAGS
       export CXXFLAGS
@@ -100,7 +100,7 @@ function build_cmake()
           config_options=()
 
           # If more verbosity is needed:
-          #  -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON 
+          #  -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON
           # Disable ccmake for now
           # -DBUILD_CursesDialog=OFF
           # Disable tests
@@ -108,14 +108,14 @@ function build_cmake()
 
           # -DCMAKE_SYSTEM_NAME tricks it behave as when on Windows
 
-          # -DBUILD_CursesDialog=ON 
+          # -DBUILD_CursesDialog=ON
           # -DCMAKE_PREFIX_PATH="${LIBS_INSTALL_FOLDER_PATH}" \
 
           config_options+=("-G" "Ninja")
-            
+
           config_options+=("-DCMAKE_VERBOSE_MAKEFILE=ON")
           config_options+=("-DCMAKE_BUILD_TYPE=${build_type}")
-            
+
           # config_options+=("-DBUILD_TESTING=ON")
           config_options+=("-DBUILD_TESTING=OFF")
 
@@ -135,7 +135,7 @@ function build_cmake()
 
             # To search all packages in the given path:
             # config_options+=("-DCMAKE_PREFIX_PATH=${LIBS_INSTALL_FOLDER_PATH}")
-            
+
             # To search only curses in the given path:
             config_options+=("-DCurses_ROOT=${LIBS_INSTALL_FOLDER_PATH}")
 
@@ -221,7 +221,7 @@ function build_cmake()
     touch "${cmake_stamp_file_path}"
 
   else
-    echo "Component cmake stage already installed."
+    echo "Component cmake already installed."
   fi
 
   tests_add "test_cmake"
@@ -277,7 +277,7 @@ function test_cmake()
         env | sort
       fi
 
-      echo 
+      echo
       echo "Testing if it can generate itself..."
 
       # xbb_activate
