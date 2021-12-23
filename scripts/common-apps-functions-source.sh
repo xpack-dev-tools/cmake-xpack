@@ -164,7 +164,7 @@ function build_cmake()
 
           # The mingw build also requires RC pointing to windres.
           run_verbose_timed cmake \
-            ${config_options[@]} \
+            "${config_options[@]}" \
             \
             "${SOURCES_FOLDER_PATH}/${cmake_src_folder_name}"
 
