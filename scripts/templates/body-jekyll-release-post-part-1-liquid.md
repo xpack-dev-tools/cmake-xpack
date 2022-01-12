@@ -1,5 +1,5 @@
 ---
-title:  xPack CMake {{ RELEASE_VERSION }} released
+title:  xPack CMake v{{ RELEASE_VERSION }} released
 
 summary: "Version **{{ RELEASE_VERSION }}** is a new release; it follows the upstream release."
 
