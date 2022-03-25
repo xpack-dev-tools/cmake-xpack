@@ -3,8 +3,10 @@ title:  xPack CMake v{{ RELEASE_VERSION }} released
 
 summary: "Version **{{ RELEASE_VERSION }}** is a new release; it follows the upstream release."
 
-version: {{ RELEASE_VERSION }}
-npm_subversion: 1
+version: "{{ RELEASE_VERSION }}"
+upstream_version: "3.21.6"
+upstream_release_date: "Mar 4th, 2022"
+npm_subversion: "1"
 download_url: https://github.com/xpack-dev-tools/cmake-xpack/releases/tag/v{{ RELEASE_VERSION }}/
 
 date:   {{ RELEASE_DATE }}
@@ -116,8 +118,8 @@ The current version is based on:
 TODO: update commit id and date.
 
 - CMake release
-[X.Y.Z](https://github.com/Kitware/CMake/releases/tag/vX.Y.Z/)
-from DDDDDDD.
+[{% raw %}{{ page.upstream_version }}{% endraw %}](https://github.com/Kitware/CMake/releases/tag/v{% raw %}{{ page.upstream_version }}{% endraw %}/)
+from {% raw %}{{ page.upstream_version }}{% endraw %}.
 
 ## Changes
 
@@ -169,11 +171,7 @@ relative path.
 
 ## Documentation
 
-The current version specific CMake documentation is available in each packet:
-
-- `doc/cmake-X.Y/html/index.html`
-
-and online from:
+The current CMake documentation is available online from:
 
 - [https://cmake.org/documentation/](https://cmake.org/documentation/)
 
