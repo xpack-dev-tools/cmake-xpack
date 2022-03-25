@@ -76,9 +76,11 @@ repository, in the `xpack-dev-tools/cmake` Git repo:
 - create a branch like `v3.21.6-xpack`
 - chery pick the commit to _add cmd.exe support_ from a previous release;
   enable commit immediately
-- push to `origin`
+- push branch to `origin`
 - add a `v3.21.6-1-xpack` tag; enable push to origin
-- remember the current commit ID
+- save as patch
+- move to `patches`
+- rename `cmake-3.21.6.git.patch`
 
 Note: the branch name and the tag name are used during tests, to pull
 the repo.
@@ -87,8 +89,6 @@ the repo.
 
 - open the `common-versions-source.sh` file
 - add a new `if` with the new version before the existing code
-- update the `CMAKE_GIT_BRANCH` to `v3.21.6-xpack`
-- update the `CMAKE_GIT_COMMIT` to the current commit ID
 
 ### Update helper
 
@@ -102,7 +102,7 @@ Before the real build, run a test build on the development machine (`wks`)
 or the production machines (`xbbma`, `xbbmi`):
 
 ```sh
-sudo rm -rf ~/Work/cmake-*
+sudo rm -rf ~/Work/cmake-3.21.6-*
 
 caffeinate bash ${HOME}/Work/cmake-xpack.git/scripts/helper/build.sh --develop --macos
 ```

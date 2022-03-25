@@ -20,8 +20,7 @@ function build_cmake()
   # https://cmake.org
   # https://gitlab.kitware.com/cmake/cmake
   # https://github.com/Kitware/CMake/releases
-  # https://github.com/Kitware/CMake/releases/download/v3.17.1/cmake-3.17.1.tar.gz
-  # https://github.com/Kitware/CMake/releases/download/v3.18.3/cmake-3.18.3.tar.gz
+  # https://github.com/Kitware/CMake/releases/download/v3.21.6/cmake-3.21.6.tar.gz
 
   # https://archlinuxarm.org/packages/aarch64/cmake/files/PKGBUILD
 
@@ -31,11 +30,15 @@ function build_cmake()
   # The folder name as resulted after being extracted from the archive.
   local cmake_src_folder_name="cmake-${cmake_version}"
 
+  local cmake_archive="${cmake_src_folder_name}.tar.gz"
+  local cmake_url="https://github.com/Kitware/CMake/releases/download/v{$cmake_version}/${cmake_archive}"
+
   # The folder name  for build, licenses, etc.
   local cmake_folder_name="${cmake_src_folder_name}"
 
   mkdir -pv "${LOGS_FOLDER_PATH}/${cmake_folder_name}"
 
+  local cmake_patch_file_name="cmake-${cmake_version}.git.patch"
   local cmake_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-${cmake_folder_name}-installed"
   if [ ! -f "${cmake_stamp_file_path}" ]
   then
@@ -45,9 +48,15 @@ function build_cmake()
     if [ ! -d "${SOURCES_FOLDER_PATH}/${cmake_src_folder_name}" ]
     then
       (
-        cd "${SOURCES_FOLDER_PATH}"
-        git_clone "${CMAKE_GIT_URL}" "${CMAKE_GIT_BRANCH}" \
-            "${CMAKE_GIT_COMMIT}" "${cmake_src_folder_name}"
+        if [ ! -z ${CMAKE_GIT_URL+x} ]
+        then
+          cd "${SOURCES_FOLDER_PATH}"
+          git_clone "${CMAKE_GIT_URL}" "${CMAKE_GIT_BRANCH}" \
+              "${CMAKE_GIT_COMMIT}" "${cmake_src_folder_name}"
+        else
+          download_and_extract "${cmake_url}" "${cmake_archive}" \
+            "${cmake_src_folder_name}" "${cmake_patch_file_name}"
+        fi
       )
     fi
 

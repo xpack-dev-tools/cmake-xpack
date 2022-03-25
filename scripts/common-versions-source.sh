@@ -35,7 +35,24 @@ function build_versions()
   fi
 
   # Keep them in sync with combo archive content.
-  if [[ "${RELEASE_VERSION}" =~ 3\.20\.* ]]
+  if [[ "${RELEASE_VERSION}" =~ 3\.21\.* ]]
+  then
+    # -------------------------------------------------------------------------
+
+    (
+      xbb_activate
+
+      if [ "${TARGET_PLATFORM}" != "win32" ]
+      then
+        NCURSES_DISABLE_WIDEC="y"
+        build_ncurses "6.3"
+      fi
+
+      build_xz "5.2.5"
+
+      build_cmake "${CMAKE_VERSION}"
+    )
+  elif [[ "${RELEASE_VERSION}" =~ 3\.20\.* ]]
   then
     # -------------------------------------------------------------------------
 
