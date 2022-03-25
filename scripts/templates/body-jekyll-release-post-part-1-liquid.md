@@ -119,7 +119,7 @@ TODO: update commit id and date.
 
 - CMake release
 [{% raw %}{{ page.upstream_version }}{% endraw %}](https://github.com/Kitware/CMake/releases/tag/v{% raw %}{{ page.upstream_version }}{% endraw %}/)
-from {% raw %}{{ page.upstream_version }}{% endraw %}.
+from {% raw %}{{ page.upstream_release_date }}{% endraw %}.
 
 ## Changes
 
