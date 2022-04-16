@@ -102,7 +102,7 @@ Before the real build, run a test build on the development machine (`wks`)
 or the production machines (`xbbma`, `xbbmi`):
 
 ```sh
-sudo rm -rf ~/Work/cmake-3.21.6-*
+sudo rm -rf ~/Work/cmake-*-*
 
 caffeinate bash ${HOME}/Work/cmake-xpack.git/scripts/helper/build.sh --develop --macos
 ```

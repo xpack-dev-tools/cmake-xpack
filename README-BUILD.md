@@ -193,14 +193,14 @@ network connection or a computer entering sleep.
 ```sh
 screen -S cmake
 
-sudo rm -rf ~/Work/cmake-*
+sudo rm -rf ~/Work/cmake-*-*
 bash ${HOME}/Work/cmake-xpack.git/scripts/helper/build.sh --develop --all
 ```
 
 or, for development builds:
 
 ```sh
-sudo rm -rf ~/Work/cmake-*
+sudo rm -rf ~/Work/cmake-*-*
 bash ${HOME}/Work/cmake-xpack.git/scripts/helper/build.sh --develop --without-pdf --without-html --disable-tests --linux64 --win64
 ```
 
@@ -264,14 +264,14 @@ network connection or a computer entering sleep.
 ```sh
 screen -S cmake
 
-sudo rm -rf ~/Work/cmake-*
+sudo rm -rf ~/Work/cmake-*-*
 bash ${HOME}/Work/cmake-xpack.git/scripts/helper/build.sh --develop --all
 ```
 
 or, for development builds:
 
 ```sh
-sudo rm -rf ~/Work/cmake-*
+sudo rm -rf ~/Work/cmake-*-*
 bash ${HOME}/Work/cmake-xpack.git/scripts/helper/build.sh --develop --without-pdf --without-html --disable-tests --arm64 --arm32
 ```
 
@@ -310,14 +310,14 @@ To build the latest macOS version:
 ```sh
 screen -S cmake
 
-rm -rf ~/Work/cmake-*
+rm -rf ~/Work/cmake-*-*
 caffeinate bash ${HOME}/Work/cmake-xpack.git/scripts/helper/build.sh --develop --macos
 ```
 
 or, for development builds:
 
 ```sh
-rm -rf ~/Work/cmake-arm-*
+rm -rf ~/Work/cmake-arm-*-*
 caffeinate bash ${HOME}/Work/cmake-xpack.git/scripts/helper/build.sh --develop --without-pdf --without-html --disable-tests --macos
 ```
 
@@ -377,7 +377,7 @@ will remove the more specific folders.
 For production builds it is recommended to **completely remove the build folder**:
 
 ```sh
-rm -rf ~/Work/cmake-*
+rm -rf ~/Work/cmake-*-*
 ```
 
 ### `--develop`
