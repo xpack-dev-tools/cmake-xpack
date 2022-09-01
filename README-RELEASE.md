@@ -189,13 +189,13 @@ page.
 
 This command uses the `xpack-develop` branch of this repo.
 
-The builds take about 2h10 to complete:
+The builds take about 0h28 to complete:
 
-- `xbbmi`: ? min
-- `xbbma`: ? min
-- `xbbli`: ? min (Windows included)
-- `xbbla64`: ? min
-- `xbbla32`: ? min
+- `xbbmi`: 0h08
+- `xbbma`: 0h04
+- `xbbli`: 0h07 (0h04 Linux, 0h03 Windows)
+- `xbbla64`: 0h28
+- `xbbla32`: 0h26
 
 The workflow result and logs are available from the
 [Actions](https://github.com/xpack-dev-tools/cmake-xpack/actions/) page.
