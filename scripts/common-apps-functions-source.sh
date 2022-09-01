@@ -66,14 +66,6 @@ function build_cmake()
 
       xbb_activate_installed_dev
 
-      if [ "${TARGET_PLATFORM}" == "darwin" ]
-      then
-        # With gcc-xbb it fails with:
-        # Authorization.h:193:14: error: variably modified ‘bytes’ at file scope
-        export CC=clang
-        export CXX=clang++
-      fi
-
       CFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_CFLAGS} | sed -e 's|-O[0123s]||')"
       CXXFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_CFLAGS} | sed -e 's|-O[0123s]||')"
 
@@ -81,6 +73,16 @@ function build_cmake()
       if [ "${TARGET_PLATFORM}" == "linux" ]
       then
         LDFLAGS+=" -Wl,-rpath,${LD_LIBRARY_PATH}"
+      fi
+
+      if [ "${TARGET_PLATFORM}" == "darwin" ]
+      then
+        # With gcc-xbb it fails with:
+        # Authorization.h:193:14: error: variably modified ‘bytes’ at file scope
+        export CC=clang
+        export CXX=clang++
+        # clang: error: unsupported option '-static-libgcc'
+        LDFLAGS=$(echo ${LDFLAGS} | sed -e 's|-static-libgcc||')
       fi
 
       export CFLAGS
