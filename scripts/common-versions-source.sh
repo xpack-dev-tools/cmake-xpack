@@ -35,7 +35,26 @@ function build_versions()
   fi
 
   # Keep them in sync with combo archive content.
-  if [[ "${RELEASE_VERSION}" =~ 3\.21\.* ]]
+  if [[ "${RELEASE_VERSION}" =~ 3\.22\.* ]]
+  then
+    # -------------------------------------------------------------------------
+
+    (
+      xbb_activate
+
+      if [ "${TARGET_PLATFORM}" != "win32" ]
+      then
+        NCURSES_DISABLE_WIDEC="y"
+        # https://ftp.gnu.org/gnu/ncurses/
+        build_ncurses "6.3"
+      fi
+
+      # https://sourceforge.net/projects/lzmautils/files/
+      build_xz "5.2.5"
+
+      build_cmake "${CMAKE_VERSION}"
+    )
+  elif [[ "${RELEASE_VERSION}" =~ 3\.21\.* ]]
   then
     # -------------------------------------------------------------------------
 
