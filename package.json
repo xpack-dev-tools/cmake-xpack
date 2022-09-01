@@ -36,40 +36,40 @@
     "minimumXpmRequired": "0.10.2",
     "binaries": {
       "destination": "./.content",
-      "baseUrl": "https://github.com/xpack-dev-tools/cmake-xpack/releases/download/v3.21.6-1",
+      "baseUrl": "https://github.com/xpack-dev-tools/cmake-xpack/releases/download/v3.22.6-1",
       "skip": 1,
       "platforms": {
         "darwin-arm64": {
-          "fileName": "xpack-cmake-3.21.6-1-darwin-arm64.tar.gz",
-          "sha256": "7ef4cf4b98383086105b018d22b8710c8874898fea911ac255b98a43a96cc8aa"
+          "fileName": "xpack-cmake-3.22.6-1-darwin-arm64.tar.gz",
+          "sha256": "3a589d883ff0de169dbb8a021c36afbe2511f73c0556043464d43399d4fd02d8"
         },
         "darwin-x64": {
-          "fileName": "xpack-cmake-3.21.6-1-darwin-x64.tar.gz",
-          "sha256": "4b7829318f56dc36b746902af7557a744c4de59953d72b372f34fa68981f1757"
+          "fileName": "xpack-cmake-3.22.6-1-darwin-x64.tar.gz",
+          "sha256": "9abe888ebbfcf9f86f1fc63efbf3597a1af9472ee93b7e52c141fcaddc7641bd"
         },
         "linux-arm": {
-          "fileName": "xpack-cmake-3.21.6-1-linux-arm.tar.gz",
-          "sha256": "59024e05ad4df13dce6bee469e71d0f7d3e12b8b4416012bb83ff27b191ab9a8"
+          "fileName": "xpack-cmake-3.22.6-1-linux-arm.tar.gz",
+          "sha256": "5e4e6d5086a4422fcd1bf6719862063c7d385a9ca5555361cde955b94a3bcc61"
         },
         "linux-arm64": {
-          "fileName": "xpack-cmake-3.21.6-1-linux-arm64.tar.gz",
-          "sha256": "ae9af80e5b901f51a2c5f95812d354864d38749bcdfbe1608849eb5c079454d1"
+          "fileName": "xpack-cmake-3.22.6-1-linux-arm64.tar.gz",
+          "sha256": "8c9c55cdfa7cf07d86e87ac3d4aaed36516144f132c263c41d11469d3ff05359"
         },
         "linux-ia32": {
           "fileName": "xpack-cmake-3.20.6-2-linux-ia32.tar.gz",
           "sha256": "d43267651a018ef004e2689f5ce25276491701470a6e33d250b640c69cac197f"
         },
         "linux-x64": {
-          "fileName": "xpack-cmake-3.21.6-1-linux-x64.tar.gz",
-          "sha256": "9e728da3b2e995e07f8dc86299aa23d41be516ab651f7751786b4f3bc5afb08b"
+          "fileName": "xpack-cmake-3.22.6-1-linux-x64.tar.gz",
+          "sha256": "9aaaa62243a11d03b9ad712aeeb55d467f2eba137c4a982e54e6bbf8b02eee7a"
         },
         "win32-ia32": {
           "fileName": "xpack-cmake-3.20.6-2-win32-ia32.zip",
           "sha256": "59b8906e6e2a62920b59a742458c392a3a0a8965666a58c2fa4e2a3a96f9038d"
         },
         "win32-x64": {
-          "fileName": "xpack-cmake-3.21.6-1-win32-x64.zip",
-          "sha256": "906d8a922346363fcbdde71bbc7b9d523ef2df3144b7c6b47dd37cd36a9c5087"
+          "fileName": "xpack-cmake-3.22.6-1-win32-x64.zip",
+          "sha256": "5d64c53f76047cb56779b8b59d7bd91101409de5f9a5ce197b5a5cc4db361e86"
         }
       }
     },
