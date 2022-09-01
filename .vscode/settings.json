@@ -8,5 +8,41 @@
   "spellright.language": [
     "en_GB"
   ],
-  "spellright.notificationClass": "warning"
+  "spellright.notificationClass": "warning",
+  "cSpell.ignoreWords": [
+    "Ionescu",
+    "Kitware",
+    "Liviu",
+    "RPATH",
+    "Somsubhra",
+    "UCRT",
+    "aarch",
+    "aclocal",
+    "armhf",
+    "armv",
+    "caffeinate",
+    "ccmake",
+    "cleanall",
+    "cleanlibs",
+    "cmake",
+    "cpack",
+    "ctest",
+    "dylib",
+    "endraw",
+    "ilegeul",
+    "libexec",
+    "libncurses",
+    "npmignore",
+    "npmjs",
+    "postversion",
+    "readelf",
+    "runpath",
+    "wksi",
+    "xbbla",
+    "xbbli",
+    "xbbma",
+    "xbbmi",
+    "xpack",
+    "xpacks"
+  ]
 }
