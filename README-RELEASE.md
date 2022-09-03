@@ -10,6 +10,26 @@ more weeks to get the latest patch release.
 
 Before starting the build, perform some checks and tweaks.
 
+### Download the build scripts
+
+The build scripts are available in the `scripts` folder of the
+[`xpack-dev-tools/cmake-xpack`](https://github.com/xpack-dev-tools/cmake-xpack)
+Git repo.
+
+To download them on a new machine, clone the `xpack-develop` branch:
+
+```sh
+rm -rf ${HOME}/Work/cmake-xpack.git; \
+git clone \
+  --branch xpack-develop \
+  https://github.com/xpack-dev-tools/cmake-xpack.git \
+  ${HOME}/Work/cmake-xpack.git; \
+git -C ${HOME}/Work/cmake-xpack.git submodule update --init --recursive
+```
+
+> Note: the repository uses submodules; for a successful build it is
+> mandatory to recurse the submodules.
+
 ### Check Git
 
 In the `xpack-dev-tools/cmake-xpack` Git repo:
@@ -18,6 +38,10 @@ In the `xpack-dev-tools/cmake-xpack` Git repo:
 - if needed, merge the `xpack` branch
 
 No need to add a tag here, it'll be added when the release is created.
+
+### Update helper
+
+With a git client, go to the helper repo and update to the latest master commit.
 
 ### Check the latest upstream release
 
@@ -90,10 +114,6 @@ the repo.
 - open the `common-versions-source.sh` file
 - add a new `if` with the new version before the existing code
 
-### Update helper
-
-With a git client, go to the helper repo and update to the latest master commit.
-
 ## Build
 
 ### Development run the build scripts
@@ -102,7 +122,7 @@ Before the real build, run a test build on the development machine (`wksi`)
 or the production machines (`xbbma`, `xbbmi`):
 
 ```sh
-sudo rm -rf ~/Work/cmake-*-*
+rm -rf ~/Work/cmake-*-*
 
 caffeinate bash ${HOME}/Work/cmake-xpack.git/scripts/helper/build.sh --develop --macos
 ```
@@ -110,6 +130,8 @@ caffeinate bash ${HOME}/Work/cmake-xpack.git/scripts/helper/build.sh --develop -
 Similarly on the Intel Linux (`xbbli`):
 
 ```sh
+sudo rm -rf ~/Work/cmake-*-*
+
 bash ${HOME}/Work/cmake-xpack.git/scripts/helper/build.sh --develop --linux64
 
 bash ${HOME}/Work/cmake-xpack.git/scripts/helper/build.sh --develop --win64
@@ -189,13 +211,13 @@ page.
 
 This command uses the `xpack-develop` branch of this repo.
 
-The builds take about 0h28 to complete:
+The builds take about 30 minutes to complete:
 
-- `xbbmi`: 0h08
-- `xbbma`: 0h04
-- `xbbli`: 0h07 (0h04 Linux, 0h03 Windows)
-- `xbbla64`: 0h28
-- `xbbla32`: 0h26
+- `xbbmi`: 8 min
+- `xbbma`: 4 min
+- `xbbli`: 7 min (4 min Linux, 3 min Windows)
+- `xbbla64`: 28 min
+- `xbbla32`: 26 min
 
 The workflow result and logs are available from the
 [Actions](https://github.com/xpack-dev-tools/cmake-xpack/actions/) page.
