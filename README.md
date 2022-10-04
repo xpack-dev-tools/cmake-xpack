@@ -116,7 +116,7 @@ For more details please read the
 
 ### Versioning
 
-The version strings used by the GCC project are three number strings
+The version strings used by the CMake project are three number strings
 like `3.22.6`; to this string the xPack distribution adds a four number,
 but since semver allows only three numbers, all additional ones can
 be added only as pre-release strings, separated by a dash,
