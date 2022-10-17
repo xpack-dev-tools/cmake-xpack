@@ -1,6 +1,8 @@
 
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/xpack-dev-tools/cmake-xpack)](https://github.com/xpack-dev-tools/cmake-xpack/releases)
-[![npm (scoped)](https://img.shields.io/npm/v/@xpack-dev-tools/cmake.svg)](https://www.npmjs.com/package/@xpack-dev-tools/cmake/)
+[![GitHub package.json version](https://img.shields.io/github/package-json/v/xpack-dev-tools/cmake-xpack)](https://github.com/xpack-dev-tools/cmake-xpack/blob/xpack/package.json)
+[![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/xpack-dev-tools/cmake-xpack)](https://github.com/xpack-dev-tools/cmake-xpack/tags/)
+[![npm (scoped)](https://img.shields.io/npm/v/@xpack-dev-tools/cmake.svg?color=blue)](https://www.npmjs.com/package/@xpack-dev-tools/cmake/)
+[![license](https://img.shields.io/github/license/xpack-dev-tools/cmake-xpack)](https://github.com/xpack-dev-tools/cmake-xpack/blob/xpack/LICENSE)
 
 # The xPack CMake
 
@@ -43,11 +45,17 @@ from the [`npmjs.com`](https://www.npmjs.com) registry.
 
 #### Prerequisites
 
-The only requirement is a recent
-`xpm`, which is a portable
-[Node.js](https://nodejs.org) command line application. To install it,
-follow the instructions from the
-[xpm](https://xpack.github.io/xpm/install/) page.
+A recent [xpm](https://xpack.github.io/xpm/),
+which is a portable [Node.js](https://nodejs.org/) command line application.
+
+It is recommended to update to the latest version with:
+
+```sh
+npm install --location=global xpm@latest
+```
+
+For details please follow the instructions in the
+[xPack install](https://xpack.github.io/install/) page.
 
 #### Install
 
@@ -85,7 +93,23 @@ It is also possible to install CMake globally, in the user home folder:
 xpm install --global @xpack-dev-tools/cmake@latest
 ```
 
-#### Uninstall
+After install, the package should create a structure like this (macOS files;
+only the first two depth levels are shown):
+
+```console
+$ tree -L 2 xpacks/xpack-dev-tools-cmake/.content/
+xpacks/xpack-dev-tools-cmake/.content/
+├── README.md
+...
+```
+
+No other files are installed in any system folders or other locations.
+
+### Uninstall
+
+The binaries are distributed as portable archives; thus they do not need
+to run a setup and do not require an uninstall; simply removing the
+folder is enough.
 
 To remove the links from the current project:
 
@@ -129,9 +153,8 @@ with caution, and prefer exact matches, like `3.22.6-1.1`.
 
 ## Maintainer info
 
-- [How to build](https://github.com/xpack-dev-tools/cmake-xpack/blob/xpack/README-BUILD.md)
-- [How to make new releases](https://github.com/xpack-dev-tools/cmake-xpack/blob/xpack/README-RELEASE.md)
-- [Developer info](https://github.com/xpack-dev-tools/cmake-xpack/blob/xpack/README-DEVELOP.md)
+For maintainer info, please see the
+[README-MAINTAINER](https://github.com/xpack-dev-tools/cmake-xpack/blob/xpack/README-MAINTAINER.md)
 
 ## Support
 
