@@ -76,6 +76,13 @@ function build_cmake()
         LDFLAGS+=" -Wl,-rpath,${LD_LIBRARY_PATH}"
       fi
 
+      if [ "${XBB_TARGET_PLATFORM}" == "darwin" ]
+      then
+        CFLAGS+=" -Wno-deprecated-declarations"
+        CXXFLAGS+=" -Wno-deprecated-declarations"
+        LDFLAGS+=" -Wno-deprecated-declarations"
+      fi
+
       # On macOS, with gcc-xbb it fails with:
       # Authorization.h:193:14: error: variably modified ‘bytes’ at file scope
 
