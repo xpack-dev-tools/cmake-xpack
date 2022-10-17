@@ -51,7 +51,7 @@ Find the latest release and go 1-2 minor releases back; the purpose is
 to find the one which looks old enough to be the one which will not be
 further updated (this is tricky, and failing will
 require an extra release; a possible rule of thumb would be to wait for
-x.y+1.**3**, before releasing x.y.z).
+3.x.**3**, before releasing 3.x-1.y).
 
 ### Increase the version
 

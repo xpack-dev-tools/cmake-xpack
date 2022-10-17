@@ -1,13 +1,13 @@
 ---
-title:  xPack CMake v{{ RELEASE_VERSION }} released
+title:  xPack CMake v{{ XBB_RELEASE_VERSION }} released
 
-summary: "Version **{{ RELEASE_VERSION }}** is a new release; it follows the upstream release."
+summary: "Version **{{ XBB_RELEASE_VERSION }}** is a new release; it follows the upstream release."
 
-version: "{{ RELEASE_VERSION }}"
+version: "{{ XBB_RELEASE_VERSION }}"
 upstream_version: "3.22.6"
 upstream_release_date: "28 Jul 2022"
 npm_subversion: "1"
-download_url: https://github.com/xpack-dev-tools/cmake-xpack/releases/tag/v{{ RELEASE_VERSION }}/
+download_url: https://github.com/xpack-dev-tools/cmake-xpack/releases/tag/v{{ XBB_RELEASE_VERSION }}/
 
 date:   {{ RELEASE_DATE }}
 
