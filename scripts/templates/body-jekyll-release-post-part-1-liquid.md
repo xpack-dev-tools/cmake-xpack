@@ -95,7 +95,7 @@ xpm install --global @xpack-dev-tools/cmake@latest
 
 ### Uninstall
 
-To remove the links from the current project:
+To remove the links created by xpm in the current project:
 
 ```sh
 cd my-project
