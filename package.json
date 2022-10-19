@@ -132,7 +132,6 @@
       "common-dependencies": {
         "hidden": true,
         "devDependencies": {
-          "@xpack-dev-tools/xbb-bootstrap": "4.0.0",
           "@xpack-dev-tools/cmake": "3.22.6-1.1",
           "@xpack-dev-tools/ninja-build": "1.11.1-1.1"
         }
@@ -151,6 +150,9 @@
           "common-dependencies",
           "common-actions"
         ],
+        "_devDependencies": {
+          "@xpack-dev-tools/xbb-bootstrap": "4.0.0"
+        },
         "devDependencies": {
           "@xpack-dev-tools/clang": "14.0.6-2.1"
         }
@@ -165,6 +167,9 @@
           "common-dependencies",
           "common-actions"
         ],
+        "_devDependencies": {
+          "@xpack-dev-tools/xbb-bootstrap": "4.0.0"
+        },
         "devDependencies": {
           "@xpack-dev-tools/gcc": "12.2.0-1.1"
         }
