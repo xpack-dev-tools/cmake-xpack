@@ -16,7 +16,7 @@ terminal (on Windows use the _Git Bash_ console):
 ```sh
 rm -rf ~/Work/cmake-xpack.git; \
 git clone https://github.com/xpack-dev-tools/cmake-xpack.git \
-  ~/Work/cmake-xpack.git; \
+  ~/Work/cmake-xpack.git
 ```
 
 For development purposes, clone the `xpack-develop` branch:
@@ -26,7 +26,7 @@ rm -rf ~/Work/cmake-xpack.git; \
 git clone \
   --branch xpack-develop \
   https://github.com/xpack-dev-tools/cmake-xpack.git \
-  ~/Work/cmake-xpack.git; \
+  ~/Work/cmake-xpack.git
 ```
 
 ## Prerequisites

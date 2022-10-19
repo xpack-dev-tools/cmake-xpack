@@ -13,8 +13,7 @@ rm -rf ${HOME}/Work/cmake-xpack.git; \
 git clone \
   --branch xpack-develop \
   https://github.com/xpack-dev-tools/cmake-xpack.git  \
-  ${HOME}/Work/cmake-xpack.git; \
-git -C ${HOME}/Work/cmake-xpack.git submodule update --init --recursive
+  ${HOME}/Work/cmake-xpack.git
 ```
 
 ## Start a local test
