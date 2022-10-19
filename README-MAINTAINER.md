@@ -110,10 +110,6 @@ but in the version specific release page.
 - add a new entry like _* v3.22.6-1 prepared_
 - commit with a message like _prepare v3.22.6-1_
 
-Note: if you missed to update the `CHANGELOG.md` before starting the build,
-edit the file and rerun the build, it should take only a few minutes to
-recreate the archives with the correct file.
-
 ### Merge upstream repo
 
 To keep the development repository fork in sync with the upstream CMake

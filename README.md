@@ -1,6 +1,6 @@
 
 [![GitHub package.json version](https://img.shields.io/github/package-json/v/xpack-dev-tools/cmake-xpack)](https://github.com/xpack-dev-tools/cmake-xpack/blob/xpack/package.json)
-[![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/xpack-dev-tools/cmake-xpack)](https://github.com/xpack-dev-tools/cmake-xpack/tags/)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/xpack-dev-tools/cmake-xpack)](https://github.com/xpack-dev-tools/cmake-xpack/releases/)
 [![npm (scoped)](https://img.shields.io/npm/v/@xpack-dev-tools/cmake.svg?color=blue)](https://www.npmjs.com/package/@xpack-dev-tools/cmake/)
 [![license](https://img.shields.io/github/license/xpack-dev-tools/cmake-xpack)](https://github.com/xpack-dev-tools/cmake-xpack/blob/xpack/LICENSE)
 
@@ -111,7 +111,7 @@ The binaries are distributed as portable archives; thus they do not need
 to run a setup and do not require an uninstall; simply removing the
 folder is enough.
 
-To remove the links from the current project:
+To remove the links created by xpm in the current project:
 
 ```sh
 cd my-project
