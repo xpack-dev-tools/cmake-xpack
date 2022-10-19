@@ -178,7 +178,7 @@ function build_cmake()
           config_options+=("-DCMAKE_INSTALL_PREFIX=${XBB_BINARIES_INSTALL_FOLDER_PATH}")
 
           # The mingw build also requires RC pointing to windres.
-          run_verbose_timed cmake \
+          run_verbose cmake \
             "${config_options[@]}" \
             \
             "${XBB_SOURCES_FOLDER_PATH}/${cmake_src_folder_name}"
@@ -192,33 +192,26 @@ function build_cmake()
 
         if [ "${XBB_IS_DEVELOP}" == "y" ]
         then
-          run_verbose_timed cmake \
+          run_verbose cmake \
             --build . \
             --parallel ${XBB_JOBS} \
             --verbose \
             --config "${build_type}"
         else
-          run_verbose_timed cmake \
+          run_verbose cmake \
             --build . \
             --parallel ${XBB_JOBS} \
             --config "${build_type}"
         fi
 
-        (
-          # The install procedure runs some resulted executables, which require
-          # the libssl and libcrypt libraries from XBB.
-          # xbb_activate_libs
+        echo
+        echo "Running cmake install..."
 
-          echo
-          echo "Running cmake install..."
-
-          run_verbose_timed cmake \
-            --build . \
-            --config "${build_type}" \
-            -- \
-            install
-
-        )
+        run_verbose cmake \
+          --build . \
+          --config "${build_type}" \
+          -- \
+          install
 
       ) 2>&1 | tee "${XBB_LOGS_FOLDER_PATH}/${cmake_folder_name}/build-output.txt"
 
@@ -292,7 +285,6 @@ function test_cmake()
         echo
         echo "Testing if cmake can generate itself..."
 
-        # xbb_activate
         run_app "${test_bin_path}/cmake" \
           "-DCMAKE_USE_OPENSSL=OFF" \
           "${XBB_SOURCES_FOLDER_PATH}/cmake-${XBB_CMAKE_VERSION}"
