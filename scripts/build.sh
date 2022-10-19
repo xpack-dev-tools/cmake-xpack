@@ -50,9 +50,17 @@ source "${scripts_folder_path}/definitions.sh"
 source "${helper_folder_path}/scripts/build.sh"
 source "${scripts_folder_path}/versioning.sh"
 
-source "${scripts_folder_path}/dependencies/cmake.sh"
-source "${helper_folder_path}/scripts/dependencies/ncurses.sh"
-source "${helper_folder_path}/scripts/dependencies/xz.sh"
+for dependency in ${XBB_APPLICATION_COMMON_DEPENDENCIES[@]}
+do
+  echo "Including ${helper_folder_path}/scripts/dependencies/${dependency}.sh..."
+  source "${helper_folder_path}/scripts/dependencies/${dependency}.sh"
+done
+
+for dependency in ${XBB_APPLICATION_DEPENDENCIES[@]}
+do
+  echo "Including ${scripts_folder_path}/dependencies/${dependency}.sh..."
+  source "${scripts_folder_path}/dependencies/${dependency}.sh"
+done
 
 # -----------------------------------------------------------------------------
 

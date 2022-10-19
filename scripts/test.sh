@@ -51,11 +51,25 @@ tests_folder_path="$(dirname "${scripts_folder_path}")/tests"
 # -----------------------------------------------------------------------------
 
 source "${scripts_folder_path}/definitions.sh"
-source "${scripts_folder_path}/tests/run.sh"
-source "${scripts_folder_path}/tests/update.sh"
+
+# Common definitions.
 source "${helper_folder_path}/scripts/tests.sh"
 
-source "${scripts_folder_path}/dependencies/ninja.sh"
+# Possibly override common definitions.
+source "${scripts_folder_path}/tests/run.sh"
+source "${scripts_folder_path}/tests/update.sh"
+
+for dependency in ${XBB_APPLICATION_COMMON_DEPENDENCIES[@]}
+do
+  echo "Including ${helper_folder_path}/scripts/dependencies/${dependency}.sh..."
+  source "${helper_folder_path}/scripts/dependencies/${dependency}.sh"
+done
+
+for dependency in ${XBB_APPLICATION_DEPENDENCIES[@]}
+do
+  echo "Including ${scripts_folder_path}/dependencies/${dependency}.sh..."
+  source "${scripts_folder_path}/dependencies/${dependency}.sh"
+done
 
 # -----------------------------------------------------------------------------
 
