@@ -10,6 +10,7 @@ The test script is part of the CMake xPack:
 
 ```sh
 rm -rf ${HOME}/Work/cmake-xpack.git; \
+mkdir -p ~/Work; \
 git clone \
   --branch xpack-develop \
   https://github.com/xpack-dev-tools/cmake-xpack.git  \
