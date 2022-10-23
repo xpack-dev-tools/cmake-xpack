@@ -8,14 +8,7 @@
 # -----------------------------------------------------------------------------
 
 # -----------------------------------------------------------------------------
-# Common functions used in various tests.
-#
-# Requires
-# - app_folder_path
-# - test_folder_path
-# - archive_platform (win32|linux|darwin)
-
-# -----------------------------------------------------------------------------
+# Run all application tests.
 
 function tests_run_all()
 {
