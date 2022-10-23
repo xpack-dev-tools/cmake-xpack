@@ -178,6 +178,16 @@
         },
         "devDependencies": {
           "@xpack-dev-tools/gcc": "12.2.0-1.1"
+        },
+        "actions": {
+          "build": [
+            "[ -f '/.dockerenv' ] && apt-get install --yes make",
+            "{{ properties.commandBashBuild }}"
+          ],
+          "build-develop": [
+            "[ -f '/.dockerenv' ] && apt-get install --yes make",
+            "{{ properties.commandBashBuild }} --develop"
+          ]
         }
       },
       "linux-arm64": {
