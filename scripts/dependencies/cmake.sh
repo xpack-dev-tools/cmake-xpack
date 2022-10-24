@@ -77,7 +77,7 @@ function build_cmake()
       if [ "${XBB_TARGET_PLATFORM}" == "linux" ]
       then
         xbb_activate_cxx_rpath
-        LDFLAGS+=" -Wl,-rpath,${LD_LIBRARY_PATH}"
+        LDFLAGS+=" -Wl,-rpath,${LD_LIBRARY_PATH} -lpthread"
       fi
 
       if [ "${XBB_TARGET_PLATFORM}" == "darwin" ]
