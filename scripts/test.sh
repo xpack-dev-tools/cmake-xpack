@@ -57,6 +57,7 @@ source "${scripts_folder_path}/application.sh"
 source "${helper_folder_path}/scripts/test-common.sh"
 
 # Possibly override common definitions.
+source "${helper_folder_path}/scripts/download.sh"
 source "${scripts_folder_path}/tests/run.sh"
 source "${scripts_folder_path}/tests/update.sh"
 
