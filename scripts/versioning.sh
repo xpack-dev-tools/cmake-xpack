@@ -31,7 +31,7 @@ function build_versioned_components()
 
   # When 3.x.3 is out, release 3.x-1.y
   # Keep them in sync with combo archive content.
-  if [[ "${XBB_RELEASE_VERSION}" =~ 3\.23\.* ]]
+  if [[ "${XBB_RELEASE_VERSION}" =~ 3\.22\.* ]]
   then
     # -------------------------------------------------------------------------
 
@@ -40,32 +40,7 @@ function build_versioned_components()
       xbb_set_libraries_install "${XBB_DEPENDENCIES_INSTALL_FOLDER_PATH}"
 
       # http://zlib.net/fossils/
-      build_zlib "1.2.12" # "1.2.11"
-
-      if [ "${XBB_TARGET_PLATFORM}" != "win32" ]
-      then
-        XBB_NCURSES_DISABLE_WIDEC="y"
-        # https://ftp.gnu.org/gnu/ncurses/
-        build_ncurses "6.3"
-      fi
-
-      # https://sourceforge.net/projects/lzmautils/files/
-      build_xz "5.2.7"
-
-      # https://www.openssl.org/source/old/
-      build_openssl "1.1.1q"
-
-      xbb_set_binaries_install "${XBB_APPLICATION_INSTALL_FOLDER_PATH}"
-
-      build_cmake "${XBB_CMAKE_VERSION}"
-    )
-  elif [[ "${XBB_RELEASE_VERSION}" =~ 3\.22\.* ]]
-  then
-    # -------------------------------------------------------------------------
-
-    (
-      xbb_set_binaries_install "${XBB_DEPENDENCIES_INSTALL_FOLDER_PATH}"
-      xbb_set_libraries_install "${XBB_DEPENDENCIES_INSTALL_FOLDER_PATH}"
+      build_zlib "1.2.12"
 
       if [ "${XBB_TARGET_PLATFORM}" != "win32" ]
       then
