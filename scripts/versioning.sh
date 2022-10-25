@@ -39,6 +39,9 @@ function build_versioned_components()
       xbb_set_binaries_install "${XBB_DEPENDENCIES_INSTALL_FOLDER_PATH}"
       xbb_set_libraries_install "${XBB_DEPENDENCIES_INSTALL_FOLDER_PATH}"
 
+      # http://zlib.net/fossils/
+      build_zlib "1.2.12" # "1.2.11"
+
       if [ "${XBB_TARGET_PLATFORM}" != "win32" ]
       then
         XBB_NCURSES_DISABLE_WIDEC="y"
