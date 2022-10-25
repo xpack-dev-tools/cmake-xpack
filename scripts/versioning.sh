@@ -71,6 +71,9 @@ function build_versioned_components()
       # https://sourceforge.net/projects/lzmautils/files/
       build_xz "5.2.5"
 
+      # https://www.openssl.org/source/old/
+      build_openssl "1.1.1q"
+
       xbb_set_binaries_install "${XBB_APPLICATION_INSTALL_FOLDER_PATH}"
 
       build_cmake "${XBB_CMAKE_VERSION}"

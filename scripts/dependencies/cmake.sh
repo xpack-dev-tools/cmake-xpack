@@ -22,7 +22,10 @@ function build_cmake()
   # https://github.com/Kitware/CMake/releases
   # https://github.com/Kitware/CMake/releases/download/v3.21.6/cmake-3.21.6.tar.gz
 
+  # https://github.com/archlinux/svntogit-packages/blob/packages/cmake/trunk/PKGBUILD
   # https://archlinuxarm.org/packages/aarch64/cmake/files/PKGBUILD
+
+  # https://github.com/Homebrew/homebrew-core/blob/master/Formula/cmake.rb
 
   # 22 Sep 2020, "3.18.3"
 
@@ -73,7 +76,8 @@ function build_cmake()
       LDFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_LDFLAGS_APP} | sed -e 's|-O[0123s]||')"
       if [ "${XBB_TARGET_PLATFORM}" == "linux" ]
       then
-        LDFLAGS+=" -Wl,-rpath,${LD_LIBRARY_PATH}"
+        xbb_activate_cxx_rpath
+        LDFLAGS+=" -Wl,-rpath,${LD_LIBRARY_PATH} -lpthread"
       fi
 
       if [ "${XBB_TARGET_PLATFORM}" == "darwin" ]

@@ -23,7 +23,7 @@ XBB_APPLICATION_DISTRO_TOP_FOLDER=${XBB_APPLICATION_DISTRO_TOP_FOLDER:-"xPacks"}
 XBB_APPLICATION_DESCRIPTION="${XBB_APPLICATION_DISTRO_NAME} ${XBB_APPLICATION_NAME}"
 
 declare -a XBB_APPLICATION_DEPENDENCIES=( cmake )
-declare -a XBB_APPLICATION_COMMON_DEPENDENCIES=( libiconv coreutils ncurses xz )
+declare -a XBB_APPLICATION_COMMON_DEPENDENCIES=( ncurses xz openssl )
 
 # -----------------------------------------------------------------------------
 
