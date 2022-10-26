@@ -230,6 +230,7 @@ function build_cmake()
       )
     )
 
+    mkdir -pv "${XBB_STAMPS_FOLDER_PATH}"
     touch "${cmake_stamp_file_path}"
 
   else
