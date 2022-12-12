@@ -18,7 +18,7 @@ function build_application_versioned_components()
   # Don't use a comma since the regular expression
   # that processes this string in the Makefile, silently fails and the
   # bfdver.h file remains empty.
-  export XBB_BRANDING="${XBB_APPLICATION_DISTRO_NAME} ${XBB_APPLICATION_NAME} ${XBB_TARGET_MACHINE}"
+  export XBB_BRANDING="${XBB_APPLICATION_DISTRO_NAME} ${XBB_APPLICATION_NAME} ${XBB_REQUESTED_TARGET_MACHINE}"
 
   # cmake_BUILD_GIT_BRANCH=${cmake_BUILD_GIT_BRANCH:-"master"}
   # cmake_BUILD_GIT_COMMIT=${cmake_BUILD_GIT_COMMIT:-"HEAD"}
@@ -41,7 +41,7 @@ function build_application_versioned_components()
     # http://zlib.net/fossils/
     build_zlib "1.2.12"
 
-    if [ "${XBB_TARGET_PLATFORM}" != "win32" ]
+    if [ "${XBB_REQUESTED_HOST_PLATFORM}" != "win32" ]
     then
       XBB_NCURSES_DISABLE_WIDEC="y"
       # https://ftp.gnu.org/gnu/ncurses/
