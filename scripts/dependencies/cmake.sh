@@ -253,7 +253,7 @@ function cmake_test()
 
     for app in ${apps_names[@]}
     do
-      show_libs "${test_bin_path}/${app}" show_libs
+      show_host_libs "${test_bin_path}/${app}"
     done
 
     echo
@@ -261,8 +261,8 @@ function cmake_test()
 
     for app in ${apps_names[@]}
     do
-      run_app "${test_bin_path}/${app}" --version
-      run_app "${test_bin_path}/${app}" --help
+      run_host_app_verbose "${test_bin_path}/${app}" --version
+      run_host_app_verbose "${test_bin_path}/${app}" --help
     done
 
     # -------------------------------------------------------------------------
@@ -277,17 +277,16 @@ function cmake_test()
 
         # Simple test, generate itself.
 
-        if [ "${XBB_IS_DEVELOP}" == "y" ]
-        then
-          env | sort
-        fi
+        xbb_show_env_develop
 
         echo
         echo "Testing if cmake can generate itself..."
 
-        run_app "${test_bin_path}/cmake" \
+        local xbb_cmake_version="$(echo "${XBB_RELEASE_VERSION}" | sed -e 's|-.*||')"
+
+        run_host_app_verbose "${test_bin_path}/cmake" \
           "-DCMAKE_USE_OPENSSL=OFF" \
-          "${XBB_SOURCES_FOLDER_PATH}/cmake-${XBB_CMAKE_VERSION}"
+          "${XBB_SOURCES_FOLDER_PATH}/cmake-${xbb_cmake_version}"
       )
     fi
   )
