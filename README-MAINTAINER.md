@@ -4,7 +4,7 @@
 
 # Maintainer info
 
-## Project repository
+## Get project sources
 
 The project is hosted on GitHub:
 
@@ -14,7 +14,7 @@ To clone the stable branch (`xpack`), run the following commands in a
 terminal (on Windows use the _Git Bash_ console):
 
 ```sh
-rm -rf ~/Work/cmake-xpack.git; \
+rm -rf ~/Work/cmake-xpack.git && \
 git clone https://github.com/xpack-dev-tools/cmake-xpack.git \
   ~/Work/cmake-xpack.git
 ```
@@ -22,12 +22,34 @@ git clone https://github.com/xpack-dev-tools/cmake-xpack.git \
 For development purposes, clone the `xpack-develop` branch:
 
 ```sh
-rm -rf ~/Work/cmake-xpack.git; \
-mkdir -p ~/Work; \
+rm -rf ~/Work/cmake-xpack.git && \
+mkdir -p ~/Work && \
 git clone \
   --branch xpack-develop \
   https://github.com/xpack-dev-tools/cmake-xpack.git \
   ~/Work/cmake-xpack.git
+```
+
+## Get helper sources
+
+The project has a dependency to a common **helper**; clone the
+`xpack-develop` branch and link it to the central xPacks store:
+
+```sh
+rm -rf ~/Work/xbb-helper-xpack.git && \
+mkdir -p ~/Work && \
+git clone \
+  --branch xpack-develop \
+  https://github.com/xpack-dev-tools/xbb-helper-xpack.git \
+  ~/Work/xbb-helper-xpack.git && \
+xpm link -C ~/Work/xbb-helper-xpack.git
+```
+
+Or, if the repo was already cloned:
+
+```sh
+git -C ~/Work/xbb-helper-xpack.git pull
+xpm link -C ~/Work/xbb-helper-xpack.git
 ```
 
 ## Prerequisites
@@ -37,7 +59,8 @@ A recent [xpm](https://xpack.github.io/xpm/), which is a portable
 
 ## Release schedule
 
-This distribution is generally one minor release behind the upstream releases,
+This distribution is generally one minor release behind the upstream
+[releases](https://github.com/Kitware/CMake/releases),
 trying to capture the latest patch of a previous minor version (the 3.x.**3**
 rule of thumb rule, see below).
 
@@ -64,9 +87,10 @@ In the `xpack-dev-tools/cmake-xpack` Git repo:
 
 No need to add a tag here, it'll be added when the release is created.
 
-### Update helper
+### Update helper & other dependencies
 
-With a git client, go to the helper repo and update to the latest master commit.
+Check the latest versions at <https://github.com/xpack-dev-tools/> and
+update the dependencies in `package.json`.
 
 ### Check the latest upstream release
 
@@ -134,23 +158,29 @@ the repo.
 - open the `scripts/versioning.sh` file
 - add a new `if` with the new version before the existing code
 
-
 ## Build
 
 The builds currently run on 5 dedicated machines (Intel GNU/Linux,
-Arm 32 GNU/Linux, Arm 64 GNU/Linux, Intel macOS and Arm macOS).
+Arm 32 GNU/Linux, Arm 64 GNU/Linux, Intel macOS and Apple Silicon macOS).
 
 ### Development run the build scripts
 
-Before the real build, run a test build on all platforms.
+Before the real build, run test builds on all platforms.
+
+#### Visual Studio Code
+
+All actions are defined as **xPack actions** and can be conveniently
+triggered via the VS Code graphical interface, using the
+[xPack extension](https://marketplace.visualstudio.com/items?itemName=ilg-vscode.xpack).
 
 #### Intel macOS
 
-For Intel macOS, first run the build on the development machine (`wksi`):
+For Intel macOS, first run the build on the development machine
+(`wksi`, a recent macOS):
 
 ```sh
 # Update the build scripts.
-git pull -C ~/Work/cmake-xpack.git
+git -C ~/Work/cmake-xpack.git pull
 
 xpm install -C ~/Work/cmake-xpack.git
 
@@ -164,7 +194,9 @@ caffeinate xpm run build-develop --config darwin-x64 -C ~/Work/cmake-xpack.git
 
 When functional, push the `xpack-develop` branch to GitHub.
 
-Run the build on the production machine (`xbbmi`):
+Run the native build on the production machine
+(`xbbmi`, an older macOS);
+start a VS Code remote session, or connect with a terminal:
 
 ```sh
 caffeinate ssh xbbmi
@@ -172,7 +204,7 @@ caffeinate ssh xbbmi
 
 ```sh
 # Update the build scripts (or clone them the first time).
-git pull -C ~/Work/cmake-xpack.git
+git -C ~/Work/cmake-xpack.git pull
 
 xpm install -C ~/Work/cmake-xpack.git
 
@@ -182,7 +214,33 @@ xpm install --config darwin-x64 -C ~/Work/cmake-xpack.git
 caffeinate xpm run build-develop --config darwin-x64 -C ~/Work/cmake-xpack.git
 ```
 
-Several minutes later, the output of the build script is a compressed
+The build takes about 10 minutes.
+
+When functional, push the `xpack-develop` branch to GitHub.
+
+Run the native build on the production machine
+(`xbbmi`, an older macOS);
+start a VS Code remote session, or connect with a terminal:
+
+```sh
+caffeinate ssh xbbmi
+```
+
+Repeat the same steps as before.
+
+```sh
+git -C ~/Work/cmake-xpack.git pull && \
+xpm run deep-clean -C ~/Work/cmake-xpack.git && \
+xpm install -C ~/Work/cmake-xpack.git && \
+git -C ~/Work/xbb-helper-xpack.git pull && \
+xpm link -C ~/Work/xbb-helper-xpack.git && \
+xpm run link-deps -C ~/Work/cmake-xpack.git && \
+xpm run deep-clean --config darwin-x64  -C ~/Work/cmake-xpack.git && \
+xpm install --config darwin-x64 -C ~/Work/cmake-xpack.git
+caffeinate xpm run build-develop --config darwin-x64 -C ~/Work/cmake-xpack.git
+```
+
+About 10 minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
@@ -194,25 +252,29 @@ total 1080
 
 #### Apple Silicon macOS
 
-Run the build on the production machine (`xbbma`):
+Run the native build on the production machine
+(`xbbma`, an older macOS);
+start a VS Code remote session, or connect with a terminal:
 
 ```sh
 caffeinate ssh xbbma
 ```
 
+Update the build scripts (or clone them at the first use):
+
 ```sh
-# Update the build scripts (or clone them the first time).
-git pull -C ~/Work/cmake-xpack.git
-
-xpm install -C ~/Work/cmake-xpack.git
-
-xpm run deep-clean --config darwin-arm64 -C ~/Work/cmake-xpack.git
-
+git -C ~/Work/cmake-xpack.git pull && \
+xpm run deep-clean -C ~/Work/cmake-xpack.git && \
+xpm install -C ~/Work/cmake-xpack.git && \
+git -C ~/Work/xbb-helper-xpack.git pull && \
+xpm link -C ~/Work/xbb-helper-xpack.git && \
+xpm run link-deps -C ~/Work/cmake-xpack.git && \
+xpm run deep-clean --config darwin-arm64  -C ~/Work/cmake-xpack.git && \
 xpm install --config darwin-arm64 -C ~/Work/cmake-xpack.git
 caffeinate xpm run build-develop --config darwin-arm64 -C ~/Work/cmake-xpack.git
 ```
 
-Several minutes later, the output of the build script is a compressed
+About 10 minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
@@ -224,27 +286,28 @@ total 1056
 
 #### Intel GNU/Linux
 
-Run the build on the production machine (`xbbli`):
+Run the docker build on the production machine (`xbbli`);
+start a VS Code remote session, or connect with a terminal:
 
 ```sh
 caffeinate ssh xbbli
 ```
 
-Build the GNU/Linux binaries:
+##### Build the GNU/Linux binaries
+
+Update the build scripts (or clone them at the first use):
 
 ```sh
-# Update the build scripts (or clone them the first time).
-git pull -C ~/Work/cmake-xpack.git
-
-xpm install -C ~/Work/cmake-xpack.git
-
-xpm run deep-clean --config linux-x64 -C ~/Work/cmake-xpack.git
-
-xpm install --config linux-x64 -C ~/Work/cmake-xpack.git
-xpm run build-develop --config linux-x64 -C ~/Work/cmake-xpack.git
+git -C ~/Work/cmake-xpack.git pull && \
+xpm run deep-clean -C ~/Work/cmake-xpack.git && \
+xpm run deep-clean --config linux-x64 -C ~/Work/cmake-xpack.git && \
+xpm run docker-prepare --config linux-x64 -C ~/Work/cmake-xpack.git && \
+git -C ~/Work/xbb-helper-xpack.git pull && \
+xpm run docker-link-deps --config linux-x64 -C ~/Work/cmake-xpack.git
+xpm run docker-build-develop --config linux-x64 -C ~/Work/cmake-xpack.git
 ```
 
-Several minutes later, the output of the build script is a compressed
+About 10 minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
@@ -254,16 +317,18 @@ total 1480
 -rw-rw-rw- 1 ilg ilg    110 May 17 09:49 xpack-cmake-1.11.1-2-linux-x64.tar.gz.sha
 ```
 
-Build the Windows binaries:
+##### Build the Windows binaries
+
+Clean the build folder and prepare the docker container:
 
 ```sh
-xpm run deep-clean --config win32-x64 -C ~/Work/cmake-xpack.git
-
-xpm install --config win32-x64 -C ~/Work/cmake-xpack.git
-xpm run build-develop --config win32-x64 -C ~/Work/cmake-xpack.git
+xpm run deep-clean --config win32-x64 -C ~/Work/cmake-xpack.git && \
+xpm run docker-prepare --config win32-x64 -C ~/Work/cmake-xpack.git && \
+xpm run docker-link-deps --config win32-x64 -C ~/Work/cmake-xpack.git
+xpm run docker-build-develop --config win32-x64 -C ~/Work/cmake-xpack.git
 ```
 
-Several minutes later, the output of the build script is a compressed
+About 10 minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
@@ -275,25 +340,26 @@ total 1480
 
 #### Arm GNU/Linux 64-bit
 
-Run the build on the production machine (`xbbla64`):
+Run the docker build on the production machine (`xbbla64`);
+start a VS Code remote session, or connect with a terminal:
 
 ```sh
 caffeinate ssh xbbla64
 ```
 
+Update the build scripts (or clone them at the first use):
+
 ```sh
-# Update the build scripts (or clone if the first time)
-git pull -C ~/Work/cmake-xpack.git
-
-xpm install -C ~/Work/cmake-xpack.git
-
-xpm run deep-clean --config linux-arm64 -C ~/Work/cmake-xpack.git
-
-xpm install --config linux-arm64 -C ~/Work/cmake-xpack.git
-xpm run build-develop --config linux-arm64 -C ~/Work/cmake-xpack.git
+git -C ~/Work/cmake-xpack.git pull && \
+xpm run deep-clean -C ~/Work/cmake-xpack.git && \
+xpm run deep-clean --config linux-arm64 -C ~/Work/cmake-xpack.git && \
+xpm run docker-prepare --config linux-arm64 -C ~/Work/cmake-xpack.git && \
+git -C ~/Work/xbb-helper-xpack.git pull && \
+xpm run docker-link-deps --config linux-arm64 -C ~/Work/cmake-xpack.git
+xpm run docker-build-develop --config linux-arm64 -C ~/Work/cmake-xpack.git
 ```
 
-Several minutes later, the output of the build script is a compressed
+About 30 minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
@@ -305,25 +371,26 @@ total 532
 
 #### Arm GNU/Linux 32-bit
 
-Run the build on the production machine (`xbbla32`):
+Run the docker build on the production machine (`xbbla32`);
+start a VS Code remote session, or connect with a terminal:
 
 ```sh
 caffeinate ssh xbbla32
 ```
 
+Update the build scripts (or clone them at the first use):
+
 ```sh
-# Update the build scripts (or clone if the first time)
-git pull -C ~/Work/cmake-xpack.git
-
-xpm install -C ~/Work/cmake-xpack.git
-
-xpm run deep-clean --config linux-arm -C ~/Work/cmake-xpack.git
-
-xpm install --config linux-arm -C ~/Work/cmake-xpack.git
-xpm run build-develop --config linux-arm -C ~/Work/cmake-xpack.git
+git -C ~/Work/cmake-xpack.git pull && \
+xpm run deep-clean -C ~/Work/cmake-xpack.git && \
+xpm run deep-clean --config linux-arm -C ~/Work/cmake-xpack.git && \
+xpm run docker-prepare --config linux-arm -C ~/Work/cmake-xpack.git && \
+git -C ~/Work/xbb-helper-xpack.git pull && \
+xpm run docker-link-deps --config linux-arm -C ~/Work/cmake-xpack.git
+xpm run docker-build-develop --config linux-arm -C ~/Work/cmake-xpack.git
 ```
 
-Several minutes later, the output of the build script is a compressed
+About 30 minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
@@ -382,7 +449,14 @@ screen -S ga
 # Ctrl-a Ctrl-d
 ```
 
-Check that both the project Git and the submodule are pushed to GitHub.
+For `xbbli` & `xbbla64` start two runners:
+
+```sh
+~/actions-runners/xpack-dev-tools/1/run.sh &
+~/actions-runners/xpack-dev-tools/2/run.sh &
+```
+
+Check that the project is pushed to GitHub.
 
 To trigger the GitHub Actions build, use the xPack action:
 
@@ -395,11 +469,11 @@ To trigger the GitHub Actions build, use the xPack action:
 This is equivalent to:
 
 ```sh
-bash ${HOME}/Work/cmake-xpack.git/scripts/helper/trigger-workflow-build.sh --machine xbbli
-bash ${HOME}/Work/cmake-xpack.git/scripts/helper/trigger-workflow-build.sh --machine xbbla64
-bash ${HOME}/Work/cmake-xpack.git/scripts/helper/trigger-workflow-build.sh --machine xbbla32
-bash ${HOME}/Work/cmake-xpack.git/scripts/helper/trigger-workflow-build.sh --machine xbbmi
-bash ${HOME}/Work/cmake-xpack.git/scripts/helper/trigger-workflow-build.sh --machine xbbma
+bash ~/Work/cmake-xpack.git/xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-build.sh --machine xbbli
+bash ~/Work/cmake-xpack.git/xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-build.sh --machine xbbla64
+bash ~/Work/cmake-xpack.git/xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-build.sh --machine xbbla32
+bash ~/Work/cmake-xpack.git/xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-build.sh --machine xbbmi
+bash ~/Work/cmake-xpack.git/xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-build.sh --machine xbbma
 ```
 
 These scripts require the `GITHUB_API_DISPATCH_TOKEN` variable to be present
@@ -439,9 +513,9 @@ To trigger the GitHub Actions tests, use the xPack actions:
 These are equivalent to:
 
 ```sh
-bash ${HOME}/Work/cmake-xpack.git/scripts/helper/tests/trigger-workflow-test-prime.sh
-bash ${HOME}/Work/cmake-xpack.git/scripts/helper/tests/trigger-workflow-test-docker-linux-intel.sh
-bash ${HOME}/Work/cmake-xpack.git/scripts/helper/tests/trigger-workflow-test-docker-linux-arm.sh
+bash ~/Work/cmake-xpack.git/xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-test-prime.sh
+bash ~/Work/cmake-xpack.git/xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-test-docker-linux-intel.sh
+bash ~/Work/cmake-xpack.git/xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-test-docker-linux-arm.sh
 ```
 
 These scripts require the `GITHUB_API_DISPATCH_TOKEN` variable to be present
@@ -467,7 +541,7 @@ To trigger the Travis test, use the xPack action:
 This is equivalent to:
 
 ```sh
-bash ${HOME}/Work/cmake-xpack.git/scripts/helper/tests/trigger-travis-macos.sh
+bash ~/Work/cmake-xpack.git/xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-travis-macos.sh
 ```
 
 This script requires the `TRAVIS_COM_TOKEN` variable to be present
@@ -478,7 +552,23 @@ The test results are available from
 
 ### Manual tests
 
-Install the binaries on all platforms.
+To download the pre-released archive for the specific platform
+and run the tests, use:
+
+```sh
+xpm run test-pre-release
+```
+
+For even more tests, on each platform (MacOS, GNU/Linux, Windows),
+download the archive from
+[pre-releases/test](https://github.com/xpack-dev-tools/pre-releases/releases/tag/test/)
+and check the binaries.
+
+On macOS, remove the `com.apple.quarantine` flag:
+
+```sh
+xattr -dr com.apple.quarantine ${HOME}/Downloads/xpack-*
+```
 
 On GNU/Linux and macOS systems, use:
 
@@ -622,7 +712,7 @@ When the release is considered stable, promote it as `latest`:
 
 In case the previous version is not functional and needs to be unpublished:
 
-- `npm unpublish @xpack-dev-tools/cmake@3.22.6-1.X`
+- `npm unpublish @xpack-dev-tools/cmake@3.22.6-1.1`
 
 ## Update the Web
 
@@ -649,7 +739,7 @@ In case the previous version is not functional and needs to be unpublished:
   [release](https://xpack.github.io/cmake/releases/)
 - click the **Tweet** button
 
-## Remove pre-release binaries
+## Remove the pre-release binaries
 
 - go to <https://github.com/xpack-dev-tools/pre-releases/releases/tag/test/>
 - remove the test binaries
@@ -659,5 +749,5 @@ In case the previous version is not functional and needs to be unpublished:
 Run the xPack action `trigger-workflow-deep-clean`, this
 will remove the build folders on all supported platforms.
 
-The tests results are available from the
+The results are available from the
 [Actions](https://github.com/xpack-dev-tools/cmake-xpack/actions/) page.

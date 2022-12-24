@@ -97,10 +97,31 @@ After install, the package should create a structure like this (macOS files;
 only the first two depth levels are shown):
 
 ```console
-$ tree -L 2 xpacks/xpack-dev-tools-cmake/.content/
-xpacks/xpack-dev-tools-cmake/.content/
+$ tree -L 2 /Users/ilg/Library/xPacks/\@xpack-dev-tools/cmake/3.22.6-1.1/.content/
+/Users/ilg/Library/xPacks/\@xpack-dev-tools/cmake/3.22.6-1.1/.content/
 ├── README.md
-...
+├── bin
+│   ├── ccmake
+│   ├── cmake
+│   ├── cpack
+│   └── ctest
+├── distro-info
+│   ├── CHANGELOG.md
+│   ├── licenses
+│   ├── patches
+│   └── scripts
+├── doc
+│   └── cmake-3.22
+├── libexec
+│   └── libncurses.6.dylib
+└── share
+    ├── aclocal
+    ├── bash-completion
+    ├── cmake-3.22
+    ├── emacs
+    └── vim
+
+14 directories, 7 files
 ```
 
 No other files are installed in any system folders or other locations.
@@ -158,7 +179,7 @@ For maintainer info, please see the
 
 ## Support
 
-The quick answer is to use the GitHub
+The quick advice for getting support is to use the GitHub
 [Discussions](https://github.com/xpack-dev-tools/cmake-xpack/discussions/).
 
 For more details please read the
