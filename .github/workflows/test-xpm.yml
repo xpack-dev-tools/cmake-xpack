@@ -38,7 +38,7 @@ jobs:
 
   linux-x64:
     name: 'Linux Intel 64-bit CMake@${{ github.event.inputs.version }} test'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
       - name: 'Environment'
@@ -48,7 +48,7 @@ jobs:
           echo "whoami: $(whoami)"
           echo "pwd: $(pwd)"
           ls -lLA
-          env | sort
+          env | sort | egrep '^[^ \t]+='
 
       - name: 'Checkout project'
         uses: actions/checkout@v3
@@ -82,7 +82,7 @@ jobs:
           echo "whoami: $(whoami)"
           echo "pwd: $(pwd)"
           ls -lLA
-          env | sort
+          env | sort | egrep '^[^ \t]+='
 
       - name: 'Clean working area' # Mandatory for self-hosted runners.
         run: rm -rf * .git*
@@ -120,7 +120,7 @@ jobs:
           echo "whoami: $(whoami)"
           echo "pwd: $(pwd)"
           ls -lLA
-          env | sort
+          env | sort | egrep '^[^ \t]+='
 
       - name: 'Clean working area' # Mandatory for self-hosted runners.
         run: rm -rf * .git*
@@ -147,7 +147,7 @@ jobs:
   
   macos-x64:
     name: 'macOS Intel 64-bit CMake@${{ github.event.inputs.version }} test'
-    runs-on: macos-latest
+    runs-on: macos-10.15
 
     steps:
       - name: 'Environment'
@@ -157,7 +157,7 @@ jobs:
           echo "whoami: $(whoami)"
           echo "pwd: $(pwd)"
           ls -lLA
-          env | sort
+          env | sort | egrep '^[^ \t]+='
 
       - name: 'Clean working area' # Mandatory for self-hosted runners.
         run: rm -rf * .git*
@@ -191,7 +191,7 @@ jobs:
           echo "whoami: $(whoami)"
           echo "pwd: $(pwd)"
           ls -lLA
-          env | sort
+          env | sort | egrep '^[^ \t]+='
 
       - name: 'Clean working area' # Mandatory for self-hosted runners.
         run: rm -rf * .git*
@@ -215,7 +215,7 @@ jobs:
   
   windows-x64:
     name: 'Windows 64-bit CMake@${{ github.event.inputs.version }} test'
-    runs-on: windows-latest
+    runs-on: windows-2022
     defaults:
       run:
         # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsshell
@@ -229,7 +229,7 @@ jobs:
           echo "whoami: $(whoami)"
           echo "pwd: $(pwd)"
           ls -lLA
-          env | sort
+          env | sort | egrep '^[^ \t]+='
 
       # https://github.com/actions/checkout
       - name: 'Checkout project'
