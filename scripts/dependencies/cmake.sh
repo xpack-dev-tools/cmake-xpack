@@ -80,7 +80,7 @@ function cmake_build()
         LDFLAGS+=" -Wl,-rpath,${LD_LIBRARY_PATH} -lpthread"
       fi
 
-      if [ "${XBB_TARGET_PLATFORM}" == "darwin" ]
+      if [ "${XBB_HOST_PLATFORM}" == "darwin" ]
       then
         CFLAGS+=" -Wno-deprecated-declarations"
         CXXFLAGS+=" -Wno-deprecated-declarations"
@@ -135,7 +135,7 @@ function cmake_build()
           # config_options+=("-DBUILD_TESTING=ON")
           config_options+=("-DBUILD_TESTING=OFF")
 
-          if [ "${XBB_TARGET_PLATFORM}" == "win32" ]
+          if [ "${XBB_HOST_PLATFORM}" == "win32" ]
           then
             config_options+=("-DCMAKE_SYSTEM_NAME=Windows")
 
@@ -143,7 +143,7 @@ function cmake_build()
             config_options+=("-DCMake_RUN_CXX_FILESYSTEM__TRYRUN_OUTPUT=")
 
             # Windows does not need ncurses, since ccmake is not built.
-          elif [ "${XBB_TARGET_PLATFORM}" == "darwin" ]
+          elif [ "${XBB_HOST_PLATFORM}" == "darwin" ]
           then
             # Hack
             # https://gitlab.kitware.com/cmake/cmake/-/issues/20570#note_732291
@@ -162,7 +162,7 @@ function cmake_build()
 
             # Otherwise it'll generate two -mmacosx-version-min
             config_options+=("-DCMAKE_OSX_DEPLOYMENT_TARGET=${XBB_MACOSX_DEPLOYMENT_TARGET}")
-          elif [ "${XBB_TARGET_PLATFORM}" == "linux" ]
+          elif [ "${XBB_HOST_PLATFORM}" == "linux" ]
           then
             config_options+=("-DBUILD_CursesDialog=ON")
             config_options+=("-DCurses_ROOT=${XBB_LIBRARIES_INSTALL_FOLDER_PATH}")
@@ -248,7 +248,7 @@ function cmake_test()
 
   (
     apps_names=("cmake" "ctest" "cpack")
-    if [ "${XBB_TARGET_PLATFORM}" != "win32" ]
+    if [ "${XBB_HOST_PLATFORM}" != "win32" ]
     then
       apps_names+=("ccmake")
     fi
@@ -274,7 +274,7 @@ function cmake_test()
 
     # cmake is not happy when started via wine, since it tries to
     # execute various other tools (like it tries to get the version of ninja).
-    if [ "${XBB_TARGET_PLATFORM}" != "win32" ]
+    if [ "${XBB_HOST_PLATFORM}" != "win32" ]
     then
       (
         rm -rf "${XBB_TESTS_FOLDER_PATH}/cmake"
