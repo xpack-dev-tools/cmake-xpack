@@ -72,7 +72,7 @@
       "ctest": "./.content/bin/ctest"
     },
     "devDependencies": {
-      "@xpack-dev-tools/xbb-helper": "^0.9.2"
+      "@xpack-dev-tools/xbb-helper": "^0.11.39"
     },
     "properties": {
       "appName": "CMake",
@@ -158,7 +158,8 @@
         ],
         "devDependencies": {
           "@xpack-dev-tools/clang": "14.0.6-2.1",
-          "@xpack-dev-tools/realpath": "9.1.0-1.1"
+          "@xpack-dev-tools/realpath": "9.1.0-1.1",
+          "@xpack-dev-tools/sed": "4.9.0-1.1"
         },
         "actions": {
           "build": "caffeinate {{ properties.commandBashBuild }}",
@@ -204,7 +205,10 @@
     }
   },
   "bundleDependencies": [],
+  "$devDependenciesUrls": [
+    "https://www.npmjs.com/package/liquidjs"
+  ],
   "devDependencies": {
-    "liquidjs": "^9.42.0"
+    "liquidjs": "^10.3.3"
   }
 }
