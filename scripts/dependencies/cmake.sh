@@ -7,10 +7,6 @@
 # for any purpose is hereby granted, under the terms of the MIT license.
 # -----------------------------------------------------------------------------
 
-# Helper script used in the second edition of the xPack build
-# scripts. As the name implies, it should contain only functions and
-# should be included with 'source' by the container build scripts.
-
 # -----------------------------------------------------------------------------
 
 function cmake_build()
@@ -46,6 +42,7 @@ function cmake_build()
   if [ ! -f "${cmake_stamp_file_path}" ]
   then
 
+    mkdir -pv "${XBB_SOURCES_FOLDER_PATH}"
     cd "${XBB_SOURCES_FOLDER_PATH}"
 
     if [ ! -d "${XBB_SOURCES_FOLDER_PATH}/${cmake_src_folder_name}" ]
@@ -67,17 +64,18 @@ function cmake_build()
       mkdir -pv "${XBB_BUILD_FOLDER_PATH}/${cmake_folder_name}"
       cd "${XBB_BUILD_FOLDER_PATH}/${cmake_folder_name}"
 
-      xbb_activate_installed_dev
+      xbb_activate_dependencies_dev
 
       CFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_CFLAGS} | sed -e 's|-O[0123s]||')"
       CXXFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_CFLAGS} | sed -e 's|-O[0123s]||')"
 
       # LDFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_LDFLAGS_APP_STATIC_GCC} | sed -e 's|-O[0123s]||')"
       LDFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_LDFLAGS_APP} | sed -e 's|-O[0123s]||')"
-      if [ "${XBB_TARGET_PLATFORM}" == "linux" ]
+      xbb_adjust_ldflags_rpath
+
+      if [ "${XBB_HOST_PLATFORM}" == "linux" ]
       then
-        xbb_activate_cxx_rpath
-        LDFLAGS+=" -Wl,-rpath,${LD_LIBRARY_PATH} -lpthread"
+        LDFLAGS+=" -lpthread"
       fi
 
       if [ "${XBB_HOST_PLATFORM}" == "darwin" ]
@@ -105,10 +103,7 @@ function cmake_build()
       if [ ! -f "CMakeCache.txt" ]
       then
         (
-          if [ "${XBB_IS_DEVELOP}" == "y" ]
-          then
-            env | sort
-          fi
+          xbb_show_env_develop
 
           echo
           echo "Running cmake cmake..."
@@ -179,7 +174,7 @@ function cmake_build()
           config_options+=("-DCPACK_BINARY_7Z=ON")
           config_options+=("-DCPACK_BINARY_ZIP=ON")
 
-          config_options+=("-DCMAKE_INSTALL_PREFIX=${XBB_BINARIES_INSTALL_FOLDER_PATH}")
+          config_options+=("-DCMAKE_INSTALL_PREFIX=${XBB_EXECUTABLES_INSTALL_FOLDER_PATH}")
 
           # The mingw build also requires RC pointing to windres.
           run_verbose cmake \
@@ -234,7 +229,7 @@ function cmake_build()
     touch "${cmake_stamp_file_path}"
 
   else
-    echo "Component cmake already installed."
+    echo "Component cmake already installed"
   fi
 
   tests_add "cmake_test" "${XBB_EXECUTABLES_INSTALL_FOLDER_PATH}/bin"
