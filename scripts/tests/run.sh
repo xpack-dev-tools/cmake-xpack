@@ -33,7 +33,7 @@ function tests_run_all()
   echo
   env | sort
 
-  test_cmake "${test_bin_path}"
+  cmake_test "${test_bin_path}"
 }
 
 # -----------------------------------------------------------------------------

@@ -13,7 +13,7 @@
 
 # -----------------------------------------------------------------------------
 
-function build_cmake()
+function cmake_build()
 {
   local cmake_version="$1"
 
@@ -237,12 +237,12 @@ function build_cmake()
     echo "Component cmake already installed."
   fi
 
-  tests_add "test_cmake" "${XBB_BINARIES_INSTALL_FOLDER_PATH}/bin"
+  tests_add "cmake_test" "${XBB_EXECUTABLES_INSTALL_FOLDER_PATH}/bin"
 }
 
 # -----------------------------------------------------------------------------
 
-function test_cmake()
+function cmake_test()
 {
   local test_bin_path="$1"
 
