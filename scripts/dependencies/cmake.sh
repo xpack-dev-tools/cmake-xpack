@@ -9,21 +9,23 @@
 
 # -----------------------------------------------------------------------------
 
+# https://cmake.org
+# https://gitlab.kitware.com/cmake/cmake
+# https://github.com/Kitware/CMake/releases
+# https://github.com/Kitware/CMake/releases/download/v3.21.6/cmake-3.21.6.tar.gz
+
+# https://github.com/archlinux/svntogit-packages/blob/packages/cmake/trunk/PKGBUILD
+# https://archlinuxarm.org/packages/aarch64/cmake/files/PKGBUILD
+
+# https://github.com/Homebrew/homebrew-core/blob/master/Formula/cmake.rb
+
+# 22 Sep 2020, "3.18.3"
+
+# -----------------------------------------------------------------------------
+
 function cmake_build()
 {
   local cmake_version="$1"
-
-  # https://cmake.org
-  # https://gitlab.kitware.com/cmake/cmake
-  # https://github.com/Kitware/CMake/releases
-  # https://github.com/Kitware/CMake/releases/download/v3.21.6/cmake-3.21.6.tar.gz
-
-  # https://github.com/archlinux/svntogit-packages/blob/packages/cmake/trunk/PKGBUILD
-  # https://archlinuxarm.org/packages/aarch64/cmake/files/PKGBUILD
-
-  # https://github.com/Homebrew/homebrew-core/blob/master/Formula/cmake.rb
-
-  # 22 Sep 2020, "3.18.3"
 
   # Do not make them local!
   # The folder name as resulted after being extracted from the archive.
