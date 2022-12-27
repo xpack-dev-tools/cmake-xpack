@@ -25,6 +25,9 @@
 
 function cmake_build()
 {
+  echo_develop
+  echo_develop "[${FUNCNAME[0]} $@]"
+
   local cmake_version="$1"
 
   # Do not make them local!
