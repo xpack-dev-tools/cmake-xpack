@@ -15,7 +15,7 @@ function application_build_versioned_components()
 
   # When 3.x.3 is out, release 3.x-1.y
   # Keep them in sync with combo archive content.
-  if [[ "${XBB_RELEASE_VERSION}" =~ 3\.22\.* ]]
+  if [[ "${XBB_RELEASE_VERSION}" =~ 3[.]22[.].* ]]
   then
     # -------------------------------------------------------------------------
     # Build the native dependencies.
