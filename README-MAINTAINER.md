@@ -331,7 +331,7 @@ xpm run docker-link-deps --config win32-x64 -C ~/Work/cmake-xpack.git
 xpm run docker-build-develop --config win32-x64 -C ~/Work/cmake-xpack.git
 ```
 
-About 10 minutes later, the output of the build script is a compressed
+About 5 minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
@@ -363,7 +363,7 @@ xpm run docker-link-deps --config linux-arm64 -C ~/Work/cmake-xpack.git
 xpm run docker-build-develop --config linux-arm64 -C ~/Work/cmake-xpack.git
 ```
 
-About 30 minutes later, the output of the build script is a compressed
+About 35 minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
