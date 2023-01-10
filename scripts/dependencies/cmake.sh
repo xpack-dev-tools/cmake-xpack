@@ -75,7 +75,6 @@ function cmake_build()
       CXXFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_CFLAGS} | sed -e 's|-O[0123s]||')"
 
       LDFLAGS="$(echo ${XBB_CPPFLAGS} ${XBB_LDFLAGS_APP} | sed -e 's|-O[0123s]||')"
-      xbb_adjust_ldflags_rpath
 
       if [ "${XBB_HOST_PLATFORM}" == "linux" ]
       then
@@ -91,6 +90,8 @@ function cmake_build()
 
       # On macOS, with gcc-xbb it fails with:
       # Authorization.h:193:14: error: variably modified ‘bytes’ at file scope
+
+      xbb_adjust_ldflags_rpath
 
       export CFLAGS
       export CXXFLAGS
