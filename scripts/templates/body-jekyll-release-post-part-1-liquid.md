@@ -4,8 +4,8 @@ title:  xPack CMake v{{ XBB_RELEASE_VERSION }} released
 summary: "Version **{{ XBB_RELEASE_VERSION }}** is a new release; it follows the upstream release."
 
 version: "{{ XBB_RELEASE_VERSION }}"
-upstream_version: "3.22.6"
-upstream_release_date: "28 Jul 2022"
+upstream_version: "3.23.5"
+upstream_release_date: "1 Nov 2022"
 npm_subversion: "1"
 download_url: https://github.com/xpack-dev-tools/cmake-xpack/releases/tag/v{{ XBB_RELEASE_VERSION }}/
 
