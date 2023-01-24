@@ -4,6 +4,12 @@ Entries in this file are in reverse chronological order.
 
 ## 2023-01-24
 
+* v3.23.5-1.1 published on npmjs.com
+* 17de7de package.json: update urls for 3.23.5-1.1 release
+* c218df3 README update
+* 6de2d5b README update
+* f5724e5 body-jekyll update
+* d188a91 CHANGELOG update
 * v3.23.5-1 released
 * 69ec36f package.json: bump deps
 * 2a691a9 README update
