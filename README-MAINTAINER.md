@@ -244,9 +244,9 @@ archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/cmake-xpack.git/build/darwin-x64/deploy
-total 1080
--rw-r--r--  1 ilg  staff  547972 May 17 09:50 xpack-cmake-1.11.1-2-darwin-x64.tar.gz
--rw-r--r--  1 ilg  staff     111 May 17 09:50 xpack-cmake-1.11.1-2-darwin-x64.tar.gz.sha
+total 39704
+-rw-r--r--  1 ilg  staff  20182032 Jan 24 11:11 xpack-cmake-3.23.5-1-darwin-x64.tar.gz
+-rw-r--r--  1 ilg  staff       105 Jan 24 11:11 xpack-cmake-3.23.5-1-darwin-x64.tar.gz.sha
 ```
 
 #### Apple Silicon macOS
@@ -277,9 +277,9 @@ archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/cmake-xpack.git/build/darwin-arm64/deploy
-total 1056
--rw-r--r--  1 ilg  staff  533014 May 17 09:49 xpack-cmake-1.11.1-2-darwin-arm64.tar.gz
--rw-r--r--  1 ilg  staff     113 May 17 09:49 xpack-cmake-1.11.1-2-darwin-arm64.tar.gz.sha
+total 38232
+-rw-r--r--  1 ilg  staff  19090017 Jan 24 11:28 xpack-cmake-3.23.5-1-darwin-arm64.tar.gz
+-rw-r--r--  1 ilg  staff       107 Jan 24 11:28 xpack-cmake-3.23.5-1-darwin-arm64.tar.gz.sha
 ```
 
 #### Intel GNU/Linux
@@ -298,10 +298,11 @@ Update the build scripts (or clone them at the first use):
 ```sh
 git -C ~/Work/cmake-xpack.git pull && \
 xpm run install -C ~/Work/cmake-xpack.git && \
+git -C ~/Work/xbb-helper-xpack.git pull && \
+xpm link -C ~/Work/xbb-helper-xpack.git && \
 xpm run link-deps -C ~/Work/cmake-xpack.git && \
 xpm run deep-clean --config linux-x64 -C ~/Work/cmake-xpack.git && \
 xpm run docker-prepare --config linux-x64 -C ~/Work/cmake-xpack.git && \
-git -C ~/Work/xbb-helper-xpack.git pull && \
 xpm run docker-link-deps --config linux-x64 -C ~/Work/cmake-xpack.git
 xpm run docker-build-develop --config linux-x64 -C ~/Work/cmake-xpack.git
 ```
@@ -311,9 +312,9 @@ archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/cmake-xpack.git/build/linux-x64/deploy
-total 1480
--rw-rw-rw- 1 ilg ilg 551495 May 17 09:49 xpack-cmake-1.11.1-2-linux-x64.tar.gz
--rw-rw-rw- 1 ilg ilg    110 May 17 09:49 xpack-cmake-1.11.1-2-linux-x64.tar.gz.sha
+total 23652
+-rw-r--r-- 1 ilg ilg 24215471 Jan 24 09:30 xpack-cmake-3.23.5-1-linux-x64.tar.gz
+-rw-r--r-- 1 ilg ilg      104 Jan 24 09:30 xpack-cmake-3.23.5-1-linux-x64.tar.gz.sha
 ```
 
 ##### Build the Windows binaries
@@ -323,10 +324,11 @@ Clean the build folder and prepare the docker container:
 ```sh
 git -C ~/Work/cmake-xpack.git pull && \
 xpm run install -C ~/Work/cmake-xpack.git && \
+git -C ~/Work/xbb-helper-xpack.git pull && \
+xpm link -C ~/Work/xbb-helper-xpack.git && \
 xpm run link-deps -C ~/Work/cmake-xpack.git && \
 xpm run deep-clean --config win32-x64 -C ~/Work/cmake-xpack.git && \
 xpm run docker-prepare --config win32-x64 -C ~/Work/cmake-xpack.git && \
-git -C ~/Work/xbb-helper-xpack.git pull && \
 xpm run docker-link-deps --config win32-x64 -C ~/Work/cmake-xpack.git
 xpm run docker-build-develop --config win32-x64 -C ~/Work/cmake-xpack.git
 ```
@@ -336,9 +338,9 @@ archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/cmake-xpack.git/build/win32-x64/deploy
-total 1480
--rw-rw-rw- 1 ilg ilg 951474 May 17 09:50 xpack-cmake-1.11.1-2-win32-x64.zip
--rw-rw-rw- 1 ilg ilg    107 May 17 09:50 xpack-cmake-1.11.1-2-win32-x64.zip.sha
+total 21168
+-rw-r--r-- 1 ilg ilg 21669972 Jan 24 09:36 xpack-cmake-3.23.5-1-win32-x64.zip
+-rw-r--r-- 1 ilg ilg      101 Jan 24 09:36 xpack-cmake-3.23.5-1-win32-x64.zip.sha
 ```
 
 #### Arm GNU/Linux 64-bit
@@ -355,10 +357,11 @@ Update the build scripts (or clone them at the first use):
 ```sh
 git -C ~/Work/cmake-xpack.git pull && \
 xpm run install -C ~/Work/cmake-xpack.git && \
+git -C ~/Work/xbb-helper-xpack.git pull && \
+xpm link -C ~/Work/xbb-helper-xpack.git && \
 xpm run link-deps -C ~/Work/cmake-xpack.git && \
 xpm run deep-clean --config linux-arm64 -C ~/Work/cmake-xpack.git && \
 xpm run docker-prepare --config linux-arm64 -C ~/Work/cmake-xpack.git && \
-git -C ~/Work/xbb-helper-xpack.git pull && \
 xpm run docker-link-deps --config linux-arm64 -C ~/Work/cmake-xpack.git
 xpm run docker-build-develop --config linux-arm64 -C ~/Work/cmake-xpack.git
 ```
@@ -368,9 +371,9 @@ archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/cmake-xpack.git/build/linux-arm64/deploy
-total 532
--rw-rw-rw- 1 ilg ilg 538649 May 17 09:51 xpack-cmake-1.11.1-2-linux-arm64.tar.gz
--rw-rw-rw- 1 ilg ilg    112 May 17 09:51 xpack-cmake-1.11.1-2-linux-arm64.tar.gz.sha
+total 21944
+-rw-r--r-- 1 ilg ilg 22462984 Jan 24 09:57 xpack-cmake-3.23.5-1-linux-arm64.tar.gz
+-rw-r--r-- 1 ilg ilg      106 Jan 24 09:57 xpack-cmake-3.23.5-1-linux-arm64.tar.gz.sha
 ```
 
 #### Arm GNU/Linux 32-bit
@@ -387,10 +390,11 @@ Update the build scripts (or clone them at the first use):
 ```sh
 git -C ~/Work/cmake-xpack.git pull && \
 xpm run install -C ~/Work/cmake-xpack.git && \
+git -C ~/Work/xbb-helper-xpack.git pull && \
+xpm link -C ~/Work/xbb-helper-xpack.git && \
 xpm run link-deps -C ~/Work/cmake-xpack.git && \
 xpm run deep-clean --config linux-arm -C ~/Work/cmake-xpack.git && \
 xpm run docker-prepare --config linux-arm -C ~/Work/cmake-xpack.git && \
-git -C ~/Work/xbb-helper-xpack.git pull && \
 xpm run docker-link-deps --config linux-arm -C ~/Work/cmake-xpack.git
 xpm run docker-build-develop --config linux-arm -C ~/Work/cmake-xpack.git
 ```
@@ -400,9 +404,9 @@ archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/cmake-xpack.git/build/linux-arm/deploy
-total 500
--rw-rw-rw- 1 ilg ilg 506541 May 17 09:51 xpack-cmake-1.11.1-2-linux-arm.tar.gz
--rw-rw-rw- 1 ilg ilg    110 May 17 09:51 xpack-cmake-1.11.1-2-linux-arm.tar.gz.sha
+total 21036
+-rw-r--r-- 1 ilg ilg 21532829 Jan 24 09:55 xpack-cmake-3.23.5-1-linux-arm.tar.gz
+-rw-r--r-- 1 ilg ilg      104 Jan 24 09:55 xpack-cmake-3.23.5-1-linux-arm.tar.gz.sha
 ```
 
 ### Files cache
