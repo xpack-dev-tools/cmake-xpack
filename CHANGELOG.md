@@ -4,6 +4,14 @@ Entries in this file are in reverse chronological order.
 
 ## 2023-01-24
 
+* v3.23.5-1 released
+* 69ec36f package.json: bump deps
+* 2a691a9 README update
+* 0118354 README updates
+* 4adffef version 3.23.5-1
+* c3e5cf1 add cmake-3.25.5.git.patch
+* f41121e .vscode/settings.json: ignoreWords
+* 9ec8da6 prepare v3.23.5-1
 * 16a589a re-generate workflows
 * 7d3437f package.json: bump deps
 
@@ -121,6 +129,7 @@ Entries in this file are in reverse chronological order.
 
 ## 2022-10-19
 
+* v3.23.5-1 released
 * 5fdab3c READMEs update
 * f4c0cb7 .gitignore update
 * 8176715 versioning.sh: XBB_COREUTILS_INSTALL_REALPATH_ONLY
