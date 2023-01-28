@@ -11,10 +11,10 @@
 
 function application_build_versioned_components()
 {
-  export XBB_CMAKE_VERSION="$(echo "${XBB_RELEASE_VERSION}" | sed -e 's|-.*||')"
+  export XBB_CMAKE_VERSION="$(xbb_strip_version_pre_release "${XBB_RELEASE_VERSION}")"
 
   # When 3.x.3 is out, release 3.x-1.y
-  # Keep them in sync with combo archive content.
+  # Keep them in sync with the combo archive content.
   if [[ "${XBB_RELEASE_VERSION}" =~ 3[.]23[.].* ]]
   then
     # -------------------------------------------------------------------------
