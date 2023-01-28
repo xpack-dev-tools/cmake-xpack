@@ -287,7 +287,7 @@ function cmake_test()
         echo
         echo "Testing if cmake can generate itself..."
 
-        local xbb_cmake_version="$(echo "${XBB_RELEASE_VERSION}" | sed -e 's|-.*||')"
+        local xbb_cmake_version="$(xbb_strip_version_pre_release "${XBB_RELEASE_VERSION}")"
 
         run_host_app_verbose "${test_bin_path}/cmake" \
           "-DCMAKE_USE_OPENSSL=OFF" \
