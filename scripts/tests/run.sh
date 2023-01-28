@@ -14,7 +14,7 @@ function tests_run_all()
 {
   local test_bin_path="$1"
 
-  XBB_CMAKE_VERSION="$(echo "${XBB_RELEASE_VERSION}" | sed -e 's|-.*||')"
+  XBB_CMAKE_VERSION="$(xbb_strip_version_pre_release "${XBB_RELEASE_VERSION}")"
 
   if [ ! -d "${XBB_SOURCES_FOLDER_PATH}/cmake-${XBB_CMAKE_VERSION}" ]
   then
