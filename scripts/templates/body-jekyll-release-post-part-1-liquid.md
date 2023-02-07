@@ -3,10 +3,12 @@ title:  xPack CMake v{{ XBB_RELEASE_VERSION }} released
 
 summary: "Version **{{ XBB_RELEASE_VERSION }}** is a new release; it follows the upstream release."
 
-version: "{{ XBB_RELEASE_VERSION }}"
 upstream_version: "3.23.5"
 upstream_release_date: "1 Nov 2022"
+
+version: "{{ XBB_RELEASE_VERSION }}"
 npm_subversion: "1"
+
 download_url: https://github.com/xpack-dev-tools/cmake-xpack/releases/tag/v{{ XBB_RELEASE_VERSION }}/
 
 date:   {{ RELEASE_DATE }}
@@ -24,7 +26,7 @@ tags:
 
 [The xPack CMake](https://xpack.github.io/cmake/)
 is a standalone cross-platform binary distribution of
-[CMake](http://cmake.org).
+[CMake](https://cmake.org).
 
 There are separate binaries for **Windows** (Intel 64-bit),
 **macOS** (Intel 64-bit, Apple Silicon 64-bit)
@@ -56,7 +58,7 @@ The binary files are available from GitHub [Releases]({% raw %}{{ page.download_
 
 The full details of installing the **xPack CMake** on various platforms
 are presented in the separate
-[Install]({% raw %}{{ site.baseurl }}{% endraw %}/cmake/install/) page.
+[Install]({% raw %}{{ site.baseurl }}{% endraw %}/dev-tools/cmake/install/) page.
 
 ### Easy install
 
@@ -74,7 +76,7 @@ a dependency for a project is quite easy:
 cd my-project
 xpm init # Only at first use.
 
-xpm install @xpack-dev-tools/cmake@latest
+xpm install @xpack-dev-tools/cmake@latest --verbose
 
 ls -l xpacks/.bin
 ```
@@ -82,7 +84,7 @@ ls -l xpacks/.bin
 To install this specific version, use:
 
 ```sh
-xpm install @xpack-dev-tools/cmake@{% raw %}{{ page.version }}.{{ page.npm_subversion }}{% endraw %}
+xpm install @xpack-dev-tools/cmake@{% raw %}{{ page.version }}.{{ page.npm_subversion }}{% endraw %} --verbose
 ```
 
 It is also possible to install Meson Build globally, in the user home folder,
@@ -90,7 +92,7 @@ but this requires xPack aware tools to automatically identify them and
 manage paths.
 
 ```sh
-xpm install --global @xpack-dev-tools/cmake@latest
+xpm install --global @xpack-dev-tools/cmake@latest --verbose
 ```
 
 ### Uninstall
