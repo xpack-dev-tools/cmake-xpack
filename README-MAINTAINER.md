@@ -14,20 +14,20 @@ To clone the stable branch (`xpack`), run the following commands in a
 terminal (on Windows use the _Git Bash_ console):
 
 ```sh
-rm -rf ~/Work/cmake-xpack.git && \
+rm -rf ~/Work/xpacks/cmake-xpack.git && \
 git clone https://github.com/xpack-dev-tools/cmake-xpack.git \
-  ~/Work/cmake-xpack.git
+  ~/Work/xpacks/cmake-xpack.git
 ```
 
 For development purposes, clone the `xpack-develop` branch:
 
 ```sh
-rm -rf ~/Work/cmake-xpack.git && \
-mkdir -p ~/Work && \
+rm -rf ~/Work/xpacks/cmake-xpack.git && \
+mkdir -p ~/Work/xpacks && \
 git clone \
   --branch xpack-develop \
   https://github.com/xpack-dev-tools/cmake-xpack.git \
-  ~/Work/cmake-xpack.git
+  ~/Work/xpacks/cmake-xpack.git
 ```
 
 ## Get helper sources
@@ -36,20 +36,20 @@ The project has a dependency to a common **helper**; clone the
 `xpack-develop` branch and link it to the central xPacks store:
 
 ```sh
-rm -rf ~/Work/xbb-helper-xpack.git && \
-mkdir -p ~/Work && \
+rm -rf ~/Work/xpacks/xbb-helper-xpack.git && \
+mkdir -p ~/Work/xpacks && \
 git clone \
   --branch xpack-develop \
   https://github.com/xpack-dev-tools/xbb-helper-xpack.git \
-  ~/Work/xbb-helper-xpack.git && \
-xpm link -C ~/Work/xbb-helper-xpack.git
+  ~/Work/xpacks/xbb-helper-xpack.git && \
+xpm link -C ~/Work/xpacks/xbb-helper-xpack.git
 ```
 
 Or, if the repo was already cloned:
 
 ```sh
-git -C ~/Work/xbb-helper-xpack.git pull
-xpm link -C ~/Work/xbb-helper-xpack.git
+git -C ~/Work/xpacks/xbb-helper-xpack.git pull
+xpm link -C ~/Work/xpacks/xbb-helper-xpack.git
 ```
 
 ## Prerequisites
@@ -180,16 +180,16 @@ For Intel macOS, first run the build on the development machine
 
 ```sh
 # Update the build scripts.
-git -C ~/Work/cmake-xpack.git pull
+git -C ~/Work/xpacks/cmake-xpack.git pull
 
-xpm run install -C ~/Work/cmake-xpack.git
+xpm run install -C ~/Work/xpacks/cmake-xpack.git
 
 # For backup overhead reasons, on the development machine
 # the builds happen on a separate Work folder.
 rm -rf ~/Work/cmake-[0-9]*-*
 
-xpm install --config darwin-x64 -C ~/Work/cmake-xpack.git
-xpm run build-develop --config darwin-x64 -C ~/Work/cmake-xpack.git
+xpm install --config darwin-x64 -C ~/Work/xpacks/cmake-xpack.git
+xpm run build-develop --config darwin-x64 -C ~/Work/xpacks/cmake-xpack.git
 ```
 
 When functional, push the `xpack-develop` branch to GitHub.
@@ -204,14 +204,14 @@ caffeinate ssh xbbmi
 
 ```sh
 # Update the build scripts (or clone them the first time).
-git -C ~/Work/cmake-xpack.git pull
+git -C ~/Work/xpacks/cmake-xpack.git pull
 
-xpm run install -C ~/Work/cmake-xpack.git
+xpm run install -C ~/Work/xpacks/cmake-xpack.git
 
-xpm run deep-clean --config darwin-x64 -C ~/Work/cmake-xpack.git
+xpm run deep-clean --config darwin-x64 -C ~/Work/xpacks/cmake-xpack.git
 
-xpm install --config darwin-x64 -C ~/Work/cmake-xpack.git
-xpm run build-develop --config darwin-x64 -C ~/Work/cmake-xpack.git
+xpm install --config darwin-x64 -C ~/Work/xpacks/cmake-xpack.git
+xpm run build-develop --config darwin-x64 -C ~/Work/xpacks/cmake-xpack.git
 ```
 
 The build takes about 10 minutes.
@@ -229,21 +229,21 @@ caffeinate ssh xbbmi
 Repeat the same steps as before.
 
 ```sh
-git -C ~/Work/cmake-xpack.git pull && \
-xpm run install -C ~/Work/cmake-xpack.git && \
-git -C ~/Work/xbb-helper-xpack.git pull && \
-xpm link -C ~/Work/xbb-helper-xpack.git && \
-xpm run link-deps -C ~/Work/cmake-xpack.git && \
-xpm run deep-clean --config darwin-x64  -C ~/Work/cmake-xpack.git && \
-xpm install --config darwin-x64 -C ~/Work/cmake-xpack.git
-xpm run build-develop --config darwin-x64 -C ~/Work/cmake-xpack.git
+git -C ~/Work/xpacks/cmake-xpack.git pull && \
+xpm run install -C ~/Work/xpacks/cmake-xpack.git && \
+git -C ~/Work/xpacks/xbb-helper-xpack.git pull && \
+xpm link -C ~/Work/xpacks/xbb-helper-xpack.git && \
+xpm run link-deps -C ~/Work/xpacks/cmake-xpack.git && \
+xpm run deep-clean --config darwin-x64  -C ~/Work/xpacks/cmake-xpack.git && \
+xpm install --config darwin-x64 -C ~/Work/xpacks/cmake-xpack.git
+xpm run build-develop --config darwin-x64 -C ~/Work/xpacks/cmake-xpack.git
 ```
 
 About 10 minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
-$ ls -l ~/Work/cmake-xpack.git/build/darwin-x64/deploy
+$ ls -l ~/Work/xpacks/cmake-xpack.git/build/darwin-x64/deploy
 total 39704
 -rw-r--r--  1 ilg  staff  20182032 Jan 24 11:11 xpack-cmake-3.23.5-1-darwin-x64.tar.gz
 -rw-r--r--  1 ilg  staff       105 Jan 24 11:11 xpack-cmake-3.23.5-1-darwin-x64.tar.gz.sha
@@ -262,21 +262,21 @@ caffeinate ssh xbbma
 Update the build scripts (or clone them at the first use):
 
 ```sh
-git -C ~/Work/cmake-xpack.git pull && \
-xpm run install -C ~/Work/cmake-xpack.git && \
-git -C ~/Work/xbb-helper-xpack.git pull && \
-xpm link -C ~/Work/xbb-helper-xpack.git && \
-xpm run link-deps -C ~/Work/cmake-xpack.git && \
-xpm run deep-clean --config darwin-arm64  -C ~/Work/cmake-xpack.git && \
-xpm install --config darwin-arm64 -C ~/Work/cmake-xpack.git
-xpm run build-develop --config darwin-arm64 -C ~/Work/cmake-xpack.git
+git -C ~/Work/xpacks/cmake-xpack.git pull && \
+xpm run install -C ~/Work/xpacks/cmake-xpack.git && \
+git -C ~/Work/xpacks/xbb-helper-xpack.git pull && \
+xpm link -C ~/Work/xpacks/xbb-helper-xpack.git && \
+xpm run link-deps -C ~/Work/xpacks/cmake-xpack.git && \
+xpm run deep-clean --config darwin-arm64  -C ~/Work/xpacks/cmake-xpack.git && \
+xpm install --config darwin-arm64 -C ~/Work/xpacks/cmake-xpack.git
+xpm run build-develop --config darwin-arm64 -C ~/Work/xpacks/cmake-xpack.git
 ```
 
 About 5 minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
-$ ls -l ~/Work/cmake-xpack.git/build/darwin-arm64/deploy
+$ ls -l ~/Work/xpacks/cmake-xpack.git/build/darwin-arm64/deploy
 total 38232
 -rw-r--r--  1 ilg  staff  19090017 Jan 24 11:28 xpack-cmake-3.23.5-1-darwin-arm64.tar.gz
 -rw-r--r--  1 ilg  staff       107 Jan 24 11:28 xpack-cmake-3.23.5-1-darwin-arm64.tar.gz.sha
@@ -296,22 +296,22 @@ caffeinate ssh xbbli
 Update the build scripts (or clone them at the first use):
 
 ```sh
-git -C ~/Work/cmake-xpack.git pull && \
-xpm run install -C ~/Work/cmake-xpack.git && \
-git -C ~/Work/xbb-helper-xpack.git pull && \
-xpm link -C ~/Work/xbb-helper-xpack.git && \
-xpm run link-deps -C ~/Work/cmake-xpack.git && \
-xpm run deep-clean --config linux-x64 -C ~/Work/cmake-xpack.git && \
-xpm run docker-prepare --config linux-x64 -C ~/Work/cmake-xpack.git && \
-xpm run docker-link-deps --config linux-x64 -C ~/Work/cmake-xpack.git
-xpm run docker-build-develop --config linux-x64 -C ~/Work/cmake-xpack.git
+git -C ~/Work/xpacks/cmake-xpack.git pull && \
+xpm run install -C ~/Work/xpacks/cmake-xpack.git && \
+git -C ~/Work/xpacks/xbb-helper-xpack.git pull && \
+xpm link -C ~/Work/xpacks/xbb-helper-xpack.git && \
+xpm run link-deps -C ~/Work/xpacks/cmake-xpack.git && \
+xpm run deep-clean --config linux-x64 -C ~/Work/xpacks/cmake-xpack.git && \
+xpm run docker-prepare --config linux-x64 -C ~/Work/xpacks/cmake-xpack.git && \
+xpm run docker-link-deps --config linux-x64 -C ~/Work/xpacks/cmake-xpack.git
+xpm run docker-build-develop --config linux-x64 -C ~/Work/xpacks/cmake-xpack.git
 ```
 
 About 5 minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
-$ ls -l ~/Work/cmake-xpack.git/build/linux-x64/deploy
+$ ls -l ~/Work/xpacks/cmake-xpack.git/build/linux-x64/deploy
 total 23652
 -rw-r--r-- 1 ilg ilg 24215471 Jan 24 09:30 xpack-cmake-3.23.5-1-linux-x64.tar.gz
 -rw-r--r-- 1 ilg ilg      104 Jan 24 09:30 xpack-cmake-3.23.5-1-linux-x64.tar.gz.sha
@@ -322,22 +322,22 @@ total 23652
 Clean the build folder and prepare the docker container:
 
 ```sh
-git -C ~/Work/cmake-xpack.git pull && \
-xpm run install -C ~/Work/cmake-xpack.git && \
-git -C ~/Work/xbb-helper-xpack.git pull && \
-xpm link -C ~/Work/xbb-helper-xpack.git && \
-xpm run link-deps -C ~/Work/cmake-xpack.git && \
-xpm run deep-clean --config win32-x64 -C ~/Work/cmake-xpack.git && \
-xpm run docker-prepare --config win32-x64 -C ~/Work/cmake-xpack.git && \
-xpm run docker-link-deps --config win32-x64 -C ~/Work/cmake-xpack.git
-xpm run docker-build-develop --config win32-x64 -C ~/Work/cmake-xpack.git
+git -C ~/Work/xpacks/cmake-xpack.git pull && \
+xpm run install -C ~/Work/xpacks/cmake-xpack.git && \
+git -C ~/Work/xpacks/xbb-helper-xpack.git pull && \
+xpm link -C ~/Work/xpacks/xbb-helper-xpack.git && \
+xpm run link-deps -C ~/Work/xpacks/cmake-xpack.git && \
+xpm run deep-clean --config win32-x64 -C ~/Work/xpacks/cmake-xpack.git && \
+xpm run docker-prepare --config win32-x64 -C ~/Work/xpacks/cmake-xpack.git && \
+xpm run docker-link-deps --config win32-x64 -C ~/Work/xpacks/cmake-xpack.git
+xpm run docker-build-develop --config win32-x64 -C ~/Work/xpacks/cmake-xpack.git
 ```
 
 About 5 minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
-$ ls -l ~/Work/cmake-xpack.git/build/win32-x64/deploy
+$ ls -l ~/Work/xpacks/cmake-xpack.git/build/win32-x64/deploy
 total 21168
 -rw-r--r-- 1 ilg ilg 21669972 Jan 24 09:36 xpack-cmake-3.23.5-1-win32-x64.zip
 -rw-r--r-- 1 ilg ilg      101 Jan 24 09:36 xpack-cmake-3.23.5-1-win32-x64.zip.sha
@@ -355,22 +355,22 @@ caffeinate ssh xbbla64
 Update the build scripts (or clone them at the first use):
 
 ```sh
-git -C ~/Work/cmake-xpack.git pull && \
-xpm run install -C ~/Work/cmake-xpack.git && \
-git -C ~/Work/xbb-helper-xpack.git pull && \
-xpm link -C ~/Work/xbb-helper-xpack.git && \
-xpm run link-deps -C ~/Work/cmake-xpack.git && \
-xpm run deep-clean --config linux-arm64 -C ~/Work/cmake-xpack.git && \
-xpm run docker-prepare --config linux-arm64 -C ~/Work/cmake-xpack.git && \
-xpm run docker-link-deps --config linux-arm64 -C ~/Work/cmake-xpack.git
-xpm run docker-build-develop --config linux-arm64 -C ~/Work/cmake-xpack.git
+git -C ~/Work/xpacks/cmake-xpack.git pull && \
+xpm run install -C ~/Work/xpacks/cmake-xpack.git && \
+git -C ~/Work/xpacks/xbb-helper-xpack.git pull && \
+xpm link -C ~/Work/xpacks/xbb-helper-xpack.git && \
+xpm run link-deps -C ~/Work/xpacks/cmake-xpack.git && \
+xpm run deep-clean --config linux-arm64 -C ~/Work/xpacks/cmake-xpack.git && \
+xpm run docker-prepare --config linux-arm64 -C ~/Work/xpacks/cmake-xpack.git && \
+xpm run docker-link-deps --config linux-arm64 -C ~/Work/xpacks/cmake-xpack.git
+xpm run docker-build-develop --config linux-arm64 -C ~/Work/xpacks/cmake-xpack.git
 ```
 
 About 35 minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
-$ ls -l ~/Work/cmake-xpack.git/build/linux-arm64/deploy
+$ ls -l ~/Work/xpacks/cmake-xpack.git/build/linux-arm64/deploy
 total 21944
 -rw-r--r-- 1 ilg ilg 22462984 Jan 24 09:57 xpack-cmake-3.23.5-1-linux-arm64.tar.gz
 -rw-r--r-- 1 ilg ilg      106 Jan 24 09:57 xpack-cmake-3.23.5-1-linux-arm64.tar.gz.sha
@@ -388,22 +388,22 @@ caffeinate ssh xbbla32
 Update the build scripts (or clone them at the first use):
 
 ```sh
-git -C ~/Work/cmake-xpack.git pull && \
-xpm run install -C ~/Work/cmake-xpack.git && \
-git -C ~/Work/xbb-helper-xpack.git pull && \
-xpm link -C ~/Work/xbb-helper-xpack.git && \
-xpm run link-deps -C ~/Work/cmake-xpack.git && \
-xpm run deep-clean --config linux-arm -C ~/Work/cmake-xpack.git && \
-xpm run docker-prepare --config linux-arm -C ~/Work/cmake-xpack.git && \
-xpm run docker-link-deps --config linux-arm -C ~/Work/cmake-xpack.git
-xpm run docker-build-develop --config linux-arm -C ~/Work/cmake-xpack.git
+git -C ~/Work/xpacks/cmake-xpack.git pull && \
+xpm run install -C ~/Work/xpacks/cmake-xpack.git && \
+git -C ~/Work/xpacks/xbb-helper-xpack.git pull && \
+xpm link -C ~/Work/xpacks/xbb-helper-xpack.git && \
+xpm run link-deps -C ~/Work/xpacks/cmake-xpack.git && \
+xpm run deep-clean --config linux-arm -C ~/Work/xpacks/cmake-xpack.git && \
+xpm run docker-prepare --config linux-arm -C ~/Work/xpacks/cmake-xpack.git && \
+xpm run docker-link-deps --config linux-arm -C ~/Work/xpacks/cmake-xpack.git
+xpm run docker-build-develop --config linux-arm -C ~/Work/xpacks/cmake-xpack.git
 ```
 
 About 30 minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
-$ ls -l ~/Work/cmake-xpack.git/build/linux-arm/deploy
+$ ls -l ~/Work/xpacks/cmake-xpack.git/build/linux-arm/deploy
 total 21036
 -rw-r--r-- 1 ilg ilg 21532829 Jan 24 09:55 xpack-cmake-3.23.5-1-linux-arm.tar.gz
 -rw-r--r-- 1 ilg ilg      104 Jan 24 09:55 xpack-cmake-3.23.5-1-linux-arm.tar.gz.sha
@@ -422,23 +422,18 @@ location (like
 <https://github.com/xpack-dev-tools/files-cache/tree/master/libs>),
 place them in the XBB cache (`Work/cache`) and restart the build.
 
-## Push the build scripts
-
-In this Git repo:
-
-- push the `xpack-develop` branch to GitHub
-- possibly push the helper project too
-
-From here it'll be cloned on the production machines.
-
 ## Run the CI build
 
 The automation is provided by GitHub Actions and three self-hosted runners.
 
+### Generate the GitHub workflows
+
 Run the `generate-workflows` to re-generate the
 GitHub workflow files; commit and push if necessary.
 
-- on a permanently running machine (`berry`) open ssh sessions to the build
+### Start the self-hosted runners
+
+- on the development machine (`wksi`) open ssh sessions to the build
 machines (`xbbma`, `xbbli`, `xbbla64` and `xbbla32`):
 
 ```sh
@@ -465,7 +460,19 @@ For `xbbli` & `xbbla64` start two runners:
 ~/actions-runners/xpack-dev-tools/2/run.sh &
 ```
 
-Check that the project is pushed to GitHub.
+### Push the build scripts
+
+- push the `xpack-develop` branch to GitHub
+- possibly push the helper project too
+
+From here it'll be cloned on the production machines.
+
+### Check for disk space
+
+Check if the build machines have enough free space and eventually
+do some cleanups.
+
+### Manually trigger the build GitHub Actions
 
 To trigger the GitHub Actions build, use the xPack action:
 
@@ -478,11 +485,11 @@ To trigger the GitHub Actions build, use the xPack action:
 This is equivalent to:
 
 ```sh
-bash ~/Work/cmake-xpack.git/xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-build.sh --machine xbbli
-bash ~/Work/cmake-xpack.git/xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-build.sh --machine xbbla64
-bash ~/Work/cmake-xpack.git/xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-build.sh --machine xbbla32
-bash ~/Work/cmake-xpack.git/xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-build.sh --machine xbbmi
-bash ~/Work/cmake-xpack.git/xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-build.sh --machine xbbma
+bash ~/Work/xpacks/cmake-xpack.git/xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-build.sh --machine xbbli
+bash ~/Work/xpacks/cmake-xpack.git/xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-build.sh --machine xbbla64
+bash ~/Work/xpacks/cmake-xpack.git/xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-build.sh --machine xbbla32
+bash ~/Work/xpacks/cmake-xpack.git/xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-build.sh --machine xbbmi
+bash ~/Work/xpacks/cmake-xpack.git/xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-build.sh --machine xbbma
 ```
 
 These scripts require the `GITHUB_API_DISPATCH_TOKEN` variable to be present
@@ -491,7 +498,9 @@ Settings → Action →
 [Secrets](https://github.com/xpack-dev-tools/cmake-xpack/settings/secrets/actions)
 page.
 
-This command uses the `xpack-develop` branch of this repo.
+These commands use the `xpack-develop` branch of this repo.
+
+## Durations & results
 
 The builds take about 30 minutes to complete:
 
@@ -522,9 +531,9 @@ To trigger the GitHub Actions tests, use the xPack actions:
 These are equivalent to:
 
 ```sh
-bash ~/Work/cmake-xpack.git/xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-test-prime.sh
-bash ~/Work/cmake-xpack.git/xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-test-docker-linux-intel.sh
-bash ~/Work/cmake-xpack.git/xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-test-docker-linux-arm.sh
+bash ~/Work/xpacks/cmake-xpack.git/xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-test-prime.sh
+bash ~/Work/xpacks/cmake-xpack.git/xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-test-docker-linux-intel.sh
+bash ~/Work/xpacks/cmake-xpack.git/xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-test-docker-linux-arm.sh
 ```
 
 These scripts require the `GITHUB_API_DISPATCH_TOKEN` variable to be present
@@ -550,7 +559,7 @@ To trigger the Travis test, use the xPack action:
 This is equivalent to:
 
 ```sh
-bash ~/Work/cmake-xpack.git/xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-travis-macos.sh
+bash ~/Work/xpacks/cmake-xpack.git/xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-travis-macos.sh
 ```
 
 This script requires the `TRAVIS_COM_TOKEN` variable to be present
@@ -565,9 +574,9 @@ To download the pre-released archive for the specific platform
 and run the tests, use:
 
 ```sh
-git -C ~/Work/cmake-xpack.git pull
-xpm run install -C ~/Work/cmake-xpack.git
-xpm run test-pre-release -C ~/Work/cmake-xpack.git
+git -C ~/Work/xpacks/cmake-xpack.git pull
+xpm run install -C ~/Work/xpacks/cmake-xpack.git
+xpm run test-pre-release -C ~/Work/xpacks/cmake-xpack.git
 ```
 
 For even more tests, on each platform (MacOS, GNU/Linux, Windows),

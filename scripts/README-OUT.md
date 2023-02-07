@@ -6,7 +6,7 @@ the **CMake** build system, an open source project.
 For more details, please read the corresponding release pages:
 
 - <https://xpack.github.io/cmake/releases/>
-- <http://cmake.org>
+- <https://cmake.org>
 
 Thank you for using open source software,
 

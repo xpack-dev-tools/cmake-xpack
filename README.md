@@ -19,7 +19,7 @@ This open source project is hosted on GitHub as
 and provides the platform specific binaries for the
 [xPack CMake](https://xpack.github.io/cmake/).
 
-This distribution follows the official [CMake](http://cmake.org)
+This distribution follows the official [CMake](https://cmake.org)
 build system project.
 
 The binaries can be installed automatically as **binary xPacks** or manually as
@@ -67,7 +67,7 @@ a dependency for a project is quite easy:
 cd my-project
 xpm init # Only at first use.
 
-xpm install @xpack-dev-tools/cmake@latest
+xpm install @xpack-dev-tools/cmake@latest --verbose
 
 ls -l xpacks/.bin
 ```
@@ -90,7 +90,7 @@ This location is configurable via the environment variable
 It is also possible to install CMake globally, in the user home folder:
 
 ```sh
-xpm install --global @xpack-dev-tools/cmake@latest
+xpm install --global @xpack-dev-tools/cmake@latest --verbose
 ```
 
 After install, the package should create a structure like this (macOS files;
