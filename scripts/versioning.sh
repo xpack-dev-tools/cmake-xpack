@@ -31,7 +31,7 @@ function application_build_versioned_components()
 
     xbb_set_target "requested"
 
-    # http://zlib.net/fossils/
+    # https://zlib.net/fossils/
     zlib_build "1.2.13" # "1.2.12"
 
     if [ "${XBB_REQUESTED_HOST_PLATFORM}" != "win32" ]
@@ -71,7 +71,7 @@ function application_build_versioned_components()
 
     xbb_set_target "requested"
 
-    # http://zlib.net/fossils/
+    # https://zlib.net/fossils/
     zlib_build "1.2.12"
 
     if [ "${XBB_REQUESTED_HOST_PLATFORM}" != "win32" ]
