@@ -91,6 +91,8 @@ function cmake_build()
       # On macOS, with gcc-xbb it fails with:
       # Authorization.h:193:14: error: variably modified ‘bytes’ at file scope
 
+      CMAKE=$(which cmake)
+
       xbb_adjust_ldflags_rpath
 
       export CFLAGS
@@ -181,7 +183,7 @@ function cmake_build()
           config_options+=("-DCMAKE_INSTALL_PREFIX=${XBB_EXECUTABLES_INSTALL_FOLDER_PATH}")
 
           # The mingw build also requires RC pointing to windres.
-          run_verbose cmake \
+          run_verbose "${CMAKE}" \
             "${config_options[@]}" \
             \
             "${XBB_SOURCES_FOLDER_PATH}/${cmake_src_folder_name}"
@@ -195,13 +197,13 @@ function cmake_build()
 
         if [ "${XBB_IS_DEVELOP}" == "y" ]
         then
-          run_verbose cmake \
+          run_verbose "${CMAKE}" \
             --build . \
             --parallel ${XBB_JOBS} \
             --verbose \
             --config "${build_type}"
         else
-          run_verbose cmake \
+          run_verbose "${CMAKE}" \
             --build . \
             --parallel ${XBB_JOBS} \
             --config "${build_type}"
@@ -210,7 +212,7 @@ function cmake_build()
         echo
         echo "Running cmake install..."
 
-        run_verbose cmake \
+        run_verbose "${CMAKE}" \
           --build . \
           --config "${build_type}" \
           -- \
