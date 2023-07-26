@@ -2,6 +2,61 @@
 
 Entries in this file are in reverse chronological order.
 
+## 2023-07-26
+
+* 8e9baca package.json: move scripts to actions
+* bcfc850 package.json: update xpack-dev-tools path
+* 5d40feb READMEs update xpack-dev-tools path
+* d3814cb body-jekyll update
+* 528a634 READMEs update
+
+## 2023-07-17
+
+* 1d425f2 package.json: bump deps
+
+## 2023-03-31
+
+* b8c9458 dependencies CMAKE=$(which cmake)
+
+## 2023-03-25
+
+* c20a3b3 READMEs update
+* 5effb78 Merge branch 'xpack-develop' of https://github.com/xpack-dev-tools/cmake-xpack into xpack-develop
+* c480589 READMEs update prerequisites
+* c76a160 package.json: mkdir -pv cache
+
+## 2023-02-22
+
+* ccb1c68 READMEs update
+
+## 2023-02-14
+
+* a520c27 body-jekyll update
+
+## 2023-02-10
+
+* ba9cd55 Merge branch 'xpack-develop' of https://github.com/xpack-dev-tools/cmake-xpack into xpack-develop
+* 07e3de4 package.json: update Work/xpacks
+* a201acd READMEs update
+
+## 2023-02-07
+
+* 2bf642e READMEs update
+* 8efd203 versioning.sh: update for https
+* b6ed166 body-jekyll update
+
+## 2023-01-28
+
+* 3c1ce8d cmake.sh: MACOSX_DEPLOYMENT_TARGET
+* c3b5bcc tests/run.sh: use versioning functions
+* c10917d cmake.sh: use versioning functions
+* d0b0cd7 versioning.sh: use versioning functions
+* fcae9c2 README-MAINTAINER remove caffeinate xpm
+
+## 2023-01-27
+
+* 9041dfc package.json: reorder scripts
+
 ## 2023-01-24
 
 * v3.23.5-1.1 published on npmjs.com
