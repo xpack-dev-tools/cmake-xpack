@@ -2,8 +2,15 @@
 
 Entries in this file are in reverse chronological order.
 
+## 2023-07-27
+
+* e2a496b re-generate workflows
+
 ## 2023-07-26
 
+* 337a0bf re-generate workflows (depth: 3)
+* bcfdd9a README update
+* 0ac0507 prepare v3.24.4-1
 * 8e9baca package.json: move scripts to actions
 * bcfc850 package.json: update xpack-dev-tools path
 * 5d40feb READMEs update xpack-dev-tools path
