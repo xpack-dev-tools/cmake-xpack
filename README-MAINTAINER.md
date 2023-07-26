@@ -233,30 +233,6 @@ start a VS Code remote session, or connect with a terminal:
 caffeinate ssh xbbmi
 ```
 
-```sh
-# Update the build scripts (or clone them the first time).
-git -C ~/Work/xpack-dev-tools/cmake-xpack.git pull
-
-xpm run install -C ~/Work/xpack-dev-tools/cmake-xpack.git
-
-xpm run deep-clean --config darwin-x64 -C ~/Work/xpack-dev-tools/cmake-xpack.git
-
-xpm install --config darwin-x64 -C ~/Work/xpack-dev-tools/cmake-xpack.git
-xpm run build-develop --config darwin-x64 -C ~/Work/xpack-dev-tools/cmake-xpack.git
-```
-
-The build takes about 10 minutes.
-
-When functional, push the `xpack-develop` branch to GitHub.
-
-Run the native build on the production machine
-(`xbbmi`, an older macOS);
-start a VS Code remote session, or connect with a terminal:
-
-```sh
-caffeinate ssh xbbmi
-```
-
 Repeat the same steps as before.
 
 ```sh
