@@ -83,7 +83,7 @@ jobs:
       - name: 'Checkout project'
         uses: actions/checkout@v1
         with:
-          fetch-depth: 1
+          fetch-depth: 3
 
       - name: 'Install xpm'
         timeout-minutes: 1440
@@ -153,7 +153,7 @@ jobs:
       - name: 'Checkout project'
         uses: actions/checkout@v1
         with:
-          fetch-depth: 1
+          fetch-depth: 3
 
       - name: 'Install xpm'
         timeout-minutes: 1440
