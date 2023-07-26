@@ -4,6 +4,7 @@ Entries in this file are in reverse chronological order.
 
 ## 2023-07-27
 
+* v3.24.4-1.1 published on npmjs.com
 * e2a496b re-generate workflows
 
 ## 2023-07-26
