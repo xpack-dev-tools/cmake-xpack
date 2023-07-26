@@ -9,21 +9,30 @@
 The build scripts run on GNU/Linux and macOS. The Windows binaries are
 generated on Intel GNU/Linux, using [mingw-w64](https://mingw-w64.org).
 
-For GNU/Linux the prerequisites are:
+For GNU/Linux, the prerequisites are:
 
-- `npm` (shipped with Node.js; installed via nvm, not the system package manager)
-- `xpm` (installed via `npm`)
-- `docker`
+- `curl` (installed via the system package manager)
 - `git` (installed via the system package manager)
-
-For macOS the prerequisites are:
-
-- `npm` (shipped with Node.js; installed via nvm)
+- `docker` (preferably a recent one, installed from **docker.com**)
+- `npm` (shipped with Node.js; installed via **nvm**, **not**
+  the system package manager)
 - `xpm` (installed via `npm`)
-- the Command Line Tools
+
+For macOS, the prerequisites are:
+
+- `npm` (shipped with Node.js; installed via **nvm**)
+- `xpm` (installed via `npm`)
+- the **Command Line Tools** from Apple
 
 For details on installing them, please read the
-[XBB prerequisites page](https://xpack.github.io/xbb/prerequisites/).
+[XBB prerequisites](https://xpack.github.io/xbb/prerequisites/) page.
+
+If you already have a functional configuration from a previous run,
+it is recommended to update **xpm**:
+
+```sh
+npm install --location=global xpm@latest
+```
 
 ## Get project sources
 
@@ -49,6 +58,12 @@ git clone \
   --branch xpack-develop \
   https://github.com/xpack-dev-tools/cmake-xpack.git \
   ~/Work/xpacks/cmake-xpack.git
+```
+
+Or, if the repo was already cloned:
+
+```sh
+git -C ~/Work/xpacks/cmake-xpack.git pull
 ```
 
 ## Get helper sources
@@ -603,7 +618,7 @@ and check the binaries.
 On macOS, remove the `com.apple.quarantine` flag:
 
 ```sh
-xattr -dr com.apple.quarantine ${HOME}/Downloads/xpack-*
+xattr -cr ${HOME}/Downloads/xpack-*
 ```
 
 On GNU/Linux and macOS systems, use:
