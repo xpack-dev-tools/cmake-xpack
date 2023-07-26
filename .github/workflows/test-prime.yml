@@ -42,7 +42,7 @@ jobs:
 
   linux-x64:
     name: 'Linux x64 cmake ${{ github.event.inputs.version }} test'
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
       - name: 'Environment'
@@ -103,10 +103,10 @@ jobs:
           fetch-depth: 3
 
       - name: 'Run ${{ github.event.inputs.version }} docker test'
-        uses: docker://ubuntu:latest
+        uses: docker://ubuntu:22.04
         with:
           entrypoint: /bin/bash
-          args: /github/workspace/scripts/test.sh --image ubuntu:latest --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
+          args: /github/workspace/scripts/test.sh --image ubuntu:22.04 --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
   
   linux-arm32:
     name: 'Linux arm32 cmake ${{ github.event.inputs.version }} test'
@@ -141,14 +141,14 @@ jobs:
           fetch-depth: 3
 
       - name: 'Run ${{ github.event.inputs.version }} docker test'
-        uses: docker://arm32v7/ubuntu:latest
+        uses: docker://arm32v7/ubuntu:22.04
         with:
           entrypoint: /bin/bash # /usr/bin/linux32
-          args: /github/workspace/scripts/test.sh --image arm32v7/ubuntu:latest --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
+          args: /github/workspace/scripts/test.sh --image arm32v7/ubuntu:22.04 --version ${{ github.event.inputs.version }} --base-url ${{ github.event.inputs.base_url }}
   
   macos-x64:
     name: 'macOS x64 cmake ${{ github.event.inputs.version }} test'
-    runs-on: macos-10.15
+    runs-on: macos-12
 
     steps:
       - name: 'Environment'
