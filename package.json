@@ -1,6 +1,6 @@
 {
   "name": "@xpack-dev-tools/cmake",
-  "version": "3.24.4-1.1",
+  "version": "3.25.3-1.1",
   "description": "A binary xPack with the CMake executables",
   "main": "",
   "scripts": {
