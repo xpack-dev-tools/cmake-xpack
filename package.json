@@ -67,11 +67,7 @@
       "ctest": "./.content/bin/ctest"
     },
     "devDependencies": {
-      "@xpack-dev-tools/xbb-helper": {
-        "specifier": "github:xpack-dev-tools/xbb-helper-xpack#xpack-develop",
-        "local": "link",
-        "platforms": "all"
-      }
+      "@xpack-dev-tools/xbb-helper": "^1.4.12"
     },
     "properties": {
       "appName": "CMake",
