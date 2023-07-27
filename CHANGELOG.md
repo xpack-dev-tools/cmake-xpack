@@ -4,7 +4,13 @@ Entries in this file are in reverse chronological order.
 
 ## 2023-07-27
 
-* v3.25.3-1 released
+* v3.25.3-1.1 published on npmjs.com
+* fcdf76e package.json: update urls for 3.25.3-1.1 release
+* 91f481d README update
+* 15d6661 templates/jekyll update
+* bc41820 CHANGELOG update
+* 7ed6ee0 README update
+* 283f005 prepare v3.25.3-1
 * 9efb6d7 package.json: bump helper 1.4.11
 * v3.24.4-1.1 published on npmjs.com
 * 37d1567 3.24.4-1.1
