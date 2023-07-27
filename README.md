@@ -115,13 +115,13 @@ $ tree -L 2 /Users/ilg/Library/xPacks/\@xpack-dev-tools/cmake/3.25.3-1.1/.conten
 │   ├── patches
 │   └── scripts
 ├── doc
-│   └── cmake-3.24
+│   └── cmake-3.25
 ├── libexec
 │   └── libncurses.6.dylib
 └── share
     ├── aclocal
     ├── bash-completion
-    ├── cmake-3.24
+    ├── cmake-3.25
     ├── emacs
     └── vim
 
