@@ -4,7 +4,18 @@ Entries in this file are in reverse chronological order.
 
 ## 2023-07-27
 
+* v3.25.3-1 prepared
+* 9efb6d7 package.json: bump helper 1.4.11
 * v3.24.4-1.1 published on npmjs.com
+* 37d1567 3.24.4-1.1
+* 4936866 CHANGELOG: publish npm v3.24.4-1.1
+* a0cfafe package.json: update urls for 3.24.4-1.1 release
+* 4c716f0 /@xpack-dev-tools/xbb-helper/
+* 1fcf76c re-generate workflows
+* 3a98737 README update
+* cba5b32 templates/jekyll update
+* 69a27fa package.json: bump helper 1.4.10
+* e853677 CHANGELOG update
 * e2a496b re-generate workflows
 
 ## 2023-07-26

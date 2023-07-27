@@ -1,0 +1,41 @@
+From f9c626142b8f8638dc1142535396de0b634184ad Mon Sep 17 00:00:00 2001
+From: Liviu Ionescu <ilg@livius.net>
+Date: Tue, 16 Mar 2021 23:10:36 +0200
+Subject: [PATCH] add cmd.exe support
+
+---
+ Source/kwsys/ProcessWin32.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/Source/kwsys/ProcessWin32.c b/Source/kwsys/ProcessWin32.c
+index 17e15075bf..fe88ce414c 100644
+--- a/Source/kwsys/ProcessWin32.c
++++ b/Source/kwsys/ProcessWin32.c
+@@ -1705,6 +1705,10 @@ DWORD kwsysProcessCreate(kwsysProcess* cp, int index,
+     creationFlags |= CREATE_NEW_PROCESS_GROUP;
+   }
+ 
++  wchar_t* cmd = malloc((wcslen(cp->Commands[index]) + sizeof("cmd.exe /c ") + 1) * sizeof(wchar_t));
++  wcscpy(cmd, L"cmd.exe /c ");
++  wcscat(cmd, cp->Commands[index]);
++
+   /* Create inherited copies of the handles.  */
+   (error = kwsysProcessCreateChildHandle(&si->StartupInfo.hStdInput,
+                                          si->hStdInput, 1)) ||
+@@ -1713,10 +1717,12 @@ DWORD kwsysProcessCreate(kwsysProcess* cp, int index,
+     (error = kwsysProcessCreateChildHandle(&si->StartupInfo.hStdError,
+                                            si->hStdError, 0)) ||
+     /* Create the process.  */
+-    (!CreateProcessW(0, cp->Commands[index], 0, 0, TRUE, creationFlags, 0, 0,
++    (!CreateProcessW(0, cmd, 0, 0, TRUE, creationFlags, 0, 0,
+                      &si->StartupInfo, &cp->ProcessInformation[index]) &&
+      (error = GetLastError()));
+ 
++  free(cmd);
++  
+   /* Close the inherited copies of the handles. */
+   if (si->StartupInfo.hStdInput != si->hStdInput) {
+     kwsysProcessCleanupHandle(&si->StartupInfo.hStdInput);
+-- 
+2.37.1 (Apple Git-137.1)
+
