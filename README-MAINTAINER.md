@@ -452,7 +452,18 @@ caffeinate ssh xbbla64
 caffeinate ssh xbbla32
 ```
 
-Start the runners on all machines:
+For `xbbli` & `xbbla64` start two runners:
+
+```sh
+screen -S ga
+
+~/actions-runners/xpack-dev-tools/1/run.sh &
+~/actions-runners/xpack-dev-tools/2/run.sh &
+
+# Ctrl-a Ctrl-d
+```
+
+On all other machines start a single runner:
 
 ```sh
 screen -S ga
@@ -460,13 +471,6 @@ screen -S ga
 ~/actions-runners/xpack-dev-tools/run.sh &
 
 # Ctrl-a Ctrl-d
-```
-
-For `xbbli` & `xbbla64` start two runners:
-
-```sh
-~/actions-runners/xpack-dev-tools/1/run.sh &
-~/actions-runners/xpack-dev-tools/2/run.sh &
 ```
 
 ### Push the build scripts
