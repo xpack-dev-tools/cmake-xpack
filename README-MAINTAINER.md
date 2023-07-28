@@ -217,6 +217,9 @@ git -C ~/Work/xpack-dev-tools/cmake-xpack.git pull
 
 xpm run install -C ~/Work/xpack-dev-tools/cmake-xpack.git
 
+git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git pull
+xpm run link-deps -C ~/Work/xpack-dev-tools/cmake-xpack.git
+
 # For backup overhead reasons, on the development machine
 # the builds happen on a separate Work folder.
 rm -rf ~/Work/xpack-dev-tools-build/cmake-[0-9]*-*
@@ -336,6 +339,7 @@ xpm run install -C ~/Work/xpack-dev-tools/cmake-xpack.git && \
 git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git pull && \
 xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git && \
 xpm run link-deps -C ~/Work/xpack-dev-tools/cmake-xpack.git && \
+\
 xpm run deep-clean --config win32-x64 -C ~/Work/xpack-dev-tools/cmake-xpack.git && \
 xpm run docker-prepare --config win32-x64 -C ~/Work/xpack-dev-tools/cmake-xpack.git && \
 xpm run docker-link-deps --config win32-x64 -C ~/Work/xpack-dev-tools/cmake-xpack.git
