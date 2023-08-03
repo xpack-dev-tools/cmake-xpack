@@ -228,6 +228,8 @@ xpm install --config darwin-x64 -C ~/Work/xpack-dev-tools/cmake-xpack.git
 xpm run build-develop --config darwin-x64 -C ~/Work/xpack-dev-tools/cmake-xpack.git
 ```
 
+The build takes a few minutes.
+
 When functional, push the `xpack-develop` branch to GitHub.
 
 Run the native build on the production machine
@@ -487,7 +489,7 @@ From here it'll be cloned on the production machines.
 ### Check for disk space
 
 Check if the build machines have enough free space and eventually
-do some cleanups.
+do some cleanups (`df -BG -H /` on Linux, `df -gH /` on macOS).
 
 ### Manually trigger the build GitHub Actions
 
