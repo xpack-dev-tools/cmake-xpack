@@ -228,6 +228,12 @@ xpm install --config darwin-x64 -C ~/Work/xpack-dev-tools/cmake-xpack.git
 xpm run build-develop --config darwin-x64 -C ~/Work/xpack-dev-tools/cmake-xpack.git
 ```
 
+For a debug build:
+
+```sh
+xpm run build-develop-debug --config darwin-x64 -C ~/Work/xpack-dev-tools/cmake-xpack.git
+```
+
 The build takes a few minutes.
 
 When functional, push the `xpack-develop` branch to GitHub.
