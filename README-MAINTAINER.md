@@ -263,7 +263,7 @@ xpm install --config darwin-x64 -C ~/Work/xpack-dev-tools/cmake-xpack.git
 xpm run build-develop --config darwin-x64 -C ~/Work/xpack-dev-tools/cmake-xpack.git
 ```
 
-About 10 minutes later, the output of the build script is a compressed
+About 8 minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
@@ -543,7 +543,7 @@ These commands use the `xpack-develop` branch of this repo.
 
 The builds take about 30 minutes to complete:
 
-- `xbbmi`: 11 min
+- `xbbmi`: 8 min
 - `xbbma`: 4 min
 - `xbbli`: 7 min (6 min Linux, 6 min Windows)
 - `xbbla64`: 35 min
