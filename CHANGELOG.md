@@ -2,9 +2,69 @@
 
 Entries in this file are in reverse chronological order.
 
+## 2023-08-25
+
+* v3.26.5-1 prepared
+* 6d69d1a package.json: rm xpack-dev-tools-build/*
+* 4cd98f5 package.json: bump deps
+
+## 2023-08-21
+
+* e4eecfb READMEs update
+* c17981a package.json: bump deps
+
+## 2023-08-19
+
+* 5433ff5 READMEs update
+* 059c7cb package.json: bump deps
+
+## 2023-08-15
+
+* f34fedc re-generate workflows
+* de5145d README-MAINTAINER rename xbbla
+* b0362d1 package.json: rename xbbla
+* cee8168 package.json: bump deps
+* a470e50 READMEs update
+* 9aa2ecd README update
+* fba9859 package.json: bump deps
+
+## 2023-08-14
+
+* 04c7c66 dot.ignore updates
+* c8f4d62 re-generate workflows
+* f51e42c 3.25.3-2.1.pre
+
+## 2023-08-05
+
+* 23e0dc4 READMEs update
+
+## 2023-08-04
+
+* d6c8430 READMEs update
+* f682b9a READMEs update
+* d07e484 package.json: add build-develop-debug
+* 2e8032b READMEs update
+
+## 2023-08-03
+
+* 61caf97 package.json: reorder build actions
+* 7fd295c READMEs update
+* c8cd03a package.json: bump deps
+
+## 2023-07-28
+
+* baca34c READMEs update
+* 94ee622 package.json: bump deps
+* f68faf8 package.json: liquidjs --context --template
+* b707d74 READMEs update
+* eef72aa package.json: bump deps
+
 ## 2023-07-27
 
-* v3.25.3-1.1 published on npmjs.com
+* bb422ef package.json: revert to npm helper
+* 33a1b4a package.json: temporarily use github:helper
+* c8ebcef 3.25.3-1.1
+* 30f1eca CHANGELOG: publish npm v3.25.3-1.1
 * fcdf76e package.json: update urls for 3.25.3-1.1 release
 * 91f481d README update
 * 15d6661 templates/jekyll update
