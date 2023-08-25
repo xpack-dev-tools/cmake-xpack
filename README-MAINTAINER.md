@@ -268,9 +268,9 @@ archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/xpack-dev-tools/cmake-xpack.git/build/darwin-x64/deploy
-total 39704
--rw-r--r--  1 ilg  staff  20182032 Jan 24 11:11 xpack-cmake-3.26.5-1-darwin-x64.tar.gz
--rw-r--r--  1 ilg  staff       105 Jan 24 11:11 xpack-cmake-3.26.5-1-darwin-x64.tar.gz.sha
+total 42696
+-rw-r--r--  1 ilg  staff  21183782 Aug 25 13:54 xpack-cmake-3.26.5-1-darwin-x64.tar.gz
+-rw-r--r--  1 ilg  staff       105 Aug 25 13:54 xpack-cmake-3.26.5-1-darwin-x64.tar.gz.sha
 ```
 
 #### Apple Silicon macOS
@@ -301,9 +301,9 @@ archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/xpack-dev-tools/cmake-xpack.git/build/darwin-arm64/deploy
-total 38232
--rw-r--r--  1 ilg  staff  19090017 Jan 24 11:28 xpack-cmake-3.26.5-1-darwin-arm64.tar.gz
--rw-r--r--  1 ilg  staff       107 Jan 24 11:28 xpack-cmake-3.26.5-1-darwin-arm64.tar.gz.sha
+total 38832
+-rw-r--r--  1 ilg  staff  19427546 Aug 25 13:50 xpack-cmake-3.26.5-1-darwin-arm64.tar.gz
+-rw-r--r--  1 ilg  staff       107 Aug 25 13:50 xpack-cmake-3.26.5-1-darwin-arm64.tar.gz.sha
 ```
 
 #### Intel GNU/Linux
@@ -331,14 +331,14 @@ xpm run docker-link-deps --config linux-x64 -C ~/Work/xpack-dev-tools/cmake-xpac
 xpm run docker-build-develop --config linux-x64 -C ~/Work/xpack-dev-tools/cmake-xpack.git
 ```
 
-About 5 minutes later, the output of the build script is a compressed
+About 6 minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/xpack-dev-tools/cmake-xpack.git/build/linux-x64/deploy
-total 23652
--rw-r--r-- 1 ilg ilg 24215471 Jan 24 09:30 xpack-cmake-3.26.5-1-linux-x64.tar.gz
--rw-r--r-- 1 ilg ilg      104 Jan 24 09:30 xpack-cmake-3.26.5-1-linux-x64.tar.gz.sha
+total 24984
+-rw-r--r-- 1 ilg ilg 25577426 Aug 25 10:53 xpack-cmake-3.26.5-1-linux-x64.tar.gz
+-rw-r--r-- 1 ilg ilg      104 Aug 25 10:53 xpack-cmake-3.26.5-1-linux-x64.tar.gz.sha
 ```
 
 ##### Build the Windows binaries
@@ -358,14 +358,14 @@ xpm run docker-link-deps --config win32-x64 -C ~/Work/xpack-dev-tools/cmake-xpac
 xpm run docker-build-develop --config win32-x64 -C ~/Work/xpack-dev-tools/cmake-xpack.git
 ```
 
-About 5 minutes later, the output of the build script is a compressed
+About 6 minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/xpack-dev-tools/cmake-xpack.git/build/win32-x64/deploy
-total 21168
--rw-r--r-- 1 ilg ilg 21669972 Jan 24 09:36 xpack-cmake-3.26.5-1-win32-x64.zip
--rw-r--r-- 1 ilg ilg      101 Jan 24 09:36 xpack-cmake-3.26.5-1-win32-x64.zip.sha
+total 22412
+-rw-r--r-- 1 ilg ilg 22942875 Aug 25 10:54 xpack-cmake-3.26.5-1-win32-x64.zip
+-rw-r--r-- 1 ilg ilg      101 Aug 25 10:54 xpack-cmake-3.26.5-1-win32-x64.zip.sha
 ```
 
 #### Arm GNU/Linux 64-bit
@@ -396,9 +396,9 @@ archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/xpack-dev-tools/cmake-xpack.git/build/linux-arm64/deploy
-total 21944
--rw-r--r-- 1 ilg ilg 22462984 Jan 24 09:57 xpack-cmake-3.26.5-1-linux-arm64.tar.gz
--rw-r--r-- 1 ilg ilg      106 Jan 24 09:57 xpack-cmake-3.26.5-1-linux-arm64.tar.gz.sha
+total 23244
+-rw-r--r-- 1 ilg ilg 23796752 Aug 25 11:21 xpack-cmake-3.26.5-1-linux-arm64.tar.gz
+-rw-r--r-- 1 ilg ilg      106 Aug 25 11:21 xpack-cmake-3.26.5-1-linux-arm64.tar.gz.sha
 ```
 
 #### Arm GNU/Linux 32-bit
@@ -429,9 +429,9 @@ archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/xpack-dev-tools/cmake-xpack.git/build/linux-arm/deploy
-total 21036
--rw-r--r-- 1 ilg ilg 21532829 Jan 24 09:55 xpack-cmake-3.26.5-1-linux-arm.tar.gz
--rw-r--r-- 1 ilg ilg      104 Jan 24 09:55 xpack-cmake-3.26.5-1-linux-arm.tar.gz.sha
+total 22296
+-rw-r--r-- 1 ilg ilg 22824645 Aug 25 11:17 xpack-cmake-3.26.5-1-linux-arm.tar.gz
+-rw-r--r-- 1 ilg ilg      104 Aug 25 11:17 xpack-cmake-3.26.5-1-linux-arm.tar.gz.sha
 ```
 
 ### Update README-MAINTAINER listing output
