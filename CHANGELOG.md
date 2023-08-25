@@ -4,7 +4,11 @@ Entries in this file are in reverse chronological order.
 
 ## 2023-08-25
 
-* v3.26.5-1 released
+* v3.26.5-1.1 published on npmjs.com
+* 20d9267 README update
+* e317e71 package.json: update urls for 3.26.5-1.1 release
+* 81fef80 templates/jekyll update
+* 5338d29 CHANGELOG update
 * a80e0fb README update
 * 42338fb README update
 * 6330e40 update dot.*ignore
