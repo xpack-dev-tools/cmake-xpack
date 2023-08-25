@@ -4,7 +4,14 @@ Entries in this file are in reverse chronological order.
 
 ## 2023-08-25
 
-* v3.26.5-1 prepared
+* v3.26.5-1 released
+* a80e0fb README update
+* 42338fb README update
+* 6330e40 update dot.*ignore
+* 0c0cf6c versioning.sh: add support for 3.26.5
+* 9b0d7b8 add cmake-3.26.5.git.patch
+* f874749 re-generate workflows
+* cd05b6a prepare v3.26.5-1
 * 6d69d1a package.json: rm xpack-dev-tools-build/*
 * 4cd98f5 package.json: bump deps
 
