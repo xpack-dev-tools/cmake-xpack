@@ -114,17 +114,17 @@ $ tree -L 2 /Users/ilg/Library/xPacks/\@xpack-dev-tools/cmake/3.26.5-1.1/.conten
 │   ├── patches
 │   └── scripts
 ├── doc
-│   └── cmake-3.25
+│   └── cmake-3.26
 ├── libexec
 │   └── libncurses.6.dylib
 └── share
     ├── aclocal
     ├── bash-completion
-    ├── cmake-3.25
+    ├── cmake-3.26
     ├── emacs
     └── vim
 
-14 directories, 7 files
+15 directories, 7 files
 ```
 
 No other files are installed in any system folders or other locations.
