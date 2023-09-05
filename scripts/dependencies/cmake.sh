@@ -227,7 +227,7 @@ function cmake_build()
       (
         cd "${XBB_BUILD_FOLDER_PATH}"
 
-        copy_cmake_logs "${cmake_folder_name}"
+        copy_cmake_files "${cmake_folder_name}"
       )
     )
 
