@@ -4,7 +4,7 @@ title:  xPack CMake v{{ XBB_RELEASE_VERSION }} released
 summary: "Version **{{ XBB_RELEASE_VERSION }}** is a new release; it follows the upstream release."
 
 upstream_version: "3.26.5"
-upstream_release_date: "9 July 2023"
+upstream_release_date: "9 Jul 2023"
 
 version: "{{ XBB_RELEASE_VERSION }}"
 npm_subversion: "1"
@@ -15,10 +15,12 @@ comments: true
 
 date:   {{ RELEASE_DATE }}
 
+# For Jekyll releases selection.
 categories:
   - releases
   - cmake
 
+# For navigation; use scripts/createtag.sh in Jekyll.
 tags:
   - releases
   - cmake
