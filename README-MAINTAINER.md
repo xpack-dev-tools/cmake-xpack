@@ -139,7 +139,7 @@ but in the version specific release page.
 
 ### Update version in `package.json` to a pre-release
 
-Use a new version, suffixed by `.pre`.
+Use the new version, suffixed by `pre`, like `3.26.5-1.pre`.
 
 ### Update `CHANGELOG.md`
 
@@ -215,7 +215,7 @@ For a debug build:
 xpm run build-develop-debug --config darwin-x64 -C ~/Work/xpack-dev-tools/cmake-xpack.git
 ```
 
-The build takes a few minutes.
+The build takes several minutes to complete.
 
 When functional, push the `xpack-develop` branch to GitHub.
 
