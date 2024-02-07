@@ -796,7 +796,7 @@ In case the previous version is not functional and needs to be unpublished:
 
 ## Share on Twitter
 
-- in a separate browser windows, open [TweetDeck](https://tweetdeck.twitter.com/)
+- in a separate browser windows, open [X/Twitter](https://twitter.com)
 - using the `@xpack_project` account
 - paste the release name like **xPack CMake v3.26.5-1 released**
 - paste the link to the Web page
