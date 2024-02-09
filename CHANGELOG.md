@@ -2,9 +2,70 @@
 
 Entries in this file are in reverse chronological order.
 
+## 2024-02-09
+
+* v3.27.9-1 prepared
+
+## 2024-02-07
+
+* b9560a8 READMEs update
+* df6eaca package.json: bump deps
+
+## 2023-12-03
+
+* bb44817 package.json: bump deps
+* 141711b re-generate workflows
+
+## 2023-11-12
+
+* 71b094e package.json: bump deps
+
+## 2023-09-25
+
+* 13068be body-jekyll update
+
+## 2023-09-20
+
+* 0d5151c package.json: bump deps
+
+## 2023-09-16
+
+* b8d1c76 package.json: add linux32
+* 81359fa body-jekyll update
+
+## 2023-09-11
+
+* 76ddaf1 package.json: bump deps
+
+## 2023-09-08
+
+* 300e77f package.json: bump deps
+* a3134d9 package-lock.json update
+
+## 2023-09-06
+
+* 7be3347 package.json: bump deps
+* e4ee7c0 READMEs update
+* 11bb8a7 body-jekyll update
+
+## 2023-09-05
+
+* 203c4ba re-generate workflows
+* cdc58a1 READMEs update
+* 4a59810 package.json: bump deps
+
+## 2023-09-03
+
+* d199936 package.json: bump deps
+
+## 2023-08-28
+
+* de8a80a READMEs update
+
 ## 2023-08-25
 
-* v3.26.5-1.1 published on npmjs.com
+* 41a1148 3.26.5-1.1
+* 0749f0f CHANGELOG: publish npm v3.26.5-1.1
 * 20d9267 README update
 * e317e71 package.json: update urls for 3.26.5-1.1 release
 * 81fef80 templates/jekyll update
