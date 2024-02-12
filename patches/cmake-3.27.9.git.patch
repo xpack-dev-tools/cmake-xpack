@@ -1,38 +1,145 @@
-From b2d4faf27f955f7e47e17355559c53dedc47b95a Mon Sep 17 00:00:00 2001
+From d8360725144a0b972642de8d8d50c2777a4a8296 Mon Sep 17 00:00:00 2001
 From: Liviu Ionescu <ilg@livius.net>
-Date: Tue, 16 Mar 2021 23:10:36 +0200
-Subject: [PATCH] add cmd.exe support
+Date: Mon, 12 Feb 2024 20:24:15 +0200
+Subject: [PATCH] add support for non-exe commands
 
 ---
- Source/kwsys/ProcessWin32.c | 8 +++++++-
- 1 file changed, 7 insertions(+), 1 deletion(-)
+ Source/kwsys/ProcessWin32.c | 111 ++++++++++++++++++++++++++++++++++++
+ 1 file changed, 111 insertions(+)
 
 diff --git a/Source/kwsys/ProcessWin32.c b/Source/kwsys/ProcessWin32.c
-index 0b43b4a2af..df57d7f784 100644
+index 0b43b4a2af..ed40ab5cbe 100644
 --- a/Source/kwsys/ProcessWin32.c
 +++ b/Source/kwsys/ProcessWin32.c
-@@ -1705,6 +1705,10 @@ DWORD kwsysProcessCreate(kwsysProcess* cp, int index,
+@@ -31,6 +31,7 @@ a UNIX-style select system call.
+ #include <io.h>     /* _unlink */
+ #include <stdio.h>  /* snprintf */
+ #include <string.h> /* strlen, strdup */
++#include <stdbool.h>
+ 
+ #ifndef _MAX_FNAME
+ #  define _MAX_FNAME 4096
+@@ -1705,6 +1706,114 @@ DWORD kwsysProcessCreate(kwsysProcess* cp, int index,
      creationFlags |= CREATE_NEW_PROCESS_GROUP;
    }
  
-+  wchar_t* cmd = malloc((wcslen(cp->Commands[index]) + sizeof("cmd.exe /c ") + 1) * sizeof(wchar_t));
-+  wcscpy(cmd, L"cmd.exe /c ");
-+  wcscat(cmd, cp->Commands[index]);
++#if 1
++
++  /* This patch adds support for running non-exe commands
++     via a cmd.exe subshell. */
++  wchar_t* wFrom = cp->Commands[index];
++  size_t fromLength = wcslen(wFrom);
++
++  // fwprintf(stderr, L"[1: [%s],%d]\n", wFrom, fromLength);
++
++  wchar_t* wp = wFrom;
++
++  /* Skip initial spaces. */
++  while (*wp == L' ' || *wp == L'\t') {
++    ++wp;
++  }
++
++  if (*wp == L'"') {
++    while (*++wp != L'"')
++      ;
++    /* Stop on the ending quote. */
++  } else {
++    while (*wp != L' ' && *wp != L'\t') {
++      ++wp;
++    }
++    /* Stop on the first space. */
++  }
++
++  wchar_t* wCmd;
++
++  wchar_t wDotExe[] = L".exe";
++
++  // wchar_t xx[5] = L"";
++  // wcsncat(xx, wp - wcslen(wDotExe), wcslen(wDotExe));
++  // fwprintf(stderr, L"[x: %s]\n", xx);
++
++  if (wcsncmp(wp - wcslen(wDotExe), wDotExe, wcslen(wDotExe)) == 0) {
++    /* If an explicit .exe, execute it directly. */
++    wCmd = malloc((fromLength + 1) * sizeof(wchar_t));
++    wcscpy(wCmd, wFrom);
++  } else {
++    /* Not .exe, run it via a cmd.exe subshell. */
++
++    wchar_t wCmdExe[] = L"cmd.exe /s /c \" ";
++    wchar_t wCmdEnd[] = L" \"";
++
++    wchar_t escapedChars[] = L"&\\<>^|";
++
++    bool inQuotedString = false;
++
++    /* Count the number of characters that need to be escaped. */
++    size_t escapedCount = 0;
++    for (size_t i = 0; i < fromLength; ++i) {
++      wchar_t wChr = wFrom[i];
++      if (wChr == L'"') {
++        inQuotedString = !inQuotedString;
++      }
++      if (!inQuotedString && wcsrchr(escapedChars, wChr) != NULL) {
++        ++escapedCount;
++      }
++    }
++
++    // fwprintf(stderr, L"[2: %d]\n", escapedCount);
++
++    wCmd = malloc(
++      (wcslen(wCmdExe) + fromLength + escapedCount + wcslen(wCmdEnd) + 1)
++      * sizeof(wchar_t)
++    );
++
++    wcscpy(wCmd, wCmdExe);
++
++    if (escapedCount > 0) {
++      inQuotedString = false;
++      wchar_t* wTo = wCmd + wcslen(wCmdExe);
++      for (size_t i = 0; i < fromLength; ++i) {
++        wchar_t wChr = wFrom[i];
++        if (wChr == L'"') {
++          inQuotedString = !inQuotedString;
++        }
++        if (!inQuotedString && wcsrchr(escapedChars, wChr) != NULL) {
++          *wTo++ = L'^';
++        }
++        *wTo++ = wChr;
++      }
++      *wTo++ = L'\0';
++    } else {
++      wcscat(wCmd, wFrom);
++    }
++    wcscat(wCmd, wCmdEnd);
++  }
++
++  // fwprintf(stderr, L"[3: [%s],%d]\n", wCmd, wcslen(wCmd));
++
++  /* Create inherited copies of the handles.  */
++  (error = kwsysProcessCreateChildHandle(&si->StartupInfo.hStdInput,
++                                         si->hStdInput, 1)) ||
++    (error = kwsysProcessCreateChildHandle(&si->StartupInfo.hStdOutput,
++                                           si->hStdOutput, 0)) ||
++    (error = kwsysProcessCreateChildHandle(&si->StartupInfo.hStdError,
++                                           si->hStdError, 0)) ||
++    /* Create the process.  */
++    (!CreateProcessW(0, wCmd, 0, 0, TRUE, creationFlags, 0, 0,
++                     &si->StartupInfo, &cp->ProcessInformation[index]) &&
++     (error = GetLastError()));
++
++  free(wCmd);
++
++#else
 +
    /* Create inherited copies of the handles.  */
    (error = kwsysProcessCreateChildHandle(&si->StartupInfo.hStdInput,
                                           si->hStdInput, 1)) ||
-@@ -1713,10 +1717,12 @@ DWORD kwsysProcessCreate(kwsysProcess* cp, int index,
-     (error = kwsysProcessCreateChildHandle(&si->StartupInfo.hStdError,
-                                            si->hStdError, 0)) ||
-     /* Create the process.  */
--    (!CreateProcessW(0, cp->Commands[index], 0, 0, TRUE, creationFlags, 0, 0,
-+    (!CreateProcessW(0, cmd, 0, 0, TRUE, creationFlags, 0, 0,
+@@ -1717,6 +1826,8 @@ DWORD kwsysProcessCreate(kwsysProcess* cp, int index,
                       &si->StartupInfo, &cp->ProcessInformation[index]) &&
       (error = GetLastError()));
  
-+  free(cmd);
-+  
++#endif
++
    /* Close the inherited copies of the handles. */
    if (si->StartupInfo.hStdInput != si->hStdInput) {
      kwsysProcessCleanupHandle(&si->StartupInfo.hStdInput);
