@@ -1,14 +1,14 @@
-From d8360725144a0b972642de8d8d50c2777a4a8296 Mon Sep 17 00:00:00 2001
+From 6fe677ca51073d5b233aef9a854793351a192f65 Mon Sep 17 00:00:00 2001
 From: Liviu Ionescu <ilg@livius.net>
-Date: Mon, 12 Feb 2024 20:24:15 +0200
-Subject: [PATCH] add support for non-exe commands
+Date: Wed, 14 Feb 2024 10:24:40 +0200
+Subject: [PATCH] add support for .cmd shims
 
 ---
- Source/kwsys/ProcessWin32.c | 111 ++++++++++++++++++++++++++++++++++++
- 1 file changed, 111 insertions(+)
+ Source/kwsys/ProcessWin32.c | 113 ++++++++++++++++++++++++++++++++++++
+ 1 file changed, 113 insertions(+)
 
 diff --git a/Source/kwsys/ProcessWin32.c b/Source/kwsys/ProcessWin32.c
-index 0b43b4a2af..ed40ab5cbe 100644
+index 0b43b4a2af..027df76d78 100644
 --- a/Source/kwsys/ProcessWin32.c
 +++ b/Source/kwsys/ProcessWin32.c
 @@ -31,6 +31,7 @@ a UNIX-style select system call.
@@ -19,14 +19,14 @@ index 0b43b4a2af..ed40ab5cbe 100644
  
  #ifndef _MAX_FNAME
  #  define _MAX_FNAME 4096
-@@ -1705,6 +1706,114 @@ DWORD kwsysProcessCreate(kwsysProcess* cp, int index,
+@@ -1705,6 +1706,116 @@ DWORD kwsysProcessCreate(kwsysProcess* cp, int index,
      creationFlags |= CREATE_NEW_PROCESS_GROUP;
    }
  
 +#if 1
 +
-+  /* This patch adds support for running non-exe commands
-+     via a cmd.exe subshell. */
++  /* This patch adds support for running .cmd shims
++     via a cmd.exe sub-shell. */
 +  wchar_t* wFrom = cp->Commands[index];
 +  size_t fromLength = wcslen(wFrom);
 +
@@ -52,22 +52,24 @@ index 0b43b4a2af..ed40ab5cbe 100644
 +
 +  wchar_t* wCmd;
 +
-+  wchar_t wDotExe[] = L".exe";
++  wchar_t wDotCmd[] = L".cmd";
 +
 +  // wchar_t xx[5] = L"";
-+  // wcsncat(xx, wp - wcslen(wDotExe), wcslen(wDotExe));
++  // wcsncat(xx, wp - wcslen(wDotCmd), wcslen(wDotCmd));
 +  // fwprintf(stderr, L"[x: %s]\n", xx);
 +
-+  if (wcsncmp(wp - wcslen(wDotExe), wDotExe, wcslen(wDotExe)) == 0) {
-+    /* If an explicit .exe, execute it directly. */
++  if (wcsncmp(wp - wcslen(wDotCmd), wDotCmd, wcslen(wDotCmd)) != 0) {
++    /* If not an explicit .cmd, execute it directly. */
 +    wCmd = malloc((fromLength + 1) * sizeof(wchar_t));
 +    wcscpy(wCmd, wFrom);
 +  } else {
-+    /* Not .exe, run it via a cmd.exe subshell. */
++    /* Explicit .cmd, run it via a cmd.exe sub-shell. */
 +
 +    wchar_t wCmdExe[] = L"cmd.exe /s /c \" ";
 +    wchar_t wCmdEnd[] = L" \"";
 +
++    /* cmd.exe requires escaping several characters.
++     * To prevent automatic escaping, surround the string with quotes. */
 +    wchar_t escapedChars[] = L"&\\<>^|";
 +
 +    bool inQuotedString = false;
@@ -134,7 +136,7 @@ index 0b43b4a2af..ed40ab5cbe 100644
    /* Create inherited copies of the handles.  */
    (error = kwsysProcessCreateChildHandle(&si->StartupInfo.hStdInput,
                                           si->hStdInput, 1)) ||
-@@ -1717,6 +1826,8 @@ DWORD kwsysProcessCreate(kwsysProcess* cp, int index,
+@@ -1717,6 +1828,8 @@ DWORD kwsysProcessCreate(kwsysProcess* cp, int index,
                       &si->StartupInfo, &cp->ProcessInformation[index]) &&
       (error = GetLastError()));
  
