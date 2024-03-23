@@ -243,14 +243,14 @@ xpm install --config darwin-x64 -C ~/Work/xpack-dev-tools/cmake-xpack.git && \
 xpm run build-develop --config darwin-x64 -C ~/Work/xpack-dev-tools/cmake-xpack.git
 ```
 
-About 8 minutes later, the output of the build script is a compressed
+About 10 minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/xpack-dev-tools/cmake-xpack.git/build/darwin-x64/deploy
-total 42696
--rw-r--r--  1 ilg  staff  21183782 Aug 25 13:54 xpack-cmake-3.27.9-1-darwin-x64.tar.gz
--rw-r--r--  1 ilg  staff       105 Aug 25 13:54 xpack-cmake-3.27.9-1-darwin-x64.tar.gz.sha
+total 47648
+-rw-r--r--  1 ilg  staff  23467272 Mar 23 19:47 xpack-cmake-3.27.9-1-darwin-x64.tar.gz
+-rw-r--r--  1 ilg  staff       105 Mar 23 19:47 xpack-cmake-3.27.9-1-darwin-x64.tar.gz.sha
 ```
 
 #### Apple Silicon macOS
@@ -283,9 +283,9 @@ archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/xpack-dev-tools/cmake-xpack.git/build/darwin-arm64/deploy
-total 38832
--rw-r--r--  1 ilg  staff  19427546 Aug 25 13:50 xpack-cmake-3.27.9-1-darwin-arm64.tar.gz
--rw-r--r--  1 ilg  staff       107 Aug 25 13:50 xpack-cmake-3.27.9-1-darwin-arm64.tar.gz.sha
+total 42448
+-rw-r--r--  1 ilg  staff  21631029 Mar 23 19:43 xpack-cmake-3.27.9-1-darwin-arm64.tar.gz
+-rw-r--r--  1 ilg  staff       107 Mar 23 19:43 xpack-cmake-3.27.9-1-darwin-arm64.tar.gz.sha
 ```
 
 #### Intel GNU/Linux
@@ -315,14 +315,14 @@ xpm run docker-link-deps --config linux-x64 -C ~/Work/xpack-dev-tools/cmake-xpac
 xpm run docker-build-develop --config linux-x64 -C ~/Work/xpack-dev-tools/cmake-xpack.git
 ```
 
-About 6 minutes later, the output of the build script is a compressed
+About 8 minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/xpack-dev-tools/cmake-xpack.git/build/linux-x64/deploy
-total 24984
--rw-r--r-- 1 ilg ilg 25577426 Aug 25 10:53 xpack-cmake-3.27.9-1-linux-x64.tar.gz
--rw-r--r-- 1 ilg ilg      104 Aug 25 10:53 xpack-cmake-3.27.9-1-linux-x64.tar.gz.sha
+total 28140
+-rw-r--r-- 1 ilg ilg 28810475 Mar 23 17:51 xpack-cmake-3.27.9-1-linux-x64.tar.gz
+-rw-r--r-- 1 ilg ilg      104 Mar 23 17:51 xpack-cmake-3.27.9-1-linux-x64.tar.gz.sha
 ```
 
 ##### Build the Intel Windows binaries
@@ -348,9 +348,9 @@ archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/xpack-dev-tools/cmake-xpack.git/build/win32-x64/deploy
-total 22412
--rw-r--r-- 1 ilg ilg 22942875 Aug 25 10:54 xpack-cmake-3.27.9-1-win32-x64.zip
--rw-r--r-- 1 ilg ilg      101 Aug 25 10:54 xpack-cmake-3.27.9-1-win32-x64.zip.sha
+total 24336
+-rw-r--r-- 1 ilg ilg 24913751 Mar 23 17:53 xpack-cmake-3.27.9-1-win32-x64.zip
+-rw-r--r-- 1 ilg ilg      101 Mar 23 17:53 xpack-cmake-3.27.9-1-win32-x64.zip.sha
 ```
 
 #### Arm GNU/Linux 64-bit
@@ -378,14 +378,14 @@ xpm run docker-link-deps --config linux-arm64 -C ~/Work/xpack-dev-tools/cmake-xp
 xpm run docker-build-develop --config linux-arm64 -C ~/Work/xpack-dev-tools/cmake-xpack.git
 ```
 
-About 35 minutes later, the output of the build script is a compressed
+About 45 minutes later (10 on ampere), the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/xpack-dev-tools/cmake-xpack.git/build/linux-arm64/deploy
-total 23244
--rw-r--r-- 1 ilg ilg 23796752 Aug 25 11:21 xpack-cmake-3.27.9-1-linux-arm64.tar.gz
--rw-r--r-- 1 ilg ilg      106 Aug 25 11:21 xpack-cmake-3.27.9-1-linux-arm64.tar.gz.sha
+total 25924
+-rw-r--r-- 1 ilg ilg 26541637 Mar 23 18:24 xpack-cmake-3.27.9-1-linux-arm64.tar.gz
+-rw-r--r-- 1 ilg ilg      106 Mar 23 18:24 xpack-cmake-3.27.9-1-linux-arm64.tar.gz.sha
 ```
 
 #### Arm GNU/Linux 32-bit
@@ -413,14 +413,14 @@ xpm run docker-link-deps --config linux-arm -C ~/Work/xpack-dev-tools/cmake-xpac
 xpm run docker-build-develop --config linux-arm -C ~/Work/xpack-dev-tools/cmake-xpack.git
 ```
 
-About 30 minutes later, the output of the build script is a compressed
+About 39 minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/xpack-dev-tools/cmake-xpack.git/build/linux-arm/deploy
-total 22296
--rw-r--r-- 1 ilg ilg 22824645 Aug 25 11:17 xpack-cmake-3.27.9-1-linux-arm.tar.gz
--rw-r--r-- 1 ilg ilg      104 Aug 25 11:17 xpack-cmake-3.27.9-1-linux-arm.tar.gz.sha
+total 24180
+-rw-r--r-- 1 ilg ilg 24753841 Mar 23 18:18 xpack-cmake-3.27.9-1-linux-arm.tar.gz
+-rw-r--r-- 1 ilg ilg      104 Mar 23 18:18 xpack-cmake-3.27.9-1-linux-arm.tar.gz.sha
 ```
 
 ### Update README-MAINTAINER listing output
