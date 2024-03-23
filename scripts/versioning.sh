@@ -45,7 +45,7 @@ function application_build_versioned_components()
     xz_build "5.4.6" # "5.4.3"
 
     # https://www.openssl.org/source/old/
-    openssl_build "1.1.1w" # "1.1.1t"
+    openssl_build "3.2.1" # "1.1.1w" # "1.1.1t"
 
     # -------------------------------------------------------------------------
     # Build the application binaries.
