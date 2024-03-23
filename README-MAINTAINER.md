@@ -195,6 +195,7 @@ For Intel macOS, first run the build on the development machine
 
 ```sh
 # Update the build scripts.
+rm -f ~/Work/xpack-dev-tools/cmake-xpack.git/package-lock.json && \
 git -C ~/Work/xpack-dev-tools/cmake-xpack.git pull
 
 xpm run install -C ~/Work/xpack-dev-tools/cmake-xpack.git
