@@ -248,9 +248,9 @@ archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/xpack-dev-tools/cmake-xpack.git/build/darwin-x64/deploy
-total 47648
--rw-r--r--  1 ilg  staff  23467272 Mar 23 19:47 xpack-cmake-3.27.9-1-darwin-x64.tar.gz
--rw-r--r--  1 ilg  staff       105 Mar 23 19:47 xpack-cmake-3.27.9-1-darwin-x64.tar.gz.sha
+total 47128
+-rw-r--r--  1 ilg  staff  23467402 Apr  2 00:03 xpack-cmake-3.27.9-1-darwin-x64.tar.gz
+-rw-r--r--  1 ilg  staff       105 Apr  2 00:03 xpack-cmake-3.27.9-1-darwin-x64.tar.gz.sha
 ```
 
 #### Apple Silicon macOS
@@ -283,9 +283,9 @@ archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/xpack-dev-tools/cmake-xpack.git/build/darwin-arm64/deploy
-total 42448
--rw-r--r--  1 ilg  staff  21631029 Mar 23 19:43 xpack-cmake-3.27.9-1-darwin-arm64.tar.gz
--rw-r--r--  1 ilg  staff       107 Mar 23 19:43 xpack-cmake-3.27.9-1-darwin-arm64.tar.gz.sha
+total 42568
+-rw-r--r--  1 ilg  staff  21631155 Apr  1 23:59 xpack-cmake-3.27.9-1-darwin-arm64.tar.gz
+-rw-r--r--  1 ilg  staff       107 Apr  1 23:59 xpack-cmake-3.27.9-1-darwin-arm64.tar.gz.sha
 ```
 
 #### Intel GNU/Linux
@@ -321,8 +321,8 @@ archive and its SHA signature, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/xpack-dev-tools/cmake-xpack.git/build/linux-x64/deploy
 total 28140
--rw-r--r-- 1 ilg ilg 28810475 Mar 23 17:51 xpack-cmake-3.27.9-1-linux-x64.tar.gz
--rw-r--r-- 1 ilg ilg      104 Mar 23 17:51 xpack-cmake-3.27.9-1-linux-x64.tar.gz.sha
+-rw-r--r-- 1 ilg ilg 28809779 Apr  1 21:02 xpack-cmake-3.27.9-1-linux-x64.tar.gz
+-rw-r--r-- 1 ilg ilg      104 Apr  1 21:02 xpack-cmake-3.27.9-1-linux-x64.tar.gz.sha
 ```
 
 ##### Build the Intel Windows binaries
@@ -349,8 +349,8 @@ archive and its SHA signature, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/xpack-dev-tools/cmake-xpack.git/build/win32-x64/deploy
 total 24336
--rw-r--r-- 1 ilg ilg 24913751 Mar 23 17:53 xpack-cmake-3.27.9-1-win32-x64.zip
--rw-r--r-- 1 ilg ilg      101 Mar 23 17:53 xpack-cmake-3.27.9-1-win32-x64.zip.sha
+-rw-r--r-- 1 ilg ilg 24913762 Apr  1 21:04 xpack-cmake-3.27.9-1-win32-x64.zip
+-rw-r--r-- 1 ilg ilg      101 Apr  1 21:04 xpack-cmake-3.27.9-1-win32-x64.zip.sha
 ```
 
 #### Arm GNU/Linux 64-bit
@@ -378,14 +378,14 @@ xpm run docker-link-deps --config linux-arm64 -C ~/Work/xpack-dev-tools/cmake-xp
 xpm run docker-build-develop --config linux-arm64 -C ~/Work/xpack-dev-tools/cmake-xpack.git
 ```
 
-About 45 minutes later (10 on ampere), the output of the build script is a compressed
+About 46 minutes later (15 on ampere), the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/xpack-dev-tools/cmake-xpack.git/build/linux-arm64/deploy
-total 25924
--rw-r--r-- 1 ilg ilg 26541637 Mar 23 18:24 xpack-cmake-3.27.9-1-linux-arm64.tar.gz
--rw-r--r-- 1 ilg ilg      106 Mar 23 18:24 xpack-cmake-3.27.9-1-linux-arm64.tar.gz.sha
+total 25928
+-rw-r--r-- 1 ilg ilg 26542177 Apr  1 21:56 xpack-cmake-3.27.9-1-linux-arm64.tar.gz
+-rw-r--r-- 1 ilg ilg      106 Apr  1 21:56 xpack-cmake-3.27.9-1-linux-arm64.tar.gz.sha
 ```
 
 #### Arm GNU/Linux 32-bit
@@ -413,14 +413,14 @@ xpm run docker-link-deps --config linux-arm -C ~/Work/xpack-dev-tools/cmake-xpac
 xpm run docker-build-develop --config linux-arm -C ~/Work/xpack-dev-tools/cmake-xpack.git
 ```
 
-About 39 minutes later, the output of the build script is a compressed
+About 40 minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/xpack-dev-tools/cmake-xpack.git/build/linux-arm/deploy
 total 24180
--rw-r--r-- 1 ilg ilg 24753841 Mar 23 18:18 xpack-cmake-3.27.9-1-linux-arm.tar.gz
--rw-r--r-- 1 ilg ilg      104 Mar 23 18:18 xpack-cmake-3.27.9-1-linux-arm.tar.gz.sha
+-rw-r--r-- 1 ilg ilg 24753465 Apr  1 21:50 xpack-cmake-3.27.9-1-linux-arm.tar.gz
+-rw-r--r-- 1 ilg ilg      104 Apr  1 21:50 xpack-cmake-3.27.9-1-linux-arm.tar.gz.sha
 ```
 
 ### Update README-MAINTAINER listing output
