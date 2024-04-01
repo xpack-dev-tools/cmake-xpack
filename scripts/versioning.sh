@@ -32,7 +32,7 @@ function application_build_versioned_components()
     xbb_set_target "requested"
 
     # https://zlib.net/fossils/
-    zlib_build "1.2.13"
+    zlib_build "1.3.1" # "1.2.13"
 
     if [ "${XBB_REQUESTED_HOST_PLATFORM}" != "win32" ]
     then
