@@ -67,7 +67,7 @@
       "ctest": "./.content/bin/ctest"
     },
     "devDependencies": {
-      "@xpack-dev-tools/xbb-helper": "^2.0.6"
+      "@xpack-dev-tools/xbb-helper": "^2.0.8"
     },
     "properties": {
       "appName": "CMake",
