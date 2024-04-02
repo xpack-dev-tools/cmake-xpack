@@ -4,7 +4,10 @@ Entries in this file are in reverse chronological order.
 
 ## 2024-04-02
 
-* v3.27.9-1 prepared
+* v3.27.9-1 released
+* 4bea4df README update
+* b2ec90f re-generate workflows
+* 98a8e63 prepare v3.27.9-1
 * 63cec33 README update
 * 581feb0 package.json: bump deps
 * aec6398 versioning.sh: bump deps
