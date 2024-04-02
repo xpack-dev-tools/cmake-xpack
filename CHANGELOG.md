@@ -2,9 +2,53 @@
 
 Entries in this file are in reverse chronological order.
 
-## 2024-02-09
+## 2024-04-02
 
 * v3.27.9-1 prepared
+* 63cec33 README update
+* 581feb0 package.json: bump deps
+* aec6398 versioning.sh: bump deps
+
+## 2024-03-23
+
+* 5c10ede README update
+* 85fa9fd README update
+* 23a648f README update
+* 17a6028 README update
+* 403b1f2 package-lock.json update
+* 304e22a versioning.sh: bump openssl 3.2.1
+
+## 2024-03-22
+
+* 92ee2cf package.json: xpm-version 0.18.0
+
+## 2024-03-08
+
+* 3a514e6 package.json: xpm-version 0.18.0
+
+## 2024-03-07
+
+* 19dc56c package.json: xpm-version 0.18.0
+* b7e5f94 package.json: bump deps
+
+## 2024-03-06
+
+* 05246de body-jekyll update
+* 2b41545 package.json: bump deps
+
+## 2024-02-14
+
+* b123d7b update 3.27.9.git.patch
+
+## 2024-02-12
+
+* e10e41d update 3.27.9 patch
+
+## 2024-02-09
+
+* d20e895 versioning.sh: add 3.27.*
+* bf7c23e add 3.27.9 patch
+* d03aa95 prepare v3.27.9-1
 
 ## 2024-02-07
 
