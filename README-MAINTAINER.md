@@ -555,11 +555,11 @@ These commands use the `xpack-develop` branch of this repo.
 
 The builds take about 36 minutes to complete:
 
-- `xbbmi`: 10 min (nuc)
-- `xbbma`: 5 min
-- `xbbli`: 6 min Linux, 7 min Windows
-- `xbbla`: 36 min
-- `xbbla32`: 31 min
+- `xbbmi`: 12 min (nuc)
+- `xbbma`: 6 min
+- `xbbli`: 10 min Linux, 10 min Windows
+- `xbbla`: 47 min
+- `xbbla32`: 41 min
 
 The workflow result and logs are available from the
 [Actions](https://github.com/xpack-dev-tools/cmake-xpack/actions/) page.
