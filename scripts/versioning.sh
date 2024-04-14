@@ -42,6 +42,7 @@ function application_build_versioned_components()
     fi
 
     # https://sourceforge.net/projects/lzmautils/files/
+    # Avoid 5.6.[01]!
     xz_build "5.4.6" # "5.4.3"
 
     # https://www.openssl.org/source/old/
