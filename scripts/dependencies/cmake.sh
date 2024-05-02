@@ -162,7 +162,10 @@ function cmake_build()
             # The C++ compiler does not support C++11 (e.g.  std::unique_ptr).
             config_options+=("-DCMake_HAVE_CXX_UNIQUE_PTR=ON")
 
-            config_options+=("-DCMAKE_OSX_DEPLOYMENT_TARGET=${MACOSX_DEPLOYMENT_TARGET}")
+            if [ ! -z "${MACOSX_DEPLOYMENT_TARGET:-""}" ]
+            then
+              config_options+=("-DCMAKE_OSX_DEPLOYMENT_TARGET=${MACOSX_DEPLOYMENT_TARGET}")
+            fi
           elif [ "${XBB_HOST_PLATFORM}" == "linux" ]
           then
             config_options+=("-DBUILD_CursesDialog=ON")
