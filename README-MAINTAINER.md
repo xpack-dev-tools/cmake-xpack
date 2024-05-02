@@ -378,7 +378,7 @@ xpm run docker-link-deps --config linux-arm64 -C ~/Work/xpack-dev-tools/cmake-xp
 xpm run docker-build-develop --config linux-arm64 -C ~/Work/xpack-dev-tools/cmake-xpack.git
 ```
 
-About 46 minutes later (15 on ampere), the output of the build script is a compressed
+About 46 minutes later (15 minutes on ampere), the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
