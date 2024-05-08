@@ -198,7 +198,7 @@ function cmake_build()
         echo
         echo "Running cmake build..."
 
-        if [ "${XBB_IS_DEVELOP}" == "y" ]
+        if is_develop
         then
           run_verbose "${CMAKE}" \
             --build . \
