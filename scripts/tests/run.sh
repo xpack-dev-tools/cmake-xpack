@@ -25,8 +25,11 @@ function tests_run_all()
         mkdir -pv "${XBB_SOURCES_FOLDER_PATH}"
         cd "${XBB_SOURCES_FOLDER_PATH}"
 
-        git_clone "${XBB_CMAKE_GIT_URL}" "${XBB_CMAKE_GIT_BRANCH}" \
-            "${XBB_CMAKE_GIT_COMMIT}" "cmake-${XBB_CMAKE_VERSION}"
+        run_verbose git_clone \
+          "${XBB_CMAKE_GIT_URL}" \
+          "cmake-${XBB_CMAKE_VERSION}" \
+          --branch="${XBB_CMAKE_GIT_BRANCH}" \
+          --commit="${XBB_CMAKE_GIT_COMMIT}" \
       )
   fi
 

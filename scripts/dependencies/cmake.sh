@@ -55,9 +55,13 @@ function cmake_build()
       (
         if [ ! -z ${XBB_CMAKE_GIT_URL+x} ]
         then
-          cd "${XBB_SOURCES_FOLDER_PATH}"
-          git_clone "${XBB_CMAKE_GIT_URL}" "${XBB_CMAKE_GIT_BRANCH}" \
-              "${XBB_CMAKE_GIT_COMMIT}" "${cmake_src_folder_name}"
+          run_verbose_develop cd "${XBB_SOURCES_FOLDER_PATH}"
+          run_verbose git_clone \
+            "${XBB_CMAKE_GIT_URL}" \
+            "${cmake_src_folder_name}" \
+            --branch="${XBB_CMAKE_GIT_BRANCH:-""}" \
+            --commit="${XBB_CMAKE_GIT_COMMIT:-""}" \
+            --patch="${cmake_patch_file_name}"
         else
           download_and_extract "${cmake_url}" "${cmake_archive}" \
             "${cmake_src_folder_name}" "${cmake_patch_file_name}"
