@@ -195,7 +195,7 @@ function cmake_build()
             \
             "${XBB_SOURCES_FOLDER_PATH}/${cmake_src_folder_name}"
 
-        ) 2>&1 | tee "${XBB_LOGS_FOLDER_PATH}/${cmake_folder_name}/cmake-output.txt"
+        ) 2>&1 | tee "${XBB_LOGS_FOLDER_PATH}/${cmake_folder_name}/cmake-output-$(ndate).txt"
       fi
 
       (
@@ -225,7 +225,7 @@ function cmake_build()
           -- \
           install
 
-      ) 2>&1 | tee "${XBB_LOGS_FOLDER_PATH}/${cmake_folder_name}/build-output.txt"
+      ) 2>&1 | tee "${XBB_LOGS_FOLDER_PATH}/${cmake_folder_name}/build-output-$(ndate).txt"
 
       copy_license \
         "${XBB_SOURCES_FOLDER_PATH}/${cmake_src_folder_name}" \
