@@ -12,6 +12,9 @@
 
 function tests_run_all()
 {
+  echo
+  echo "[${FUNCNAME[0]} $@]"
+
   local test_bin_path="$1"
 
   XBB_CMAKE_VERSION="$(xbb_strip_version_pre_release "${XBB_RELEASE_VERSION}")"
