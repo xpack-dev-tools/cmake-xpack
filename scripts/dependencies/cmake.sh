@@ -202,7 +202,7 @@ function cmake_build()
         echo
         echo "Running cmake build..."
 
-        if is_develop
+        if is_development
         then
           run_verbose "${CMAKE}" \
             --build . \
