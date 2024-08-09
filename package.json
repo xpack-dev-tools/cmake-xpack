@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/xpack-dev-tools/cmake-xpack.git/"
+    "url": "git+https://github.com/xpack-dev-tools/cmake-xpack.git/"
   },
   "bugs": {
     "url": "https://github.com/xpack-dev-tools/cmake-xpack/issues/"
