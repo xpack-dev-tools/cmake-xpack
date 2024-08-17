@@ -1,19 +1,19 @@
 ---
-title:  xPack CMake v{{ XBB_RELEASE_VERSION }} released
+title:  xPack CMake v{{releaseVersion}} released
 
-summary: "Version **{{ XBB_RELEASE_VERSION }}** is a new release; it follows the upstream release."
+summary: "Version **{{releaseVersion}}** is a new release; it follows the upstream release."
 
 upstream_version: "3.27.9"
 upstream_release_date: "21 Mar 2024"
 
-version: "{{ XBB_RELEASE_VERSION }}"
+version: "{{releaseVersion}}"
 npm_subversion: "1"
 
-download_url: https://github.com/xpack-dev-tools/cmake-xpack/releases/tag/v{{ XBB_RELEASE_VERSION }}/
+download_url: https://github.com/xpack-dev-tools/cmake-xpack/releases/tag/v{{releaseVersion}}/
 
 comments: true
 
-date: {{ RELEASE_DATE }}
+date: {{releaseDate}}
 
 # For Jekyll releases selection.
 categories:
@@ -42,7 +42,7 @@ armv6 is not supported)." %}{% endraw %}
 
 ## Download
 
-The binary files are available from GitHub [Releases]({% raw %}{{ page.download_url }}{% endraw %}).
+The binary files are available from GitHub [Releases]({% raw %}{{page.download_url}}{% endraw %}).
 
 ## Prerequisites
 
@@ -62,12 +62,12 @@ The binary files are available from GitHub [Releases]({% raw %}{{ page.download_
 
 The full details of installing the **xPack CMake** on various platforms
 are presented in the separate
-[Install]({% raw %}{{ site.baseurl }}{% endraw %}/dev-tools/cmake/install/) page.
+[Install]({% raw %}{{site.baseurl}}{% endraw %}/dev-tools/cmake/install/) page.
 
 ### Easy install
 
 The easiest way to install CMake is with
-[`xpm`]({% raw %}{{ site.baseurl }}{% endraw %}/xpm/)
+[`xpm`]({% raw %}{{site.baseurl}}{% endraw %}/xpm/)
 by using the **binary xPack**, available as
 [`@xpack-dev-tools/cmake`](https://www.npmjs.com/package/@xpack-dev-tools/cmake)
 from the [`npmjs.com`](https://www.npmjs.com) registry.
@@ -88,7 +88,7 @@ ls -l xpacks/.bin
 To install this specific version, use:
 
 ```sh
-xpm install @xpack-dev-tools/cmake@{% raw %}{{ page.version }}.{{ page.npm_subversion }}{% endraw %} --verbose
+xpm install @xpack-dev-tools/cmake@{% raw %}{{page.version}}.{{page.npm_subversion}}{% endraw %} --verbose
 ```
 
 It is also possible to install Meson Build globally, in the user home folder,
@@ -123,8 +123,8 @@ The **xPack CMake** is based on the official
 The current version is based on:
 
 - CMake release
-[{% raw %}{{ page.upstream_version }}{% endraw %}](https://github.com/Kitware/CMake/releases/tag/v{% raw %}{{ page.upstream_version }}{% endraw %}/)
-from {% raw %}{{ page.upstream_release_date }}{% endraw %}.
+[{% raw %}{{page.upstream_version}}{% endraw %}](https://github.com/Kitware/CMake/releases/tag/v{% raw %}{{page.upstream_version}}{% endraw %}/)
+from {% raw %}{{page.upstream_release_date}}{% endraw %}.
 
 ## Changes
 
