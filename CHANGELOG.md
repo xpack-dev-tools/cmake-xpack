@@ -4,7 +4,13 @@ Entries in this file are in reverse chronological order.
 
 ## 2024-09-13
 
-* v3.28.6-1 prepared
+* v3.28.6-1 released
+* f80ccb0 re-generate workflows
+* 7e7dc55 run.sh: mkdir SOURCE
+* 95347b1 build-assets/package* update
+* b32a22b run.sh: use download_and_extract
+* 376a526 re-generate workflows
+* 322c0cc prepare v3.28.6-1
 * 3e70159 build-assets/package.json: bump deps
 * bacf9da re-generate workflows
 
