@@ -15,7 +15,7 @@
       "platforms": "all",
       "customFields": {
         "programName": "cmake",
-        "branding": "",
+        "branding": "cmake version ",
         "$link": "https://github.com/Kitware/CMake/tags",
         "cmakeVersion": "3.28.6",
         "cmakeReleaseDate": "3 Jun 2024"
