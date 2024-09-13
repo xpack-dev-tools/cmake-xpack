@@ -29,6 +29,7 @@ function tests_run_all()
         local cmake_url="https://github.com/Kitware/CMake/releases/download/v{$XBB_CMAKE_VERSION}/${cmake_archive}"
 
         (
+          mkdir -pv "${XBB_SOURCES_FOLDER_PATH}"
           cd "${XBB_SOURCES_FOLDER_PATH}"
 
           download_and_extract "${cmake_url}" "${cmake_archive}" \
