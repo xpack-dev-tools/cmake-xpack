@@ -5,6 +5,8 @@ Entries in this file are in reverse chronological order.
 ## 2024-09-13
 
 * v3.28.6-1 released
+* e73d6d7 re-generate workflows
+* 06b2910 CHANGELOG update
 * f80ccb0 re-generate workflows
 * 7e7dc55 run.sh: mkdir SOURCE
 * 95347b1 build-assets/package* update
