@@ -1,0 +1,150 @@
+---
+title:  xPack CMake v3.28.6-1 released
+
+date: 2024-09-13 22:23:46 +0300
+
+authors: ilg-ul
+
+# To be listed in the Releases page.
+tags:
+  - releases
+
+# ----- Custom properties -----------------------------------------------------
+
+upstream_version: "3.28.6"
+upstream_release_date: "3 Jun 2024"
+
+version: "3.28.6-1"
+npm_subversion: "1"
+
+download_url: https://github.com/xpack-dev-tools/cmake-xpack/releases/tag/v3.28.6-1/
+
+---
+
+Version **3.28.6-1** is a new release; it follows the upstream release.
+
+<!-- truncate -->
+
+import Image from '@theme/IdealImage';
+import CodeBlock from '@theme/CodeBlock';
+
+import Prerequisites from './_common/_prerequisites-glib-2.27.mdx'
+import DeprecationNotices from './_common/_deprecation-notices-glib-2.27.mdx'
+import DownloadAnalytics from './_common/_download-analytics.mdx'
+
+The [xPack CMake](https://xpack-dev-tools.github.io/cmake-xpack/)
+is a standalone cross-platform binary distribution of
+[CMake](https://cmake.org).
+
+There are separate binaries for **Windows** (x64),
+**macOS** (x64 and arm64)
+and **GNU/Linux** (x64, arm64 and arm).
+
+:::note Raspberry Pi
+
+The main targets for the GNU/Linux Arm
+binaries are the **Raspberry Pi** class devices (armv7l and aarch64;
+armv6 is not supported).
+
+:::
+
+## Download
+
+The binary files are available from <a href={frontMatter.download_url}>GitHub Releases</a>.
+
+<Prerequisites/>
+
+## Install
+
+The full details of installing the **xPack CMake**
+on various platforms are presented in the [Install Guide](/docs/install/).
+
+## Compliance
+
+The **xPack CMake** is based on the official
+[CMake](https://cmake.org), with no changes.
+
+The current version is based on:
+
+- CMake release
+[{frontMatter.upstream_version}](https://github.com/Kitware/CMake/releases/tag/v{frontMatter.upstream_version}/) from {frontMatter.upstream_release_date}.
+
+## Changes
+
+- none
+
+:::tip
+
+Starting with mid-2024 (v3.28.6-1), the patch to spawn processes on Windows via `cmd.exe /c` was no longer applied. The direct consequence is applications started via `.cmd` shim need to declare the `.cmd` extension explicitly (like `ninja.cmd`).
+
+:::
+
+## Bug fixes
+
+- none
+
+## Enhancements
+
+- none
+
+## Known problems
+
+- none
+
+## Documentation
+
+The current CMake documentation is available online from:
+
+- https://cmake.org/documentation/
+
+## Build
+
+The binaries for all supported platforms
+(Windows, macOS and GNU/Linux) were built using the
+[xPack Build Box (XBB)](https://xpack.github.io/xbb/), a set
+of build environments based on slightly older distributions, that should be
+compatible with most recent systems.
+
+For the prerequisites and more details on the build procedure, please see the
+[How to build](https://github.com/xpack-dev-tools/cmake-xpack/blob/xpack/README-BUILD.md) page.
+
+## CI tests
+
+Before publishing, a set of simple tests were performed on an exhaustive
+set of platforms. The results are available from:
+
+- [GitHub Actions](https://github.com/xpack-dev-tools/cmake-xpack/actions/)
+- [Travis CI](https://app.travis-ci.com/github/xpack-dev-tools/cmake-xpack/builds/)
+
+## Tests
+
+TBD
+
+## Checksums
+
+The SHA-256 hashes for the files are:
+
+```txt
+a2f4f7d4963a3ee41ed3ef80a6dfed1e161b0b33b519fe2c4f11f4d9d310c36e
+xpack-cmake-3.28.6-1-darwin-arm64.tar.gz
+
+bafce78a57bab8c82268b32c0849ab875b437b90bed9bec83aad4c82af320103
+xpack-cmake-3.28.6-1-darwin-x64.tar.gz
+
+d73889f852b310f974e20246775eb16b272384dbf6fdc236583395af40bf7b54
+xpack-cmake-3.28.6-1-linux-arm.tar.gz
+
+c80bd91b0e2b473d57b0ff30ea6ffc28480576946d6e69b65204f9d26dadfa52
+xpack-cmake-3.28.6-1-linux-arm64.tar.gz
+
+b05343bda081b988b2c91896133b56ce286a8269c8550d986cc2e71a243684e1
+xpack-cmake-3.28.6-1-linux-x64.tar.gz
+
+c1c07b1b51e0352e1fb1c9e6d87b743e975484df29f2a72c26d7385ad23fb679
+xpack-cmake-3.28.6-1-win32-x64.zip
+
+```
+
+<DeprecationNotices/>
+
+<DownloadAnalytics version={frontMatter.version}/>

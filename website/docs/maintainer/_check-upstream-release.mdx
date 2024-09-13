@@ -1,0 +1,19 @@
+
+import versionMajor from '@site/src/libs/versionMajor';
+import versionMinor from '@site/src/libs/versionMinor';
+
+{/* ------------------------------------------------------------------------ */}
+
+### Check the latest upstream release
+
+The latest release must be announced in
+CMake [GitHub Releases](https://github.com/Kitware/CMake/releases/).
+
+Compare the latest upstream release with the current xPack
+[release](https://github.com/xpack-dev-tools/cmake-xpack/releases).
+If necessary, update the triplet, otherwise increase the fourth number,
+as below.
+
+As a rule of thumb, when the upstream **{versionMajor()}.{versionMinor()+1}.4** is
+released, it is time for the **{versionMajor()}.{versionMinor()}.X** xPack release
+(where X is the latest patch available at that time).

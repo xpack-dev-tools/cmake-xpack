@@ -1,0 +1,189 @@
+---
+title:  xPack CMake v3.20.6-2 released
+
+date: 2021-12-06 18:19:14 +0200
+
+authors: ilg-ul
+
+# To be listed in the Releases page.
+tags:
+  - releases
+
+# ----- Custom properties -----------------------------------------------------
+
+version: 3.20.6-2
+npm_subversion: 1
+
+download_url: https://github.com/xpack-dev-tools/cmake-xpack/releases/tag/v3.20.6-2/
+
+---
+
+Version **3.20.6-2** is a maintenance release; it **adds support for Apple Silicon** and uses the latest build scripts.
+
+<!-- truncate -->
+
+import Image from '@theme/IdealImage';
+
+The [xPack CMake](https://xpack-dev-tools.github.io/cmake-xpack)
+is a standalone cross-platform binary distribution of
+[CMake](https://cmake.org).
+
+There are binaries for **x64 Windows**,
+**macOS** (Intel 64-bit, Apple Silicon 64-bit)
+and **GNU/Linux** (Intel 32/64-bit, Arm 32/64-bit).
+
+:::note Raspberry Pi
+
+The main targets for the GNU/Linux Arm
+binaries are the **Raspberry Pi** class devices (armv7l and aarch64;
+armv6 is not supported).
+
+:::
+
+## Download
+
+The binary files are available from <a href={frontMatter.download_url}>GitHub Releases</a>.
+
+## Prerequisites
+
+- x86/x64 GNU/Linux: any system with **GLIBC 2.15** or higher
+  (like Ubuntu 12 or later, Debian 8 or later, RedHat/CentOS 7 later,
+  Fedora 20 or later, etc)
+- arm64/arm GNU/Linux: any system with **GLIBC 2.23** or higher
+  (like Ubuntu 16 or later, Debian 9 or later, RedHat/CentOS 8 or later,
+  Fedora 24 or later, etc)
+- x86/x64 Windows: Windows 7 with the Universal C Runtime
+  ([UCRT](https://support.microsoft.com/en-us/topic/update-for-universal-c-runtime-in-windows-c0514201-7fe6-95a3-b0a5-287930f3560c)),
+  Windows 8, Windows 10
+- x64 macOS: 10.13 or later
+- arm64 macOS: 11.6 or later
+
+## Install
+
+The full details of installing the **xPack CMake** on various platforms
+are presented in the [Install Guide](/docs/install/).
+
+## Compliance
+
+The **xPack CMake** is based on the official
+[CMake](https://cmake.org), with minimal changes.
+
+The current version is based on:
+
+- CMake release
+[3.20.6](https://github.com/Kitware/CMake/releases/tag/v3.20.6/)
+from Sep 20, 2021.
+
+## Changes
+
+Compared to the upstream version, the Windows version also supports
+spawning scripts via `cmd.exe /c`. These scripts are used by **npm**/**xpm**
+to redirect invocations to the central packages repository.
+
+## Bug fixes
+
+- none
+
+## Enhancements
+
+- none
+
+## Known problems
+
+- none
+
+## Documentation
+
+The current version specific CMake documentation is available in each packet:
+
+- `doc/cmake-X.Y/html/index.html`
+
+and online from:
+
+- https://cmake.org/documentation/
+
+## Build
+
+The binaries for all supported platforms
+(Windows, macOS and GNU/Linux) were built using the
+[xPack Build Box (XBB)](https://xpack.github.io/xbb/), a set
+of build environments based on slightly older distributions, that should be
+compatible with most recent systems.
+
+The scripts used to build this distribution are in:
+
+- `distro-info/scripts`
+
+For the prerequisites and more details on the build procedure, please see the
+[README-MAINTAINER](https://github.com/xpack-dev-tools/cmake-xpack/blob/xpack/README-MAINTAINER.md) page.
+
+## CI tests
+
+Before publishing, a set of simple tests were performed on an exhaustive
+set of platforms. The results are available from:
+
+- [GitHub Actions](https://github.com/xpack-dev-tools/cmake-xpack/actions/)
+- [Travis CI](https://app.travis-ci.com/github/xpack-dev-tools/cmake-xpack/builds/)
+
+## Tests
+
+TBD
+
+## Checksums
+
+The SHA-256 hashes for the files are:
+
+```txt
+80cfe688c6290a2eb527b5de19ed60848cc7d423dc643fa7152eedbf4c336a85
+xpack-cmake-3.20.6-2-darwin-arm64.tar.gz
+
+4647c8bd45cc2ee151fa6cf60d60db991fa96cd8b4593126569af0e382d17c44
+xpack-cmake-3.20.6-2-darwin-x64.tar.gz
+
+4c942096abb275139a1c21474c87112ba731419af386dc84cbd6c4f9e49c6a05
+xpack-cmake-3.20.6-2-linux-arm.tar.gz
+
+04aae33537e211cfc6062faece07ac0f4ab28062015186658ac7a02ad5ae6dea
+xpack-cmake-3.20.6-2-linux-arm64.tar.gz
+
+d43267651a018ef004e2689f5ce25276491701470a6e33d250b640c69cac197f
+xpack-cmake-3.20.6-2-linux-ia32.tar.gz
+
+0995feab1594eeb39d51ed008c122f56328d4f7bf702be4919e1a82a0e13bcb6
+xpack-cmake-3.20.6-2-linux-x64.tar.gz
+
+59b8906e6e2a62920b59a742458c392a3a0a8965666a58c2fa4e2a3a96f9038d
+xpack-cmake-3.20.6-2-win32-ia32.zip
+
+1c2bd6c8c035367da7dd37f3f972596097764c488fb01c7eb13ac558a7aa900e
+xpack-cmake-3.20.6-2-win32-x64.zip
+
+```
+
+## Deprecation notices
+
+### 32-bit support
+
+Support for 32-bit Intel Linux and Intel Windows will most probably
+be dropped in 2022. Support for 32-bit Arm Linux will be preserved
+for a while, due to the large user base of 32-bit Raspberry Pi systems.
+
+### Linux minimum requirements
+
+Support for RedHat 7 will most probably be dropped in 2022, and the
+minimum requirement will be raised to GLIBC 2.27, available starting
+with Ubuntu 18 and RedHat 8.
+
+## Download analytics
+
+- GitHub [xpack-dev-tools/cmake-xpack](https://github.com/xpack-dev-tools/cmake-xpack/)
+  - this release <a href={`https://github.com/xpack-dev-tools/cmake-xpack/releases/v${frontMatter.version}/`} ><Image img={`https://img.shields.io/github/downloads/xpack-dev-tools/cmake-xpack/v${frontMatter.version}/total.svg`} alt='Github Release' /></a>
+  - all xPack releases [![Github All Releases](https://img.shields.io/github/downloads/xpack-dev-tools/cmake-xpack/total.svg)](https://github.com/xpack-dev-tools/cmake-xpack/releases/)
+  - [individual file counters](https://somsubhra.github.io/github-release-stats/?username=xpack-dev-tools&repository=cmake-xpack) (grouped per release)
+- npmjs.com [@xpack-dev-tools/cmake](https://www.npmjs.com/package/@xpack-dev-tools/cmake)
+  - latest releases [![npm](https://img.shields.io/npm/dw/@xpack-dev-tools/cmake.svg)](https://www.npmjs.com/package/@xpack-dev-tools/cmake/)
+  - all @xpack-dev-tools releases [![npm](https://img.shields.io/npm/dt/@xpack-dev-tools/cmake.svg)](https://www.npmjs.com/package/@xpack-dev-tools/cmake/)
+
+Credit to [Shields IO](https://shields.io) for the badges and to
+[Somsubhra/github-release-stats](https://github.com/Somsubhra/github-release-stats)
+for the individual file counters.
