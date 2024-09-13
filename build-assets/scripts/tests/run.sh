@@ -21,19 +21,34 @@ function tests_run_all()
 
   if [ ! -d "${XBB_SOURCES_FOLDER_PATH}/cmake-${XBB_CMAKE_VERSION}" ]
   then
-      XBB_CMAKE_GIT_URL=${XBB_CMAKE_GIT_URL:-"https://github.com/xpack-dev-tools/cmake.git"}
-      XBB_CMAKE_GIT_BRANCH=${XBB_CMAKE_GIT_BRANCH:-"v${XBB_CMAKE_VERSION}-xpack"}
-      XBB_CMAKE_GIT_COMMIT=${XBB_CMAKE_GIT_COMMIT:-"v${XBB_CMAKE_VERSION}-xpack"}
-      (
-        mkdir -pv "${XBB_SOURCES_FOLDER_PATH}"
-        cd "${XBB_SOURCES_FOLDER_PATH}"
+      if true
+      then
+        local cmake_src_folder_name="cmake-${XBB_CMAKE_VERSION}"
 
-        run_verbose git_clone \
-          "${XBB_CMAKE_GIT_URL}" \
-          "cmake-${XBB_CMAKE_VERSION}" \
-          --branch="${XBB_CMAKE_GIT_BRANCH}" \
-          --commit="${XBB_CMAKE_GIT_COMMIT}" \
-      )
+        local cmake_archive="${cmake_src_folder_name}.tar.gz"
+        local cmake_url="https://github.com/Kitware/CMake/releases/download/v{$XBB_CMAKE_VERSION}/${cmake_archive}"
+
+        (
+          cd "${XBB_SOURCES_FOLDER_PATH}"
+
+          download_and_extract "${cmake_url}" "${cmake_archive}" \
+            "${cmake_src_folder_name}"
+        )
+      else
+        XBB_CMAKE_GIT_URL=${XBB_CMAKE_GIT_URL:-"https://github.com/xpack-dev-tools/cmake.git"}
+        XBB_CMAKE_GIT_BRANCH=${XBB_CMAKE_GIT_BRANCH:-"v${XBB_CMAKE_VERSION}-xpack"}
+        XBB_CMAKE_GIT_COMMIT=${XBB_CMAKE_GIT_COMMIT:-"v${XBB_CMAKE_VERSION}-xpack"}
+        (
+          mkdir -pv "${XBB_SOURCES_FOLDER_PATH}"
+          cd "${XBB_SOURCES_FOLDER_PATH}"
+
+          run_verbose git_clone \
+            "${XBB_CMAKE_GIT_URL}" \
+            "cmake-${XBB_CMAKE_VERSION}" \
+            --branch="${XBB_CMAKE_GIT_BRANCH}" \
+            --commit="${XBB_CMAKE_GIT_COMMIT}" \
+        )
+      fi
   fi
 
   echo
