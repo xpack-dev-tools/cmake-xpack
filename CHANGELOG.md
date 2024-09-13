@@ -4,7 +4,10 @@ Entries in this file are in reverse chronological order.
 
 ## 2024-09-13
 
-* v3.28.6-1 released
+* v3.28.6-1 published on npmjs.com
+* 5b1316c package.json: update urls for 3.28.6-1.1 release
+* 27e9178 build-assets/templates update
+* 4e4d533 CHANGELOG update
 * e73d6d7 re-generate workflows
 * 06b2910 CHANGELOG update
 * f80ccb0 re-generate workflows
