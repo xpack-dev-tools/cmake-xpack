@@ -100,8 +100,8 @@ After install, the package should create a structure like this (macOS files;
 only the first two depth levels are shown):
 
 ```console
-$ tree -L 2 /Users/ilg/Library/xPacks/\@xpack-dev-tools/cmake/3.27.9-1.2/.content/
-/Users/ilg/Library/xPacks/\@xpack-dev-tools/cmake/3.27.9-1.2/.content/
+$ tree -L 2 /Users/ilg/Library/xPacks/\@xpack-dev-tools/cmake/3.28.6-1.2/.content/
+/Users/ilg/Library/xPacks/\@xpack-dev-tools/cmake/3.28.6-1.2/.content/
 ├── README.md
 ├── bin
 │   ├── ccmake
@@ -165,15 +165,15 @@ For more details please read the
 ### Versioning
 
 The version strings used by the CMake project are three number strings
-like `3.27.9`; to this string the xPack distribution adds a four number,
+like `3.28.6`; to this string the xPack distribution adds a four number,
 but since semver allows only three numbers, all additional ones can
 be added only as pre-release strings, separated by a dash,
-like `3.27.9-1`. When published as a npm package, the version gets
-a fifth number, like `3.27.9-1.2`.
+like `3.28.6-1`. When published as a npm package, the version gets
+a fifth number, like `3.28.6-1.2`.
 
 Since adherence of third party packages to semver is not guaranteed,
-it is recommended to use semver expressions like `^3.27.9` and `~3.27.9`
-with caution, and prefer exact matches, like `3.27.9-1.2`.
+it is recommended to use semver expressions like `^3.28.6` and `~3.28.6`
+with caution, and prefer exact matches, like `3.28.6-1.2`.
 
 ## Maintainer info
 

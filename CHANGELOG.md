@@ -2,9 +2,146 @@
 
 Entries in this file are in reverse chronological order.
 
+## 2024-09-13
+
+* v3.28.6-1 prepared
+* 3e70159 build-assets/package.json: bump deps
+* bacf9da re-generate workflows
+
+## 2024-09-12
+
+* 523a459 update scripts copyright notices
+
+## 2024-08-17
+
+* de256ca website remove preliminary
+* f797f3f build-assets/package.json: updates
+* 8cff0a5 templates/body-blog update
+* 2acc146 templates/body-github: update
+* 40f49ed re-generate workflows
+
+## 2024-08-16
+
+* e917a13 templates/body-github: update
+
+## 2024-08-14
+
+* 9f8541b build-assets/package.json: updates
+
+## 2024-08-09
+
+* 883c8fb READMEs update
+* 33254e2 package.json: git+https
+* 95afa3d build-assets/package.json: updates
+* 8b2b657 templates/body-blog update
+
+## 2024-08-07
+
+* da31cb5 build-assets/package.json: updates
+* 9ad48b7 build-assets/package.json: updates
+* dbd15df website: preliminary content
+* 781cc14 re-generate workflows
+* 587e24d move to build-assets
+
+## 2024-08-06
+
+* b66cd9f package.json: bump deps
+
+## 2024-08-04
+
+* b0dc4ec package.json: bump deps
+* 03f9751 package.json: update generate-workflows
+* 75bdfdd templates/jekyll update
+* 14adf80 cmake.sh: use is_development
+* 434eef0 READMEs update
+* 98171c5 package.json: add actions, bump deps
+
+## 2024-07-27
+
+* 7370f32 package.json: add actions, bump deps
+* fa8c5db templates/jekyll update
+
+## 2024-07-23
+
+* 567185c READMEs update
+* e0959c7 re-generate scripts
+* 8050096 body-jekyll update
+* 9302bf3 re-generate workflows
+* 8891588 package.json: rework generate workflows
+* 4fad3ba package.json: loglevel info
+* 608af34 package.json: bump deps
+
+## 2024-06-18
+
+* a4c97ee re-generate .npmignore
+* 2d6d666 package-lock.json: update
+* 01da461 re-generate test.sh
+* 622b57c re-generate workflows
+* 7b6ee25 package.json: rework generate workflows
+* a737fd6 scripts/tests/update.sh: simplify
+* d6d5042 READMEs update
+
+## 2024-06-17
+
+* c83fbb3 package.json: bump deps
+* eac24f6 application.sh: update
+
+## 2024-05-28
+
+* 69dc007 cmake.sh: fix log dates
+
+## 2024-05-23
+
+* 6789f2c package.json: clang 16.0.6-1.1
+
+## 2024-05-18
+
+* ceb9cce rework git_clone calls
+* 0e8330a READMEs update
+* f5693ae package.json: XBB_ENVIRONMENT_SKIP_CHECKS
+
+## 2024-05-16
+
+* 7bcc584 READMEs update
+* 2dce47a versioning.sh: ncurses with --disable-lib-suffixes
+
+## 2024-05-14
+
+* 887f4c1 versioning.sh: ncurses with --disable-lib-suffixes
+
+## 2024-05-09
+
+* cc82773 use is_develop and with_strip
+
+## 2024-05-07
+
+* 062cc47 versioning.sh: remove DISABLE_WIDEC
+
+## 2024-05-03
+
+* b359271 package.json: add bison to deps
+
+## 2024-05-02
+
+* a73f68c package.json: add m4 to deps
+* 2f2a2b3 package.json: clang 17.0.6-1.1
+* d8a76b2 README update
+* 55f1ef8 cmake.sh: conditional -DCMAKE_OSX_DEPLOYMENT_TARGET
+
+## 2024-04-14
+
+* 7b90c05 versioning.sh: avoid xz 5.6
+
+## 2024-04-04
+
+* 038196d package.json: clang 17
+
 ## 2024-04-02
 
-* v3.27.9-1.1 published on npmjs.com
+* a353b62 3.27.9-1.2
+* a88a2cc prepare 3.27.9-1.2
+* 263b2ac 3.27.9-1.1
+* e952a68 CHANGELOG: publish npm v3.27.9-1.1
 * 82c39f3 package.json: update urls for 3.27.9-1.1 release
 * 262f3ca README update
 * 23ec7d8 body-jekyll update

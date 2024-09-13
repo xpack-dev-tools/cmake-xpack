@@ -14,6 +14,11 @@
       "appLcName": "cmake",
       "platforms": "all",
       "customFields": {
+        "programName": "cmake",
+        "branding": "",
+        "$link": "https://github.com/Kitware/CMake/tags",
+        "cmakeVersion": "3.28.6",
+        "cmakeReleaseDate": "3 Jun 2024"
       },
       "buildFolderRelativePath": "{{ 'build' | path_join: configuration.name | to_filename | downcase }}",
       "buildFolderRelativePathPosix": "{{ 'build' | path_posix_join: configuration.name | downcase }}",
