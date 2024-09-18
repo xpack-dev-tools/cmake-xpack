@@ -11,8 +11,8 @@ tags:
 
 # ----- Custom properties -----------------------------------------------------
 
-upstream_version: "{{customFields.cmakeVersion}}"
-upstream_release_date: "{{customFields.cmakeReleaseDate}}"
+cmake_version: "{{upstreamVersion}}"
+cmake_release_date: "{{customFields.cmakeReleaseDate}}"
 
 version: "{{releaseVersion}}"
 npm_subversion: "1"
@@ -67,7 +67,7 @@ The **xPack CMake** is based on the official
 The current version is based on:
 
 - CMake release
-[{frontMatter.upstream_version}](https://github.com/Kitware/CMake/releases/tag/v{frontMatter.upstream_version}/) from {frontMatter.upstream_release_date}.
+[{frontMatter.cmake_version}](https://github.com/Kitware/CMake/releases/tag/v{frontMatter.cmake_version}/) from {frontMatter.cmake_release_date}.
 
 ## Changes
 
@@ -106,7 +106,7 @@ of build environments based on slightly older distributions, that should be
 compatible with most recent systems.
 
 For the prerequisites and more details on the build procedure, please see the
-[How to build](https://github.com/xpack-dev-tools/cmake-xpack/blob/xpack/README-BUILD.md) page.
+[Maintainer Info](/docs/maintainer/) page.
 
 ## CI tests
 
