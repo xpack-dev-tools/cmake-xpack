@@ -6,5 +6,17 @@ import versionMinor from '@site/src/libs/versionMinor';
 
 ## Release schedule
 
-This distribution generally tries to be about one minor release behind
-the official CMake [releases](https://github.com/Kitware/CMake/releases).
+This distribution generally follows the official
+CMake [releases](https://github.com/Kitware/CMake/releases),
+but usually is one minor release behind (sometimes two).
+
+Deciding when to make new xPack CMake releases is difficult,
+because CMake continues to fix issues for the last two minor
+releases, and there is no way to tell if a patch release is
+the final one.
+
+In practical terms, based on past release schedule,
+when the new upstream **{versionMajor()}.{versionMinor()+1}.4** is released,
+the previous **{versionMajor()}.{versionMinor()}.X**
+is probably no longer updated and can be released
+(where X is the latest patch available at that time).
