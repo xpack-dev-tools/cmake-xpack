@@ -16,8 +16,7 @@
       "customFields": {
         "programName": "cmake",
         "branding": "cmake version ",
-        "$link": "https://github.com/Kitware/CMake/tags",
-        "cmakeVersion": "3.28.6",
+        "$link": "https://github.com/Kitware/CMake/tags/",
         "cmakeReleaseDate": "3 Jun 2024"
       },
       "buildFolderRelativePath": "{{ 'build' | path_join: configuration.name | to_filename | downcase }}",
