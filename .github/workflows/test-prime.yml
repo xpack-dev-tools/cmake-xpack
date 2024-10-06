@@ -25,6 +25,11 @@
 # -----------------------------------------------------------------------------
 
 
+
+
+
+
+
 name: 'Test xPack CMake on supported platforms'
 
 on:
@@ -44,6 +49,7 @@ on:
         default: 'xpack-development'
 
 jobs:
+
 
   linux-x64-test:
     name: 'linux-x64 cmake ${{github.event.inputs.version}} test'
@@ -74,6 +80,9 @@ jobs:
 
       - name: 'Run ${{github.event.inputs.version}} native test'
         run: bash build-assets/scripts/test.sh --image github-actions-ubuntu-latest --version ${{github.event.inputs.version}} --base-url ${{github.event.inputs.base_url}}
+
+
+
 
 
   linux-arm64-test:
@@ -116,6 +125,9 @@ jobs:
           args: /github/workspace/build-assets/scripts/test.sh --image ubuntu:22.04 --version ${{github.event.inputs.version}} --base-url ${{github.event.inputs.base_url}}
 
 
+
+
+
   linux-arm-test:
     name: 'linux-arm cmake ${{github.event.inputs.version}} test'
     runs-on: [self-hosted, linux, arm, xbbla32]
@@ -154,6 +166,9 @@ jobs:
         with:
           entrypoint: /bin/bash # /usr/bin/linux32
           args: /github/workspace/build-assets/scripts/test.sh --image debian --version ${{github.event.inputs.version}} --base-url ${{github.event.inputs.base_url}}
+
+
+
 
 
   darwin-x64-test:
@@ -201,6 +216,9 @@ jobs:
         run: bash build-assets/scripts/test.sh --version ${{github.event.inputs.version}} --base-url ${{github.event.inputs.base_url}}
 
 
+
+
+
   darwin-arm64-test:
     name: 'darwin-arm64 cmake ${{github.event.inputs.version}} test'
     # https://github.com/actions/runner-images/blob/main/images/macos/macos-14-Readme.md
@@ -244,6 +262,9 @@ jobs:
 
       - name: 'Run ${{github.event.inputs.version}} native test'
         run: bash build-assets/scripts/test.sh --version ${{github.event.inputs.version}} --base-url ${{github.event.inputs.base_url}}
+
+
+
 
 
   win32-x64-test:
@@ -318,5 +339,8 @@ jobs:
 
       - name: 'Run ${{github.event.inputs.version}} native test'
         run: bash build-assets/scripts/test.sh --version ${{github.event.inputs.version}} --base-url ${{github.event.inputs.base_url}}
+
+
+
 
 # -----------------------------------------------------------------------------
