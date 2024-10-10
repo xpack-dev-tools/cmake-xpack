@@ -1,0 +1,34 @@
+
+import CodeBlock from '@theme/CodeBlock';
+
+import customField from '@site/src/libs/customField';
+
+{/* ------------------------------------------------------------------------ */}
+
+<CodeBlock language="console"> {
+`$ tree -L 2 ~/Library/xPacks/\@xpack-dev-tools/cmake/${customField('version')}/.content/
+/Users/ilg/Library/xPacks/\@xpack-dev-tools/cmake/${customField('version')}/.content/
+├── README.md
+├── bin
+│   ├── ccmake
+│   ├── cmake
+│   ├── cpack
+│   └── ctest
+├── distro-info
+│   └── licenses
+├── doc
+│   └── cmake-3.28
+├── libexec
+│   ├── libc++.1.0.dylib
+│   ├── libc++abi.1.0.dylib
+│   ├── libncurses.6.dylib
+│   └── libunwind.1.0.dylib
+└── share
+    ├── aclocal
+    ├── bash-completion
+    ├── cmake-3.28
+    ├── emacs
+    └── vim
+
+13 directories, 9 files
+`} </CodeBlock>

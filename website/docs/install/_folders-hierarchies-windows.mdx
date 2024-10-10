@@ -1,0 +1,33 @@
+
+import CodeBlock from '@theme/CodeBlock';
+
+import customField from '@site/src/libs/customField';
+
+{/* ------------------------------------------------------------------------ */}
+
+<CodeBlock language="console"> {
+`C:\> tree /f %USERPROFILE%\\AppData\\Roaming\\xPacks\\@xpack-dev-tools\\cmake\\${customField('version')}\\.content
+Folder PATH listing
+Volume serial number is B02D-925C
+├── README.md
+├── bin
+│   ├── cmake.exe
+│   ├── cmcldeps.exe
+│   ├── cpack.exe
+│   ├── ctest.exe
+│   ├── libgcc_s_seh-1.dll
+│   ├── libstdc++-6.dll
+│   └── libwinpthread-1.dll
+├── distro-info
+│   └── licenses
+├── doc
+│   └── cmake-3.28
+└── share
+    ├── aclocal
+    ├── bash-completion
+    ├── cmake-3.28
+    ├── emacs
+    └── vim
+
+11 directories, 8 files
+`} </CodeBlock>
