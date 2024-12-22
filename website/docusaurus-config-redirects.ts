@@ -25,7 +25,7 @@ export const redirects = {
     //     to: '/docs/newDoc2',
     //     from: ['/docs/oldDocFrom2019', '/docs/legacyDocFrom2016'],
     //   },
-    
+
     {
       from: '/docs/developer-info',
       to: '/docs/developer',
@@ -37,7 +37,11 @@ export const redirects = {
     {
       from: '/docs/user-info',
       to: '/docs/user',
-    }
+    },
+    {
+      from: '/blog/2021/03/16/cmake-v3-19-2-2-released/',
+      to: '/blog/2021/03/17/cmake-v3-19-2-2-released/',
+    },
   ],
   createRedirects(existingPath) {
     console.log(existingPath);
@@ -56,7 +60,7 @@ export const redirects = {
     //   }
     //   return undefined; // Return a falsy value: no redirect created
     //   },
-    
+
     if (existingPath.includes('/user-info')) {
       return [
         existingPath.replace('/user-info', '/user')
