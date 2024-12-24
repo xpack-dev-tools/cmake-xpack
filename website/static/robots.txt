@@ -1,0 +1,7 @@
+Sitemap: https://xpack-dev-tools.github.io/cmake-xpack/sitemap.xml
+
+User-agent: *
+Disallow: /cmake-xpack/blog/archive/
+Disallow: /cmake-xpack/blog/authors/
+Disallow: /cmake-xpack/blog/page/
+Disallow: /cmake-xpack/blog/tags/
