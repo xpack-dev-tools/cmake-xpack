@@ -335,7 +335,7 @@ const config: Config = {
           'aria-label': 'GitHub repository',
         },
         {
-          label: `v${customFields.xpackVersion}`,
+          label: `${customFields.xpackVersion}`,
           position: 'right',
           href: `https://github.com/xpack-dev-tools/cmake-xpack/releases/tag/v${customFields.xpackVersion}`,
         },
