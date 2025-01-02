@@ -1,0 +1,165 @@
+---
+title: xPack CMake v3.29.9-1 released
+seo_title: Version 3.29.9-1 released
+description: Version 3.29.9-1 is a new release.
+keywords:
+  - xpack
+  - cmake
+  - release
+
+date: 2025-01-02 13:48:40 +0200
+
+authors: ilg-ul
+
+# To be listed in the Releases page.
+tags:
+  - releases
+
+# ----- Custom properties -----------------------------------------------------
+
+cmake_version: "3.29.9"
+cmake_release_date: "21 Nov 2024"
+
+version: "3.29.9-1"
+npm_subversion: "1"
+
+download_url: https://github.com/xpack-dev-tools/cmake-xpack/releases/tag/v3.29.9-1/
+
+---
+
+import {PageMetadata} from '@docusaurus/theme-common';
+import Image from '@theme/IdealImage';
+import CodeBlock from '@theme/CodeBlock';
+
+import Prerequisites from './_common/_prerequisites-glib-2.27.mdx'
+import DeprecationNotices from './_common/_deprecation-notices-glib-2.27.mdx'
+import DownloadAnalytics from './_common/_download-analytics.mdx'
+
+Version **3.29.9-1** is a new release; it follows the upstream release.
+
+<!-- truncate -->
+
+<PageMetadata title={frontMatter.seo_title} />
+
+The [xPack CMake](https://xpack-dev-tools.github.io/cmake-xpack/)
+is a standalone cross-platform binary distribution of
+[CMake](https://cmake.org).
+
+There are separate binaries for **Windows** (x64),
+**macOS** (x64 and arm64)
+and **GNU/Linux** (x64, arm64 and arm).
+
+:::note Raspberry Pi
+
+The main targets for the GNU/Linux Arm
+binaries are the **Raspberry Pi** class devices (armv7l and aarch64;
+armv6 is not supported).
+
+:::
+
+## Download
+
+The binary files are available from <a href={frontMatter.download_url}>GitHub Releases</a>.
+
+<Prerequisites/>
+
+## Install
+
+The easiest way to install this specific version, is by using **xpm**:
+
+<CodeBlock language="console"> {
+`xpm install @xpack-dev-tools/cmake@${frontMatter.version}.${frontMatter.npm_subversion} -verbose
+`} </CodeBlock>
+
+Comprehensive instructions for installing **xPack CMake** on different platforms
+can be found in the [Install Guide](/docs/install/).
+
+## Compliance
+
+The **xPack CMake** is based on the official
+[CMake](https://cmake.org), with no changes.
+
+The current version is based on:
+
+- CMake release
+[{frontMatter.cmake_version}](https://github.com/Kitware/CMake/releases/tag/v{frontMatter.cmake_version}/) from {frontMatter.cmake_release_date}.
+
+## Changes
+
+- none
+
+:::tip
+
+Starting with mid-2024 (v3.28.6-1), the patch to spawn processes on Windows via `cmd.exe /c` was no longer applied. The direct consequence is applications started via `.cmd` shim need to declare the `.cmd` extension explicitly (like `ninja.cmd`).
+
+:::
+
+## Bug fixes
+
+- none
+
+## Enhancements
+
+- none
+
+## Known problems
+
+- none
+
+## Documentation
+
+The current CMake documentation is available online from:
+
+- https://cmake.org/documentation/
+
+## Build
+
+The binaries for all supported platforms
+(Windows, macOS and GNU/Linux) were built using the
+[xPack Build Box (XBB)](https://xpack.github.io/xbb/), a set
+of build environments based on slightly older distributions, that should be
+compatible with most recent systems.
+
+For the prerequisites and more details on the build procedure, please see the
+[Maintainer Info](/docs/maintainer/) page.
+
+## CI tests
+
+Before publishing, a set of simple tests were performed on an exhaustive
+set of platforms. The results are available from:
+
+- [GitHub Actions](https://github.com/xpack-dev-tools/cmake-xpack/actions/)
+- [Travis CI](https://app.travis-ci.com/github/xpack-dev-tools/cmake-xpack/builds/)
+
+## Tests
+
+TBD
+
+## Checksums
+
+The SHA-256 hashes for the files are:
+
+```txt
+2c13f90920d1a9ff1f855c53bcab3d6b3e9c4b22eb5827097bf683e624c23bd3
+xpack-cmake-3.29.9-1-darwin-arm64.tar.gz
+
+39ba8e184bb7a98bb6ea0e00392cadc56857c0c4999abfeec5a947a242c86f78
+xpack-cmake-3.29.9-1-darwin-x64.tar.gz
+
+3d4eb4ca5f81a4dc7b613cc3bb21cf79cd329d2fc9ccfcbe8d780c69064fae40
+xpack-cmake-3.29.9-1-linux-arm.tar.gz
+
+7ef440909241380977949fa76666914fef2eaebfecf80eff6228b8a6745567dd
+xpack-cmake-3.29.9-1-linux-arm64.tar.gz
+
+31f7ea43fed9c8229a734b2585dbba462750e77726268300d791787967970be5
+xpack-cmake-3.29.9-1-linux-x64.tar.gz
+
+8480fa83aaeeae0b4fdb22af504761ded1176c5bc67549dcfd708da04667dfc1
+xpack-cmake-3.29.9-1-win32-x64.zip
+
+```
+
+<DeprecationNotices/>
+
+<DownloadAnalytics version={frontMatter.version}/>
