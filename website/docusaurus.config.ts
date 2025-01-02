@@ -418,11 +418,11 @@ const config: Config = {
               href: 'https://github.com/xpack-dev-tools/cmake-xpack/',
             },
             {
-              label: 'GitHub xpack-dev-tools',
+              label: 'GitHub xpack-dev-tools org',
               href: 'https://github.com/xpack-dev-tools/',
             },
             {
-              label: 'GitHub xpack',
+              label: 'GitHub xpack org',
               href: 'https://github.com/xpack/',
             },
           ],
