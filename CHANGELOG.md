@@ -4,7 +4,13 @@ Entries in this file are in reverse chronological order.
 
 ## 2025-01-02
 
-* v3.29.9-1 prepared
+* v3.29.9-1 released
+* fa1ab3a website: re-generate commons
+* c7ac66d re-generate workflows
+* f489405 website: update actions durations
+* d66e25b build-assets/package.json: bump deps
+* c0257c6 website updates
+* 2f496fe prepare v3.29.9-1
 * 07b8839 website re-generate commons
 * 11be840 re-generate commons
 
