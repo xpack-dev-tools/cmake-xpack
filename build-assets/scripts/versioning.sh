@@ -15,7 +15,47 @@ function application_build_versioned_components()
 
   # When 3.x.3 is out, release 3.x-1.y
   # Keep them in sync with the combo archive content.
-  if [[ "${XBB_RELEASE_VERSION}" =~ 3[.]28[.][0-9]* ]]
+  if [[ "${XBB_RELEASE_VERSION}" =~ 3[.]29[.][0-9]* ]]
+  then
+    # -------------------------------------------------------------------------
+    # Build the native dependencies.
+
+    # None
+
+    # -------------------------------------------------------------------------
+    # Build the target dependencies.
+
+    xbb_reset_env
+    # Before set target (to possibly update CC & co variables).
+    # xbb_activate_installed_bin
+
+    xbb_set_target "requested"
+
+    # https://zlib.net/fossils/
+    zlib_build "1.3.1"
+
+    if [ "${XBB_REQUESTED_HOST_PLATFORM}" != "win32" ]
+    then
+      # https://ftp.gnu.org/gnu/ncurses/
+      ncurses_build "6.5" # "6.4"
+    fi
+
+    # https://sourceforge.net/projects/lzmautils/files/
+    # Avoid 5.6.[01]!
+    xz_build "5.6.3" # "5.4.7"
+
+    # https://www.openssl.org/source/old/
+    openssl_build "3.4.0" # "3.3.2"
+
+    # -------------------------------------------------------------------------
+    # Build the application binaries.
+
+    xbb_set_executables_install_path "${XBB_APPLICATION_INSTALL_FOLDER_PATH}"
+    xbb_set_libraries_install_path "${XBB_DEPENDENCIES_INSTALL_FOLDER_PATH}"
+
+    cmake_build "${XBB_CMAKE_VERSION}"
+
+  elif [[ "${XBB_RELEASE_VERSION}" =~ 3[.]28[.][0-9]* ]]
   then
     # -------------------------------------------------------------------------
     # Build the native dependencies.

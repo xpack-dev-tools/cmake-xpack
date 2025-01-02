@@ -2,9 +2,111 @@
 
 Entries in this file are in reverse chronological order.
 
+## 2025-01-02
+
+* v3.29.9-1 prepared
+* 07b8839 website re-generate commons
+* 11be840 re-generate commons
+
+## 2024-12-31
+
+* 2c5cae6 website: updates
+
+## 2024-12-30
+
+* 5a25e68 package.json: bump deps
+* d60e6fc website: updates
+
+## 2024-12-24
+
+* bd010b8 website: updates
+* fab7ad1 website: updates
+
+## 2024-12-22
+
+* b348f72 website: update redirects
+* 786aba6 website: updates
+* 8a605ff website: add _xpack.github.io
+
+## 2024-12-20
+
+* 61b0940 website: updates
+* fbb68d4 website: updates
+* da2bcd4 website: updates
+
+## 2024-12-11
+
+* 06d75de website: updates
+* 0109025 website/blog updates
+* c0ea748 website/blog/_templates/blog-post-release*
+
+## 2024-12-04
+
+* 2448717 website: updates
+* 949ad84 build-assets/package.json: bump deps
+
+## 2024-10-15
+
+* b826266 website: updates
+* 04e739a website: updates
+
+## 2024-10-14
+
+* 7dc9d37 website: updates
+
+## 2024-10-13
+
+* f275841 website: updates
+* 287450f website: updates
+* f4bc72c website: updates
+
+## 2024-10-11
+
+* e1f1be3 website: updates
+* dc39775 website/blog/_templates/blog-post-release*
+* d03df08 website/blog/_templates/blog-post-release*
+
+## 2024-10-10
+
+* 63dd6f3 website: updates
+* ce1ef14 website: updates
+
+## 2024-10-09
+
+* a300fa8 website move blog post templates
+* df40b63 website: updates
+* 9b4c064 website: updates
+
+## 2024-10-07
+
+* 825c1cb website: updates
+* 53398aa website: updates
+
+## 2024-10-06
+
+* 44e051e website: updates
+* a3e5192 website: updates
+* fc3ca43 re-generate workflows
+
+## 2024-10-04
+
+* 9f96f43 website: updates
+* a774ae0 templates/body-blog update
+
+## 2024-09-18
+
+* a8046fb website: updates
+* 2e5282b website update
+* 8d018fa build-assets/package.json update customFields
+* 920d510 build-assets/templates updates
+
 ## 2024-09-13
 
-* v3.28.6-1 published on npmjs.com
+## 2024-09-13
+
+* 31fdf2c website: add content
+* 8b18f15 3.28.6-1.1
+* 12f5152 CHANGELOG: publish npm v3.28.6-1.1
 * 5b1316c package.json: update urls for 3.28.6-1.1 release
 * 27e9178 build-assets/templates update
 * 4e4d533 CHANGELOG update
