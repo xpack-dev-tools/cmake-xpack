@@ -335,19 +335,29 @@ const config: Config = {
           'aria-label': 'GitHub repository',
         },
         {
+          type: 'dropdown',
+          href: 'https://github.com/xpack-dev-tools/cmake-xpack/',
+          position: 'right',
+          label: 'GitHub',
+          items: [
+            {
+              label: `cmake-xpack`,
+              href: `https://github.com/xpack-dev-tools/cmake-xpack/`,
+            },
+            {
+              label: 'xpack-dev-tools org',
+              href: 'https://github.com/xpack-dev-tools/',
+            },
+            {
+              label: 'xpack org',
+              href: 'https://github.com/xpack/',
+            },
+          ]
+        },
+        {
           label: `${customFields.xpackVersion}`,
           position: 'right',
           href: `https://github.com/xpack-dev-tools/cmake-xpack/releases/tag/v${customFields.xpackVersion}`,
-        },
-        {
-          href: 'https://github.com/xpack-dev-tools/',
-          label: 'xpack-dev-tools',
-          position: 'right',
-        },
-        {
-          href: 'https://github.com/xpack/',
-          label: 'xpack',
-          position: 'right',
         },
       ],
     },
