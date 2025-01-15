@@ -5,8 +5,7 @@
 
 # The xPack CMake
 
-A standalone cross-platform (Windows, macOS, GNU/Linux)
-binary distribution of CMake,
+A standalone, cross-platform (Windows, macOS, GNU/Linux) binary distribution of CMake,
 intended for reproducible builds.
 
 ## Project documentation
