@@ -78,7 +78,8 @@
     "liquidjs": "^10.19.1"
   },
   "topConfig": {
-    "longName": "CMake"
+    "longName": "CMake",
+    "shortName": "cmake"
   },
   "engines": {
     "node": " >=18.0.0"
