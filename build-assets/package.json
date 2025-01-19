@@ -17,12 +17,6 @@
     },
     "properties": {
       "platforms": "all",
-      "customFields": {
-        "programName": "cmake",
-        "branding": "cmake version ",
-        "$link": "https://github.com/Kitware/CMake/tags/",
-        "cmakeReleaseDate": "21 Nov 2024"
-      },
       "buildFolderRelativePath": "{{'build' | path_join: configuration.name | to_filename | downcase}}",
       "buildFolderRelativePathPosix": "{{'build' | path_posix_join: configuration.name | downcase}}",
       "commandBashBuild": "bash {{properties.dbg}} scripts/build.sh --target {{configuration.name}} --build-folder {{properties.buildFolderRelativePathPosix}}",
