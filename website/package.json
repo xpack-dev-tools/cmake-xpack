@@ -57,12 +57,10 @@
     ]
   },
   "websiteConfig": {
-    "customFields": {
-      "programName": "cmake",
-      "branding": "cmake version ",
-      "$link": "https://github.com/Kitware/CMake/tags/",
-      "cmakeReleaseDate": "21 Nov 2024"
-    }
+    "programName": "cmake",
+    "branding": "cmake version ",
+    "$link": "https://github.com/Kitware/CMake/tags/",
+    "cmakeReleaseDate": "21 Nov 2024"
   },
   "engines": {
     "node": ">=18.0"
