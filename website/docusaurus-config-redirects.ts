@@ -39,6 +39,10 @@ export const redirects = {
       to: '/docs/user',
     },
     {
+      from: '/docs/about',
+      to: '/docs/project/about',
+    },
+    {
       from: '/blog/2021/03/16/cmake-v3-19-2-2-released/',
       to: '/blog/2021/03/17/cmake-v3-19-2-2-released/',
     },
@@ -74,5 +78,5 @@ export const redirects = {
         existingPath.replace('/maintainer-info', '/maintainer')
       ];
     }
-}
+  }
 }
