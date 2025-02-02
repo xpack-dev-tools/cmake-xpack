@@ -1,6 +1,6 @@
 [![GitHub package.json version](https://img.shields.io/github/package-json/v/xpack-dev-tools/cmake-xpack)](https://github.com/xpack-dev-tools/cmake-xpack/blob/xpack/package.json)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/xpack-dev-tools/cmake-xpack)](https://github.com/xpack-dev-tools/cmake-xpack/releases)
-[![npm (scoped)](https://img.shields.io/npm/v/@xpack-dev-tools/cmake?color=blue)](https://www.npmjs.com/package/@xpack-dev-tools/cmake/)
+[![NPM Version](https://img.shields.io/npm/v/@xpack-dev-tools/cmake?color=green)](https://www.npmjs.com/package/@xpack-dev-tools/cmake/)
 [![license](https://img.shields.io/github/license/xpack-dev-tools/cmake-xpack)](https://github.com/xpack-dev-tools/cmake-xpack/blob/xpack/LICENSE)
 
 # The xPack CMake
