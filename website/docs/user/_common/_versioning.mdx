@@ -13,19 +13,19 @@ import LinksVsForwarders from '@site/src/components/LinksVsForwarders';
 The version string used by the
 upstream {props.upstreamName ? props.upstreamName : 'CMake'} project
 is a three number string
-like <code>3.29.9</code>;
+like <code>3.30.7</code>;
 to this string the xPack distribution adds a fourth number,
 but since [SemVer](https://semver.org) allows only three numbers,
 all additional ones can
 be added only as pre-release strings, separated by a dash,
-like <code>3.29.9-<b>1</b></code>. When
+like <code>3.30.7-<b>1</b></code>. When
 published as a npm package, the version gets
 a fifth number,
-like <code>3.29.9-1.<b>1</b></code>.
+like <code>3.30.7-1.<b>1</b></code>.
 
 Since adherence of third party packages to SemVer is not guaranteed,
 it is recommended to avoid referring to the xPack CMake dependency via
 a SemVer expressions
-like <code>^3.29.9-1</code> or <code>~3.29.9-1</code>, and
+like <code>^3.30.7-1</code> or <code>~3.30.7-1</code>, and
 prefer exact matches,
-like <code>3.29.9-1.1</code>.
+like <code>3.30.7-1.1</code>.

@@ -17,7 +17,7 @@ For information on how to install and use this project, please refer to the
 ## Project source
 
 The source code of the current release is available on
-[GitHub tag v3.29.9-1.1 tree](https://github.com/xpack-dev-tools/cmake-xpack/tree/v3.29.9-1.1).
+[GitHub tag v3.30.7-1.1 tree](https://github.com/xpack-dev-tools/cmake-xpack/tree/v3.30.7-1.1).
 
 ## License
 

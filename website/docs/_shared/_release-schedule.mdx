@@ -12,11 +12,15 @@ but usually is one minor release behind (sometimes two).
 
 Deciding when to make new xPack CMake releases is difficult,
 because CMake continues to fix issues for the last two minor
-releases, and there is no way to tell if a patch release is
-the final one.
+releases. There is no way to tell for sure if a patch release is
+the final one but checking the
+[milestones](https://gitlab.kitware.com/cmake/cmake/-/milestones)
+may help.
 
 In practical terms, based on past release schedule,
 when the new upstream **{versionMajor()}.{versionMinor()+1}.4** is released,
 the previous **{versionMajor()}.{versionMinor()}.X**
 is probably no longer updated and can be released
 (where X is the latest patch available at that time).
+
+
