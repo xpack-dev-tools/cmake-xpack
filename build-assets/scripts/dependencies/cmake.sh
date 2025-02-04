@@ -145,6 +145,10 @@ function cmake_build()
           # config_options+=("-DBUILD_TESTING=ON")
           config_options+=("-DBUILD_TESTING=OFF")
 
+          # On macOS:
+          # "/usr/lib/libcurl.4.dylib" not one of the allowed libs
+          config_options+=("-DCMAKE_USE_SYSTEM_CURL=OFF")
+
           if [ "${XBB_HOST_PLATFORM}" == "win32" ]
           then
             config_options+=("-DCMAKE_SYSTEM_NAME=Windows")
