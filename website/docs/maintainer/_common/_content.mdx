@@ -170,7 +170,7 @@ or run the following in a terminal:
 ```
 
 Navigate to the **Maintainer Info** page,
-the **Increase the version and update VERSION** section.
+the **Update the version specific code** section.
 
 <UpdateVersionSpecific/>
 
@@ -373,7 +373,7 @@ caffeinate ssh xbbla32
 
 ### Update the durations of the development builds
 
-In `website/docs/maintainer/_shared/_development-durations.mdx`, update
+In `website/docs/_shared/_development-durations.mdx`, update
 the durations of the builds.
 
 Commit with the message _**website: update development durations**_.
@@ -443,7 +443,9 @@ The automation is provided by GitHub Actions and three self-hosted runners.
 ### Start the self-hosted runners
 
 If the runners expired (more than 2 weeks since last use), run the
-`github-runner-configure.sh` script to reconfigure them
+`github-runner-configure.sh` script to reconfigure them. This scripts
+is available in the `xbb-helper` and
+requires `GITHUB_API_XPACK_DEV_TOOLS_RUNNERS_TOKEN` to be present.
 
 - on the development machine (`wksi`) open
 ssh sessions to the build machines (`xbbli`, `xbbmi`, `xbbma`, `xbbla`, `xbbla32`):
@@ -464,6 +466,13 @@ screen -S ga
 ```
 
 To quit it, use `# Ctrl-a Ctrl-d`.
+
+For the macOS runners, be sure the deployment target is defined:
+
+```sh
+export XBB_ENVIRONMENT_MACOSX_DEPLOYMENT_TARGET="10.13"
+export XBB_ENVIRONMENT_MACOSX_DEPLOYMENT_TARGET="11.0"
+```
 
 For `xbbli` & `xbbla`, which have more memory, start two runners:
 
@@ -501,7 +510,16 @@ Publish a new release of the helper on **npmjs**.
 ### In `npm-packages-helper.git`, update the dependency to the new helper
 
 In `templates/_xpack-dev-tools/build-assets/package-merge-liquid.json`, update the reference
-to `"@@xpack-dev-tools/xbb-helper":`.
+to `"@xpack-dev-tools/xbb-helper":`.
+
+### Generate the GitHub workflows
+
+Run the top **generate-top-commons** npm script to update the
+GitHub workflow files.
+
+```sh
+npm run generate-top-commons -C ~/Work/xpack-dev-tools/cmake-xpack.git
+```
 
 ### Commit the changes to `build-assets/package.json`
 
@@ -548,15 +566,6 @@ This is equivalent to running a wide `rm` to remove the `build` folders:
 
 ```sh
 rm -rf ~/Work/xpack-dev-tools/*/build-assets/build
-```
-
-### Generate the GitHub workflows
-
-Run the top **generate-top-commons** npm script to update the
-GitHub workflow files.
-
-```sh
-npm run generate-workflows -C ~/Work/xpack-dev-tools/cmake-xpack.git
 ```
 
 ### Commit and push
