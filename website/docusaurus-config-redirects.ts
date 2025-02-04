@@ -46,6 +46,10 @@ export const redirects = {
       from: '/blog/2021/03/16/cmake-v3-19-2-2-released/',
       to: '/blog/2021/03/17/cmake-v3-19-2-2-released/',
     },
+    {
+      from: '/blog/2025/02/04/cmake-v3-30-7-released/',
+      to: '/blog/2025/02/04/cmake-v3-30-7-1-released/',
+   }
   ],
   createRedirects(existingPath) {
     console.log(existingPath);
