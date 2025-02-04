@@ -4,7 +4,13 @@ Entries in this file are in reverse chronological order.
 
 ## 2025-02-04
 
-* v3.30.7-1 prepared
+* v3.30.7-1 released
+* 808252e website: re-generate commons
+* 4fd7d8b build-assets/package-lock.json update
+* 35a8c72 website: re-generate common
+* b858884 website: update folder hierarchies
+* 7d4ee9a cmake.sh: CMAKE_USE_SYSTEM_CURL=OFF
+* d2684bf prepare v3.30.7-1
 
 ## 2025-02-03
 
