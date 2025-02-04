@@ -4,7 +4,11 @@ Entries in this file are in reverse chronological order.
 
 ## 2025-02-04
 
-* v3.30.7-1 released
+* v3.30.7-1.1 published on npmjs.com
+* 8b76925 package.json: update urls for 3.30.7-1.1 release
+* 1f0cd74 website: blog post release 3.30.7-1 published
+* 9b2d953 build-assets/package.json: update generate-website-blog-post
+* a4dfba6 CHANGELOG update
 * 808252e website: re-generate commons
 * 4fd7d8b build-assets/package-lock.json update
 * 35a8c72 website: re-generate common
