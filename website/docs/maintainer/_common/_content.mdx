@@ -467,13 +467,6 @@ screen -S ga
 
 To quit it, use `# Ctrl-a Ctrl-d`.
 
-For the macOS runners, be sure the deployment target is defined:
-
-```sh
-export XBB_ENVIRONMENT_MACOSX_DEPLOYMENT_TARGET="10.13"
-export XBB_ENVIRONMENT_MACOSX_DEPLOYMENT_TARGET="11.0"
-```
-
 For `xbbli` & `xbbla`, which have more memory, start two runners:
 
 ```sh
@@ -481,7 +474,21 @@ For `xbbli` & `xbbla`, which have more memory, start two runners:
 ~/actions-runners/xpack-dev-tools/2/run.sh &
 ```
 
-On all other machines start a single runner:
+For the macOS x64 runners, be sure the deployment target is defined:
+
+```sh
+unset WORK_FOLDER_PATH
+export XBB_ENVIRONMENT_MACOSX_DEPLOYMENT_TARGET="10.13"
+~/actions-runners/xpack-dev-tools/run.sh &
+```
+
+```sh
+unset WORK_FOLDER_PATH
+export XBB_ENVIRONMENT_MACOSX_DEPLOYMENT_TARGET="11.0"
+~/actions-runners/xpack-dev-tools/run.sh &
+```
+
+On all other machines start the runner with:
 
 ```sh
 ~/actions-runners/xpack-dev-tools/run.sh &
@@ -507,7 +514,7 @@ The status of all self-hosted runners is available at the [GitHub Runners](https
 
 Publish a new release of the helper on **npmjs**.
 
-### In `npm-packages-helper.git`, update the dependency to the new helper
+### In the npm packages helper, update the dependency to the new helper
 
 In `templates/_xpack-dev-tools/build-assets/package-merge-liquid.json`, update the reference
 to `"@xpack-dev-tools/xbb-helper":`.
