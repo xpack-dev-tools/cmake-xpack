@@ -519,18 +519,18 @@ Publish a new release of the helper on **npmjs**.
 In `templates/_xpack-dev-tools/build-assets/package-merge-liquid.json`, update the reference
 to `"@xpack-dev-tools/xbb-helper":`.
 
-### Generate the GitHub workflows
+### Generate the top commons
 
 Run the top **generate-top-commons** npm script to update the
-GitHub workflow files.
+`build-assets/package.json` and the GitHub workflow files.
 
 ```sh
 npm run generate-top-commons -C ~/Work/xpack-dev-tools/cmake-xpack.git
 ```
 
-### Commit the changes to `build-assets/package.json`
+### Commit the changes
 
-Commit with the message _**template: build-assets/package-merge-liquid.json: bump deps**_.
+Commit with the message _**re-generate top commons**_.
 
 ### Check for disk space
 
@@ -867,6 +867,7 @@ npm run build -C website
 
 ### Publish the website
 
+- open https://xpack-dev-tools.github.io/cmake-xpack/docs/maintainer/#publish-the-website in a separate window
 - stop the local web server
 - select the `website` branch
 - merge `xpack-development` into `website`
@@ -874,6 +875,7 @@ npm run build -C website
   :::info
   At this moment an automated GitHub Action will generate and publish the website.
   :::
+- add a new tag like `web-YYYYMMDD`
 - the new release blog post is
 in https://xpack-dev-tools.github.io/cmake-xpack/blog/
 - remember the post URL, since it must be used to update the release page
