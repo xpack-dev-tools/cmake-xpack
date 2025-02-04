@@ -36,32 +36,32 @@
     "minimumXpmRequired": "0.16.3",
     "binaries": {
       "destination": "./.content",
-      "baseUrl": "https://github.com/xpack-dev-tools/cmake-xpack/releases/download/v3.29.9-1",
+      "baseUrl": "https://github.com/xpack-dev-tools/cmake-xpack/releases/download/v3.30.7-1",
       "skip": 1,
       "platforms": {
         "darwin-arm64": {
-          "fileName": "xpack-cmake-3.29.9-1-darwin-arm64.tar.gz",
-          "sha256": "2c13f90920d1a9ff1f855c53bcab3d6b3e9c4b22eb5827097bf683e624c23bd3"
+          "fileName": "xpack-cmake-3.30.7-1-darwin-arm64.tar.gz",
+          "sha256": "a6eab9da7fa93bdb322660dada16c5c5490952cf36ed701607b066540a9b5106"
         },
         "darwin-x64": {
-          "fileName": "xpack-cmake-3.29.9-1-darwin-x64.tar.gz",
-          "sha256": "39ba8e184bb7a98bb6ea0e00392cadc56857c0c4999abfeec5a947a242c86f78"
+          "fileName": "xpack-cmake-3.30.7-1-darwin-x64.tar.gz",
+          "sha256": "77a00ca7374afb8fe5ee816ad05b6ca4785e92170fc473e27016d96b5986d7de"
         },
         "linux-arm": {
-          "fileName": "xpack-cmake-3.29.9-1-linux-arm.tar.gz",
-          "sha256": "3d4eb4ca5f81a4dc7b613cc3bb21cf79cd329d2fc9ccfcbe8d780c69064fae40"
+          "fileName": "xpack-cmake-3.30.7-1-linux-arm.tar.gz",
+          "sha256": "6af617b57dc057ee4ef76c80f77bb24238d5bc5f5786ca3e4c834704c54bb034"
         },
         "linux-arm64": {
-          "fileName": "xpack-cmake-3.29.9-1-linux-arm64.tar.gz",
-          "sha256": "7ef440909241380977949fa76666914fef2eaebfecf80eff6228b8a6745567dd"
+          "fileName": "xpack-cmake-3.30.7-1-linux-arm64.tar.gz",
+          "sha256": "2159df5420aa9c21029e9c447a1bcb7279ec0a9d4ccac0ceeeeea4802a84e94e"
         },
         "linux-x64": {
-          "fileName": "xpack-cmake-3.29.9-1-linux-x64.tar.gz",
-          "sha256": "31f7ea43fed9c8229a734b2585dbba462750e77726268300d791787967970be5"
+          "fileName": "xpack-cmake-3.30.7-1-linux-x64.tar.gz",
+          "sha256": "11bad57226e040f93238ec876c98ebda8842541095e355d4ca9eccc71e4c265b"
         },
         "win32-x64": {
-          "fileName": "xpack-cmake-3.29.9-1-win32-x64.zip",
-          "sha256": "8480fa83aaeeae0b4fdb22af504761ded1176c5bc67549dcfd708da04667dfc1"
+          "fileName": "xpack-cmake-3.30.7-1-win32-x64.zip",
+          "sha256": "81d2fbe3ada477e8f031a979997ce3631a6dabaf936b9bea16acdcef6759f975"
         }
       }
     },
