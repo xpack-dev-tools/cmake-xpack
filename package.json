@@ -47,10 +47,6 @@
           "fileName": "xpack-cmake-3.30.7-1-darwin-x64.tar.gz",
           "sha256": "77a00ca7374afb8fe5ee816ad05b6ca4785e92170fc473e27016d96b5986d7de"
         },
-        "linux-arm": {
-          "fileName": "xpack-cmake-3.30.7-1-linux-arm.tar.gz",
-          "sha256": "6af617b57dc057ee4ef76c80f77bb24238d5bc5f5786ca3e4c834704c54bb034"
-        },
         "linux-arm64": {
           "fileName": "xpack-cmake-3.30.7-1-linux-arm64.tar.gz",
           "sha256": "2159df5420aa9c21029e9c447a1bcb7279ec0a9d4ccac0ceeeeea4802a84e94e"
