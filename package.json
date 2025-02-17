@@ -75,7 +75,8 @@
   },
   "topConfig": {
     "longName": "CMake",
-    "shortName": "cmake"
+    "shortName": "cmake",
+    "useSelfHostedRunners": "true"
   },
   "engines": {
     "node": " >=18.0.0"
