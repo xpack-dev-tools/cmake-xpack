@@ -76,6 +76,7 @@
   "topConfig": {
     "descriptiveName": "CMake",
     "permalinkName": "cmake",
+    "skipCiTests": "true",
     "useSelfHostedRunners": "true"
   },
   "engines": {
