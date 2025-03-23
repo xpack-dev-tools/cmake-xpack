@@ -75,7 +75,8 @@
     "programName": "cmake",
     "branding": "cmake version ",
     "$link": "https://github.com/Kitware/CMake/tags/",
-    "cmakeReleaseDate": "23 Jan 2025"
+    "cmakeReleaseDate": "23 Jan 2025",
+    "shareOnTwitter": "true"
   },
   "engines": {
     "node": ">=18.0"
