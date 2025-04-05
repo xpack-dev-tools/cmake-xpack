@@ -70,14 +70,17 @@
             # download_sourceforge "${name}" "3.21.6-1" ${threshold} "${platforms}"
 
             # # 2021
-            # # platforms="win32-x64,win32-ia32,linux-x64,linux-ia32,linux-arm64,linux-arm,darwin-x64"
+            # platforms="win32-x64,win32-ia32,linux-x64,linux-ia32,linux-arm64,linux-arm,darwin-x64"
             # download_sourceforge "${name}" "3.20.6-2" ${threshold} "${platforms}"
 
-            # 2020
-            platforms="win32-x64,win32-ia32,linux-x64,linux-ia32,linux-arm64,linux-arm,darwin-x64"
-            download_sourceforge "${name}" "3.19.8-1" ${threshold} "${platforms}"
-            download_sourceforge "${name}" "3.19.2-2" ${threshold} "${platforms}"
-            download_sourceforge "${name}" "3.18.6-1" ${threshold} "${platforms}"
-            download_sourceforge "${name}" "3.19.1-1" ${threshold} "${platforms}"
-            download_sourceforge "${name}" "3.18.5-1" ${threshold} "${platforms}"
+            # # 2020
+            # platforms="win32-x64,win32-ia32,linux-x64,linux-ia32,linux-arm64,linux-arm,darwin-x64"
+            # download_sourceforge "${name}" "3.19.8-1" ${threshold} "${platforms}"
+            # download_sourceforge "${name}" "3.19.2-2" ${threshold} "${platforms}"
+            # download_sourceforge "${name}" "3.18.6-1" ${threshold} "${platforms}"
+            # download_sourceforge "${name}" "3.19.1-1" ${threshold} "${platforms}"
+            # download_sourceforge "${name}" "3.18.5-1" ${threshold} "${platforms}"
+
+            # 2019
+            platforms="win32-x64,win32-x32,linux-x64,linux-x32,darwin-x64"
             download_sourceforge "${name}" "3.18.3-1" ${threshold} "${platforms}"
