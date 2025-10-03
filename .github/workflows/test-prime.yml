@@ -148,10 +148,19 @@ jobs:
           ls -lLA
           env | sort | grep -E '^[^ \t]+='
 
-      - name: 'Clean working area' # Mandatory for self-hosted runners.
+      - name: 'Remove Homebrew'
         run: |
-          chmod -Rf a+w * || true
-          rm -rf * .git*
+          echo "Removing Homebrew to avoid conflicts..."
+          # Use the official Homebrew uninstall script
+          NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)" || true
+          # Additional cleanup for any remaining files
+          sudo rm -rf /opt/homebrew
+          sudo rm -rf /usr/local/Homebrew
+          sudo rm -rf /usr/local/bin/brew
+          # Update PATH to remove Homebrew references
+          echo 'export PATH=$(echo $PATH | tr ":" "\n" | grep -v homebrew | tr "\n" ":")' >> $GITHUB_ENV
+          # Verify removal
+          which brew || echo "Homebrew successfully removed"
 
       # https://github.com/actions/checkout
       - name: 'Checkout project'
@@ -196,10 +205,19 @@ jobs:
           ls -lLA
           env | sort | grep -E '^[^ \t]+='
 
-      - name: 'Clean working area' # Mandatory for self-hosted runners.
+      - name: 'Remove Homebrew'
         run: |
-          chmod -Rf a+w * || true
-          rm -rf * .git*
+          echo "Removing Homebrew to avoid conflicts..."
+          # Use the official Homebrew uninstall script
+          NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)" || true
+          # Additional cleanup for any remaining files
+          sudo rm -rf /opt/homebrew
+          sudo rm -rf /usr/local/Homebrew
+          sudo rm -rf /usr/local/bin/brew
+          # Update PATH to remove Homebrew references
+          echo 'export PATH=$(echo $PATH | tr ":" "\n" | grep -v homebrew | tr "\n" ":")' >> $GITHUB_ENV
+          # Verify removal
+          which brew || echo "Homebrew successfully removed"
 
       # https://github.com/actions/checkout
       - name: 'Checkout project'
