@@ -13,7 +13,7 @@ To check the available space:
 xpm run check-space -C ~/Work/xpack-dev-tools/cmake-xpack.git/build-assets
 ```
 
-To free the space used by all previous builds of all `xpack-dev-tools` packages:
+To free the space utilised by all previous builds of all `xpack-dev-tools` packages:
 
 ```sh
 xpm run clear-all-projects-builds -C ~/Work/xpack-dev-tools/cmake-xpack.git/build-assets
@@ -23,6 +23,7 @@ To update the build scripts and build the development binaries:
 
 <CodeBlock language="sh"> {
 `export XBB_ENVIRONMENT_MACOSX_DEPLOYMENT_TARGET='11.0' && \\
+rm -rf ~/Work/xpack-dev-tools/cmake-xpack.git/package-lock.json && \\
 rm -rf ~/Work/xpack-dev-tools/cmake-xpack.git/build-assets/package-lock.json && \\
 git -C ~/Work/xpack-dev-tools/cmake-xpack.git pull && \\
 xpm run install -C ~/Work/xpack-dev-tools/cmake-xpack.git/build-assets && \\
@@ -39,14 +40,15 @@ xpm run build-development --config ${props.platform} -C ~/Work/xpack-dev-tools/c
 archive and its SHA signature, created in
 the <code>build-assets/build/{props.platform}/deploy</code> folder:
 
-- <code>xpack-cmake-3.30.7-1-{props.platform}.tar.gz</code>
-- <code>xpack-cmake-3.30.7-1-{props.platform}.tar.gz.sha</code>
+- <code>xpack-cmake-3.30.9-1-{props.platform}.tar.gz</code>
+- <code>xpack-cmake-3.30.9-1-{props.platform}.tar.gz.sha</code>
 
 To update the build scripts and build the release binaries:
 
 <CodeBlock language="sh"> {
 `export XBB_ENVIRONMENT_MACOSX_DEPLOYMENT_TARGET='11.0' && \\
 rm -rf ~/Work/xpack-dev-tools/cmake-xpack.git/package-lock.json && \\
+rm -rf ~/Work/xpack-dev-tools/cmake-xpack.git/build-assets/package-lock.json && \\
 git -C ~/Work/xpack-dev-tools/cmake-xpack.git pull && \\
 xpm run install -C ~/Work/xpack-dev-tools/cmake-xpack.git/build-assets && \\
 \\
