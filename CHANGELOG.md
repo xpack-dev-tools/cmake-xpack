@@ -2,6 +2,84 @@
 
 Entries in this file are in reverse chronological order.
 
+## 2025-10-03
+
+* v3.30.9-1 prepared
+* b3603d8 website: re-generate commons
+* 22cbcbd re-generate top commons to bump deps
+
+## 2025-04-09
+
+* 8179381 test-sourceforge*: on every Saturday
+
+## 2025-04-06
+
+* 3f7d45c test-sourceforge-downloads.yml update
+
+## 2025-04-05
+
+* 0317405 test-sourceforge-downloads.yml update
+* 11781b7 test-sourceforge-downloads.yml update
+* 79e4b2c test-sourceforge-downloads.yml update
+* ba474e4 test-sourceforge-downloads.yml update
+* b5ce838 test-sourceforge-downloads.yml update
+* dc9411b add test-sourceforge-downloads.yml
+
+## 2025-03-23
+
+* 554593f update /licenses/MIT
+* c0f99ed website: re-generate commons
+* f6b8ed7 re-generate commons
+* 36eee4f website package.json shareOnTwitter update
+* 3279e36 website package.json author update
+* 94d2f31 website generate-website-commons update
+
+## 2025-02-24
+
+* c5da434 website: re-generate descriptive & permalink names
+* 30675b5 re-generate descriptive & permalink names
+
+## 2025-02-23
+
+* fa58d4b website: re-generate commons
+
+## 2025-02-18
+
+* 70309a7 package.json: bump minimumXpmRequired 0.20.5
+* 7d0d135 package.json: bump xpm 0.20.5
+
+## 2025-02-17
+
+* 01b7d02 re-generate workflows without self-hosted
+* 066017a re-generate workflows
+
+## 2025-02-14
+
+* e849ff9 re-generate commons
+* d465f24 re-generate commons
+
+## 2025-02-13
+
+* d938608 versioning.sh: ncurses with --hack-links
+* 8d8ef87 re-generate commons
+
+## 2025-02-07
+
+* 827a345 website: re-generate commons
+
+## 2025-02-05
+
+* fc51efc website: fix post permalink
+* b502222 website: re-generate commons
+* 3bfdf21 website: fix post permalink
+
+## 2025-02-04
+
+* aedbdee website: re-generate commons
+* a8081c9 3.30.7-1.1
+* a883554 package.json: .pre
+* 4a23cfd CHANGELOG: publish npm v3.30.7-1.1
+
 ## 2025-02-04
 
 * v3.30.7-1.1 published on npmjs.com

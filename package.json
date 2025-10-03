@@ -1,6 +1,6 @@
 {
   "name": "@xpack-dev-tools/cmake",
-  "version": "3.30.7-1.1",
+  "version": "3.30.9-1.1.pre",
   "description": "A binary xpm package with the CMake executables",
   "main": "",
   "scripts": {
@@ -74,12 +74,13 @@
     "liquidjs": "^10.19.1"
   },
   "topConfig": {
-    "descriptiveName": "CMake",
+    "descriptiveName": "xPack CMake",
+    "upstreamDescriptiveName": "CMake",
     "permalinkName": "cmake",
     "skipCiTests": "true",
-    "useSelfHostedRunners": "true"
+    "useSelfHostedRunners": "false"
   },
   "engines": {
-    "node": " >=18.0.0"
+    "node": " >=20.0"
   }
 }
