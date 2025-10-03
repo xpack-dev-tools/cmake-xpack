@@ -104,6 +104,19 @@ jobs:
           # Verify removal
           which brew || echo "Homebrew successfully removed"
 
+      - name: 'Setup Node.js'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          check-latest: true
+
+      - name: 'Verify Node.js and npm installation'
+        run: |
+          echo "node: $(node --version)"
+          echo "npm: $(npm --version)"
+          which node
+          which npm
+
       - name: 'Clean working area' # Mandatory for self-hosted runners.
         run: |
           chmod -Rf a+w * || true
