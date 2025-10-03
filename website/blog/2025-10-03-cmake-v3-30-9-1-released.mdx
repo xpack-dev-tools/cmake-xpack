@@ -1,0 +1,162 @@
+---
+
+title: xPack xPack CMake v3.30.9-1 released
+seo_title: Version 3.30.9-1 released
+description: Version 3.30.9-1 is a TODO new/maintenance release.
+keywords:
+  - xpack
+  - cmake
+  - release
+
+date: 2025-10-03 22:43:57 +0300
+
+authors: ilg-ul
+
+# To be listed in the Releases page.
+tags:
+  - releases
+
+# ----- Custom properties -----------------------------------------------------
+
+cmake_version: "3.30.9"
+cmake_release_date: "11 Jan 2025"
+
+version: "3.30.9-1"
+npm_subversion: "1"
+
+download_url: https://github.com/xpack-dev-tools/cmake-xpack/releases/tag/v3.30.9-1/
+
+---
+
+import {PageMetadata} from '@docusaurus/theme-common';
+import Image from '@theme/IdealImage';
+import CodeBlock from '@theme/CodeBlock';
+
+import Prerequisites from './_common/_prerequisites-glib-2.28.mdx';
+import DeprecationNotices from './_common/_deprecation-notices-glib-2.28.mdx';
+import DownloadAnalytics from './_common/_download-analytics.mdx';
+
+Version **3.30.9-1** is a new release; it follows the upstream release.
+
+<!-- truncate -->
+
+<PageMetadata title={frontMatter.seo_title} />
+
+The [xPack CMake](https://xpack-dev-tools.github.io/cmake-xpack/)
+is a standalone cross-platform binary distribution of
+[CMake](https://cmake.org).
+
+There are separate binaries for **Windows** (x64),
+**macOS** (x64 and arm64)
+and **GNU/Linux** (x64 and arm64).
+
+:::note Raspberry Pi
+
+The main targets for the GNU/Linux Arm
+binaries are the **Raspberry Pi** class devices (aarch64;
+armv6 and armv7l are not supported).
+
+:::
+
+## Download
+
+The binary files are available from <a href={frontMatter.download_url}>GitHub Releases</a>.
+
+<Prerequisites/>
+
+## Install
+
+The easiest way to install this specific version, is by using **xpm**:
+
+<CodeBlock language="console"> {
+`xpm install @xpack-dev-tools/cmake@${frontMatter.version}.${frontMatter.npm_subversion} -verbose
+`} </CodeBlock>
+
+Comprehensive instructions for installing **xPack xPack CMake** on different platforms
+can be found in the [Install Guide](/docs/install/).
+
+## Compliance
+
+The **xPack CMake** is based on the official
+[CMake](https://cmake.org), with no changes.
+
+The current version is based on:
+
+- CMake release
+[{frontMatter.cmake_version}](https://github.com/Kitware/CMake/releases/tag/v{frontMatter.cmake_version}/) from {frontMatter.cmake_release_date}.
+
+## Changes
+
+- none
+
+:::tip
+
+Starting with mid-2024 (v3.28.6-1), the patch to spawn processes on Windows via `cmd.exe /c` was no longer applied. The direct consequence is applications started via `.cmd` shim need to declare the `.cmd` extension explicitly (like `ninja.cmd`).
+
+:::
+
+## Bug fixes
+
+- none
+
+## Enhancements
+
+- none
+
+## Known problems
+
+- none
+
+## Documentation
+
+The current CMake documentation is available online from:
+
+- https://cmake.org/documentation/
+
+## Build
+
+The binaries for all supported platforms
+(Windows, macOS and GNU/Linux) were built using the
+[xPack Build Box (XBB)](https://xpack.github.io/xbb/), a set
+of build environments based on slightly older distributions, that should be
+compatible with most recent systems.
+
+For the prerequisites and more details on the build procedure, please see the
+[Maintainer Info](/docs/maintainer/) page.
+
+## CI tests
+
+Before publishing, a set of simple tests were performed on an exhaustive
+set of platforms. The results are available from:
+
+- [GitHub Actions](https://github.com/xpack-dev-tools/cmake-xpack/actions/)
+
+## Tests
+
+TBD
+
+## Checksums
+
+The SHA-256 hashes for the files are:
+
+```txt
+054224bf2ac8de584f947ce1883a0c95289dfc1814d4ed6ccfe587b5232afeab
+xpack-cmake-3.30.9-1-darwin-arm64.tar.gz
+
+3799db6e050d2fe0c625e122d5474a8c59f332f2cab9514c88449f05270e084b
+xpack-cmake-3.30.9-1-darwin-x64.tar.gz
+
+f5c0db2f00aa441e42d38f110db914f7268c8d4eaa0fc7ec90c0321d14ddb747
+xpack-cmake-3.30.9-1-linux-arm64.tar.gz
+
+d0f1edce9574343a97e176177624f5c51a01f5a9cde5fa994983d6093b1214fb
+xpack-cmake-3.30.9-1-linux-x64.tar.gz
+
+f4f799cb00f2073f421d84d5dec7f888d23bbc468233a4f67bc760fefc3c3e6d
+xpack-cmake-3.30.9-1-win32-x64.zip
+
+```
+
+<DeprecationNotices/>
+
+<DownloadAnalytics version={frontMatter.version}/>
