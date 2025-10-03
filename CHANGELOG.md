@@ -4,7 +4,10 @@ Entries in this file are in reverse chronological order.
 
 ## 2025-10-03
 
-* v3.30.9-1 prepared
+* v3.30.9-1 released
+* f33f583 website: update actions durations
+* 5f06a05 website update
+* e34c0b5 prepare v3.30.9-1
 * b3603d8 website: re-generate commons
 * 22cbcbd re-generate top commons to bump deps
 
