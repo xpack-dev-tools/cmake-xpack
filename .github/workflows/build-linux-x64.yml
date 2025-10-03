@@ -91,12 +91,9 @@ jobs:
 
       - name: 'Verify Node.js, npm and xpm'
         run: |
-          echo "node: $(node --version)"
-          echo "npm: $(npm --version)"
-          echo "xpm: $(xpm --version)"
-          which node
-          which npm
-          which xpm
+          echo "$(which node): $(node --version)"
+          echo "$(which npm): $(npm --version)"
+          echo "$(which xpm): $(xpm --version)"
 
       - name: 'Checkout project'
         uses: actions/checkout@v1 # v1 for old Git

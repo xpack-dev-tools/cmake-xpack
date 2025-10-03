@@ -115,12 +115,9 @@ jobs:
 
       - name: 'Verify Node.js, npm and xpm'
         run: |
-          echo "node: $(node --version)"
-          echo "npm: $(npm --version)"
-          echo "xpm: $(xpm --version)"
-          which node
-          which npm
-          which xpm
+          echo "$(which node): $(node --version)"
+          echo "$(which npm): $(npm --version)"
+          echo "$(which xpm): $(xpm --version)"
 
       - name: 'Clean working area' # Mandatory for self-hosted runners.
         run: |
