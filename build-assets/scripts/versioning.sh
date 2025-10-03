@@ -31,7 +31,7 @@ function application_build_versioned_components()
 
     xbb_set_target "requested"
 
-    # https://zlib.net/fossils/
+    # https://zlib.net/
     zlib_build "1.3.1"
 
     if [ "${XBB_REQUESTED_HOST_PLATFORM}" != "win32" ]
@@ -46,7 +46,7 @@ function application_build_versioned_components()
 
     # https://openssl-library.org/source/
     # https://www.openssl.org/source/old/
-    openssl_build "3.6.0" # "3.4.0" 
+    openssl_build "3.6.0" # "3.4.0"
 
     # -------------------------------------------------------------------------
     # Build the application binaries.
