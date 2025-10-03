@@ -36,7 +36,7 @@ function application_build_versioned_components()
 
     if [ "${XBB_REQUESTED_HOST_PLATFORM}" != "win32" ]
     then
-      # https://ftp.gnu.org/gnu/ncurses/
+      # https://ftpmirror.gnu.org/gnu/ncurses/
       ncurses_build "6.5" --hack-links # "6.4"
     fi
 
@@ -77,7 +77,7 @@ function application_build_versioned_components()
 
     if [ "${XBB_REQUESTED_HOST_PLATFORM}" != "win32" ]
     then
-      # https://ftp.gnu.org/gnu/ncurses/
+      # https://ftpmirror.gnu.org/gnu/ncurses/
       ncurses_build "6.5" # "6.4"
     fi
 
@@ -117,7 +117,7 @@ function application_build_versioned_components()
 
     if [ "${XBB_REQUESTED_HOST_PLATFORM}" != "win32" ]
     then
-      # https://ftp.gnu.org/gnu/ncurses/
+      # https://ftpmirror.gnu.org/gnu/ncurses/
       ncurses_build "6.5" # "6.4"
     fi
 
@@ -157,7 +157,7 @@ function application_build_versioned_components()
 
     if [ "${XBB_REQUESTED_HOST_PLATFORM}" != "win32" ]
     then
-      # https://ftp.gnu.org/gnu/ncurses/
+      # https://ftpmirror.gnu.org/gnu/ncurses/
       ncurses_build "6.4"
     fi
 
@@ -197,7 +197,7 @@ function application_build_versioned_components()
 
     if [ "${XBB_REQUESTED_HOST_PLATFORM}" != "win32" ]
     then
-      # https://ftp.gnu.org/gnu/ncurses/
+      # https://ftpmirror.gnu.org/gnu/ncurses/
       ncurses_build "6.4"
     fi
 
@@ -236,7 +236,7 @@ function application_build_versioned_components()
 
     if [ "${XBB_REQUESTED_HOST_PLATFORM}" != "win32" ]
     then
-      # https://ftp.gnu.org/gnu/ncurses/
+      # https://ftpmirror.gnu.org/gnu/ncurses/
       ncurses_build "6.4" # "6.3"
     fi
 
@@ -275,7 +275,7 @@ function application_build_versioned_components()
 
     if [ "${XBB_REQUESTED_HOST_PLATFORM}" != "win32" ]
     then
-      # https://ftp.gnu.org/gnu/ncurses/
+      # https://ftpmirror.gnu.org/gnu/ncurses/
       ncurses_build "6.3"
     fi
 

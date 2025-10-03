@@ -3,13 +3,13 @@
 # Automatically generated from npm-packages-helper/templates/*.
 #
 # This file is part of the xPack project (http://xpack.github.io).
-# Copyright (c) 2021 Liviu Ionescu. All rights reserved.
+# Copyright (c) 2021-2025 Liviu Ionescu. All rights reserved.
 #
 # Permission to use, copy, modify, and/or distribute this software
 # for any purpose is hereby granted, under the terms of the MIT license.
 #
 # If a copy of the license was not distributed with this file, it can
-# be obtained from https://opensource.org/licenses/MIT.
+# be obtained from https://opensource.org/licenses/mit.
 #
 # -----------------------------------------------------------------------------
 
@@ -69,7 +69,7 @@ jobs:
   darwin-arm64-build:
     name: 'darwin-arm64 cmake ${{github.event.inputs.version}} build'
     timeout-minutes: 2880 # 2 days
-    runs-on: [self-hosted, macos, apple]
+    runs-on: macos-15
     env:
       XBB_ENVIRONMENT_MACOSX_DEPLOYMENT_TARGET: '11.0'
     steps:
@@ -142,14 +142,10 @@ jobs:
           tag: 'test'
           token: ${{secrets.PUBLISH_TOKEN}}
 
-      - name: 'Rename working area'
-        # For just in case absolute paths remain unprocessed.
-        run: mv -v build-assets/build build-assets/build-$(date -u +%Y%m%d-%H%M%S)
-
   darwin-arm64-test:
     name: 'darwin-arm64 cmake ${{github.event.inputs.version}} test'
-    # https://github.com/actions/runner-images/blob/main/images/macos/macos-14-Readme.md
-    runs-on: macos-14
+    # https://github.com/actions/runner-images/blob/main/images/macos/macos-15-Readme.md
+    runs-on: macos-15
     needs: [darwin-arm64-build]
 
     steps:
@@ -159,7 +155,6 @@ jobs:
           sw_vers
           ls -lA /Library/Developer/CommandLineTools/SDKs || true
           ls -lA /Applications
-          sudo xcode-select --switch /Applications/Xcode_15.4.app
           xcode-select --print-path
           xcodebuild -version || true
           pkgutil --pkg-info=com.apple.pkg.CLTools_Executables || true
@@ -171,12 +166,12 @@ jobs:
 
       # https://github.com/actions/checkout
       - name: 'Checkout project'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 3
 
       - name: 'Checkout helper ${{github.event.inputs.helper-git-ref}}'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: xpack-dev-tools/xbb-helper-xpack
           path: build-assets/xpacks/@xpack-dev-tools/xbb-helper
