@@ -112,7 +112,7 @@ jobs:
           env | sort | grep -E '^[^ \t]+='
 
       - name: 'Remove Homebrew'
-        uses: ./.github/actions/remove-homebrew
+        uses: xpack/remove-homebrew-action@v1
 
       - name: 'Setup Node.js'
         uses: actions/setup-node@v4
@@ -173,7 +173,7 @@ jobs:
           env | sort | grep -E '^[^ \t]+='
 
       - name: 'Remove Homebrew'
-        uses: ./.github/actions/remove-homebrew
+        uses: xpack/remove-homebrew-action@v1
 
       - name: 'Setup Node.js'
         uses: actions/setup-node@v4
