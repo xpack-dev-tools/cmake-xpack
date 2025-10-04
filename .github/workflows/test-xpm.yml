@@ -125,6 +125,17 @@ jobs:
           # Verify removal
           which brew || echo "Homebrew successfully removed"
 
+      - name: 'Setup Node.js'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          check-latest: true
+
+      - name: 'Verify Node.js and npm'
+        run: |
+          echo "$(which node): $(node --version)"
+          echo "$(which npm): $(npm --version)"
+
       - name: 'Clean working area' # Mandatory for self-hosted runners.
         run: |
           chmod -Rf a+w * || true
@@ -185,6 +196,17 @@ jobs:
           echo 'export PATH=$(echo $PATH | tr ":" "\n" | grep -v homebrew | tr "\n" ":")' >> $GITHUB_ENV
           # Verify removal
           which brew || echo "Homebrew successfully removed"
+
+      - name: 'Setup Node.js'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          check-latest: true
+
+      - name: 'Verify Node.js and npm'
+        run: |
+          echo "$(which node): $(node --version)"
+          echo "$(which npm): $(npm --version)"
 
       - name: 'Clean working area' # Mandatory for self-hosted runners.
         run: |
