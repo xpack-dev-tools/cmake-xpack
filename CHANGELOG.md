@@ -4,6 +4,10 @@ Entries in this file are in reverse chronological order.
 
 ## 2025-10-04
 
+* v3.31.9-1.1 published on npmjs.com
+* 67b1c47 package.json: update URLs for 3.31.9-1.1 release
+* 980e2d2 website: blog post release 3.31.9-1.1 published
+* b26c5bb CHANGELOG update
 * v3.31.9-1 released
 * 95d62b8 website: update actions durations
 * d6eba47 workflows update
