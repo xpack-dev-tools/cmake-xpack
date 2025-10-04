@@ -2,8 +2,22 @@
 
 Entries in this file are in reverse chronological order.
 
+## 2025-10-04
+
+* v3.31.9-1 released
+* 95d62b8 website: update actions durations
+* d6eba47 workflows update
+* 4203c0c workflows update
+* 7138a86 workflows update
+* 570998b workflow add npm
+* e790ad3 workflow try without homebrew
+
 ## 2025-10-03
 
+* a45ac7c website: update folder hierarchies
+* 2be1eaf website: update development durations
+* 78ae3c9 versioning.sh update link
+* 44e5f9b prepare v3.31.9-1
 * v3.31.9-1 prepared
 * 10cff99 website: regenerate commons
 * 144fc8d 3.30.9-1.1
