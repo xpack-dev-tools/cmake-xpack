@@ -112,18 +112,7 @@ jobs:
           env | sort | grep -E '^[^ \t]+='
 
       - name: 'Remove Homebrew'
-        run: |
-          echo "Removing Homebrew to avoid conflicts..."
-          # Use the official Homebrew uninstall script
-          NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)" || true
-          # Additional cleanup for any remaining files
-          sudo rm -rf /opt/homebrew
-          sudo rm -rf /usr/local/Homebrew
-          sudo rm -rf /usr/local/bin/brew
-          # Update PATH to remove Homebrew references
-          echo 'export PATH=$(echo $PATH | tr ":" "\n" | grep -v homebrew | tr "\n" ":")' >> $GITHUB_ENV
-          # Verify removal
-          which brew || echo "Homebrew successfully removed"
+        uses: ./.github/actions/remove-homebrew
 
       - name: 'Setup Node.js'
         uses: actions/setup-node@v4
@@ -184,18 +173,7 @@ jobs:
           env | sort | grep -E '^[^ \t]+='
 
       - name: 'Remove Homebrew'
-        run: |
-          echo "Removing Homebrew to avoid conflicts..."
-          # Use the official Homebrew uninstall script
-          NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)" || true
-          # Additional cleanup for any remaining files
-          sudo rm -rf /opt/homebrew
-          sudo rm -rf /usr/local/Homebrew
-          sudo rm -rf /usr/local/bin/brew
-          # Update PATH to remove Homebrew references
-          echo 'export PATH=$(echo $PATH | tr ":" "\n" | grep -v homebrew | tr "\n" ":")' >> $GITHUB_ENV
-          # Verify removal
-          which brew || echo "Homebrew successfully removed"
+        uses: ./.github/actions/remove-homebrew
 
       - name: 'Setup Node.js'
         uses: actions/setup-node@v4
