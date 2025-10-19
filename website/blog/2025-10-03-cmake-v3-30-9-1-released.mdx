@@ -1,8 +1,8 @@
 ---
 
-title: xPack xPack CMake v3.30.9-1 released
+title: xPack CMake v3.30.9-1 released
 seo_title: Version 3.30.9-1 released
-description: Version 3.30.9-1 is a TODO new/maintenance release.
+description: Version 3.30.9-1 is a new release.
 keywords:
   - xpack
   - cmake
@@ -31,6 +31,10 @@ download_url: https://github.com/xpack-dev-tools/cmake-xpack/releases/tag/v3.30.
 import {PageMetadata} from '@docusaurus/theme-common';
 import Image from '@theme/IdealImage';
 import CodeBlock from '@theme/CodeBlock';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import customField from '@site/src/libs/customField';
 
 import Prerequisites from './_common/_prerequisites-glib-2.28.mdx';
 import DeprecationNotices from './_common/_deprecation-notices-glib-2.28.mdx';
@@ -53,8 +57,8 @@ and **GNU/Linux** (x64 and arm64).
 :::note Raspberry Pi
 
 The main targets for the GNU/Linux Arm
-binaries are the **Raspberry Pi** class devices (aarch64;
-armv6 and armv7l are not supported).
+binaries are the **Raspberry Pi** class devices (aarch64 only;
+armv6 and armv7l are no longer supported).
 
 :::
 
@@ -72,7 +76,7 @@ The easiest way to install this specific version, is by using **xpm**:
 `xpm install @xpack-dev-tools/cmake@${frontMatter.version}.${frontMatter.npm_subversion} -verbose
 `} </CodeBlock>
 
-Comprehensive instructions for installing **xPack xPack CMake** on different platforms
+Comprehensive instructions for installing **xPack CMake** on different platforms
 can be found in the [Install Guide](/docs/install/).
 
 ## Compliance
@@ -156,6 +160,112 @@ f4f799cb00f2073f421d84d5dec7f888d23bbc468233a4f67bc760fefc3c3e6d
 xpack-cmake-3.30.9-1-win32-x64.zip
 
 ```
+
+## Folders hierarchy
+
+After install, the package creates a hierarchy of folders like the following
+(only the first two depth levels are shown):
+
+<Tabs groupId="operating-systems">
+
+<TabItem value="windows" label="Windows" default>
+
+<CodeBlock language="console"> {
+`C:\> tree /f %USERPROFILE%\\AppData\\Roaming\\xPacks\\@{{packageScope}}\\{{packageName}}\\${frontMatter.version}.${frontMatter.npm_subversion}\\.content
+Folder PATH listing
+Volume serial number is B02D-925C
+├── README.md
+├── bin
+│   ├── cmake.exe
+│   ├── cmcldeps.exe
+│   ├── cpack.exe
+│   ├── ctest.exe
+│   ├── libgcc_s_seh-1.dll
+│   └── libstdc++-6.dll
+├── distro-info
+│   └── licenses
+├── doc
+│   └── cmake-3.30
+└── share
+    ├── aclocal
+    ├── bash-completion
+    ├── cmake-3.30
+    ├── emacs
+    └── vim
+
+11 directories, 8 files
+`} </CodeBlock>
+
+</TabItem>
+
+<TabItem value="macos" label="macOS">
+
+<CodeBlock language="console"> {
+`$ tree -L 2 ~/Library/xPacks/\{{packageScopedName}}/${frontMatter.version}.${frontMatter.npm_subversion}/.content/
+/Users/ilg/Library/xPacks/\{{packageScopedName}}/${frontMatter.version}.${frontMatter.npm_subversion}/.content/
+├── README.md
+├── bin
+│   ├── ccmake
+│   ├── cmake
+│   ├── cpack
+│   └── ctest
+├── distro-info
+│   └── licenses
+├── doc
+│   └── cmake-3.30
+├── libexec
+│   ├── libc++.1.0.dylib
+│   ├── libc++abi.1.0.dylib
+│   ├── libncurses.6.dylib
+│   └── libunwind.1.0.dylib
+└── share
+    ├── aclocal
+    ├── bash-completion
+    ├── cmake-3.30
+    ├── emacs
+    └── vim
+
+13 directories, 9 files
+`} </CodeBlock>
+
+</TabItem>
+
+<TabItem value="linux" label="GNU/Linux">
+
+<CodeBlock language="console"> {
+`$ tree -L 2 ~/.local/xPacks/\{{packageScopedName}}/${frontMatter.version}.${frontMatter.npm_subversion}/.content/
+/home/ilg/.local/xPacks/\{{packageScopedName}}/${frontMatter.version}.${frontMatter.npm_subversion}/.content/
+├── README.md
+├── bin
+│   ├── ccmake
+│   ├── cmake
+│   ├── cpack
+│   └── ctest
+├── distro-info
+│   └── licenses
+├── doc
+│   └── cmake-3.30
+├── libexec
+│   ├── libcrypto.so.3
+│   ├── libgcc_s.so.1
+│   ├── libncurses.so.6 -> libncurses.so.6.5
+│   ├── libncurses.so.6.5
+│   ├── libssl.so.3
+│   ├── libstdc++.so.6 -> libstdc++.so.6.0.33
+│   └── libstdc++.so.6.0.33
+└── share
+    ├── aclocal
+    ├── bash-completion
+    ├── cmake-3.30
+    ├── emacs
+    └── vim
+
+12 directories, 12 files
+`} </CodeBlock>
+
+</TabItem>
+
+</Tabs>
 
 <DeprecationNotices/>
 
