@@ -58,11 +58,12 @@ jobs:
           # 2025
           platforms="win32-x64,linux-x64,linux-arm64,darwin-x64,darwin-arm64"
 
+          download_sourceforge "${name}" "3.31.9-1" ${threshold} "${platforms}"
+          download_sourceforge "${name}" "3.30.9-1" ${threshold} "${platforms}"
+
           # 2024
           platforms="win32-x64,linux-x64,linux-arm64,linux-arm,darwin-x64,darwin-arm64"
 
-          download_sourceforge "${name}" "3.31.9-1" ${threshold} "${platforms}"
-          download_sourceforge "${name}" "3.30.9-1" ${threshold} "${platforms}"
           download_sourceforge "${name}" "3.30.7-1" ${threshold} "${platforms}"
           download_sourceforge "${name}" "3.29.9-1" ${threshold} "${platforms}"
           download_sourceforge "${name}" "3.28.6-1" ${threshold} "${platforms}"
