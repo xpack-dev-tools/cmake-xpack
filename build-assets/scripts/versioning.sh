@@ -1,10 +1,13 @@
 # -----------------------------------------------------------------------------
-# This file is part of the xPacks distribution.
-#   (https://xpack.github.io)
-# Copyright (c) 2020 Liviu Ionescu. All rights reserved.
+# This file is part of the xPack project (http://xpack.github.io).
+# Copyright (c) 2020-2025 Liviu Ionescu. All rights reserved.
 #
 # Permission to use, copy, modify, and/or distribute this software
 # for any purpose is hereby granted, under the terms of the MIT license.
+#
+# If a copy of the license was not distributed with this file, it can
+# be obtained from https://opensource.org/licenses/mit.
+#
 # -----------------------------------------------------------------------------
 
 # -----------------------------------------------------------------------------
@@ -31,7 +34,7 @@ function application_build_versioned_components()
 
     xbb_set_target "requested"
 
-    # https://zlib.net/
+    # https://zlib.net/fossils/
     zlib_build "1.3.1"
 
     if [ "${XBB_REQUESTED_HOST_PLATFORM}" != "win32" ]

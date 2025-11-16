@@ -7,74 +7,78 @@
 # for any purpose is hereby granted, under the terms of the MIT license.
 #
 # If a copy of the license was not distributed with this file, it can
-# be obtained from https://opensource.org/licenses/MIT.
+# be obtained from https://opensource.org/licenses/mit.
 #
 # -----------------------------------------------------------------------------
 
-  name: 'Test SourceForge downloads'
+# https://github.com/xpack-dev-tools/cmake-xpack/actions/workflows/test-sourceforge-downloads.yml
+name: 'Test SourceForge downloads'
 
-  on:
-    schedule:
-      - cron: '33 9 * * 6' # every Saturday
-    workflow_dispatch:
+on:
+  schedule:
+    - cron: '33 9 * * 6' # every Saturday
+  workflow_dispatch:
 
-  jobs:
-    test:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout
-          uses: actions/checkout@v2
-          with:
-            repository: xpack-dev-tools/xbb-helper-xpack
-            ref: 'xpack-development'
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          repository: xpack-dev-tools/xbb-helper-xpack
+          ref: 'xpack-development'
 
-        - name: Show environment
-          run: |
-            ls -lLA
-            env | sort | grep -E '^[^ \t]+='
+      - name: Show environment
+        run: |
+          ls -lLA
+          env | sort | grep -E '^[^ \t]+='
 
-        - name: Run test
-          run: |
-            #!/usr/bin/env bash
-            set -e
+      - name: Run test
+        run: |
+          #!/usr/bin/env bash
+          set -e
 
-            # The script is in the xbb-helper-xpack repo.
-            source maintenance-scripts/download-sourceforge-source.sh
+          # The script is in the xbb-helper-xpack repo.
+          source maintenance-scripts/download-sourceforge-source.sh
 
-            date
+          date
 
-            # https://sourceforge.net/projects/cmake-xpack/files/
-            name="cmake"
-            threshold=16383 # (50%)
+          # https://github.com/xpack-dev-tools/cmake-xpack/tags
+          # https://sourceforge.net/projects/cmake-xpack/files/
+          name="cmake"
+          threshold=13107 # (60%, i.e. 32767 * (100-60)/100)
 
-            # 2025
-            platforms="win32-x64,linux-x64,linux-arm64,darwin-x64,darwin-arm64"
+          # 2025
+          platforms="win32-x64,linux-x64,linux-arm64,darwin-x64,darwin-arm64"
 
-            # 2024
-            platforms="win32-x64,linux-x64,linux-arm64,linux-arm,darwin-x64,darwin-arm64"
+          # 2024
+          platforms="win32-x64,linux-x64,linux-arm64,linux-arm,darwin-x64,darwin-arm64"
 
-            download_sourceforge "${name}" "3.30.7-1" ${threshold} "${platforms}"
-            download_sourceforge "${name}" "3.29.9-1" ${threshold} "${platforms}"
-            download_sourceforge "${name}" "3.28.6-1" ${threshold} "${platforms}"
-            download_sourceforge "${name}" "3.27.9-1" ${threshold} "${platforms}"
-            download_sourceforge "${name}" "3.26.5-1" ${threshold} "${platforms}"
-            download_sourceforge "${name}" "3.25.3-1" ${threshold} "${platforms}"
-            download_sourceforge "${name}" "3.24.4-1" ${threshold} "${platforms}"
-            download_sourceforge "${name}" "3.23.5-1" ${threshold} "${platforms}"
-            download_sourceforge "${name}" "3.22.6-1" ${threshold} "${platforms}"
-            download_sourceforge "${name}" "3.21.6-1" ${threshold} "${platforms}"
+          download_sourceforge "${name}" "3.31.9-1" ${threshold} "${platforms}"
+          download_sourceforge "${name}" "3.30.9-1" ${threshold} "${platforms}"
+          download_sourceforge "${name}" "3.30.7-1" ${threshold} "${platforms}"
+          download_sourceforge "${name}" "3.29.9-1" ${threshold} "${platforms}"
+          download_sourceforge "${name}" "3.28.6-1" ${threshold} "${platforms}"
+          download_sourceforge "${name}" "3.27.9-1" ${threshold} "${platforms}"
+          download_sourceforge "${name}" "3.26.5-1" ${threshold} "${platforms}"
+          download_sourceforge "${name}" "3.25.3-1" ${threshold} "${platforms}"
+          download_sourceforge "${name}" "3.24.4-1" ${threshold} "${platforms}"
+          download_sourceforge "${name}" "3.23.5-1" ${threshold} "${platforms}"
+          download_sourceforge "${name}" "3.22.6-1" ${threshold} "${platforms}"
+          download_sourceforge "${name}" "3.21.6-1" ${threshold} "${platforms}"
 
-            # 2021
-            platforms="win32-x64,win32-ia32,linux-x64,linux-ia32,linux-arm64,linux-arm,darwin-x64"
+          # 2021
+          platforms="win32-x64,win32-ia32,linux-x64,linux-ia32,linux-arm64,linux-arm,darwin-x64"
 
-            download_sourceforge "${name}" "3.20.6-2" ${threshold} "${platforms}"
-            download_sourceforge "${name}" "3.19.8-1" ${threshold} "${platforms}"
-            download_sourceforge "${name}" "3.19.2-2" ${threshold} "${platforms}"
-            download_sourceforge "${name}" "3.18.6-1" ${threshold} "${platforms}"
-            download_sourceforge "${name}" "3.19.1-1" ${threshold} "${platforms}"
-            download_sourceforge "${name}" "3.18.5-1" ${threshold} "${platforms}"
+          download_sourceforge "${name}" "3.20.6-2" ${threshold} "${platforms}"
+          download_sourceforge "${name}" "3.19.8-1" ${threshold} "${platforms}"
+          download_sourceforge "${name}" "3.19.2-2" ${threshold} "${platforms}"
+          download_sourceforge "${name}" "3.18.6-1" ${threshold} "${platforms}"
+          download_sourceforge "${name}" "3.19.1-1" ${threshold} "${platforms}"
+          download_sourceforge "${name}" "3.18.5-1" ${threshold} "${platforms}"
 
-            # 2020
-            platforms="win32-x64,win32-x32,linux-x64,linux-x32,linux-arm64,linux-arm,darwin-x64"
+          # 2020
+          platforms="win32-x64,win32-x32,linux-x64,linux-x32,linux-arm64,linux-arm,darwin-x64"
 
-            download_sourceforge "${name}" "3.18.3-1" ${threshold} "${platforms}"
+          download_sourceforge "${name}" "3.18.3-1" ${threshold} "${platforms}"
