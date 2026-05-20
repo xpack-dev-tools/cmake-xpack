@@ -1,0 +1,8 @@
+{
+  "descriptiveName": "xPack CMake",
+  "permalinkName": "cmake",
+  "preferredName": "xPack CMake",
+  "upstreamDescriptiveName": "CMake",
+  "skipCiTests": true,
+  "useSelfHostedRunners": false
+}
