@@ -1,0 +1,7 @@
+{
+  "branding": "cmake version ",
+  "$link": "https://github.com/Kitware/CMake/tags/",
+  "cmakeReleaseDate": "24 Sep 2025",
+  "programName": "cmake",
+  "shareOnTwitter": true
+}
